@@ -1,2 +1,7 @@
-langchain-openai
-langchain-experimental
+llama-index
+transformers
+torch
+google-generativeai
+langchain-google-genai
+langgraph
+yfinance
