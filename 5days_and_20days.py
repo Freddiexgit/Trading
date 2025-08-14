@@ -2,10 +2,11 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 1000)
+from datetime import datetime
+def find_position(symbol="APPL"):
 
-def find_position():
-    symbol = "AAPL"  # Change to any stock symbol you want
-    period = "5mo"   # Last 3 months of data
+    period = "1mo"   # Last 5 months of data
 
     # --- Load Stock Data ---
     df = yf.download(symbol, period=period)
@@ -18,24 +19,35 @@ def find_position():
     df['Signal'] = 0
     # df['Signal'][df['MA_5'] > df['MA_20']] = 1
     df.loc[df['MA_5'] > df['MA_20'], 'Signal'] = 1
+
     df['Position'] = df['Signal'].diff()
-    print(df)
-    # --- Plot ---
-    plt.figure(figsize=(14, 7))
-    plt.plot(df['Close'], label='Close Price', alpha=0.4)
-    plt.plot(df['MA_5'], label='5-Day MA', linewidth=2)
-    plt.plot(df['MA_20'], label='20-Day MA', linewidth=2)
+    df.dropna(inplace=True)
+    df1 = df['Position'][df['Position'] != 0]
+    if len(df1) == 0:
+        return 0
+    first_non_zero = df1.iloc[-1]
+    return  first_non_zero
 
-    # Mark Buy/Sell points
-    plt.plot(df[df['Position'] == 1].index, df['MA_5'][df['Position'] == 1], '^', markersize=10, color='g', label='Buy Signal')
-    plt.plot(df[df['Position'] == -1].index, df['MA_5'][df['Position'] == -1], 'v', markersize=10, color='r', label='Sell Signal')
 
-    plt.title(f"{symbol} - 5-Day vs 20-Day MA")
-    plt.xlabel("Date")
-    plt.ylabel("Price")
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+
+
+    # print(df)
+    # # --- Plot ---
+    # plt.figure(figsize=(14, 7))
+    # plt.plot(df['Close'], label='Close Price', alpha=0.4)
+    # plt.plot(df['MA_5'], label='5-Day MA', linewidth=2)
+    # plt.plot(df['MA_20'], label='20-Day MA', linewidth=2)
+    #
+    # # Mark Buy/Sell points
+    # plt.plot(df[df['Position'] == 1].index, df['MA_5'][df['Position'] == 1], '^', markersize=10, color='g', label='Buy Signal')
+    # plt.plot(df[df['Position'] == -1].index, df['MA_5'][df['Position'] == -1], 'v', markersize=10, color='r', label='Sell Signal')
+    #
+    # plt.title(f"{symbol} - 5-Day vs 20-Day MA")
+    # plt.xlabel("Date")
+    # plt.ylabel("Price")
+    # plt.legend()
+    # plt.grid(True)
+    # plt.show()
 
 def backtesting():
     # --- Parameters ---
@@ -106,4 +118,13 @@ def backtesting():
     print("\nTrade Log:")
     print(trades)
 
-find_position()
+if __name__ == "__main__":
+    df = pd.read_csv('resource/nyse_and_nasdaq_top_500.csv')
+    tickers = df['symbol'].dropna().tolist()
+    stock_5days_above_20days = []
+    for ticker in tickers:
+        if find_position(ticker) > 0:
+            stock_5days_above_20days.append(ticker)
+    df2  = pd.DataFrame(stock_5days_above_20days,columns=['symbol'])
+    df2.to_csv(f'resource/stock_5days_above_20days_{datetime.now().strftime('%Y-%m-%d')}.csv', index=False)
+    # find_position()

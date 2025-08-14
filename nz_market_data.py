@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import os
 
 # Sample DataFrame
-df = pd.DataFrame({'Name': ['Alice', 'Bob'], 'Score': [90, 85]})
+
 
 
 # Load ticker symbols from CSV

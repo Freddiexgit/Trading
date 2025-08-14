@@ -1,18 +1,28 @@
 import yfinance as yf
+import pandas as pd
 
 
 def get_stock_market_capitalization(ticker_symbol="AAPL", property_name="marketCap"):
-    get_stock_info(ticker_symbol,property_name).get(property_name)
+    return  get_stock_info(ticker_symbol).get(property_name)
 def get_stock_info(ticker_symbol ="QD"):
-
-
     # Get the stock data
     stock = yf.Ticker(ticker_symbol)
-
     # Get market cap
-
     return  stock.info
     # Print market cap in human-readable format
+
+if __name__ == "__main__":
+    stock_value_more_then_1_billion = []
+    df = pd.read_csv('resource/nasdaq_tickers.csv')
+    tickers = df['symbol'].dropna().tolist()
+    for ticker in tickers:
+
+        mrkt_val = get_stock_market_capitalization("HHH")
+        if mrkt_val and mrkt_val > 10000000000:
+            stock_value_more_then_1_billion.append(ticker)
+
+    df2  = pd.DataFrame(stock_value_more_then_1_billion)
+    df2.to_csv('resource/nasdaq_tickers_value_more_then_1_billion.csv', index=False)
 
     # {'52WeekChange': -0.042636037,
     # 'SandP52WeekChange': 0.16821623,
