@@ -11,3 +11,4 @@ plotly
 ta
 tkhtmlview
 kaleido
+PyPDF2
