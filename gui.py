@@ -43,7 +43,7 @@ def plot_stock():
         # print(data.index.values)
         # print(data['Volume'].values)
         # print(data['Volume'].values[0])
-        ax2.bar(data.index.values, data['Volume'].values.squeeze(), color='gray')
+        ax2.bar(data.index.values, data['Volume'].values.squeeze(), color='green')
         ax2.set_title(f'{ticker} Trading Volume')
         ax2.set_xlabel('Date')
         ax2.set_ylabel('Volume')

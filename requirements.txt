@@ -10,3 +10,4 @@ mplfinance
 plotly
 ta
 tkhtmlview
+kaleido

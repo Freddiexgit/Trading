@@ -126,4 +126,6 @@ fig.update_xaxes(
         dict(bounds=["sat", "mon"])  # hide weekends
     ]
 )
-fig.show()
+# fig.show()
+
+fig.write_image("candlestick.pdf", format="pdf")
