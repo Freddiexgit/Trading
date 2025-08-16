@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import ta
 
+ticker_name = "AAPL"
 # Load your CSV
 df = pd.read_csv("resource/price_history_AAPL_2025-08-15.csv", parse_dates=["Date"])
 df.set_index("Date", inplace=True)
@@ -42,13 +43,21 @@ df["OBV"] = ta.volume.OnBalanceVolumeIndicator(df["Close"], df["Volume"]).on_bal
 df["CCI"] = ta.trend.CCIIndicator(df["High"], df["Low"], df["Close"]).cci()
 df["ROC"] = ta.momentum.ROCIndicator(df["Close"]).roc()
 
+ha_df = df.copy()
+ha_df['HA_Close'] = (df['Open'] + df['High'] + df['Low'] + df['Close']) / 4
+ha_df['HA_Open'] = (df['Open'].shift(1) + df['Close'].shift(1)) / 2
+ha_df.iloc[0, ha_df.columns.get_loc('HA_Open')] = (df['Open'].iloc[0] + df['Close'].iloc[0]) / 2
+ha_df['HA_High'] = ha_df[['HA_Open', 'HA_Close', 'High']].max(axis=1)
+ha_df['HA_Low'] = ha_df[['HA_Open', 'HA_Close', 'Low']].min(axis=1)
+
+
 # Create subplots
 fig = make_subplots(
     rows=11, cols=1, shared_xaxes=True,
     vertical_spacing=0.02,
     row_heights=[0.3, 0.15, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08],
     subplot_titles=[
-        "Candlestick with MAs", "Volume", "RSI", "KDJ", "MACD", "W%R", "DMI", "BIAS", "OBV", "CCI", "ROC"
+        f'Candlestick with {ticker_name}', "Volume", "RSI", "KDJ", "MACD", "W%R", "DMI", "BIAS", "OBV", "CCI", "ROC"
     ]
 )
 
@@ -56,6 +65,20 @@ fig = make_subplots(
 fig.add_trace(go.Candlestick(x=df.index, open=df["Open"], high=df["High"], low=df["Low"], close=df["Close"], name="Price"), row=1, col=1)
 for ma, color in zip(["MA5", "MA10", "MA20", "MA60"], ["blue", "orange", "magenta", "green"]):
     fig.add_trace(go.Scatter(x=df.index, y=df[ma], mode="lines", line=dict(color=color), name=ma), row=1, col=1)
+
+
+# # Heiken Ashi overlay
+# fig.add_trace(go.Candlestick(
+#     x=ha_df.index,
+#     open=ha_df['HA_Open'], high=ha_df['HA_High'],
+#     low=ha_df['HA_Low'], close=ha_df['HA_Close'],
+#     name="Heiken Ashi",
+#     increasing_line_color="blue",
+#     decreasing_line_color="orange",
+#     opacity=0.5
+# ),row=2, col=1)
+
+
 
 # Volume
 fig.add_trace(go.Bar(x=df.index, y=df["Volume"], name="Volume", marker_color="green"), row=2, col=1)
@@ -84,6 +107,7 @@ fig.add_trace(go.Scatter(x=df.index, y=df["-DI"], mode="lines", name="-DI"), row
 fig.add_trace(go.Scatter(x=df.index, y=df["ADX"], mode="lines", name="ADX"), row=7, col=1)
 fig.add_trace(go.Scatter(x=df.index, y=df["ADXR"], mode="lines", name="ADXR"), row=7, col=1)
 
+
 # BIAS
 fig.add_trace(go.Scatter(x=df.index, y=df["BIAS"], mode="lines", name="BIAS"), row=8, col=1)
 
@@ -97,4 +121,9 @@ fig.add_trace(go.Scatter(x=df.index, y=df["CCI"], mode="lines", name="CCI"), row
 fig.add_trace(go.Scatter(x=df.index, y=df["ROC"], mode="lines", name="ROC"), row=11, col=1)
 
 fig.update_layout(height=1600, showlegend=True, xaxis_rangeslider_visible=False)
+fig.update_xaxes(
+    rangebreaks=[
+        dict(bounds=["sat", "mon"])  # hide weekends
+    ]
+)
 fig.show()

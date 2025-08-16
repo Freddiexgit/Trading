@@ -14,7 +14,7 @@
 # print(response)
 
 import google.generativeai as genai
-genai.configure(api_key="AIzaSyCH5u")
+genai.configure(api_key="AIzaSyCH5ud2FnsklQ-c95YJPDJrIHWJiCxHFDw")
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 response = model.generate_content("trump's response to elon muck's new america party")
