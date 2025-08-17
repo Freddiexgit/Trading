@@ -11,7 +11,7 @@ stock = yf.Ticker(stock_symbol)
 today = datetime.today().strftime('%Y-%m-%d')
 
 # Fetch the historical data for today (adjust if market is closed)
-data = stock.history(period="2mo")
+data = stock.history(period="6mo")
 
 data.to_csv(f'resource/price_history_{stock_symbol}_{datetime.now().strftime('%Y-%m-%d')}.csv', index=True)
 

@@ -125,6 +125,7 @@ if __name__ == "__main__":
     for ticker in tickers:
         if find_position(ticker) > 0:
             stock_5days_above_20days.append(ticker)
-    df2  = pd.DataFrame(stock_5days_above_20days,columns=['symbol'])
+
+    df2  = pd.DataFrame(stock_5days_above_20days,columns=['symbol']).drop_duplicates()
     df2.to_csv(f'resource/stock_5days_above_20days_{datetime.now().strftime('%Y-%m-%d')}.csv', index=False)
     # find_position()

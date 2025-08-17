@@ -74,6 +74,6 @@ price_frame = tk.Frame(notebook)
 volume_frame = tk.Frame(notebook)
 
 notebook.add(price_frame, text="Price & MA")
-notebook.add(volume_frame, text="Volume")
+# notebook.add(volume_frame, text="Volume")
 
 root.mainloop()

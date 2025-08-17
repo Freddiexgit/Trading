@@ -1,5 +1,6 @@
+import os
 from datetime import datetime
-
+import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -66,16 +67,7 @@ def ploy_fig(ticker, df):
         fig.add_trace(go.Scatter(x=df.index, y=df[ma], mode="lines", line=dict(color=color), name=ma), row=1, col=1)
 
 
-    # # Heiken Ashi overlay
-    # fig.add_trace(go.Candlestick(
-    #     x=ha_df.index,
-    #     open=ha_df['HA_Open'], high=ha_df['HA_High'],
-    #     low=ha_df['HA_Low'], close=ha_df['HA_Close'],
-    #     name="Heiken Ashi",
-    #     increasing_line_color="blue",
-    #     decreasing_line_color="orange",
-    #     opacity=0.5
-    # ),row=2, col=1)
+
 
 
 
@@ -115,7 +107,16 @@ def ploy_fig(ticker, df):
 
     # CCI
     fig.add_trace(go.Scatter(x=df.index, y=df["CCI"], mode="lines", name="CCI"), row=10, col=1)
-
+    # Heiken Ashi overlay
+    # fig.add_trace(go.Candlestick(
+    #     x=ha_df.index,
+    #     open=ha_df['HA_Open'], high=ha_df['HA_High'],
+    #     low=ha_df['HA_Low'], close=ha_df['HA_Close'],
+    #     name="Heiken Ashi",
+    #     increasing_line_color="blue",
+    #     decreasing_line_color="orange",
+    #     opacity=0.5
+    # ),row=10, col=1)
     # ROC
     fig.add_trace(go.Scatter(x=df.index, y=df["ROC"], mode="lines", name="ROC"), row=11, col=1)
 
@@ -130,25 +131,35 @@ def ploy_fig(ticker, df):
 
 
 
-ticker = "AAPL"
-# Load your CSV
-df = pd.read_csv("resource/price_history_AAPL_2025-08-16.csv", parse_dates=["Date"])
-df.set_index("Date", inplace=True)
 
 
 pdf_files = []
 
-fig = ploy_fig(ticker, df)
 
-# save temporary pdf for each stock
-filename = f"{ticker}.pdf"
-fig.write_image(filename, format="pdf",width=1200, height=1600)
-pdf_files.append(filename)
+# df_tickers = pd.read_csv("resource/stock_5days_above_20days_2025-08-15.csv")
+df_tickers = pd.DataFrame(
+    {  "symbol": ["AAPL"]    }
+)
+for index, row in df_tickers.iterrows():
+    print(f"Index: {index}, Value: {row['symbol']}")
+    ticker = row['symbol']
+    # if index > 10:
+    #     break
+    stock = yf.Ticker(ticker)
+    df = stock.history(period="6mo")
+    fig = ploy_fig(f"{ticker}_{stock.info['shortName']}", df)
+
+    # save temporary pdf for each stock
+    filename = f"{ticker}.pdf"
+    fig.write_image(filename, format="pdf",width=1200, height=1600)
+    pdf_files.append(filename)
 
 # Merge all PDFs into one
 merger = PdfMerger()
 for pdf in pdf_files:
     merger.append(pdf)
 
-merger.write(f"stock_indicators_{datetime.now().strftime('%Y-%m-%d')}.pdf")
+merger.write(f"resource/1_stock_indicators_{datetime.now().strftime('%Y-%m-%d')}.pdf")
 merger.close()
+for pdf in pdf_files:
+    os.remove(pdf)  # Clean up temporary files

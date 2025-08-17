@@ -17,12 +17,12 @@ if __name__ == "__main__":
     tickers = df['symbol'].dropna().tolist()
     for ticker in tickers:
 
-        mrkt_val = get_stock_market_capitalization("HHH")
-        if mrkt_val and mrkt_val > 10000000000:
+        mrkt_val = get_stock_market_capitalization(ticker)
+        if mrkt_val and mrkt_val > 10_000_000_000:
             stock_value_more_then_1_billion.append(ticker)
 
     df2  = pd.DataFrame(stock_value_more_then_1_billion)
-    df2.to_csv('resource/nasdaq_tickers_value_more_then_1_billion.csv', index=False)
+    df2.to_csv('resource/nasdaq_tickers_value_more_then_10_billion.csv', index=False)
 
     # {'52WeekChange': -0.042636037,
     # 'SandP52WeekChange': 0.16821623,
