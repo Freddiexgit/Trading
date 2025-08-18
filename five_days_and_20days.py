@@ -118,8 +118,8 @@ def backtesting():
     print("\nTrade Log:")
     print(trades)
 
-if __name__ == "__main__":
-    df = pd.read_csv('resource/nyse_and_nasdaq_top_500.csv')
+def run(ticker_source, output_file):
+    df = pd.read_csv(f'resource/{ticker_source}')
     tickers = df['symbol'].dropna().tolist()
     stock_5days_above_20days = []
     for ticker in tickers:
@@ -127,5 +127,5 @@ if __name__ == "__main__":
             stock_5days_above_20days.append(ticker)
 
     df2  = pd.DataFrame(stock_5days_above_20days,columns=['symbol']).drop_duplicates()
-    df2.to_csv(f'resource/stock_5days_above_20days_{datetime.now().strftime('%Y-%m-%d')}.csv', index=False)
+    df2.to_csv(f'{output_file}', index=False)
     # find_position()

@@ -132,7 +132,6 @@ def ploy_fig(ticker, df):
 
 
 
-
 pdf_files = []
 
 
@@ -147,7 +146,7 @@ for index, row in df_tickers.iterrows():
     #     break
     stock = yf.Ticker(ticker)
     df = stock.history(period="6mo")
-    fig = ploy_fig(f"{ticker}_{stock.info['shortName']}", df)
+    fig = ploy_fig(stock, df)
 
     # save temporary pdf for each stock
     filename = f"{ticker}.pdf"

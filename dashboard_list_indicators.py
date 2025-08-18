@@ -130,34 +130,28 @@ def ploy_fig(ticker, df):
     return fig
 
 
+def generate_pdf(df_tickers,output_filename):
+    pdf_files = []
+    for index, row in df_tickers.iterrows():
+        print(f"Index: {index}, Value: {row['symbol']}")
+        ticker = row['symbol']
+        # if index > 10:
+        #     break
+        stock = yf.Ticker(ticker)
+        df = stock.history(period="6mo")
+        fig = ploy_fig(f"{ticker}_{stock.info['shortName']}", df)
 
+        # save temporary pdf for each stock
+        filename = f"{ticker}.pdf"
+        fig.write_image(f"resource/temp/{filename}", format="pdf",width=1200, height=1600)
+        pdf_files.append(filename)
 
+    # Merge all PDFs into one
+    merger = PdfMerger()
+    for pdf in pdf_files:
+        merger.append(f"resource/temp/{pdf}")
 
-pdf_files = []
-
-
-df_tickers = pd.read_csv("resource/stock_5days_above_20days_2025-08-15.csv")
-
-for index, row in df_tickers.iterrows():
-    print(f"Index: {index}, Value: {row['symbol']}")
-    ticker = row['symbol']
-    # if index > 10:
-    #     break
-    stock = yf.Ticker(ticker)
-    df = stock.history(period="6mo")
-    fig = ploy_fig(f"{ticker}_{stock.info['shortName']}", df)
-
-    # save temporary pdf for each stock
-    filename = f"{ticker}.pdf"
-    fig.write_image(filename, format="pdf",width=1200, height=1600)
-    pdf_files.append(filename)
-
-# Merge all PDFs into one
-merger = PdfMerger()
-for pdf in pdf_files:
-    merger.append(pdf)
-
-merger.write(f"stock_indicators_{datetime.now().strftime('%Y-%m-%d')}.pdf")
-merger.close()
-for pdf in pdf_files:
-    os.remove(pdf)  # Clean up temporary files
+    merger.write(output_filename)
+    merger.close()
+    for pdf in pdf_files:
+        os.remove(f"resource/temp/{pdf}")  # Clean up temporary files
