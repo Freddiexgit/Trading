@@ -137,8 +137,15 @@ def generate_pdf(df_tickers,output_filename):
         ticker = row['symbol']
         # if index > 10:
         #     break
-        stock = yf.Ticker(ticker)
+
+        try:
+            stock = yf.Ticker(ticker)
+        except Exception as e:
+            print(f"Error fetching data for {ticker}: {e}")
+            continue
         df = stock.history(period="6mo")
+
+
         fig = ploy_fig(f"{ticker}_{stock.info['shortName']}", df)
 
         # save temporary pdf for each stock
