@@ -37,25 +37,9 @@ def ploy_fig(ticker, df):
     df["MACD_buy_signal"] = np.where((df["MACD"] > df["MACD_signal"]) & (df["MACD"].shift(1) <= df["MACD_signal"].shift(1)), df["Close"], np.nan)
     df["MACD_sell_signal"] = np.where((df["MACD"] < df["MACD_signal"]) & (df["MACD"].shift(1) >= df["MACD_signal"].shift(1)), df["Close"], np.nan)
 
-    # df["W%R"] = ta.momentum.WilliamsRIndicator(df["High"], df["Low"], df["Close"]).williams_r()
 
-    # dmi = ta.trend.ADXIndicator(df["High"], df["Low"], df["Close"])
-    # df["+DI"] = dmi.adx_pos()
-    # df["-DI"] = dmi.adx_neg()
-    # df["ADX"] = dmi.adx()
-    # df["ADXR"] = df["ADX"].rolling(5).mean()
-
-    # df["BIAS"] = (df["Close"] - df["MA20"]) / df["MA20"] * 100
     df["OBV"] = ta.volume.OnBalanceVolumeIndicator(df["Close"], df["Volume"]).on_balance_volume()
-    # df["CCI"] = ta.trend.CCIIndicator(df["High"], df["Low"], df["Close"]).cci()
-    # df["ROC"] = ta.momentum.ROCIndicator(df["Close"]).roc()
 
-    # ha_df = df.copy()
-    # ha_df['HA_Close'] = (df['Open'] + df['High'] + df['Low'] + df['Close']) / 4
-    # ha_df['HA_Open'] = (df['Open'].shift(1) + df['Close'].shift(1)) / 2
-    # ha_df.iloc[0, ha_df.columns.get_loc('HA_Open')] = (df['Open'].iloc[0] + df['Close'].iloc[0]) / 2
-    # ha_df['HA_High'] = ha_df[['HA_Open', 'HA_Close', 'High']].max(axis=1)
-    # ha_df['HA_Low'] = ha_df[['HA_Open', 'HA_Close', 'Low']].min(axis=1)
 
     macd1 = ta.trend.MACD(df["Close"], window_slow=34,  # slow EMA
                           window_fast=5,  # fast EMA
@@ -124,24 +108,6 @@ def ploy_fig(ticker, df):
             ),
             row=1, col=1
         )
-    # plt.plot(df.index, df['MACD'], label='MACD', color='blue')
-    # plt.plot(df.index, df['Signal'], label='Signal Line', color='red')
-    # plt.bar(df.index, df['Histogram'], label='Histogram', color='gray')
-    # df['Turning Point'] = ((df['Histogram'] < 0) & (df['Histogram'].shift(-1) > 0)).astype(int)
-    # df['blow_0'] = np.where(df['Turning Point'] > 0, 1, 0)
-    # plt.plot(df['MACD'][df['blow_0'] == 1].index, df['MACD'][df['blow_0'] == 1], '^', markersize=10, color='g',
-    #          label='Buy Signal')
-
-    # # Heiken Ashi overlay
-    # fig.add_trace(go.Candlestick(
-    #     x=ha_df.index,
-    #     open=ha_df['HA_Open'], high=ha_df['HA_High'],
-    #     low=ha_df['HA_Low'], close=ha_df['HA_Close'],
-    #     name="Heiken Ashi",
-    #     increasing_line_color="blue",
-    #     decreasing_line_color="orange",
-    #     opacity=0.5
-    # ),row=2, col=1)
 
 
 
@@ -161,16 +127,8 @@ def ploy_fig(ticker, df):
     fig.add_trace(go.Scatter(x=df.index, y=df["VolMA10"], mode="lines", line=dict(color="pink"), name="VolMA10"), row=4,
                   col=1)
 
-    # W%R
-    # fig.add_trace(go.Scatter(x=df.index, y=df["W%R"], mode="lines", name="W%R"), row=6, col=1)
 
 
-
-    # # DMI
-    # fig.add_trace(go.Scatter(x=df.index, y=df["+DI"], mode="lines", name="+DI"), row=7, col=1)
-    # fig.add_trace(go.Scatter(x=df.index, y=df["-DI"], mode="lines", name="-DI"), row=7, col=1)
-    # fig.add_trace(go.Scatter(x=df.index, y=df["ADX"], mode="lines", name="ADX"), row=7, col=1)
-    # fig.add_trace(go.Scatter(x=df.index, y=df["ADXR"], mode="lines", name="ADXR"), row=7, col=1)
     # RSI
     fig.add_trace(go.Scatter(x=df.index, y=df["RSI"], mode="lines", name="RSI"), row=5, col=1)
 
@@ -179,17 +137,10 @@ def ploy_fig(ticker, df):
     fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=6, col=1)
     fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=6, col=1)
 
-    # # BIAS
-    # fig.add_trace(go.Scatter(x=df.index, y=df["BIAS"], mode="lines", name="BIAS"), row=8, col=1)
-
     # OBV
     fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
 
-    # # CCI
-    # fig.add_trace(go.Scatter(x=df.index, y=df["CCI"], mode="lines", name="CCI"), row=10, col=1)
-    #
-    # # ROC
-    # fig.add_trace(go.Scatter(x=df.index, y=df["ROC"], mode="lines", name="ROC"), row=11, col=1)
+
 
     fig.update_layout(height=1000, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
@@ -206,9 +157,6 @@ def generate_pdf(df_tickers,output_filename):
     for index, row in df_tickers.iterrows():
         print(f"Index: {index}, Value: {row['symbol']}")
         ticker = row['symbol']
-        # if index > 10:
-        #     break
-
         try:
             stock = yf.Ticker(ticker)
         except Exception as e:
