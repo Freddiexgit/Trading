@@ -91,9 +91,9 @@ def ploy_fig(ticker, df):
     fig = make_subplots(
         rows=7, cols=1, shared_xaxes=True,
         vertical_spacing=0.01,
-        row_heights=[0.35, 0.12, 0.07, 0.07, 0.12, 0.12, 0.07, ],
+        row_heights=[4, 2, 2, 1, 1, 1, 1 ],
         subplot_titles=[
-            f' {ticker}', "Volume", "RSI", "KDJ", "MACD", "Acute MACD", "OBV"
+            f' {ticker}', "Acute MACD","MACD","Volume","RSI", "KDJ", "OBV"
         ]
     )
 
@@ -145,37 +145,39 @@ def ploy_fig(ticker, df):
 
 
 
-    # Volume
-    fig.add_trace(go.Bar(x=df.index, y=df["Volume"], name="Volume", marker_color="green"), row=2, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["VolMA5"], mode="lines", line=dict(color="purple"), name="VolMA5"), row=2, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["VolMA10"], mode="lines", line=dict(color="pink"), name="VolMA10"), row=2, col=1)
 
-    # RSI
-    fig.add_trace(go.Scatter(x=df.index, y=df["RSI"], mode="lines", name="RSI"), row=3, col=1)
-
-    # KDJ
-    fig.add_trace(go.Scatter(x=df.index, y=df["K"], mode="lines", name="%K"), row=4, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=4, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=4, col=1)
-
+    # Acute MACD
+    fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist1"], name="MACD Hist", marker_color="red"), row=2, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["MACD1"], mode="lines", name="MACD"), row=2, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal1"], mode="lines", name="Signal"), row=2, col=1)
     # MACD
-    fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist"], name="MACD Hist", marker_color="gray"), row=5, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["MACD"], mode="lines", name="MACD"), row=5, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal"], mode="lines", name="Signal"), row=5, col=1)
+    fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist"], name="MACD Hist", marker_color="gray"), row=3, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["MACD"], mode="lines", name="MACD"), row=3, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal"], mode="lines", name="Signal"), row=3, col=1)
+    # Volume
+    fig.add_trace(go.Bar(x=df.index, y=df["Volume"], name="Volume", marker_color="green"), row=4, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["VolMA5"], mode="lines", line=dict(color="purple"), name="VolMA5"), row=4,
+                  col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["VolMA10"], mode="lines", line=dict(color="pink"), name="VolMA10"), row=4,
+                  col=1)
 
     # W%R
     # fig.add_trace(go.Scatter(x=df.index, y=df["W%R"], mode="lines", name="W%R"), row=6, col=1)
 
 
-    fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist1"], name="MACD Hist", marker_color="red"), row=6, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["MACD1"], mode="lines", name="MACD"), row=6, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal1"], mode="lines", name="Signal"), row=6, col=1)
+
     # # DMI
     # fig.add_trace(go.Scatter(x=df.index, y=df["+DI"], mode="lines", name="+DI"), row=7, col=1)
     # fig.add_trace(go.Scatter(x=df.index, y=df["-DI"], mode="lines", name="-DI"), row=7, col=1)
     # fig.add_trace(go.Scatter(x=df.index, y=df["ADX"], mode="lines", name="ADX"), row=7, col=1)
     # fig.add_trace(go.Scatter(x=df.index, y=df["ADXR"], mode="lines", name="ADXR"), row=7, col=1)
+    # RSI
+    fig.add_trace(go.Scatter(x=df.index, y=df["RSI"], mode="lines", name="RSI"), row=5, col=1)
 
+    # KDJ
+    fig.add_trace(go.Scatter(x=df.index, y=df["K"], mode="lines", name="%K"), row=6, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=6, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=6, col=1)
 
     # # BIAS
     # fig.add_trace(go.Scatter(x=df.index, y=df["BIAS"], mode="lines", name="BIAS"), row=8, col=1)
@@ -189,7 +191,7 @@ def ploy_fig(ticker, df):
     # # ROC
     # fig.add_trace(go.Scatter(x=df.index, y=df["ROC"], mode="lines", name="ROC"), row=11, col=1)
 
-    fig.update_layout(height=2800, showlegend=True, xaxis_rangeslider_visible=False)
+    fig.update_layout(height=1000, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
         rangebreaks=[
             dict(bounds=["sat", "mon"])  # hide weekends
