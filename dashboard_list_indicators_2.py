@@ -1,11 +1,15 @@
 import os
 from datetime import datetime
+
+import numpy as np
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import ta
 from PyPDF2 import PdfMerger
+
+
 
 def ploy_fig(ticker, df):
     # Moving averages
@@ -30,34 +34,66 @@ def ploy_fig(ticker, df):
     df["MACD_signal"] = macd.macd_signal()
     df["MACD_hist"] = macd.macd_diff()
 
-    df["W%R"] = ta.momentum.WilliamsRIndicator(df["High"], df["Low"], df["Close"]).williams_r()
+    df["MACD_buy_signal"] = np.where((df["MACD"] > df["MACD_signal"]) & (df["MACD"].shift(1) <= df["MACD_signal"].shift(1)), df["Close"], np.nan)
+    df["MACD_sell_signal"] = np.where((df["MACD"] < df["MACD_signal"]) & (df["MACD"].shift(1) >= df["MACD_signal"].shift(1)), df["Close"], np.nan)
 
-    dmi = ta.trend.ADXIndicator(df["High"], df["Low"], df["Close"])
-    df["+DI"] = dmi.adx_pos()
-    df["-DI"] = dmi.adx_neg()
-    df["ADX"] = dmi.adx()
-    df["ADXR"] = df["ADX"].rolling(5).mean()
+    # df["W%R"] = ta.momentum.WilliamsRIndicator(df["High"], df["Low"], df["Close"]).williams_r()
 
-    df["BIAS"] = (df["Close"] - df["MA20"]) / df["MA20"] * 100
+    # dmi = ta.trend.ADXIndicator(df["High"], df["Low"], df["Close"])
+    # df["+DI"] = dmi.adx_pos()
+    # df["-DI"] = dmi.adx_neg()
+    # df["ADX"] = dmi.adx()
+    # df["ADXR"] = df["ADX"].rolling(5).mean()
+
+    # df["BIAS"] = (df["Close"] - df["MA20"]) / df["MA20"] * 100
     df["OBV"] = ta.volume.OnBalanceVolumeIndicator(df["Close"], df["Volume"]).on_balance_volume()
-    df["CCI"] = ta.trend.CCIIndicator(df["High"], df["Low"], df["Close"]).cci()
-    df["ROC"] = ta.momentum.ROCIndicator(df["Close"]).roc()
+    # df["CCI"] = ta.trend.CCIIndicator(df["High"], df["Low"], df["Close"]).cci()
+    # df["ROC"] = ta.momentum.ROCIndicator(df["Close"]).roc()
 
-    ha_df = df.copy()
-    ha_df['HA_Close'] = (df['Open'] + df['High'] + df['Low'] + df['Close']) / 4
-    ha_df['HA_Open'] = (df['Open'].shift(1) + df['Close'].shift(1)) / 2
-    ha_df.iloc[0, ha_df.columns.get_loc('HA_Open')] = (df['Open'].iloc[0] + df['Close'].iloc[0]) / 2
-    ha_df['HA_High'] = ha_df[['HA_Open', 'HA_Close', 'High']].max(axis=1)
-    ha_df['HA_Low'] = ha_df[['HA_Open', 'HA_Close', 'Low']].min(axis=1)
+    # ha_df = df.copy()
+    # ha_df['HA_Close'] = (df['Open'] + df['High'] + df['Low'] + df['Close']) / 4
+    # ha_df['HA_Open'] = (df['Open'].shift(1) + df['Close'].shift(1)) / 2
+    # ha_df.iloc[0, ha_df.columns.get_loc('HA_Open')] = (df['Open'].iloc[0] + df['Close'].iloc[0]) / 2
+    # ha_df['HA_High'] = ha_df[['HA_Open', 'HA_Close', 'High']].max(axis=1)
+    # ha_df['HA_Low'] = ha_df[['HA_Open', 'HA_Close', 'Low']].min(axis=1)
 
+    macd1 = ta.trend.MACD(df["Close"], window_slow=34,  # slow EMA
+                          window_fast=5,  # fast EMA
+                          window_sign=5)  # signal EMA
+    df["MACD1"] = macd1.macd()
+    df["MACD_signal1"] = macd1.macd_signal()
+    df["MACD_hist1"] = macd1.macd_diff()
+    df["MACD_buy_signal1"] = np.where(
+        (df["MACD1"] > df["MACD_signal1"]) & (df["MACD1"].shift(1) <= df["MACD_signal1"].shift(1)), df["Close"], np.nan)
+    df["MACD_sell_signal1"] = np.where(
+        (df["MACD1"] < df["MACD_signal1"]) & (df["MACD1"].shift(1) >= df["MACD_signal1"].shift(1)), df["Close"], np.nan)
 
+    df = df.iloc[50:]
+
+    last_buy_idx = df["MACD_buy_signal1"].last_valid_index()
+    last_sell_idx = df["MACD_sell_signal1"].last_valid_index()
+
+    # Compare which is more recent
+    if last_buy_idx is None and last_sell_idx is None:
+        last_signal = None
+    elif last_sell_idx is None or (last_buy_idx is not None and last_buy_idx > last_sell_idx):
+        last_signal = "Buy"
+        last_price = df.loc[last_buy_idx, "MACD_buy_signal1"]
+        last_date = last_buy_idx
+    else:
+        last_signal = "Sell"
+        last_price = df.loc[last_sell_idx, "MACD_sell_signal1"]
+        last_date = last_sell_idx
+
+    if last_signal != "Buy":
+         return  None
     # Create subplots
     fig = make_subplots(
-        rows=11, cols=1, shared_xaxes=True,
-        vertical_spacing=0.03,
-        row_heights=[0.3, 0.15, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08],
+        rows=7, cols=1, shared_xaxes=True,
+        vertical_spacing=0.01,
+        row_heights=[0.35, 0.12, 0.07, 0.07, 0.12, 0.12, 0.07, ],
         subplot_titles=[
-            f'Candlestick with {ticker}', "Volume", "RSI", "KDJ", "MACD", "W%R", "DMI", "BIAS", "OBV", "CCI", "ROC"
+            f' {ticker}', "Volume", "RSI", "KDJ", "MACD", "Acute MACD", "OBV"
         ]
     )
 
@@ -65,9 +101,47 @@ def ploy_fig(ticker, df):
     fig.add_trace(go.Candlestick(x=df.index, open=df["Open"], high=df["High"], low=df["Low"], close=df["Close"], name="Price"), row=1, col=1)
     for ma, color in zip(["MA5", "MA10", "MA20", "MA60"], ["blue", "orange", "magenta", "green"]):
         fig.add_trace(go.Scatter(x=df.index, y=df[ma], mode="lines", line=dict(color=color), name=ma), row=1, col=1)
+        fig.add_trace(
+            go.Scatter(
+                x=df.index,
+                y=df["MACD_buy_signal1"],
+                mode="markers",
+                marker=dict(symbol="triangle-up", color="purple", size=16),
+                name="MACD Buy",
+                showlegend=False
+            ),
+            row=1, col=1
+        )
 
+        fig.add_trace(
+            go.Scatter(
+                x=df.index,
+                y=df["MACD_sell_signal1"],
+                mode="markers",
+                marker=dict(symbol="triangle-down", color="red", size=16),
+                name="MACD Sell",
+                showlegend = False
+            ),
+            row=1, col=1
+        )
+    # plt.plot(df.index, df['MACD'], label='MACD', color='blue')
+    # plt.plot(df.index, df['Signal'], label='Signal Line', color='red')
+    # plt.bar(df.index, df['Histogram'], label='Histogram', color='gray')
+    # df['Turning Point'] = ((df['Histogram'] < 0) & (df['Histogram'].shift(-1) > 0)).astype(int)
+    # df['blow_0'] = np.where(df['Turning Point'] > 0, 1, 0)
+    # plt.plot(df['MACD'][df['blow_0'] == 1].index, df['MACD'][df['blow_0'] == 1], '^', markersize=10, color='g',
+    #          label='Buy Signal')
 
-
+    # # Heiken Ashi overlay
+    # fig.add_trace(go.Candlestick(
+    #     x=ha_df.index,
+    #     open=ha_df['HA_Open'], high=ha_df['HA_High'],
+    #     low=ha_df['HA_Low'], close=ha_df['HA_Close'],
+    #     name="Heiken Ashi",
+    #     increasing_line_color="blue",
+    #     decreasing_line_color="orange",
+    #     opacity=0.5
+    # ),row=2, col=1)
 
 
 
@@ -90,37 +164,32 @@ def ploy_fig(ticker, df):
     fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal"], mode="lines", name="Signal"), row=5, col=1)
 
     # W%R
-    fig.add_trace(go.Scatter(x=df.index, y=df["W%R"], mode="lines", name="W%R"), row=6, col=1)
-
-    # DMI
-    fig.add_trace(go.Scatter(x=df.index, y=df["+DI"], mode="lines", name="+DI"), row=7, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["-DI"], mode="lines", name="-DI"), row=7, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["ADX"], mode="lines", name="ADX"), row=7, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["ADXR"], mode="lines", name="ADXR"), row=7, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["W%R"], mode="lines", name="W%R"), row=6, col=1)
 
 
-    # BIAS
-    fig.add_trace(go.Scatter(x=df.index, y=df["BIAS"], mode="lines", name="BIAS"), row=8, col=1)
+    fig.add_trace(go.Bar(x=df.index, y=df["MACD_hist1"], name="MACD Hist", marker_color="red"), row=6, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["MACD1"], mode="lines", name="MACD"), row=6, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["MACD_signal1"], mode="lines", name="Signal"), row=6, col=1)
+    # # DMI
+    # fig.add_trace(go.Scatter(x=df.index, y=df["+DI"], mode="lines", name="+DI"), row=7, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["-DI"], mode="lines", name="-DI"), row=7, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["ADX"], mode="lines", name="ADX"), row=7, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["ADXR"], mode="lines", name="ADXR"), row=7, col=1)
+
+
+    # # BIAS
+    # fig.add_trace(go.Scatter(x=df.index, y=df["BIAS"], mode="lines", name="BIAS"), row=8, col=1)
 
     # OBV
-    fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=9, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
 
-    # CCI
-    fig.add_trace(go.Scatter(x=df.index, y=df["CCI"], mode="lines", name="CCI"), row=10, col=1)
-    # Heiken Ashi overlay
-    # fig.add_trace(go.Candlestick(
-    #     x=ha_df.index,
-    #     open=ha_df['HA_Open'], high=ha_df['HA_High'],
-    #     low=ha_df['HA_Low'], close=ha_df['HA_Close'],
-    #     name="Heiken Ashi",
-    #     increasing_line_color="blue",
-    #     decreasing_line_color="orange",
-    #     opacity=0.5
-    # ),row=10, col=1)
-    # ROC
-    fig.add_trace(go.Scatter(x=df.index, y=df["ROC"], mode="lines", name="ROC"), row=11, col=1)
+    # # CCI
+    # fig.add_trace(go.Scatter(x=df.index, y=df["CCI"], mode="lines", name="CCI"), row=10, col=1)
+    #
+    # # ROC
+    # fig.add_trace(go.Scatter(x=df.index, y=df["ROC"], mode="lines", name="ROC"), row=11, col=1)
 
-    fig.update_layout(height=2600, showlegend=True, xaxis_rangeslider_visible=False)
+    fig.update_layout(height=2800, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
         rangebreaks=[
             dict(bounds=["sat", "mon"])  # hide weekends
@@ -130,35 +199,40 @@ def ploy_fig(ticker, df):
     return fig
 
 
+def generate_pdf(df_tickers,output_filename):
+    pdf_files = []
+    for index, row in df_tickers.iterrows():
+        print(f"Index: {index}, Value: {row['symbol']}")
+        ticker = row['symbol']
+        # if index > 10:
+        #     break
+
+        try:
+            stock = yf.Ticker(ticker)
+        except Exception as e:
+            print(f"Error fetching data for {ticker}: {e}")
+            continue
+        df = stock.history(period="6mo")
 
 
-pdf_files = []
+        fig = ploy_fig(f"{ticker}_{stock.info['shortName']}_{stock.info.get('industry')}", df)
+        if fig == None:
+            print(f"Skipping {ticker} due to MACD sell .")
+            continue
+        # save temporary pdf for each stock
+        filename = f"{ticker}.pdf"
+        fig.write_image(f"resource/temp/{filename}", format="pdf",width=1200, height=1600)
+        pdf_files.append(filename)
 
+    # Merge all PDFs into one
+    merger = PdfMerger()
+    for pdf in pdf_files:
+        merger.append(f"resource/temp/{pdf}")
 
-# df_tickers = pd.read_csv("resource/stock_5days_above_20days_2025-08-15.csv")
-df_tickers = pd.DataFrame(
-    {  "symbol": ["AAPL"]    }
-)
-for index, row in df_tickers.iterrows():
-    print(f"Index: {index}, Value: {row['symbol']}")
-    ticker = row['symbol']
-    # if index > 10:
-    #     break
-    stock = yf.Ticker(ticker)
-    df = stock.history(period="6mo")
-    fig = ploy_fig(stock, df)
+    merger.write(output_filename)
+    merger.close()
+    for pdf in pdf_files:
+        os.remove(f"resource/temp/{pdf}")  # Clean up temporary files
 
-    # save temporary pdf for each stock
-    filename = f"{ticker}.pdf"
-    fig.write_image(filename, format="pdf",width=1200, height=1600)
-    pdf_files.append(filename)
-
-# Merge all PDFs into one
-merger = PdfMerger()
-for pdf in pdf_files:
-    merger.append(pdf)
-
-merger.write(f"resource/1_stock_indicators_{datetime.now().strftime('%Y-%m-%d')}.pdf")
-merger.close()
-for pdf in pdf_files:
-    os.remove(pdf)  # Clean up temporary files
+df_tickers = pd.DataFrame({"symbol": ["AAPL", "TSLA","RBLX"]})  # Example tickers, replace with actual data
+generate_pdf(df_tickers, "a.pdf")

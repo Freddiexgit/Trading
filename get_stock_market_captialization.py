@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def get_stock_market_capitalization(ticker_symbol="AAPL", property_name="marketCap"):
-    return  get_stock_info(ticker_symbol)
+    return  get_stock_info(ticker_symbol).get(property_name)
 def get_stock_info(ticker_symbol ="QD"):
     # Get the stock data
     try:
@@ -16,17 +16,21 @@ def get_stock_info(ticker_symbol ="QD"):
     # Print market cap in human-readable format
 
 if __name__ == "__main__":
-    stock_value_more_then_1_billion = []
-    df = pd.read_csv('resource/nyse_tickers.csv')
-    tickers = df['symbol'].dropna().tolist()
-    for ticker in tickers:
+    # stock_value_more_then_1_billion = []
+    # df = pd.read_csv('resource/nyse_tickers.csv')
+    # tickers = df['symbol'].dropna().tolist()
+    # for ticker in tickers:
+    #
+    #     mrkt_val = get_stock_market_capitalization(ticker)
+    #     if mrkt_val and mrkt_val > 10_000_000_000:
+    #         stock_value_more_then_1_billion.append(ticker)
+    #
+    # df2  = pd.DataFrame(stock_value_more_then_1_billion)
+    # df2.to_csv('resource/nyse_tickers_value_more_then_10_billion.csv', index=False)
 
-        mrkt_val = get_stock_market_capitalization(ticker)
-        if mrkt_val and mrkt_val > 10_000_000_000:
-            stock_value_more_then_1_billion.append(ticker)
+    print( get_stock_info().get("industry"))
 
-    df2  = pd.DataFrame(stock_value_more_then_1_billion)
-    df2.to_csv('resource/nyse_tickers_value_more_then_10_billion.csv', index=False)
+
 
     # {'52WeekChange': -0.042636037,
     # 'SandP52WeekChange': 0.16821623,
