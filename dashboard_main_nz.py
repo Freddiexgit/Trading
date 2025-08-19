@@ -12,7 +12,7 @@ s_str = datetime.now().strftime('%Y-%m-%d')
 if not os.path.exists(f"../resource/{s_str}/nz"):
     # Create the directory
     os.makedirs(f"resource/{s_str}/nz")
-ema.run('nzx_tickers.csv', f'resource/{s_str}/nz_stock_5days_above_20days_{s_str}.csv')
+ema.run('nzx_tickers.csv', f'resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv')
 
 
 ft.filter(f"resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv",
