@@ -11,7 +11,7 @@ from PyPDF2 import PdfMerger
 
 
 
-def ploy_fig(ticker, df):
+def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     # Moving averages
     df["MA5"] = df["Close"].rolling(5).mean()
     df["MA10"] = df["Close"].rolling(10).mean()
@@ -69,7 +69,7 @@ def ploy_fig(ticker, df):
         last_price = df.loc[last_sell_idx, "MACD_sell_signal1"]
         last_date = last_sell_idx
 
-    if last_signal != "Buy":
+    if last_signal != "Buy" and skip_macd_sell == "Yes":
          return  None
     # Create subplots
     fig = make_subplots(
@@ -152,7 +152,7 @@ def ploy_fig(ticker, df):
     return fig
 
 
-def generate_pdf(df_tickers,output_filename):
+def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes"):
     pdf_files = []
     for index, row in df_tickers.iterrows():
         print(f"Index: {index}, Value: {row['symbol']}")
@@ -165,7 +165,7 @@ def generate_pdf(df_tickers,output_filename):
         df = stock.history(period="6mo")
 
 
-        fig = ploy_fig(f"{ticker}_{stock.info['shortName']}_{stock.info.get('industry')}", df)
+        fig = ploy_fig(f"{ticker}_{stock.info['shortName']}_{stock.info.get('industry')}", df,skip_macd_sell)
         if fig == None:
             print(f"Skipping {ticker} due to MACD sell .")
             continue
