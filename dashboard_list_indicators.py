@@ -24,7 +24,8 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     # Technical indicators
     df["RSI"] = ta.momentum.RSIIndicator(df["Close"]).rsi()
 
-    stoch = ta.momentum.StochasticOscillator(df["High"], df["Low"], df["Close"])
+    stoch = ta.momentum.StochasticOscillator(df["High"], df["Low"], df["Close"],window=80,
+        smooth_window=5)
     df["K"] = stoch.stoch()
     df["D"] = stoch.stoch_signal()
     df["J"] = 3 * df["K"] - 2 * df["D"]
@@ -102,7 +103,7 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
                 x=df.index,
                 y=df["MACD_sell_signal1"],
                 mode="markers",
-                marker=dict(symbol="triangle-down", color="red", size=16),
+                marker=dict(symbol="triangle-down", color="yellow", size=16),
                 name="MACD Sell",
                 showlegend = False
             ),
@@ -152,7 +153,7 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     return fig
 
 
-def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes"):
+def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
     pdf_files = []
     for index, row in df_tickers.iterrows():
         print(f"Index: {index}, Value: {row['symbol']}")
@@ -164,22 +165,31 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes"):
             continue
         df = stock.history(period="6mo")
 
-
-        fig = ploy_fig(f"{ticker}_{stock.info['shortName']}_{stock.info.get('industry')}", df,skip_macd_sell)
+        try:
+            ind = stock.info.get('industry')
+        except Exception  as e:
+            print(f"Error fetching industry for {ticker}: {e}")
+            ind = "Unknown"
+        try:
+            shortName = stock.info['shortName']
+        except Exception as e:
+            print(f"Error fetching industry for {ticker}: {e}")
+            shortName = "Unknown"
+        fig = ploy_fig(f"{ticker}_{shortName}_{ind}", df,skip_macd_sell)
         if fig == None:
             print(f"Skipping {ticker} due to MACD sell .")
             continue
         # save temporary pdf for each stock
         filename = f"{ticker}.pdf"
-        fig.write_image(f"resource/temp/{filename}", format="pdf",width=1200, height=1600)
+        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1200, height=1600)
         pdf_files.append(filename)
 
     # Merge all PDFs into one
     merger = PdfMerger()
     for pdf in pdf_files:
-        merger.append(f"resource/temp/{pdf}")
+        merger.append(f"resource/temp/{folder}/{pdf}")
 
     merger.write(output_filename)
     merger.close()
     for pdf in pdf_files:
-        os.remove(f"resource/temp/{pdf}")  # Clean up temporary files
+        os.remove(f"resource/temp/{folder}/{pdf}")  # Clean up temporary files

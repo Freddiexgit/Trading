@@ -9,8 +9,11 @@ def find_position(symbol="APPL"):
     period = "1mo"   # Last 5 months of data
 
     # --- Load Stock Data ---
-    df = yf.download(symbol, period=period)
-
+    try:
+        df = yf.download(symbol, period=period)
+    except Exception as e:
+        print(f"Error downloading data for {symbol}: {e}")
+        return 0
     # --- Calculate Moving Averages ---
     df['MA_5'] = df['Close'].rolling(window=5).mean()
     df['MA_20'] = df['Close'].rolling(window=20).mean()

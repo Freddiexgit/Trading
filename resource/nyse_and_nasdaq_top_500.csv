@@ -1,7 +1,5 @@
 symbol
 TSM
-BRK.B
-BRK.A
 JPM
 WMT
 LLY
@@ -498,6 +496,7 @@ ACM
 APTV
 MTZ
 KIM
+symbol
 NVDA
 MSFT
 AAPL
@@ -997,3 +996,6 @@ FELE
 IRTC
 ADMA
 IBOC
+RNA
+TSLQ
+SSYS
