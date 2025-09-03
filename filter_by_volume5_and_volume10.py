@@ -24,15 +24,21 @@ def cal(df_tickers):
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
         df = yf.download(ticker, period="20d")
-
-        df["VolMA3"] = df["Volume"].rolling(3).mean()
-        df["VolMA10"] = df["Volume"].rolling(10).mean()
-        df = df.iloc[-1:]
-        if df["VolMA3"].iloc[-1] > df["VolMA10"].iloc[-1]:
-            # ticker_and_vol[ticker] = (df["VolMA3"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1]
-            ticker_and_vol[ticker] = df["VolMA3"].iloc[-1] - df["VolMA10"].iloc[-1]
-        sorted_dict = dict(sorted(ticker_and_vol.items(), key=lambda item: item[1], reverse=True))
-    return sorted_dict
+        df["Resistance"] = df["Close"].rolling(window=20).max().shift(1)
+        df["AvgVolume"] = df["Volume"].rolling(window=20).mean()
+        breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
+                   (df["Volume"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
+        if breakout:
+            # signals["Breakout_Volume"] = True
+            ticker_and_vol[ticker] = 1
+        # df["VolMA3"] = df["Volume"].rolling(3).mean()
+        # df["VolMA10"] = df["Volume"].rolling(10).mean()
+        # df = df.iloc[-1:]
+        # if df["VolMA3"].iloc[-1] > df["VolMA10"].iloc[-1]:
+        #     # ticker_and_vol[ticker] = (df["VolMA3"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1]
+        #     ticker_and_vol[ticker] = df["VolMA3"].iloc[-1] - df["VolMA10"].iloc[-1]
+        # sorted_dict = dict(sorted(ticker_and_vol.items(), key=lambda item: item[1], reverse=True))
+    return ticker_and_vol
 
 
 if __name__ == "__main__":

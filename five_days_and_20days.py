@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 from datetime import datetime
+import order_by_ema_60 as obe
 def find_position(symbol="APPL"):
 
     period = "1mo"   # Last 5 months of data
@@ -122,7 +123,7 @@ def backtesting():
     print(trades)
 
 def run(ticker_source, output_file):
-    df = pd.read_csv(f'resource/{ticker_source}')
+    df = pd.read_csv(ticker_source)
     tickers = df['symbol'].dropna().tolist()
     stock_5days_above_20days = []
     for ticker in tickers:
@@ -132,3 +133,20 @@ def run(ticker_source, output_file):
     df2  = pd.DataFrame(stock_5days_above_20days,columns=['symbol']).drop_duplicates()
     df2.to_csv(f'{output_file}', index=False)
     # find_position()
+
+if __name__ == "__main__":
+    import  dashboard_list_indicators as di
+    s_str = datetime.now().strftime('%Y-%m-%d')
+    run('resource/nzx_tickers.csv', f'resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv')
+
+
+    obe.order_by_ema(f'resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv',
+                     f'resource/{s_str}/nz/order_by_ema_{s_str}.csv', 20)
+
+    # df_tickers = df_tickers[0:50]
+    df_tickers = pd.read_csv(f"resource/{s_str}/nz/order_by_ema_{s_str}.csv")
+    di.generate_pdf(df_tickers,
+                    f"resource/{s_str}/nz/nz_stock_cv_dv_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf",
+                    "Yes", "nz")
+
+        # backtesting()

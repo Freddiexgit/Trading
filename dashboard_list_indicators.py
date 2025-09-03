@@ -21,8 +21,15 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     df["VolMA5"] = df["Volume"].rolling(5).mean()
     df["VolMA10"] = df["Volume"].rolling(10).mean()
 
-    # Technical indicators
-    df["RSI"] = ta.momentum.RSIIndicator(df["Close"]).rsi()
+    df["Resistance"] = df["Close"].rolling(window=20).max().shift(1)
+    df["AvgVolume"] = df["Volume"].rolling(window=20).mean()
+    df["AvgVolume3days"] = df["Volume"].rolling(window=3).mean()
+    breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
+               (df["AvgVolume3days"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
+
+
+    # # Technical indicators
+    # df["RSI"] = ta.momentum.RSIIndicator(df["Close"]).rsi()
 
     stoch = ta.momentum.StochasticOscillator(df["High"], df["Low"], df["Close"],window=80,
         smooth_window=5)
@@ -70,15 +77,15 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
         last_price = df.loc[last_sell_idx, "MACD_sell_signal1"]
         last_date = last_sell_idx
 
-    if last_signal != "Buy" and skip_macd_sell == "Yes":
+    if last_signal != "Buy" and skip_macd_sell == "Yes" and breakout == False:
          return  None
     # Create subplots
     fig = make_subplots(
-        rows=7, cols=1, shared_xaxes=True,
+        rows=5, cols=1, shared_xaxes=True,
         vertical_spacing=0.01,
-        row_heights=[4, 2, 2, 1, 1, 1, 1 ],
+        row_heights=[4, 2, 2, 1, 1],
         subplot_titles=[
-            f' {ticker}', "Acute MACD","MACD","Volume","RSI", "KDJ", "OBV"
+            f' {ticker}', "Acute MACD","MACD","Volume", "KDJ"
         ]
     )
 
@@ -86,6 +93,13 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     fig.add_trace(go.Candlestick(x=df.index, open=df["Open"], high=df["High"], low=df["Low"], close=df["Close"], name="Price"), row=1, col=1)
     for ma, color in zip(["MA5", "MA10", "MA20", "MA60"], ["blue", "orange", "magenta", "green"]):
         fig.add_trace(go.Scatter(x=df.index, y=df[ma], mode="lines", line=dict(color=color), name=ma), row=1, col=1)
+        resistance = df["Resistance"].iloc[-1]
+        fig.add_hline(y=resistance, line_dash="dot", line_color="purple", annotation_text="Breakout Level")
+        fig.add_trace(go.Scatter(
+            x=[df.index[-1]], y=[df["Close"].iloc[-1]],
+            mode="markers", marker=dict(color="purple", size=14, symbol="star"),
+            name="Breakout"
+        ) , row=1, col=1)
         fig.add_trace(
             go.Scatter(
                 x=df.index,
@@ -130,20 +144,20 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
 
 
 
-    # RSI
-    fig.add_trace(go.Scatter(x=df.index, y=df["RSI"], mode="lines", name="RSI"), row=5, col=1)
+    # # RSI
+    # fig.add_trace(go.Scatter(x=df.index, y=df["RSI"], mode="lines", name="RSI"), row=5, col=1)
 
     # KDJ
-    fig.add_trace(go.Scatter(x=df.index, y=df["K"], mode="lines", name="%K"), row=6, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=6, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=6, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["K"], mode="lines", name="%K"), row=5, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=5, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=5, col=1)
 
-    # OBV
-    fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
+    # # OBV
+    # fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
 
 
 
-    fig.update_layout(height=1000, showlegend=True, xaxis_rangeslider_visible=False)
+    fig.update_layout(height=800, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
         rangebreaks=[
             dict(bounds=["sat", "mon"])  # hide weekends
@@ -181,7 +195,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
             continue
         # save temporary pdf for each stock
         filename = f"{ticker}.pdf"
-        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1200, height=1600)
+        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1200, height=1200)
         pdf_files.append(filename)
 
     # Merge all PDFs into one

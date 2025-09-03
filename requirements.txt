@@ -14,3 +14,4 @@ kaleido
 PyPDF2
 scikit-learn
 langchain
+alpaca-py

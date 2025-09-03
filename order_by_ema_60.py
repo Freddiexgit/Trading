@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Download stock data
 
-def order_by_ema_60(input_file, output_file):
+def order_by_ema(input_file, output_file, span=60):
     ticker_and_slopes = {}
     df_tickers = pd.read_csv(input_file)
     for index, row in df_tickers.iterrows():
@@ -14,7 +14,7 @@ def order_by_ema_60(input_file, output_file):
         data = yf.download(ticker, period="6mo", interval="1d")
 
         # Compute EMA60
-        data["EMA60"] = data["Close"].ewm(span=60, adjust=False).mean()
+        data["EMA60"] = data["Close"].ewm(span=span, adjust=False).mean()
 
         # Rolling regression slope (20-day window)
         N = 20
