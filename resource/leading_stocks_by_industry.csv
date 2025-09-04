@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap,rank
+symbol,name,sector,industry,marketCap,rank
 APP,AppLovin Corporation,Communication Services,Advertising Agencies,161883062272.0,1.0
 TTD,"The Trade Desk, Inc.",Communication Services,Advertising Agencies,26725623808.0,2.0
 OMC,Omnicom Group Inc.,Communication Services,Advertising Agencies,15174323200.0,3.0
@@ -7,8 +7,7 @@ WPP,WPP plc,Communication Services,Advertising Agencies,5726084608.0,5.0
 GE,GE Aerospace,Industrials,Aerospace & Defense,291833085952.0,1.0
 RTX,RTX Corporation,Industrials,Aerospace & Defense,212292452352.0,2.0
 BA,The Boeing Company,Industrials,Aerospace & Defense,177455153152.0,3.0
-BA,The Boeing Company,Industrials,Aerospace & Defense,177455153152.0,4.0
-LMT,Lockheed Martin Corporation,Industrials,Aerospace & Defense,106373652480.0,5.0
+LMT,Lockheed Martin Corporation,Industrials,Aerospace & Defense,106373652480.0,4.0
 CTVA,"Corteva, Inc.",Basic Materials,Agricultural Inputs,50382434304.0,1.0
 NTR,Nutrien Ltd.,Basic Materials,Agricultural Inputs,27996635136.0,2.0
 CF,"CF Industries Holdings, Inc.",Basic Materials,Agricultural Inputs,14031719424.0,3.0

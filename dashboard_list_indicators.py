@@ -59,8 +59,8 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
         (df["MACD1"] > df["MACD_signal1"]) & (df["MACD1"].shift(1) <= df["MACD_signal1"].shift(1)), df["Close"], np.nan)
     df["MACD_sell_signal1"] = np.where(
         (df["MACD1"] < df["MACD_signal1"]) & (df["MACD1"].shift(1) >= df["MACD_signal1"].shift(1)), df["Close"], np.nan)
-
-    df = df.iloc[50:]
+    if len(df) > 50:
+        df = df.iloc[50:]
 
     last_buy_idx = df["MACD_buy_signal1"].last_valid_index()
     last_sell_idx = df["MACD_sell_signal1"].last_valid_index()
