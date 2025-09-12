@@ -4,7 +4,13 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 def detect_ema_convergence_divergence(ticker, period="1mo", converge_thresh=0.005, diverge_thresh=0.03):
     # Download historical data
-    df = yf.download(ticker, period=period, interval="1d")
+    try:
+        df = yf.download(ticker, period=period, interval="1d")
+    except Exception as e:
+        print(f"Error downloading data for {ticker}: {e}")
+        return pd.DataFrame()
+    if df.empty:
+        return pd.DataFrame()
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
     df.dropna(inplace=True)
 
@@ -19,7 +25,7 @@ def detect_ema_convergence_divergence(ticker, period="1mo", converge_thresh=0.00
     # Define conditions
     df["Converged"] = df["EMA_range"] < df["EMA10"] * converge_thresh
     df["Diverged"] = df["EMA_range"] > df["EMA10"] * diverge_thresh
-
+    # print(df)
     if len(df[df['Converged']])> 0 and len(df[df['Diverged']])>0:
         last_converge = df[df['Converged']].index[-1]
         first_diverge = df[df['Diverged']].index[0]
@@ -48,5 +54,5 @@ def call(input_file, output_file):
     df2.to_csv(f'{output_file}', index=False)
 
 if __name__ == "__main__":
-    df = detect_ema_convergence_divergence("PHL.NZ")
+    df = detect_ema_convergence_divergence("KFLWI.NZ")
     print(df)

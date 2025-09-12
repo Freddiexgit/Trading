@@ -22,10 +22,10 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     df["VolMA10"] = df["Volume"].rolling(10).mean()
 
     df["Resistance"] = df["Close"].rolling(window=20).max().shift(1)
-    df["AvgVolume"] = df["Volume"].rolling(window=20).mean()
+    df["AvgVolume"] = df["Volume"].rolling(window=10).mean()
     df["AvgVolume3days"] = df["Volume"].rolling(window=3).mean()
     breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
-               (df["AvgVolume3days"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
+               (df["Volume"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
 
 
     # # Technical indicators
@@ -177,7 +177,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
             continue
-        df = stock.history(period="6mo")
+        df = stock.history(period="10mo")
 
         try:
             ind = stock.info.get('industry')

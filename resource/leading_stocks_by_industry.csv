@@ -8,6 +8,7 @@ GE,GE Aerospace,Industrials,Aerospace & Defense,291833085952.0,1.0
 RTX,RTX Corporation,Industrials,Aerospace & Defense,212292452352.0,2.0
 BA,The Boeing Company,Industrials,Aerospace & Defense,177455153152.0,3.0
 LMT,Lockheed Martin Corporation,Industrials,Aerospace & Defense,106373652480.0,4.0
+GD,General Dynamics Corporation,Industrials,Aerospace & Defense,87307059200.0,5.0
 CTVA,"Corteva, Inc.",Basic Materials,Agricultural Inputs,50382434304.0,1.0
 NTR,Nutrien Ltd.,Basic Materials,Agricultural Inputs,27996635136.0,2.0
 CF,"CF Industries Holdings, Inc.",Basic Materials,Agricultural Inputs,14031719424.0,3.0
@@ -40,8 +41,8 @@ GAP,"The Gap, Inc.",Consumer Cyclical,Apparel Retail,8166744576.0,5.0
 BX,Blackstone Inc.,Financial Services,Asset Management,210510036992.0,1.0
 BLK,"BlackRock, Inc.",Financial Services,Asset Management,174540996608.0,2.0
 KKR,KKR & Co. Inc.,Financial Services,Asset Management,129100374016.0,3.0
-KKR,KKR & Co. Inc.,Financial Services,Asset Management,129100374016.0,4.0
-BN,Brookfield Corporation,Financial Services,Asset Management,98302664704.0,5.0
+BN,Brookfield Corporation,Financial Services,Asset Management,98302664704.0,4.0
+BAM,Brookfield Asset Management Ltd.,Financial Services,Asset Management,97044701184.0,5.0
 CVNA,Carvana Co.,Consumer Cyclical,Auto & Truck Dealerships,43494928384.0,1.0
 PAG,"Penske Automotive Group, Inc.",Consumer Cyclical,Auto & Truck Dealerships,12179248128.0,2.0
 KMX,"CarMax, Inc.",Consumer Cyclical,Auto & Truck Dealerships,9206917120.0,3.0
@@ -58,10 +59,10 @@ GPC,Genuine Parts Company,Consumer Cyclical,Auto Parts,19379689472.0,3.0
 APTV,Aptiv PLC,Consumer Cyclical,Auto Parts,17318453248.0,4.0
 MGA,Magna International Inc.,Consumer Cyclical,Auto Parts,12933656576.0,5.0
 JPM,JPMorgan Chase & Co.,Financial Services,Banks - Diversified,828829663232.0,1.0
-JPM,JPMorgan Chase & Co.,Financial Services,Banks - Diversified,828829663232.0,2.0
-BAC,Bank of America Corporation,Financial Services,Banks - Diversified,375828643840.0,3.0
-BAC,Bank of America Corporation,Financial Services,Banks - Diversified,375828643840.0,4.0
-WFC,Wells Fargo & Company,Financial Services,Banks - Diversified,263258718208.0,5.0
+BAC,Bank of America Corporation,Financial Services,Banks - Diversified,375828643840.0,2.0
+WFC,Wells Fargo & Company,Financial Services,Banks - Diversified,263258718208.0,3.0
+HSBC,HSBC Holdings plc,Financial Services,Banks - Diversified,223558762496.0,4.0
+RY,Royal Bank of Canada,Financial Services,Banks - Diversified,205002670080.0,5.0
 HDB,HDFC Bank Limited,Financial Services,Banks - Regional,182005940224.0,1.0
 IBN,ICICI Bank Limited,Financial Services,Banks - Regional,114271297536.0,2.0
 MFG,"Mizuho Financial Group, Inc.",Financial Services,Banks - Regional,82228740096.0,3.0
@@ -107,10 +108,10 @@ ACCO,ACCO Brands Corporation,Industrials,Business Equipment & Supplies,362332640
 ACTG,Acacia Research Corporation,Industrials,Business Equipment & Supplies,328877472.0,3.0
 EHGO,Eshallgo Inc.,Industrials,Business Equipment & Supplies,21825238.0,4.0
 MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0,1.0
-MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0,2.0
-GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,3.0
-GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,4.0
-SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0,5.0
+GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,2.0
+SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0,3.0
+IBKR,"Interactive Brokers Group, Inc.",Financial Services,Capital Markets,105796804608.0,4.0
+HOOD,"Robinhood Markets, Inc.",Financial Services,Capital Markets,92448858112.0,5.0
 DOW,Dow Inc.,Basic Materials,Chemicals,17458827264.0,1.0
 CE,Celanese Corporation,Basic Materials,Chemicals,5215675392.0,2.0
 MEOH,Methanex Corporation,Basic Materials,Chemicals,2746325760.0,3.0
@@ -125,7 +126,7 @@ CSCO,"Cisco Systems, Inc.",Technology,Communication Equipment,273596383232.0,1.0
 MSI,"Motorola Solutions, Inc.",Technology,Communication Equipment,78713724928.0,2.0
 UI,Ubiquiti Inc.,Technology,Communication Equipment,31951177728.0,3.0
 HPE,Hewlett Packard Enterprise Company,Technology,Communication Equipment,29616805888.0,4.0
-HPE,Hewlett Packard Enterprise Company,Technology,Communication Equipment,29616805888.0,5.0
+ERIC,Telefonaktiebolaget LM Ericsson (publ),Technology,Communication Equipment,26337427456.0,5.0
 ANET,Arista Networks Inc,Technology,Computer Hardware,171625611264.0,1.0
 DELL,Dell Technologies Inc.,Technology,Computer Hardware,82620063744.0,2.0
 STX,Seagate Technology Holdings plc,Technology,Computer Hardware,35602128896.0,3.0
@@ -160,7 +161,7 @@ V,Visa Inc.,Financial Services,Credit Services,682783866880.0,1.0
 MA,Mastercard Incorporated,Financial Services,Credit Services,538149289984.0,2.0
 AXP,American Express Company,Financial Services,Credit Services,230531776512.0,3.0
 COF,Capital One Financial Corporation,Financial Services,Credit Services,145311055872.0,4.0
-COF,Capital One Financial Corporation,Financial Services,Credit Services,145311055872.0,5.0
+PYPL,"PayPal Holdings, Inc.",Financial Services,Credit Services,67057983488.0,5.0
 DDS,"Dillard's, Inc.",Consumer Cyclical,Department Stores,8312928256.0,1.0
 M,"Macy's, Inc.",Consumer Cyclical,Department Stores,3592474112.0,2.0
 KSS,Kohl's Corporation,Consumer Cyclical,Department Stores,1687352576.0,3.0
@@ -232,8 +233,8 @@ VITL,"Vital Farms, Inc.",Consumer Defensive,Farm Products,2283007744.0,5.0
 IX,ORIX Corporation,Financial Services,Financial Conglomerates,29218320384.0,1.0
 FRHC,Freedom Holding Corp.,Financial Services,Financial Conglomerates,10464013312.0,2.0
 VOYA,"Voya Financial, Inc.",Financial Services,Financial Conglomerates,7240012288.0,3.0
-VOYA,"Voya Financial, Inc.",Financial Services,Financial Conglomerates,7240012288.0,4.0
-HTH,Hilltop Holdings Inc.,Financial Services,Financial Conglomerates,2210103296.0,5.0
+HTH,Hilltop Holdings Inc.,Financial Services,Financial Conglomerates,2210103296.0,4.0
+TREE,"LendingTree, Inc.",Financial Services,Financial Conglomerates,925492544.0,5.0
 SPGI,S&P Global Inc.,Financial Services,Financial Data & Stock Exchanges,167438729216.0,1.0
 ICE,"Intercontinental Exchange, Inc.",Financial Services,Financial Data & Stock Exchanges,101089902592.0,2.0
 CME,CME Group Inc.,Financial Services,Financial Data & Stock Exchanges,96044875776.0,3.0
@@ -283,7 +284,7 @@ HD,"The Home Depot, Inc.",Consumer Cyclical,Home Improvement Retail,404893564928
 LOW,"Lowe's Companies, Inc.",Consumer Cyclical,Home Improvement Retail,144726507520.0,2.0
 FND,"Floor & Decor Holdings, Inc.",Consumer Cyclical,Home Improvement Retail,8822046720.0,3.0
 HVT,"Haverty Furniture Companies, Inc.",Consumer Cyclical,Home Improvement Retail,366511904.0,4.0
-HVT,"Haverty Furniture Companies, Inc.",Consumer Cyclical,Home Improvement Retail,366511904.0,5.0
+TTSH,"Tile Shop Holdings, Inc.",Consumer Cyclical,Home Improvement Retail,277968288.0,5.0
 PG,The Procter & Gamble Company,Consumer Defensive,Household & Personal Products,367845769216.0,1.0
 UL,Unilever PLC,Consumer Defensive,Household & Personal Products,154956283904.0,2.0
 CL,Colgate-Palmolive Company,Consumer Defensive,Household & Personal Products,67947139072.0,3.0
@@ -307,24 +308,24 @@ BNT,Brookfield Wealth Solutions Ltd.,Financial Services,Insurance - Diversified,
 ACGLO,Arch Capital Group Ltd.,Financial Services,Insurance - Diversified,12408134656.0,5.0
 AFL,Aflac Incorporated,Financial Services,Insurance - Life,57152040960.0,1.0
 MET,"MetLife, Inc.",Financial Services,Insurance - Life,54106513408.0,2.0
-MET,"MetLife, Inc.",Financial Services,Insurance - Life,54106513408.0,3.0
-MFC,Manulife Financial Corporation,Financial Services,Insurance - Life,52230107136.0,4.0
-PRU,"Prudential Financial, Inc.",Financial Services,Insurance - Life,38594072576.0,5.0
+MFC,Manulife Financial Corporation,Financial Services,Insurance - Life,52230107136.0,3.0
+PRU,"Prudential Financial, Inc.",Financial Services,Insurance - Life,38594072576.0,4.0
+PUK,Prudential plc,Financial Services,Insurance - Life,34115035136.0,5.0
 PGR,The Progressive Corporation,Financial Services,Insurance - Property & Casualty,144875978752.0,1.0
 CB,Chubb Limited,Financial Services,Insurance - Property & Casualty,109667655680.0,2.0
 TRV,"The Travelers Companies, Inc.",Financial Services,Insurance - Property & Casualty,61126135808.0,3.0
 ALL,The Allstate Corporation,Financial Services,Insurance - Property & Casualty,53610090496.0,4.0
-ALL,The Allstate Corporation,Financial Services,Insurance - Property & Casualty,53610090496.0,5.0
+HIG,"The Hartford Insurance Group, Inc.",Financial Services,Insurance - Property & Casualty,37201866752.0,5.0
 EG,"Everest Group, Ltd.",Financial Services,Insurance - Reinsurance,14339575808.0,1.0
 RGA,"Reinsurance Group of America, Incorporated",Financial Services,Insurance - Reinsurance,12874411008.0,2.0
 RNR,RenaissanceRe Holdings Ltd.,Financial Services,Insurance - Reinsurance,11436616704.0,3.0
-RNR,RenaissanceRe Holdings Ltd.,Financial Services,Insurance - Reinsurance,11436616704.0,4.0
-HG,"Hamilton Insurance Group, Ltd.",Financial Services,Insurance - Reinsurance,2370423040.0,5.0
+HG,"Hamilton Insurance Group, Ltd.",Financial Services,Insurance - Reinsurance,2370423040.0,4.0
+SPNT,SiriusPoint Ltd.,Financial Services,Insurance - Reinsurance,2185747200.0,5.0
 FNF,"Fidelity National Financial, Inc.",Financial Services,Insurance - Specialty,16268056576.0,1.0
 RYAN,"Ryan Specialty Holdings, Inc.",Financial Services,Insurance - Specialty,14923864064.0,2.0
 AXS,AXIS Capital Holdings Limited,Financial Services,Insurance - Specialty,7706393088.0,3.0
-AXS,AXIS Capital Holdings Limited,Financial Services,Insurance - Specialty,7706393088.0,4.0
-FAF,First American Financial Corporation,Financial Services,Insurance - Specialty,6718799872.0,5.0
+FAF,First American Financial Corporation,Financial Services,Insurance - Specialty,6718799872.0,4.0
+MTG,MGIC Investment Corporation,Financial Services,Insurance - Specialty,6415455232.0,5.0
 MMC,"Marsh & McLennan Companies, Inc.",Financial Services,Insurance Brokers,101181136896.0,1.0
 AON,Aon plc,Financial Services,Insurance Brokers,79135113216.0,2.0
 AJG,Arthur J. Gallagher & Co.,Financial Services,Insurance Brokers,77613899776.0,3.0
@@ -424,7 +425,7 @@ ENB,Enbridge Inc.,Energy,Oil & Gas Midstream,105456615424.0,1.0
 WMB,"The Williams Companies, Inc.",Energy,Oil & Gas Midstream,70681903104.0,2.0
 EPD,Enterprise Products Partners L.P.,Energy,Oil & Gas Midstream,69591138304.0,3.0
 ET,Energy Transfer LP,Energy,Oil & Gas Midstream,60827086848.0,4.0
-ET,Energy Transfer LP,Energy,Oil & Gas Midstream,60827086848.0,5.0
+KMI,"Kinder Morgan, Inc.",Energy,Oil & Gas Midstream,59951718400.0,5.0
 MPC,Marathon Petroleum Corporation,Energy,Oil & Gas Refining & Marketing,54635438080.0,1.0
 PSX,Phillips 66,Energy,Oil & Gas Refining & Marketing,53982883840.0,2.0
 VLO,Valero Energy Corporation,Energy,Oil & Gas Refining & Marketing,47222210560.0,3.0
@@ -436,10 +437,10 @@ VALE,Vale S.A.,Basic Materials,Other Industrial Metals & Mining,43883057152.0,3.
 TECK,Teck Resources Limited,Basic Materials,Other Industrial Metals & Mining,16714293248.0,4.0
 MP,MP Materials Corp.,Basic Materials,Other Industrial Metals & Mining,12598751232.0,5.0
 HL,Hecla Mining Company,Basic Materials,Other Precious Metals & Mining,5701563904.0,1.0
-HL,Hecla Mining Company,Basic Materials,Other Precious Metals & Mining,5701563904.0,2.0
-TFPM,Triple Flag Precious Metals Corp.,Basic Materials,Other Precious Metals & Mining,5651768320.0,3.0
-SBSW,Sibanye Stillwater Limited,Basic Materials,Other Precious Metals & Mining,5356850176.0,4.0
-BVN,Compañía de Minas Buenaventura S.A.A.,Basic Materials,Other Precious Metals & Mining,4856104960.0,5.0
+TFPM,Triple Flag Precious Metals Corp.,Basic Materials,Other Precious Metals & Mining,5651768320.0,2.0
+SBSW,Sibanye Stillwater Limited,Basic Materials,Other Precious Metals & Mining,5356850176.0,3.0
+BVN,Compañía de Minas Buenaventura S.A.A.,Basic Materials,Other Precious Metals & Mining,4856104960.0,4.0
+PPTA,Perpetua Resources Corp.,Basic Materials,Other Precious Metals & Mining,2029846016.0,5.0
 JBS,JBS N.V.,Consumer Defensive,Packaged Foods,35955720192.0,1.0
 KHC,The Kraft Heinz Company,Consumer Defensive,Packaged Foods,33105291264.0,2.0
 K,Kellanova,Consumer Defensive,Packaged Foods,27639685120.0,3.0
@@ -492,34 +493,34 @@ PK,Park Hotels & Resorts Inc.,Real Estate,REIT - Hotel & Motel,2350988800.0,4.0
 SHO,"Sunstone Hotel Investors, Inc.",Real Estate,REIT - Hotel & Motel,1796469376.0,5.0
 PLD,"Prologis, Inc.",Real Estate,REIT - Industrial,105595002880.0,1.0
 PSA,Public Storage,Real Estate,REIT - Industrial,51686694912.0,2.0
-PSA,Public Storage,Real Estate,REIT - Industrial,51686694912.0,3.0
-EXR,Extra Space Storage Inc.,Real Estate,REIT - Industrial,31817469952.0,4.0
-LINE,"Lineage, Inc.",Real Estate,REIT - Industrial,10468992000.0,5.0
+EXR,Extra Space Storage Inc.,Real Estate,REIT - Industrial,31817469952.0,3.0
+LINE,"Lineage, Inc.",Real Estate,REIT - Industrial,10468992000.0,4.0
+REXR,"Rexford Industrial Realty, Inc.",Real Estate,REIT - Industrial,10139404288.0,5.0
 NLY,"Annaly Capital Management, Inc.",Real Estate,REIT - Mortgage,13605591040.0,1.0
-NLY,"Annaly Capital Management, Inc.",Real Estate,REIT - Mortgage,13605591040.0,2.0
-AGNC,AGNC Investment Corp.,Real Estate,REIT - Mortgage,10167284736.0,3.0
-AGNCM,AGNC Investment Corp.,Real Estate,REIT - Mortgage,8919369728.0,4.0
-AGNCN,AGNC Investment Corp.,Real Estate,REIT - Mortgage,8764869632.0,5.0
+AGNC,AGNC Investment Corp.,Real Estate,REIT - Mortgage,10167284736.0,2.0
+AGNCM,AGNC Investment Corp.,Real Estate,REIT - Mortgage,8919369728.0,3.0
+AGNCN,AGNC Investment Corp.,Real Estate,REIT - Mortgage,8764869632.0,4.0
+STWD,"Starwood Property Trust, Inc.",Real Estate,REIT - Mortgage,7636499968.0,5.0
 ARE,"Alexandria Real Estate Equities, Inc.",Real Estate,REIT - Office,14074238976.0,1.0
 BXP,"BXP, Inc.",Real Estate,REIT - Office,12819986432.0,2.0
 VNO,Vornado Realty Trust,Real Estate,REIT - Office,7938723840.0,3.0
-VNO,Vornado Realty Trust,Real Estate,REIT - Office,7938723840.0,4.0
-KRC,Kilroy Realty Corporation,Real Estate,REIT - Office,4967717376.0,5.0
+KRC,Kilroy Realty Corporation,Real Estate,REIT - Office,4967717376.0,4.0
+CUZ,Cousins Properties Incorporated,Real Estate,REIT - Office,4954113536.0,5.0
 AVB,"AvalonBay Communities, Inc.",Real Estate,REIT - Residential,27885713408.0,1.0
 EQR,Equity Residential,Real Estate,REIT - Residential,26022320128.0,2.0
 INVH,Invitation Homes Inc.,Real Estate,REIT - Residential,19181021184.0,3.0
 ESS,"Essex Property Trust, Inc.",Real Estate,REIT - Residential,18662998016.0,4.0
 MAA,"Mid-America Apartment Communities, Inc.",Real Estate,REIT - Residential,17501462528.0,5.0
 SPG,"Simon Property Group, Inc.",Real Estate,REIT - Retail,68146221056.0,1.0
-SPG,"Simon Property Group, Inc.",Real Estate,REIT - Retail,68146221056.0,2.0
-O,Realty Income Corporation,Real Estate,REIT - Retail,53724618752.0,3.0
-KIM,Kimco Realty Corporation,Real Estate,REIT - Retail,15230227456.0,4.0
-KIM,Kimco Realty Corporation,Real Estate,REIT - Retail,15230227456.0,5.0
+O,Realty Income Corporation,Real Estate,REIT - Retail,53724618752.0,2.0
+KIM,Kimco Realty Corporation,Real Estate,REIT - Retail,15230227456.0,3.0
+REG,Regency Centers Corporation,Real Estate,REIT - Retail,13242125312.0,4.0
+FRT,Federal Realty Investment Trust,Real Estate,REIT - Retail,8727267328.0,5.0
 AMT,American Tower Corporation,Real Estate,REIT - Specialty,95452971008.0,1.0
 EQIX,"Equinix, Inc.",Real Estate,REIT - Specialty,76939698176.0,2.0
 DLR,"Digital Realty Trust, Inc.",Real Estate,REIT - Specialty,58225057792.0,3.0
-DLR,"Digital Realty Trust, Inc.",Real Estate,REIT - Specialty,58225057792.0,4.0
-CCI,Crown Castle Inc.,Real Estate,REIT - Specialty,43172495360.0,5.0
+CCI,Crown Castle Inc.,Real Estate,REIT - Specialty,43172495360.0,4.0
+IRM,Iron Mountain Incorporated,Real Estate,REIT - Specialty,27269480448.0,5.0
 UNP,Union Pacific Corporation,Industrials,Railroads,132585955328.0,1.0
 CP,Canadian Pacific Kansas City Limited,Industrials,Railroads,69940592640.0,2.0
 NSC,Norfolk Southern Corporation,Industrials,Railroads,62814633984.0,3.0
@@ -540,8 +541,8 @@ BPYPP,Brookfield Property Partners L.P.,Real Estate,Real Estate Services,1005787
 THO,"THOR Industries, Inc.",Consumer Cyclical,Recreational Vehicles,5793850368.0,1.0
 DOOO,BRP Inc.,Consumer Cyclical,Recreational Vehicles,4595266560.0,2.0
 BC,Brunswick Corporation,Consumer Cyclical,Recreational Vehicles,4154385664.0,3.0
-BC,Brunswick Corporation,Consumer Cyclical,Recreational Vehicles,4154385664.0,4.0
-HOG,"Harley-Davidson, Inc.",Consumer Cyclical,Recreational Vehicles,3539623424.0,5.0
+HOG,"Harley-Davidson, Inc.",Consumer Cyclical,Recreational Vehicles,3539623424.0,4.0
+PII,Polaris Inc.,Consumer Cyclical,Recreational Vehicles,3181188096.0,5.0
 URI,"United Rentals, Inc.",Industrials,Rental & Leasing Services,61532065792.0,1.0
 AER,AerCap Holdings N.V.,Industrials,Rental & Leasing Services,22021285888.0,2.0
 FTAI,FTAI Aviation Ltd.,Industrials,Rental & Leasing Services,15780548608.0,3.0
@@ -636,9 +637,9 @@ PKX,POSCO Holdings Inc.,Basic Materials,Steel,15605098496.0,4.0
 RS,"Reliance, Inc.",Basic Materials,Steel,15549794304.0,5.0
 TMUS,"T-Mobile US, Inc.",Communication Services,Telecom Services,283594588160.0,1.0
 T,AT&T Inc.,Communication Services,Telecom Services,209434918912.0,2.0
-T,AT&T Inc.,Communication Services,Telecom Services,209434918912.0,3.0
-CMCSA,Comcast Corporation,Communication Services,Telecom Services,125424377856.0,4.0
-AMX,"América Móvil, S.A.B. de C.V.",Communication Services,Telecom Services,60329218048.0,5.0
+CMCSA,Comcast Corporation,Communication Services,Telecom Services,125424377856.0,3.0
+AMX,"América Móvil, S.A.B. de C.V.",Communication Services,Telecom Services,60329218048.0,4.0
+CHTR,"Charter Communications, Inc.",Communication Services,Telecom Services,36275838976.0,5.0
 AIN,Albany International Corp.,Consumer Cyclical,Textile Manufacturing,1871518976.0,1.0
 UFI,"Unifi, Inc.",Consumer Cyclical,Textile Manufacturing,81154296.0,2.0
 CULP,"Culp, Inc.",Consumer Cyclical,Textile Manufacturing,54391872.0,3.0
@@ -674,19 +675,19 @@ EU,enCore Energy Corp.,Energy,Uranium,445286144.0,3.0
 UROY,Uranium Royalty Corp.,Energy,Uranium,420959712.0,4.0
 SRE,Sempra,Utilities,Utilities - Diversified,53868085248.0,1.0
 BIP,Brookfield Infrastructure Partners L.P.,Utilities,Utilities - Diversified,14552324096.0,2.0
-BIP,Brookfield Infrastructure Partners L.P.,Utilities,Utilities - Diversified,14552324096.0,3.0
-BIP,Brookfield Infrastructure Partners L.P.,Utilities,Utilities - Diversified,14552324096.0,4.0
-AES,The AES Corporation,Utilities,Utilities - Diversified,9641156608.0,5.0
+AES,The AES Corporation,Utilities,Utilities - Diversified,9641156608.0,3.0
+CIG,Companhia Energética de Minas Gerais - CEMIG,Utilities,Utilities - Diversified,6544679424.0,4.0
+AQN,Algonquin Power & Utilities Corp.,Utilities,Utilities - Diversified,4454545408.0,5.0
 VST,Vistra Corp.,Utilities,Utilities - Independent Power Producers,64074252288.0,1.0
 NRG,"NRG Energy, Inc.",Utilities,Utilities - Independent Power Producers,28155817984.0,2.0
 TLN,Talen Energy Corporation,Utilities,Utilities - Independent Power Producers,17311074304.0,3.0
 PAM,Pampa Energía S.A.,Utilities,Utilities - Independent Power Producers,3715068416.0,4.0
 TAC,TransAlta Corporation,Utilities,Utilities - Independent Power Producers,3646334976.0,5.0
 NEE,"NextEra Energy, Inc.",Utilities,Utilities - Regulated Electric,148371849216.0,1.0
-NEE,"NextEra Energy, Inc.",Utilities,Utilities - Regulated Electric,148371849216.0,2.0
-SO,The Southern Company,Utilities,Utilities - Regulated Electric,101534621696.0,3.0
-DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0,4.0
-DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0,5.0
+SO,The Southern Company,Utilities,Utilities - Regulated Electric,101534621696.0,2.0
+DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0,3.0
+NGG,National Grid plc,Utilities,Utilities - Regulated Electric,70022799360.0,4.0
+AEP,"American Electric Power Company, Inc.",Utilities,Utilities - Regulated Electric,59372941312.0,5.0
 ATO,Atmos Energy Corporation,Utilities,Utilities - Regulated Gas,26667853824.0,1.0
 NI,NiSource Inc.,Utilities,Utilities - Regulated Gas,19903041536.0,2.0
 UGI,UGI Corporation,Utilities,Utilities - Regulated Gas,7444967424.0,3.0
@@ -700,8 +701,8 @@ CWT,California Water Service Group,Utilities,Utilities - Regulated Water,2796145
 CEG,Constellation Energy Corporation,Utilities,Utilities - Renewable,96214810624.0,1.0
 EBR,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilities,Utilities - Renewable,18826340352.0,2.0
 BEP,Brookfield Renewable Partners L.P.,Utilities,Utilities - Renewable,16683010048.0,3.0
-BEP,Brookfield Renewable Partners L.P.,Utilities,Utilities - Renewable,16683010048.0,4.0
-BEPC,Brookfield Renewable Corporation,Utilities,Utilities - Renewable,6050970112.0,5.0
+BEPC,Brookfield Renewable Corporation,Utilities,Utilities - Renewable,6050970112.0,4.0
+CWEN,"Clearway Energy, Inc.",Utilities,Utilities - Renewable,5902051840.0,5.0
 WM,"Waste Management, Inc.",Industrials,Waste Management,91196686336.0,1.0
 RSG,"Republic Services, Inc.",Industrials,Waste Management,73049178112.0,2.0
 WCN,"Waste Connections, Inc.",Industrials,Waste Management,47517237248.0,3.0

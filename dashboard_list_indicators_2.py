@@ -8,7 +8,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import ta
 from PyPDF2 import PdfMerger
-
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+pd.set_option('display.width', 1000)
 
 
 def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
@@ -17,13 +19,13 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     df["MA10"] = df["Close"].rolling(10).mean()
     df["MA20"] = df["Close"].rolling(20).mean()
     df["MA60"] = df["Close"].rolling(60).mean()
-    df["ema_average"] = (df["MA5"] + df["MA10"] + df["MA20"])/3
+
 
     df["VolMA5"] = df["Volume"].rolling(5).mean()
     df["VolMA10"] = df["Volume"].rolling(10).mean()
 
     df["Resistance"] = df["Close"].rolling(window=20).max().shift(1)
-    df["AvgVolume"] = df["Volume"].rolling(window=20).mean()
+    df["AvgVolume"] = df["Volume"].rolling(window=10).mean()
     breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
                (df["Volume"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
 
@@ -59,8 +61,9 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
         (df["MACD1"] > df["MACD_signal1"]) & (df["MACD1"].shift(1) <= df["MACD_signal1"].shift(1)), df["Close"], np.nan)
     df["MACD_sell_signal1"] = np.where(
         (df["MACD1"] < df["MACD_signal1"]) & (df["MACD1"].shift(1) >= df["MACD_signal1"].shift(1)), df["Close"], np.nan)
-
-    df = df.iloc[50:]
+    print(df)
+    if len(df) > 50:
+        df = df.iloc[50:]
 
     last_buy_idx = df["MACD_buy_signal1"].last_valid_index()
     last_sell_idx = df["MACD_sell_signal1"].last_valid_index()
@@ -194,9 +197,9 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
             print(f"Skipping {ticker} due to MACD sell .")
             continue
         # save temporary pdf for each stock
-        filename = f"{ticker}.pdf"
-        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1200, height=1200)
-        pdf_files.append(filename)
+        # filename = f"{ticker}.pdf"
+        # fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1200, height=1200)
+        # pdf_files.append(filename)
 
     # Merge all PDFs into one
     # merger = PdfMerger()
@@ -207,6 +210,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
     # merger.close()
     # for pdf in pdf_files:
     #     os.remove(f"resource/temp/{pdf}")  # Clean up temporary files
-
-df_tickers = pd.DataFrame({"symbol": ["SNDK"]})  # Example tickers, replace with actual data
+# df_tickers = pd.read_csv("resource/leading_stocks_by_industry.csv")
+# generate_pdf(df_tickers, "resource/leading_stocks_by_industry.pdf",skip_macd_sell="No")
+df_tickers = pd.DataFrame({"symbol": ["FNV"]})  # Example tickers, replace with actual data
 generate_pdf(df_tickers, "b.pdf",skip_macd_sell="No")

@@ -17,7 +17,7 @@ def order_by_ema(input_file, output_file, span=60):
         data["EMA60"] = data["Close"].ewm(span=span, adjust=False).mean()
 
         # Rolling regression slope (20-day window)
-        N = 20
+        N = span
         ema = data["EMA60"].dropna().values
         slopes = []
 

@@ -31,10 +31,12 @@ import pandas as pd
 # df.to_csv("stocks_by_industry.csv", index=False)
 # For each industry, get the stock with max market cap
 df = pd.read_csv('stocks_by_industry.csv')
+df = df.drop_duplicates()
 # leaders = df.loc[df.groupby("industry")["marketCap"].nlargest(5)].reset_index(drop=True)
 df["rank"] = df.groupby("industry")["marketCap"].rank("first", ascending=False)
 leaders = (df[df["rank"] <= 5]
          .sort_values(["industry", "rank"])
+
          .reset_index(drop=True))
 print(leaders)
 

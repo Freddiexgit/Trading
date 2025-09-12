@@ -22,5 +22,5 @@ obe.order_by_ema(f'resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv',
 
 df_tickers = pd.read_csv(f"resource/{s_str}/nz/order_by_ema_{s_str}.csv")
 # df_tickers = df_tickers[0:50]
-di.generate_pdf(df_tickers,f"resource/{s_str}/nz/nz_stock_cv_dv_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf","Yes","nz")
+di.generate_pdf(df_tickers,f"resource/{s_str}/nz/nz_stock_cv_dv_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf","no","nz")
 
