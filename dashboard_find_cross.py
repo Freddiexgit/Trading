@@ -21,5 +21,5 @@ common_stocks = pd.merge(df1, df2, on="symbol")
 # Display results
 print("Common stocks:")
 print(common_stocks)
-
+common_stocks.to_csv(f'resource/common_cross/common_cross_{s_str}.csv', index=False)
 di.generate_pdf(common_stocks,f"resource/{s_str}/us/volume_and_CD_{datetime.now().strftime('%Y-%m-%d')}.pdf","Yes","holding")

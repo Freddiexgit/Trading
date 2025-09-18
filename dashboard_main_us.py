@@ -23,4 +23,4 @@ s_str = datetime.now().strftime("%Y-%m-%d")
 
 df_tickers = pd.read_csv(f"resource/{s_str}/us/us_stock_5day_10day_vol_{s_str}.csv")
 
-di.generate_pdf(df_tickers,f"resource/{s_str}/us/us_stock_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf","yes","us")
+di.generate_pdf(df_tickers,f"resource/{s_str}/us/us_stock_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf","yes","day")
