@@ -212,5 +212,5 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
     #     os.remove(f"resource/temp/{pdf}")  # Clean up temporary files
 # df_tickers = pd.read_csv("resource/leading_stocks_by_industry.csv")
 # generate_pdf(df_tickers, "resource/leading_stocks_by_industry.pdf",skip_macd_sell="No")
-df_tickers = pd.DataFrame({"symbol": ["FNV"]})  # Example tickers, replace with actual data
+df_tickers = pd.DataFrame({"symbol": ["ETN"]})  # Example tickers, replace with actual data
 generate_pdf(df_tickers, "b.pdf",skip_macd_sell="No")

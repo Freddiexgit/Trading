@@ -10,8 +10,8 @@ df = pd.read_csv(f'resource/leading_stocks_by_industry.csv' )
 
 
 s_str = datetime.now().strftime("%Y-%m-%d")
-if not os.path.exists(f"resource/{s_str}/us"):
-    # Create the directory
-    os.makedirs(f"resource/{s_str}/us")
+# if not os.path.exists(f"resource/{s_str}/us"):
+#     # Create the directory
+#     os.makedirs(f"resource/{s_str}/us")
 
-di.generate_pdf(df,f"resource/{s_str}/us/industry_leading_stocks_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf","No","us")
+di.generate_pdf(df,f"resource/industry_leading_stocks_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf","No","us")

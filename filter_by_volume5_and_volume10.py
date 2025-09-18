@@ -40,7 +40,34 @@ def cal(df_tickers):
         # sorted_dict = dict(sorted(ticker_and_vol.items(), key=lambda item: item[1], reverse=True))
     return ticker_and_vol
 
+def order_by_last_1day_and10day_volume(input_file,output_file):
+    df_tickers = pd.read_csv(input_file)
+    ticker_and_vol = {}
+    for index, row in df_tickers.iterrows():
+        ticker = row['symbol']
+        df = yf.download(ticker, period="20d")
+        df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
+        df["VolMA10"] = df["Volume"].rolling(10).mean()
+        df = df.iloc[-1:]
+        if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3:
+            ticker_and_vol[ticker] = (df["Volume"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1]
+
+    sorted_dict = dict(sorted(ticker_and_vol.items(), key=lambda item: item[1], reverse=True))
+
+    with open(output_file, 'w') as f:
+        f.write('symbol\n')
+        for key, value in sorted_dict.items():
+            f.write(f'{key}\n')
 
 if __name__ == "__main__":
-    df = pd.DataFrame({"symbol": ["OFSSH"]})
-    cal(df)
+    # df = pd.DataFrame({"symbol": ["OFSSH"]})
+    # cal(df)
+    df = yf.download("OFSSH", period="20d")
+    df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
+    print(df)
+    df["VolMA10"] = df["Volume"].rolling(10).mean()
+    df = df.iloc[-1:]
+    df.drop_level(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
+    print(df)
+    if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3:
+        print( (df["Volume"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1])

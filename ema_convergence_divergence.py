@@ -54,5 +54,5 @@ def call(input_file, output_file):
     df2.to_csv(f'{output_file}', index=False)
 
 if __name__ == "__main__":
-    df = detect_ema_convergence_divergence("KFLWI.NZ")
+    df = detect_ema_convergence_divergence("UI")
     print(df)

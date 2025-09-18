@@ -77,7 +77,7 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
         last_price = df.loc[last_sell_idx, "MACD_sell_signal1"]
         last_date = last_sell_idx
 
-    if last_signal != "Buy" and skip_macd_sell == "Yes" and breakout == False:
+    if last_signal != "Buy" and skip_macd_sell == "Yes" :
          return  None
     # Create subplots
     fig = make_subplots(
@@ -94,12 +94,12 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     for ma, color in zip(["MA5", "MA10", "MA20", "MA60"], ["blue", "orange", "magenta", "green"]):
         fig.add_trace(go.Scatter(x=df.index, y=df[ma], mode="lines", line=dict(color=color), name=ma), row=1, col=1)
         resistance = df["Resistance"].iloc[-1]
-        fig.add_hline(y=resistance, line_dash="dot", line_color="purple", annotation_text="Breakout Level")
-        fig.add_trace(go.Scatter(
-            x=[df.index[-1]], y=[df["Close"].iloc[-1]],
-            mode="markers", marker=dict(color="purple", size=14, symbol="star"),
-            name="Breakout"
-        ) , row=1, col=1)
+        fig.add_hline(y=resistance, line_dash="dot", line_color="purple", annotation_text="resistance")
+        # fig.add_trace(go.Scatter(
+        #     x=[df.index[-1]], y=[df["Close"].iloc[-1]],
+        #     mode="markers", marker=dict(color="purple", size=14, symbol="star"),
+        #     name="Breakout"
+        # ) , row=1, col=1)
         fig.add_trace(
             go.Scatter(
                 x=df.index,
