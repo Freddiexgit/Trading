@@ -195,7 +195,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
             continue
         # save temporary pdf for each stock
         filename = f"{ticker}.pdf"
-        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1200, height=1200)
+        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1800, height=1200)
         pdf_files.append(filename)
 
     # Merge all PDFs into one
