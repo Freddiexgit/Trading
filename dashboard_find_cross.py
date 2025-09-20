@@ -13,7 +13,7 @@ s_str = datetime.now().strftime("%Y-%m-%d")
 # Load the two CSV files
 # Assume each CSV has a column called "stock" with stock tickers/names
 df1 = pd.read_csv(f'resource/{s_str}/us/ema_cv_dv_{s_str}.csv')
-df2 = pd.read_csv(f"resource/{s_str}/us/us_stock_5day_10day_vol_{s_str}.csv")
+df2 = pd.read_csv(f"resource/{s_str}/us/us_stock_last_day_vol_{s_str}.csv")
 
 # Find the intersection
 common_stocks = pd.merge(df1, df2, on="symbol")

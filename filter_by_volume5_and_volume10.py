@@ -49,7 +49,7 @@ def order_by_last_1day_and10day_volume(input_file,output_file):
         df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
         df["VolMA10"] = df["Volume"].rolling(10).mean()
         df = df.iloc[-1:]
-        if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3:
+        if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3 and df["close"].iloc[-1]> df["open"].iloc[-1]:
             ticker_and_vol[ticker] = (df["Volume"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1]
 
     sorted_dict = dict(sorted(ticker_and_vol.items(), key=lambda item: item[1], reverse=True))
@@ -69,5 +69,5 @@ if __name__ == "__main__":
     df = df.iloc[-1:]
     df.drop_level(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
     print(df)
-    if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3:
+    if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3 and df["close"].iloc[-1]> df["open"].iloc[-1]:
         print( (df["Volume"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1])

@@ -45,7 +45,7 @@ def build_graph():
     return workflow.compile()
 
 if __name__ == "__main__":
-    os.environ["GOOGLE_API_KEY"] = ""
+    os.environ["GOOGLE_API_KEY"] = "AIzaSyCH5ud2FnsklQ-c95YJPDJrIHWJiCxHFDw"
     graph = build_graph()
     state = {"messages": [HumanMessage(content="What’s the weather in Paris?")]}
     result = graph.invoke(state, config={"configurable": {"thread_id": "demo"}})
