@@ -3,7 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import tool
 
 # Make sure the key is set
-os.environ["GOOGLE_API_KEY"] =  ""
+os.environ["GOOGLE_API_KEY"] =  "AIzaSyCH5ud2FnsklQ-c95YJPDJrIHWJiCxHFDw"
 
 # 1. Initialize Gemini properly
 llm = ChatGoogleGenerativeAI(

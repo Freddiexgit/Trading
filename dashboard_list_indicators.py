@@ -24,8 +24,8 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     df["Resistance"] = df["Close"].rolling(window=20).max().shift(1)
     df["AvgVolume"] = df["Volume"].rolling(window=10).mean()
     df["AvgVolume3days"] = df["Volume"].rolling(window=3).mean()
-    breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
-               (df["Volume"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
+    # breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
+    #            (df["Volume"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
 
 
     # # Technical indicators
@@ -154,14 +154,15 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
 
     # # OBV
     # fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
-
-
-
+    one_day = 24 * 60 * 60 * 1000
     fig.update_layout(height=800, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
         rangebreaks=[
             dict(bounds=["sat", "mon"])  # hide weekends
-        ]
+        ],
+        tickformat="%Y-%m-%d",  # YYYY-MM-DD
+        tickangle=45,  # Rotate labels so they don’t overlap
+        dtick=one_day * 7  # Tick every week
     )
     # fig.show()
     return fig

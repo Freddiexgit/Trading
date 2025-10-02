@@ -137,16 +137,16 @@ def run(ticker_source, output_file):
 if __name__ == "__main__":
     import  dashboard_list_indicators as di
     s_str = datetime.now().strftime('%Y-%m-%d')
-    run('resource/nzx_tickers.csv', f'resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv')
+    run('resource/nzx_tickers.csv', f'z_resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv')
 
 
-    obe.order_by_ema(f'resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv',
-                     f'resource/{s_str}/nz/order_by_ema_{s_str}.csv', 20)
+    obe.order_by_ema(f'z_resource/{s_str}/nz/nz_stock_5days_above_20days_{s_str}.csv',
+                     f'z_resource/{s_str}/nz/order_by_ema_{s_str}.csv', 20)
 
     # df_tickers = df_tickers[0:50]
-    df_tickers = pd.read_csv(f"resource/{s_str}/nz/order_by_ema_{s_str}.csv")
+    df_tickers = pd.read_csv(f"z_resource/{s_str}/nz/order_by_ema_{s_str}.csv")
     di.generate_pdf(df_tickers,
-                    f"resource/{s_str}/nz/nz_stock_cv_dv_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf",
+                    f"z_resource/{s_str}/nz/nz_stock_cv_dv_indicators_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf",
                     "Yes", "nz")
 
         # backtesting()

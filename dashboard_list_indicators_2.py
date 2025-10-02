@@ -158,13 +158,16 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     # # OBV
     # fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
 
-
+    one_day = 24 * 60 * 60 * 1000
 
     fig.update_layout(height=800, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
         rangebreaks=[
             dict(bounds=["sat", "mon"])  # hide weekends
-        ]
+        ],
+        tickformat="%Y-%m-%d",  # YYYY-MM-DD
+        tickangle=45,  # Rotate labels so they don’t overlap
+        dtick=7*one_day  # Show tick every 7 days
     )
     fig.show()
     # return fig

@@ -17,7 +17,7 @@ tickers = df['Ticker'].dropna().tolist()
 
 start_date = datetime.today().date()- timedelta(days=3)
 end_date = datetime.today().date()- timedelta(days=2)
-file_name =f"resource/nzx_{end_date}.xlsx"
+file_name = f"resource/nzx_{end_date}.xlsx"
 
 # Container for historical data
 all_data = {}
