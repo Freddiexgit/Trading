@@ -129,7 +129,7 @@ def get_nzx_insider_buying():
 
 
 if __name__ == "__main__":
-    nasdaq_symbols=["ORCL"]
+    # nasdaq_symbols=["IRDM"]
     # Example NASDAQ symbols
     # nasdaq_symbols = [
     #     "HSAI",
@@ -197,7 +197,10 @@ if __name__ == "__main__":
     #     "HSBC"]
 
     # Download NASDAQ insider buying data for the last 90 days
-    download_nasdaq_insider_buying(nasdaq_symbols, days_back=10)
+
+    df_tickers = pd.read_csv("resource/nyse_and_nasdaq_median.csv")
+    nasdaq_symbols = df_tickers["symbol"].tolist()
+    download_nasdaq_insider_buying(nasdaq_symbols, days_back=3)
     # nasdaq_data = get_nasdaq_insider_buying()
     # print(nasdaq_data.head())
 

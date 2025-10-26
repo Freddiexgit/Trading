@@ -15,3 +15,5 @@ PyPDF2
 scikit-learn
 langchain
 alpaca-py
+seaborn
+pandas_datareader

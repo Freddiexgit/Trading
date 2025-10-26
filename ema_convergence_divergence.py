@@ -5,7 +5,7 @@ pd.set_option('display.width', 1000)
 def detect_ema_convergence_divergence(ticker, period="1mo", converge_thresh=0.005, diverge_thresh=0.03):
     # Download historical data
     try:
-        df = yf.download(ticker, period=period, interval="1d")
+        df = yf.download(ticker, period=period, interval="4h")
     except Exception as e:
         print(f"Error downloading data for {ticker}: {e}")
         return pd.DataFrame()

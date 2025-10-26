@@ -42,10 +42,14 @@ def cal(df_tickers):
 
 def order_by_last_1day_and10day_volume(input_file,output_file):
     df_tickers = pd.read_csv(input_file)
+    order(df_tickers,output_file)
+
+def order(df_tickers,output_file):
     ticker_and_vol = {}
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
         df = yf.download(ticker, period="20d")
+        if len(df)<10: continue
         df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
         df["VolMA10"] = df["Volume"].rolling(10).mean()
         df = df.iloc[-1:]

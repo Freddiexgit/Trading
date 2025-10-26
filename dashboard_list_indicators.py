@@ -178,7 +178,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
             continue
-        df = stock.history(period="10mo")
+        df = stock.history(period="10mo", interval="1d")
 
         try:
             ind = stock.info.get('industry')
@@ -190,13 +190,17 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
         except Exception as e:
             print(f"Error fetching industry for {ticker}: {e}")
             shortName = "Unknown"
-        fig = ploy_fig(f"{ticker}_{shortName}_{ind}", df,skip_macd_sell)
+        try:
+            fig = ploy_fig(f"{ticker}_{shortName}_{ind}", df,skip_macd_sell)
+        except Exception as e:
+            print(f"Error plotting figure for {ticker}: {e}")
+            fig = None
         if fig == None:
             print(f"Skipping {ticker} due to MACD sell .")
             continue
         # save temporary pdf for each stock
         filename = f"{ticker}.pdf"
-        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1800, height=1200)
+        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1800, height=1600)
         pdf_files.append(filename)
 
     # Merge all PDFs into one
@@ -207,4 +211,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
     merger.write(output_filename)
     merger.close()
     for pdf in pdf_files:
-        os.remove(f"resource/temp/{folder}/{pdf}")  # Clean up temporary files
+        try:
+            os.remove(f"resource/temp/{folder}/{pdf}")  # Clean up temporary files
+        except Exception as e:
+            print(f"Error deleting file {pdf}: {e}")
