@@ -1,68 +1,46 @@
 import requests
 import os
-from datetime import datetime
 
 # -----------------------------
 # Config
 # -----------------------------
-date_str = "20251024"  # Format: YYYYMMDD
-save_folder = f"resource\sec_filings_{date_str}"
+date = "2025-10-21"  # Format: YYYY-MM-DD
+save_folder = f"sec_filings_{date.replace('-', '')}"
 os.makedirs(save_folder, exist_ok=True)
 
-# SEC provides daily index files in the "edgar/daily-index" path
-# Example URL: https://www.sec.gov/Archives/edgar/daily-index/2025/QTR4/master.20251024.idx
-# Need to determine quarter
-def get_quarter(month):
-    if month in [1,2,3]: return "QTR1"
-    if month in [4,5,6]: return "QTR2"
-    if month in [7,8,9]: return "QTR3"
-    return "QTR4"
+# SEC EDGAR Full Text Search API for filings by date
+# Example: https://efts.sec.gov/LATEST/search-index
+search_url = "https://efts.sec.gov/LATEST/search-index"
+headers = {"User-Agent": "Python SEC Downloader", "Accept": "application/json"}
 
-year = int(date_str[:4])
-month = int(date_str[4:6])
-quarter = get_quarter(month)
+query = {
+    "query": {
+        "query_string": {
+            "query": f"filedAt:{date}"
+        }
+    },
+    "from": 0,
+    "size": 100  # number of filings per request
+}
 
-master_idx_url = f"https://www.sec.gov/Archives/edgar/daily-index/{year}/{quarter}/master.{date_str}.idx"
-headers = {"User-Agent": "Python SEC Downloader"}
-r = requests.get(master_idx_url, headers=headers)
+r = requests.post(search_url, headers=headers, json=query)
+data = r.json()
 
-if r.status_code != 200:
-    raise Exception(f"Index file not found: {master_idx_url}")
-
-# -----------------------------
-# Parse the index file
-# -----------------------------
-lines = r.text.splitlines()
-filings = []
-
-# Skip header until line with 'CIK|Company Name|Form Type|Date Filed|Filename'
-for i, line in enumerate(lines):
-    if line.startswith("CIK|"):
-        start_idx = i + 1
-        break
-
-for line in lines[start_idx:]:
-    parts = line.split("|")
-    if len(parts) == 5:
-        cik, company, form_type, filed_date, file_path = parts
-        filings.append({
-            "cik": cik,
-            "company": company,
-            "form_type": form_type,
-            "file_date": filed_date,
-            "file_path": file_path
-        })
-
-print(f"Found {len(filings)} filings on {date_str}")
+filings = data.get("hits", {}).get("hits", [])
+print(f"Found {len(filings)} filings on {date}")
 
 # -----------------------------
-# Download the filings
+# Download filings
 # -----------------------------
 base_url = "https://www.sec.gov/Archives/"
-for i, filing in enumerate(filings[:50]):  # Limit first 50 for demo; remove [:50] to download all
-    file_url = base_url + filing["file_path"]
-    r = requests.get(file_url, headers=headers)
-    filename = os.path.join(save_folder, f"{filing['cik']}_{filing['form_type']}_{i+1}.txt")
+for i, filing in enumerate(filings):
+    file_path = filing["_source"]["fileUrl"]
+    full_url = base_url + file_path
+    company = filing["_source"]["entityName"].replace(" ", "_")
+    form_type = filing["_source"]["formType"].replace(" ", "")
+
+    r_file = requests.get(full_url, headers=headers)
+    filename = os.path.join(save_folder, f"{company}_{form_type}_{i + 1}.txt")
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(r.text)
+        f.write(r_file.text)
     print(f"Downloaded: {filename}")
