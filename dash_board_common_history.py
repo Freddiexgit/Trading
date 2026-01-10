@@ -11,12 +11,8 @@ s_str = datetime.now().strftime('%Y-%m-%d')
 
 
 list = [
-"common_cross_2025-10-03_median.csv",
-"common_cross_2025-10-03_top_500.csv",
-"common_cross_2025-10-07_median.csv",
-"common_cross_2025-10-07_top_500.csv",
-"common_cross_2025-10-11_top_500.csv",
-"common_cross_2025-10-12_median.csv",
+"cv_dv_volume_stocks_2025-10-25_median.csv",
+"cv_dv_volume_stocks_2025-10-25_top_500.csv"
 ]
 for name in list:
     if os.path.exists(f"resource/cv_dv_volume_stocks/{name}"):

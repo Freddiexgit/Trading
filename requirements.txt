@@ -17,3 +17,5 @@ langchain
 alpaca-py
 seaborn
 pandas_datareader
+pytube
+yt_dlp
