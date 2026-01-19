@@ -28,9 +28,10 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
     #            (df["Volume"].iloc[-1] > 1.5 * df["AvgVolume"].iloc[-1])
 
 
-    # # Technical indicators
+    # Technical indicators
     # df["RSI"] = ta.momentum.RSIIndicator(df["Close"]).rsi()
-
+    df["RSI_14"] = ta.momentum.RSIIndicator(df["Close"], window=14).rsi()
+    df["RSI_5"] = ta.momentum.RSIIndicator(df["Close"], window=5).rsi()
     stoch = ta.momentum.StochasticOscillator(df["High"], df["Low"], df["Close"],window=80,
         smooth_window=5)
     df["K"] = stoch.stoch()
@@ -85,7 +86,7 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
         vertical_spacing=0.01,
         row_heights=[4, 2, 2, 1, 1],
         subplot_titles=[
-            f' {ticker}', "Acute MACD","MACD","Volume", "KDJ"
+            f' {ticker}', "Acute MACD","MACD","Volume", "RSI"
         ]
     )
 
@@ -144,18 +145,20 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
 
 
 
-    # # RSI
-    # fig.add_trace(go.Scatter(x=df.index, y=df["RSI"], mode="lines", name="RSI"), row=5, col=1)
+    # RSI
+    fig.add_trace(go.Scatter(x=df.index, y=df["RSI_14"], mode="lines", name="RSI"), row=5, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["RSI_5"], mode="lines", name="RSI"), row=5, col=1)
 
     # KDJ
-    fig.add_trace(go.Scatter(x=df.index, y=df["K"], mode="lines", name="%K"), row=5, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=5, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=5, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["K"], mode="lines", name="%K"), row=5, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["D"], mode="lines", name="%D"), row=5, col=1)
+    # fig.add_trace(go.Scatter(x=df.index, y=df["J"], mode="lines", name="%J"), row=5, col=1)
 
     # # OBV
     # fig.add_trace(go.Scatter(x=df.index, y=df["OBV"], mode="lines", name="OBV"), row=7, col=1)
     one_day = 24 * 60 * 60 * 1000
-    fig.update_layout(height=800, showlegend=True, xaxis_rangeslider_visible=False)
+
+    fig.update_layout(height=1200, showlegend=True, xaxis_rangeslider_visible=False)
     fig.update_xaxes(
         rangebreaks=[
             dict(bounds=["sat", "mon"])  # hide weekends

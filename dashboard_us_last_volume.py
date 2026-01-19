@@ -25,7 +25,7 @@ def run_last_day_volume_increase(source_tickers):
                                           f"resource/{date}/us/us_stock_last_day_vol_{s_str}.csv")
     df_tickers = pd.read_csv(f"resource/{date}/us/us_stock_last_day_vol_{s_str}.csv")
     di.generate_pdf(df_tickers,
-                    f"resource/{date}/us/us_stock_Volume_{s_str}_{datetime.now().strftime('%H-%M')}.pdf.pdf", "yes",
+                    f"resource/{date}/us/us_stock_Volume_{s_str}_{datetime.now().strftime('%H-%M')}.pdf", "yes",
                     "day")
 
 

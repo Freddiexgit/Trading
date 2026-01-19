@@ -53,7 +53,7 @@ def order(df_tickers,output_file):
         df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
         df["VolMA10"] = df["Volume"].rolling(10).mean()
         df = df.iloc[-1:]
-        if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.3 and df["Close"].iloc[-1]> df["Open"].iloc[-1]:
+        if df["Volume"].iloc[-1] > df["VolMA10"].iloc[-1] * 1.5 and df["Close"].iloc[-1]> df["Open"].iloc[-1]:
             ticker_and_vol[ticker] = (df["Volume"].iloc[-1] - df["VolMA10"].iloc[-1]) / df["VolMA10"].iloc[-1]
 
     sorted_dict = dict(sorted(ticker_and_vol.items(), key=lambda item: item[1], reverse=True))
