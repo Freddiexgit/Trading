@@ -2,7 +2,7 @@ from datetime import datetime
 import yfinance as yf
 import os
 import pandas as pd
-
+import data_downloader as data
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 
@@ -45,8 +45,7 @@ def find_cross(df_tickers):
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
         try:
-            df = yf.download(ticker, period="4mo", interval="4h")
-            df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
+            df = data.get_transaction_df(ticker, period="4mo", interval="4h")
         except Exception as e:
             print(f"Error downloading data for {ticker}: {e}")
             continue
@@ -68,7 +67,7 @@ def find_cross(df_tickers):
     # print(five_cross_90)
     # print(twenty_cross_90)
 
-if __name__  =="__main__":
+# if __name__  =="__main__":
     # df_tickers = pd.read_csv("resource/nyse_and_nasdaq_top_500.csv")
     # for index, row in df_tickers.iterrows():
     #     ticker = row['symbol']

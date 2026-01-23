@@ -39,9 +39,9 @@ from find_cross_ema_5_20_90 import find_cross
 df_tickers = pd.read_csv("resource/nyse_and_nasdaq_top_500.csv")
 find_cross( df_tickers)
 df_tickers = pd_read_pattern(f'resource/{s_str}/us/find_cross_ema*')
-# # df_tickers = df_tickers[0:110]
-# ft.order(df_tickers, f"resource/{s_str}/us/ema_break_order_by_vol_{s_str}.csv")
-# df_tickers = pd.read_csv(f"resource/{s_str}/us/ema_break_order_by_vol_{s_str}.csv")
+# df_tickers = df_tickers[0:110]
+ft.order(df_tickers, f"resource/{s_str}/us/ema_break_order_by_vol_{s_str}.csv")
+df_tickers = pd.read_csv(f"resource/{s_str}/us/ema_break_order_by_vol_{s_str}.csv")
 di.generate_pdf(df_tickers, f"resource/{s_str}/us/ema_break_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf", "No", "us")
 
 

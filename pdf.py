@@ -119,3 +119,5 @@ with PdfPages("stocks_dashboard.pdf") as pdf:
         plt.close(fig)
 
 print("✅ Multi-stock dashboard saved to stocks_dashboard.pdf")
+
+

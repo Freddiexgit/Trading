@@ -10,6 +10,11 @@ from order_by_ema_60 import order_by_ema
 s_str = datetime.now().strftime('%Y-%m-%d')
 
 
-df_tickers = pd.read_csv(f"resource/myvip/my_vip.csv")
 
-di.generate_pdf(df_tickers,f"resource/myvip/my_vip_report_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")
+
+
+# loc = f"resource/{s_str}/us/bottom"
+loc = f"resource/{s_str}/us/insti_enter"
+df_tickers = pd.read_csv(f"{loc}.csv")
+df_tickers.drop_duplicates()
+di.generate_pdf(df_tickers,f"{loc}_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")

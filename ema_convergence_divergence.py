@@ -1,11 +1,12 @@
 import yfinance as yf
 import pandas as pd
+import data_downloader as data
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 def detect_ema_convergence_divergence(ticker, period="1mo", converge_thresh=0.005, diverge_thresh=0.03):
     # Download historical data
     try:
-        df = yf.download(ticker, period=period, interval="4h")
+        df = data.get_transaction_df(ticker, period=period, interval="4h")
     except Exception as e:
         print(f"Error downloading data for {ticker}: {e}")
         return pd.DataFrame()

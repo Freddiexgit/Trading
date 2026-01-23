@@ -5,6 +5,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 from datetime import datetime
 import order_by_ema_60 as obe
+import data_downloader as data
 
 
 pd.set_option('display.max_columns', None)
@@ -17,7 +18,7 @@ def find_position(symbol="APPL"):
 
     # --- Load Stock Data ---
     try:
-        df = yf.download(symbol, period=period)
+        df = data.get_transaction_df(symbol, period=period)
     except Exception as e:
         print(f"Error downloading data for {symbol}: {e}")
         return 0
@@ -66,7 +67,7 @@ def backtesting():
     initial_capital = 10000
 
     # --- Load Data ---
-    df = yf.download(symbol, period=period)
+    df = data.get_transaction_df(symbol, period=period)
     df = df.droplevel(axis=1, level=1) if isinstance(df.columns, pd.MultiIndex) else df
     df['MA_5'] = df['Close'].rolling(window=5).mean()
     df['MA_20'] = df['Close'].rolling(window=20).mean()

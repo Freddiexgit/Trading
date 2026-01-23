@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 def get_stock_data(ticker, period="6mo", interval="1d"):
     try:
-        df = yf.download(ticker, period=period, interval=interval)
+        df =  data.get_transaction_df(ticker, period=period, interval=interval)
     except Exception as e:
         print(f"Error downloading {ticker}")
         return pd.DataFrame()

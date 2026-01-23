@@ -3,9 +3,9 @@ import pandas as pd
 import plotly.graph_objects as go
 
 def detect_breakout(ticker, lookback=20, volume_factor=1.5):
-    df = yf.download(ticker, period="6mo", interval="1d")
-    df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
-    df.dropna(inplace=True)
+    df = data.get_transaction_df(ticker, period="6mo", interval="1d")
+    # df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
+    # df.dropna(inplace=True)
 
     # Rolling high/low
     df["Rolling_High"] = df["Close"].rolling(lookback).max()

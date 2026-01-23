@@ -4,18 +4,18 @@ from bs4 import BeautifulSoup
 # import pandas as pd
 from datetime import datetime, timedelta
 
-print(datetime.now().strftime('%Y-%m-%d-%H-%M'))
-response = requests.get("https://app.powerbi.com/view?r=eyJrIjoiZWVkNWE0YTItN2VmZC00N2I4LWI0MzgtN2I0OWMzMDQ1NDU5IiwidCI6IjNmZjVlOTlhLWViYTUtNDU5OC04N2NhLTI2OTEyMjEyMDU5ZiJ9")
+print(datetime.now().strftime('%H-%M'))
+# response = requests.get("https://app.powerbi.com/view?r=eyJrIjoiZWVkNWE0YTItN2VmZC00N2I4LWI0MzgtN2I0OWMzMDQ1NDU5IiwidCI6IjNmZjVlOTlhLWViYTUtNDU5OC04N2NhLTI2OTEyMjEyMDU5ZiJ9")
+# #
+# # # response = requests.get("https://scanner.tradingview.com/newzealand/scan?label-product=markets-screener")
+# # # response = requests.get("https://www.tradingview.com/markets/stocks-new-zealand/market-movers-all-stocks/")
+# #
+# print(response.json())
 #
-# # response = requests.get("https://scanner.tradingview.com/newzealand/scan?label-product=markets-screener")
-# # response = requests.get("https://www.tradingview.com/markets/stocks-new-zealand/market-movers-all-stocks/")
+# soup = BeautifulSoup(response.content, 'html.parser')
 #
-print(response.json())
-
-soup = BeautifulSoup(response.content, 'html.parser')
-
-table = soup.find('table')
-print(table)
+# table = soup.find('table')
+# print(table)
 #
 #
 # # ticker = "AAPL"  # example: Apple Inc.

@@ -25,7 +25,7 @@ def rsi(series, period=14):
 # ---------------------------
 # df must have column: 'Close'
 # df = pd.read_csv(f'resource/my_watch_list.csv')
-df = pd.read_csv(f'resource/my_watch_list.csv')
+df = pd.read_csv(f'resource/us_top_3000.csv')
 tickers = df['symbol'].dropna().tolist()
 # tickers = [
 #     "AAPL"
@@ -59,14 +59,25 @@ for ticker in tickers:
     df["BUY_SIGNAL"] = (
         (df["Close"] > df["MA200"]) &
         # (df["RSI14"] > 40) &
-        (df["RSI6"] < 20) &
+        (df["RSI6"] < 30) &
         rsi2_cross_up
     )
 
     # ---------------------------
     # View signals
     # ---------------------------
+
+    from datetime import datetime
+
     signals = df[df["BUY_SIGNAL"]]
     if len(signals) > 0:
-        print(f"Ticker: {ticker}")
+        print(f"{ticker}")
+        result.append(ticker)
         # print(signals[["Close","MA200","RSI14","RSI6"]])
+
+s_str = datetime.now().strftime('%Y-%m-%d')
+if len(result> 0):
+    s_str = datetime.now().strftime('%Y-%m-%d')
+    loc = f"resource/{s_str}/us/bottom.csv"
+    df2 = pd.DataFrame(result, columns=['symbol']).drop_duplicates()
+    df2.to_csv(f'{loc}', index=False)

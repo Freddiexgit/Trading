@@ -3,7 +3,7 @@ import pandas as pd
 import yfinance as yf
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
-
+import data_downloader as data
 # Download stock data
 
 def sort_by_3day_10day_volume(input_file,output_file):
@@ -23,7 +23,7 @@ def cal(df_tickers):
     ticker_and_vol = {}
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
-        df = yf.download(ticker, period="20d")
+        df = data.get_transaction_df(ticker, period="20d")
         df["Resistance"] = df["Close"].rolling(window=20).max().shift(1)
         df["AvgVolume"] = df["Volume"].rolling(window=20).mean()
         breakout = (df["Close"].iloc[-1] > df["Resistance"].iloc[-1]) & \
@@ -48,7 +48,7 @@ def order(df_tickers,output_file):
     ticker_and_vol = {}
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
-        df = yf.download(ticker, period="20d")
+        df = data.get_transaction_df(ticker, period="20d")
         if len(df)<10: continue
         df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
         df["VolMA10"] = df["Volume"].rolling(10).mean()
@@ -66,7 +66,7 @@ def order(df_tickers,output_file):
 if __name__ == "__main__":
     # df = pd.DataFrame({"symbol": ["OFSSH"]})
     # cal(df)
-    df = yf.download("OFSSH", period="20d")
+    df = data.get_transaction_df("OFSSH", period="20d")
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
     print(df)
     df["VolMA10"] = df["Volume"].rolling(10).mean()

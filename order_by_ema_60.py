@@ -3,6 +3,7 @@ import pandas as pd
 import yfinance as yf
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+import data_downloader as dt
 
 # Download stock data
 
@@ -21,7 +22,7 @@ def order_by_ema(input_file, output_file, span=60):
             f.write(f'{key}\n')
 
 def order(ticker, span=60):
-    data = yf.download(ticker, period="2mo", interval="1d")
+    data = dt.get_transaction_df(ticker, period="2mo", interval="1d")
 
     # Compute EMA60
     data["EMA60"] = data["Close"].ewm(span=span, adjust=False).mean()

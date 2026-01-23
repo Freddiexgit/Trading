@@ -7,6 +7,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import ta
+import data_downloader as data
 from PyPDF2 import PdfMerger
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
@@ -182,7 +183,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
         print(f"Index: {index}, Value: {row['symbol']}")
         ticker = row['symbol']
         try:
-            stock = yf.Ticker(ticker)
+            stock = data.get_stock_obj(ticker)
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
             continue
