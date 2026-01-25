@@ -10,7 +10,7 @@ def get_transaction_df(symbol, period, interval="4h"):
     df = symbol_and_df.get(symbol)
     if df is None:
         try:
-            df = yf.download(symbol, period=period, interval=interval)
+            df = yf.download(symbol, period=period, interval=interval,auto_adjust=True)
         except Exception as e:
             return pd.DataFrame()
         df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df

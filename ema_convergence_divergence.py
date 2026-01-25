@@ -13,7 +13,7 @@ def detect_ema_convergence_divergence(ticker, period="1mo", converge_thresh=0.00
     if df.empty:
         return pd.DataFrame()
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
-    df.dropna(inplace=True)
+    # df.dropna(inplace=True)
 
     # Compute EMAs
     df["EMA5"] = df["Close"].ewm(span=5, adjust=False).mean()
