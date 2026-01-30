@@ -22,9 +22,9 @@ def increasing_volume_decreasing_range(df):
     return volume_increasing and range_decreasing
 
 
-def signal_vol_up_range_tight(df, N=4, lookback=20, threshold=0.75):
+def signal_vol_up_range_tight(ticker, df, N=4, lookback=20, threshold=0.75):
     if len(df) < max(lookback, N):
-        print("error: not enough data")
+        print(f"error: not enough data , {ticker}")
         return False
 
     lastN = df.tail(N)
@@ -40,7 +40,7 @@ def signal_vol_up_range_tight(df, N=4, lookback=20, threshold=0.75):
 
     return volume_up and range_tight
 
-def institute_enter(file_name):
+def institute_enter(file_name,output_file = f"resource/{datetime.now().strftime('%Y-%m-%d')}/us/institute_enter.csv"):
 
     df = pd.read_csv(file_name)
     tickers = df['symbol'].dropna().tolist()
@@ -49,20 +49,19 @@ def institute_enter(file_name):
     # ]
     result = []
     for ticker in tickers:
-        df = dd.get_transaction_df(ticker,period="20d", interval="1d")
-        ind = signal_vol_up_range_tight(df)
+        df1 = dd.get_transaction_df(ticker,period="20d", interval="4h")
+        df = df1.copy()
+        ind = signal_vol_up_range_tight(ticker ,df)
 
         if ind:
             result.append(ticker)
             print(ticker)
 
 
-    s_str = datetime.now().strftime('%Y-%m-%d')
     if len(result)> 0:
-        s_str = datetime.now().strftime('%Y-%m-%d')
-        loc = f"resource/{s_str}/us/institution_enter.csv"
+
         df2 = pd.DataFrame(result, columns=['symbol']).drop_duplicates()
-        df2.to_csv(f'{loc}', index=False)
+        df2.to_csv(f'{output_file}', index=False)
 
 if __name__  =="__main__":
     institute_enter("resource/my_watch_list.csv")

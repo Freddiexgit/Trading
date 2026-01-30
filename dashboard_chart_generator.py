@@ -14,7 +14,7 @@ s_str = datetime.now().strftime('%Y-%m-%d')
 
 
 # loc = f"resource/{s_str}/us/bottom"
-loc = f"resource/{s_str}/us/insti_enter"
+loc = f"resource/{s_str}/us/institute_enter"
 df_tickers = pd.read_csv(f"{loc}.csv")
 df_tickers.drop_duplicates()
 di.generate_pdf(df_tickers,f"{loc}_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")
