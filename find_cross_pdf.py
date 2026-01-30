@@ -22,7 +22,7 @@ def pd_read_pattern(pattern):
 if not os.path.exists(f"resource/{s_str}/us"):
     # Create the directory
     os.makedirs(f"resource/{s_str}/us")
-    os.makedirs(f"resource/temp/us/start")
+    os.makedirs(f"output/temp/us/start")
 # ms.morning_star('nzx_tickers.csv', f'resource/{s_str}/nz/morning_star_{s_str}.csv')
 #
 # find_cross_ema_2025-10-03-19-16_5_20.csv

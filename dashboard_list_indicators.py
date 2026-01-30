@@ -204,18 +204,18 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
             continue
         # save temporary pdf for each stock
         filename = f"{ticker}.pdf"
-        fig.write_image(f"resource/temp/{folder}/{filename}", format="pdf",width=1800, height=1600)
+        fig.write_image(f"output/temp/{folder}/{filename}", format="pdf",width=1800, height=1600)
         pdf_files.append(filename)
 
     # Merge all PDFs into one
     merger = PdfMerger()
     for pdf in pdf_files:
-        merger.append(f"resource/temp/{folder}/{pdf}")
+        merger.append(f"output/temp/{folder}/{pdf}")
 
     merger.write(output_filename)
     merger.close()
     for pdf in pdf_files:
         try:
-            os.remove(f"resource/temp/{folder}/{pdf}")  # Clean up temporary files
+            os.remove(f"output/temp/{folder}/{pdf}")  # Clean up temporary files
         except Exception as e:
             print(f"Error deleting file {pdf}: {e}")

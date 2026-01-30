@@ -12,7 +12,8 @@ from institute_enter import institute_enter
 date = datetime.now().strftime("%Y-%m-%d")
 
 # ticker_file_name = "my_vip"
-ticker_file_name = "my_watch_list"
+# ticker_file_name = "my_watch_list"
+ticker_file_name = "nyse_and_nasdaq_top_500"
 ticker_file_name_full = f"{ticker_file_name}.csv"
 output_folder = f"output/{date}/us/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):

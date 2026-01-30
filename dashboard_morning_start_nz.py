@@ -11,7 +11,7 @@ s_str = datetime.now().strftime("%Y-%m-%d")
 if not os.path.exists(f"resource/{s_str}/nz"):
     # Create the directory
     os.makedirs(f"resource/{s_str}/nz")
-    os.makedirs(f"resource/temp/nz/start")
+    os.makedirs(f"output/temp/nz/start")
 # ms.morning_star('nzx_tickers.csv', f'resource/{s_str}/nz/morning_star_{s_str}.csv')
 
 
