@@ -15,8 +15,8 @@ def run_volume_and_cvg_dvg(output_folder =f"resource/{datetime.now().strftime('%
     cv_dv_volume_stocks = pd.merge(df1, df2, on="symbol")
     # Display results
     print("ema_cv_dv and volume stocks:")
-    print(cv_dv_volume_stocks)
-    cv_dv_volume_stocks.to_csv(f'resource/cv_dv_volume_stocks/cv_dv_volume_stocks_{date}.csv', index=False)
+    # print(cv_dv_volume_stocks)
+    cv_dv_volume_stocks.to_csv(f'{output_folder}/cv_dv_volume_stocks_{date}.csv', index=False)
     di.generate_pdf(cv_dv_volume_stocks, f"{output_folder}/volume_and_CD_{date}_{datetime.now().strftime('%H-%M')}.pdf",
                     "Yes", "holding")
 
