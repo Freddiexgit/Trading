@@ -173,16 +173,19 @@ def ploy_fig(ticker, df,skip_macd_sell = "Yes"):
 
 
 def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
+    if len(df_tickers) == 0:
+        print("No tickers to process.")
+        return
     pdf_files = []
     for index, row in df_tickers.iterrows():
         print(f"Index: {index}, Value: {row['symbol']}")
         ticker = row['symbol']
         try:
-            stock = data.get_stock_obj(ticker)
+            stock = data.get_stock_obj(ticker,period="10mo", interval="4h")
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
             continue
-        df = stock.history(period="10mo", interval="1d")
+        df = data.get_transaction_df(ticker)
 
         try:
             ind = stock.info.get('industry')

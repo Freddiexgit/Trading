@@ -9,9 +9,8 @@ from order_by_ema_60 import order_by_ema
 
 s_str = datetime.now().strftime('%Y-%m-%d')
 
-
-
-
+# df_tickers_inst = pd.read_csv(f"{output_folder}/institute_enter.csv")
+# di.generate_pdf(df_tickers_inst, f"{output_folder}/institute_enter{date}.pdf", "No", "us")
 
 # loc = f"resource/{s_str}/us/bottom"
 loc = f"resource/{s_str}/us/institute_enter"
