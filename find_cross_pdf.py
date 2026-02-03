@@ -19,9 +19,9 @@ def pd_read_pattern(pattern):
     return df.reset_index(drop=True)
 
 
-if not os.path.exists(f"resource/{s_str}/us"):
+if not os.path.exists(f"output/{s_str}/us"):
     # Create the directory
-    os.makedirs(f"resource/{s_str}/us")
+    os.makedirs(f"output/{s_str}/us")
     os.makedirs(f"output/temp/us/start")
 # ms.morning_star('nzx_tickers.csv', f'resource/{s_str}/nz/morning_star_{s_str}.csv')
 #

@@ -14,6 +14,6 @@ s_str = datetime.now().strftime('%Y-%m-%d')
 
 
 
-df_tickers = pd.read_csv(f"resource/myholding/myholding.csv")
+df_tickers = pd.read_csv(f"resource/myholding.csv")
 
-di.generate_pdf(df_tickers,f"resource/myholding/myholding_report_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")
+di.generate_pdf(df_tickers,f"output/{s_str}/us/myholding_report_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")

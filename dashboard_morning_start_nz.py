@@ -8,9 +8,9 @@ import dashboard_list_indicators as di
 s_str = datetime.now().strftime("%Y-%m-%d")
 
 
-if not os.path.exists(f"resource/{s_str}/nz"):
+if not os.path.exists(f"output/{s_str}/nz"):
     # Create the directory
-    os.makedirs(f"resource/{s_str}/nz")
+    os.makedirs(f"output/{s_str}/nz")
     os.makedirs(f"output/temp/nz/start")
 # ms.morning_star('nzx_tickers.csv', f'resource/{s_str}/nz/morning_star_{s_str}.csv')
 

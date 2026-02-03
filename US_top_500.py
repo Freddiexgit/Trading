@@ -12,14 +12,17 @@ from institute_enter import institute_enter
 from RSI_Momentum_Combo_Strategy_copilot import run_momentum
 import pandas as pd
 import glob
+import  data_downloader as data
 
+data.global_period = "6mo"
+data.global_interval ="4h"
 
 date = datetime.now().strftime("%Y-%m-%d")
 
 # ticker_file_name = "my_vip"
-# ticker_file_name = "my_watch_list"
+ticker_file_name = "my_watch_list"
 # ticker_file_name = "nyse_and_nasdaq_top_500"
-ticker_file_name = "us_top_3000"
+# ticker_file_name = "us_top_3000"
 ticker_file_name_full = f"{ticker_file_name}.csv"
 output_folder = f"output/{date}/us/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
@@ -30,7 +33,7 @@ try:
     print("running rsi_bottom...")
     rsi_bottom(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/bottom.csv")
     df_tickers_rsi = pd.read_csv(  f"{output_folder}/bottom.csv")
-    di.generate_pdf(df_tickers_rsi, f"{output_folder}/rsi_bottom_{date}.pdf", "No", "us")
+    di.generate_pdf(df_tickers_rsi, f"{output_folder}/bottom_{date}.pdf", "No", "us")
 except Exception  as  e:
     print("rsi_bottom error:", e)
 try:

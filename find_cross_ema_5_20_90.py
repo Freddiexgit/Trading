@@ -8,9 +8,9 @@ pd.set_option('display.width', 1000)
 
 date = datetime.now().strftime("%Y-%m-%d")
 
-if not os.path.exists(f"resource/{date}/us"):
+if not os.path.exists(f"output/{date}/us"):
     # Create the directory
-    os.makedirs(f"resource/{date}/us")
+    os.makedirs(f"output/{date}/us")
 
 def get_data(df , ticker):
     df = df.copy()

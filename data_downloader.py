@@ -3,6 +3,8 @@ import pandas as pd
 # Global variable
 symbol_and_df = {}
 symbol_and_stock = {}
+global_period = None
+global_interval = None
 
 def get_transaction_df(symbol, period="10mo", interval="4h"):
     """Update the shared variable safely."""
@@ -13,7 +15,7 @@ def get_transaction_df(symbol, period="10mo", interval="4h"):
         #     df = yf.download(symbol, period=period, interval=interval,auto_adjust=True)
         # except Exception as e:
         #     return pd.DataFrame()
-        get_stock_obj(symbol,period, interval="4h")
+        get_stock_obj(symbol,period, interval)
 
     df =  symbol_and_df[symbol]
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
@@ -22,7 +24,10 @@ def get_transaction_df(symbol, period="10mo", interval="4h"):
 
 def get_stock_obj(symbol, period="10m", interval="4h"):
     """Update the shared variable safely."""
-    global symbol_and_stock ,symbol_and_df
+    global symbol_and_stock ,symbol_and_df, global_period, global_interval
+    if  global_period and  global_interval:
+        period = global_period
+        interval = global_interval
     stock = symbol_and_stock.get(symbol)
     if stock is None:
         stock = yf.Ticker(symbol)

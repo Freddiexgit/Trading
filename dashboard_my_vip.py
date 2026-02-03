@@ -26,9 +26,9 @@ def pd_read_pattern(pattern):
     return df.reset_index(drop=True)
 
 
-if not os.path.exists(f"resource/{date}/us/myvip"):
+if not os.path.exists(f"output/{date}/us/myvip"):
     # Create the directory
-    os.makedirs(f"resource/{date}/us/myvip")
+    os.makedirs(f"output/{date}/us/myvip")
 
 
 rsi_bottom("resource/myvip/my_vip.csv",   output_file = f"resource/{date}/us/myvip/bottom.csv")
