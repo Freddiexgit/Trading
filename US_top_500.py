@@ -13,16 +13,18 @@ from RSI_Momentum_Combo_Strategy_copilot import run_momentum
 import pandas as pd
 import glob
 import  data_downloader as data
+import traceback
 
-data.global_period = "6mo"
-data.global_interval ="4h"
+data.global_period = "12mo"
+data.global_interval ="1d"
 
 date = datetime.now().strftime("%Y-%m-%d")
-
+# ticker_file_name = "nzx_tickers"
 # ticker_file_name = "my_vip"
-ticker_file_name = "my_watch_list"
-# ticker_file_name = "nyse_and_nasdaq_top_500"
+# ticker_file_name = "my_watch_list"
+ticker_file_name = "nyse_and_nasdaq_top_500"
 # ticker_file_name = "us_top_3000"
+# ticker_file_name = "my_owned"
 ticker_file_name_full = f"{ticker_file_name}.csv"
 output_folder = f"output/{date}/us/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
@@ -46,8 +48,11 @@ except Exception as e:
 try:
     print("running run_momentum...")
     run_momentum(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/momentum.csv" )
+    df_tickers_inst = pd.read_csv(f"{output_folder}/momentum.csv")
+    di.generate_pdf(df_tickers_inst, f"{output_folder}/momentum{date}.pdf", "No", "us")
 except Exception as e:
     print("run_momentum error:", e)
+    traceback.print_stack()
 try:
     print("running run_converge_diverge...")
     run_converge_diverge(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )

@@ -30,18 +30,18 @@ if not os.path.exists(f"output/{date}/us/myvip"):
     # Create the directory
     os.makedirs(f"output/{date}/us/myvip")
 
+#
+# rsi_bottom("resource/my_vip.csv",   output_file = f"resource/{date}/us/myvip/bottom.csv")
+# institute_enter("resource/my_vip.csv",output_file = f"resource/{date}/us/myvip/institute_enter.csv")
+#
+df_tickers = pd.read_csv(f"resource/my_vip.csv")
+# # find_cross(df_tickers, f"resource/{date}/us/myvip/find_cross_ema_{s_str}")
+#
+# df_tickers_result = pd_read_pattern(f'resource/{date}/us/myvip/find_cross_ema*')
+#
+#
+#
+# di.generate_pdf(df_tickers_result, f"resource/{date}/us/myvip/find_cross_ema_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf", "No", "us")
+#
 
-rsi_bottom("resource/myvip/my_vip.csv",   output_file = f"resource/{date}/us/myvip/bottom.csv")
-institute_enter("resource/myvip/my_vip.csv",output_file = f"resource/{date}/us/myvip/institute_enter.csv")
-
-df_tickers = pd.read_csv(f"resource/myvip/my_vip.csv")
-# find_cross(df_tickers, f"resource/{date}/us/myvip/find_cross_ema_{s_str}")
-
-df_tickers_result = pd_read_pattern(f'resource/{date}/us/myvip/find_cross_ema*')
-
-
-
-di.generate_pdf(df_tickers_result, f"resource/{date}/us/myvip/find_cross_ema_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf", "No", "us")
-
-
-di.generate_pdf(df_tickers,f"resource/{date}/us/myvip/report_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")
+di.generate_pdf(df_tickers,f"output/{date}/us/myvip/report_{datetime.now().strftime('%Y-%m-%d')}.pdf","No","holding")

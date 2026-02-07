@@ -1,6 +1,6 @@
 from pytube import YouTube
 
-video_url = "https://www.youtube.com/watch?v=DTTy2MsTLCc"
+video_url = "https://www.youtube.com/watch?v=cOxXsKLXbAw"
 yt = YouTube( video_url)
 # Auto‑generated English subtitles usually use "a.en"
 caption = yt.captions.get("a.en")

@@ -71,6 +71,7 @@ def run_momentum(file_name,output_file):
            continue
 
         df_r = rsi_momentum_combo(df1.copy())
+        print(df_r)
         if (df_r["Position"].iloc[-1] ==1 and df_r["Position"].iloc[-2]==0):
             result.append(ticker)
 
@@ -88,4 +89,4 @@ if __name__ == "__main__":
     # print(result_df.tail())
 
     run_momentum(f"resource/my_watch_list.csv",
-                 output_file = f"output/2026-2-01/us/my_vip/momentum_combo.csv")
+                 output_file = f"output/2026-2-5/us/my_vip/momentum_combo.csv")
