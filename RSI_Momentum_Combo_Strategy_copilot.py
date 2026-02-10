@@ -69,10 +69,13 @@ def run_momentum(file_name,output_file):
 
         if ~len(df1) > 20:
            continue
-
-        df_r = rsi_momentum_combo(df1.copy())
-        print(df_r)
-        if (df_r["Position"].iloc[-1] ==1 and df_r["Position"].iloc[-2]==0):
+        dfx = df1.copy()
+        # dfx = dfx[-21:]
+        df_r = rsi_momentum_combo(dfx)
+        recent_signals = df_r['Signal'].tail(6)
+        switches = recent_signals.diff()
+        if (switches == 1).any() and df_r['Signal'].iloc[-1] == 1:
+            print(ticker)
             result.append(ticker)
 
     if len(result) > 0:
@@ -88,5 +91,5 @@ if __name__ == "__main__":
     #
     # print(result_df.tail())
 
-    run_momentum(f"resource/my_watch_list.csv",
+    run_momentum(f"resource/my_owned.csv",
                  output_file = f"output/2026-2-5/us/my_vip/momentum_combo.csv")

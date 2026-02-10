@@ -5,7 +5,7 @@ from dashboard_us_last_volume import run_last_day_volume_increase
 import os
 from datetime import datetime
 import dashboard_list_indicators as di
-
+import  ask_bid
 from RSI_bottom_finder import rsi_bottom
 from find_cross_ema_5_20_90 import find_cross
 from institute_enter import institute_enter
@@ -14,6 +14,7 @@ import pandas as pd
 import glob
 import  data_downloader as data
 import traceback
+import AI_buying_point as ai
 
 data.global_period = "12mo"
 data.global_interval ="1d"
@@ -30,12 +31,19 @@ output_folder = f"output/{date}/us/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
     # Create the directory
     os.makedirs(f"{output_folder}")
+try:
+    print("running ai entry point...")
+    ai.run_ai_buying_point(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ai_buy.csv")
+    df_tickers_ai = pd.read_csv(f"{output_folder}/ai_buy.csv")
+    di.generate_pdf(df_tickers_ai, f"{output_folder}/ai_buy.pdf", "No", "us")
+except Exception as e:
+    print("ai entry point error:", e)
 
 try:
     print("running rsi_bottom...")
     rsi_bottom(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/bottom.csv")
     df_tickers_rsi = pd.read_csv(  f"{output_folder}/bottom.csv")
-    di.generate_pdf(df_tickers_rsi, f"{output_folder}/bottom_{date}.pdf", "No", "us")
+    di.generate_pdf(df_tickers_rsi, f"{output_folder}/bottom.pdf", "No", "us")
 except Exception  as  e:
     print("rsi_bottom error:", e)
 try:
@@ -43,6 +51,13 @@ try:
     institute_enter(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/institute_enter.csv")
     df_tickers_inst = pd.read_csv(f"{output_folder}/institute_enter.csv")
     di.generate_pdf(df_tickers_inst, f"{output_folder}/institute_enter{date}.pdf", "No", "us")
+except Exception as e:
+    print("institute_enter error:", e)
+try:
+    print("running bid ask...")
+    ask_bid.bid_ask_screener(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/bid_ask.csv")
+    df_tickers_ba = pd.read_csv(f"{output_folder}/bid_ask.csv")
+    di.generate_pdf(df_tickers_ba, f"{output_folder}/bid_ask{date}.pdf", "No", "us")
 except Exception as e:
     print("institute_enter error:", e)
 try:

@@ -52,16 +52,10 @@ def institute_enter(file_name,output_file = f"resource/{datetime.now().strftime(
         df1 = dd.get_transaction_df(ticker,period="20d", interval="4h")
         df = df1.copy()
         ind = signal_vol_up_range_tight(ticker ,df)
-
         if ind:
             result.append(ticker)
-            print(ticker)
-
-
     if len(result)> 0:
-
         df2 = pd.DataFrame(result, columns=['symbol']).drop_duplicates()
         df2.to_csv(f'{output_file}', index=False)
-
 if __name__  =="__main__":
     institute_enter("resource/my_watch_list.csv")
