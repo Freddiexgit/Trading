@@ -189,7 +189,7 @@ def run_sequential_screening(ticker_list):
 # ---------------- Execution ----------------
 if __name__ == "__main__":
     try:
-        watch_list = pd.read_csv("../resource/my_watch_list.csv")['symbol'].tolist()
+        watch_list = pd.read_csv("../resource/industries/Aerospace & Defense.csv")['ticker'].tolist()
     except:
         watch_list = ["AAPL", "NVDA", "ENLT", "SIDU", "GOOGL", "MSFT", "AMZN", "META"]
 
