@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ANET,Arista Networks Inc,Technology,Computer Hardware,171625611264.0
 DELL,Dell Technologies Inc.,Technology,Computer Hardware,82620063744.0
 HPQ,HP Inc.,Technology,Computer Hardware,26676396032.0

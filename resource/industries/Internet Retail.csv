@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 BABA,Alibaba Group Holding Limited,Consumer Cyclical,Internet Retail,335395356672.0
 SE,Sea Limited,Consumer Cyclical,Internet Retail,110435401728.0
 CPNG,"Coupang, Inc.",Consumer Cyclical,Internet Retail,52103340032.0

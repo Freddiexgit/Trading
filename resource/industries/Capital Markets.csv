@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0
 GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0
 SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0

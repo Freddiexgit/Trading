@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SAP,SAP SE,Technology,Software - Application,316957556736.0
 CRM,"Salesforce, Inc.",Technology,Software - Application,244974993408.0
 NOW,"ServiceNow, Inc.",Technology,Software - Application,190390386688.0

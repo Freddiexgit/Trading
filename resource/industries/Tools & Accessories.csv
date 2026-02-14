@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SNA,Snap-on Incorporated,Industrials,Tools & Accessories,16965623808.0
 RBC,RBC Bearings Incorporated,Industrials,Tools & Accessories,12308151296.0
 SWK,"Stanley Black & Decker, Inc.",Industrials,Tools & Accessories,11499497472.0

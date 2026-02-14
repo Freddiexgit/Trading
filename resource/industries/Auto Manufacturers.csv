@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TM,Toyota Motor Corporation,Consumer Cyclical,Auto Manufacturers,253590880256.0
 RACE,Ferrari N.V.,Consumer Cyclical,Auto Manufacturers,85047410688.0
 GM,General Motors Company,Consumer Cyclical,Auto Manufacturers,55782252544.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MCK,McKesson Corporation,Healthcare,Medical Distribution,85407031296.0
 COR,"Cencora, Inc.",Healthcare,Medical Distribution,56536760320.0
 CAH,"Cardinal Health, Inc.",Healthcare,Medical Distribution,35527770112.0

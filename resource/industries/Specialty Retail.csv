@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 WSM,"Williams-Sonoma, Inc.",Consumer Cyclical,Specialty Retail,22919659520.0
 DKS,"DICK'S Sporting Goods, Inc.",Consumer Cyclical,Specialty Retail,17044579328.0
 BBY,"Best Buy Co., Inc.",Consumer Cyclical,Specialty Retail,15563593728.0

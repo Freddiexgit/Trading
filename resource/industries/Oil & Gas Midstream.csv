@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ENB,Enbridge Inc.,Energy,Oil & Gas Midstream,105456615424.0
 WMB,"The Williams Companies, Inc.",Energy,Oil & Gas Midstream,70681903104.0
 EPD,Enterprise Products Partners L.P.,Energy,Oil & Gas Midstream,69591138304.0

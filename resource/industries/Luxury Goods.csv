@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TPR,"Tapestry, Inc.",Consumer Cyclical,Luxury Goods,21191186432.0
 SIG,Signet Jewelers Limited,Consumer Cyclical,Luxury Goods,3623275264.0
 CPRI,Capri Holdings Limited,Consumer Cyclical,Luxury Goods,2451198464.0

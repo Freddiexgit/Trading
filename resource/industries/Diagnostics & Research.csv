@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TMO,Thermo Fisher Scientific Inc.,Healthcare,Diagnostics & Research,186056982528.0
 DHR,Danaher Corporation,Healthcare,Diagnostics & Research,147377815552.0
 A,"Agilent Technologies, Inc.",Healthcare,Diagnostics & Research,35624611840.0

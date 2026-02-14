@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 EG,"Everest Group, Ltd.",Financial Services,Insurance - Reinsurance,14339575808.0
 RGA,"Reinsurance Group of America, Incorporated",Financial Services,Insurance - Reinsurance,12874411008.0
 RNR,RenaissanceRe Holdings Ltd.,Financial Services,Insurance - Reinsurance,11436616704.0

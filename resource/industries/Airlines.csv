@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 DAL,"Delta Air Lines, Inc.",Industrials,Airlines,40339124224.0
 LUV,Southwest Airlines Co.,Industrials,Airlines,17278685184.0
 LTM,,Industrials,Airlines,15189526528.0

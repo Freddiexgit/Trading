@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 HD,"The Home Depot, Inc.",Consumer Cyclical,Home Improvement Retail,404893564928.0
 LOW,"Lowe's Companies, Inc.",Consumer Cyclical,Home Improvement Retail,144726507520.0
 FND,"Floor & Decor Holdings, Inc.",Consumer Cyclical,Home Improvement Retail,8822046720.0

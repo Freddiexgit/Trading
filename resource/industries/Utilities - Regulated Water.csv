@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AWK,"American Water Works Company, Inc.",Utilities,Utilities - Regulated Water,27998658560.0
 SBS,Companhia de Saneamento Básico do Estado de São Paulo - SABESP,Utilities,Utilities - Regulated Water,15481501696.0
 WTRG,"Essential Utilities, Inc.",Utilities,Utilities - Regulated Water,11081329664.0

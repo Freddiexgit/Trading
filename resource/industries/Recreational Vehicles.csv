@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 THO,"THOR Industries, Inc.",Consumer Cyclical,Recreational Vehicles,5793850368.0
 BC,Brunswick Corporation,Consumer Cyclical,Recreational Vehicles,4154385664.0
 PII,Polaris Inc.,Consumer Cyclical,Recreational Vehicles,3181188096.0

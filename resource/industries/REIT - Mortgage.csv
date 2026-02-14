@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 NLY,"Annaly Capital Management, Inc.",Real Estate,REIT - Mortgage,13605591040.0
 STWD,"Starwood Property Trust, Inc.",Real Estate,REIT - Mortgage,7636499968.0
 RITM,Rithm Capital Corp.,Real Estate,REIT - Mortgage,6565015040.0

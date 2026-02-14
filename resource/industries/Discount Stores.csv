@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 WMT,Walmart Inc.,Consumer Defensive,Discount Stores,773207031808.0
 TGT,Target Corporation,Consumer Defensive,Discount Stores,43613216768.0
 DG,Dollar General Corporation,Consumer Defensive,Discount Stores,23938729984.0

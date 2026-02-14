@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 KO,The Coca-Cola Company,Consumer Defensive,Beverages - Non-Alcoholic,296910159872.0
 KOF,"Coca-Cola FEMSA, S.A.B. de C.V.",Consumer Defensive,Beverages - Non-Alcoholic,17854953472.0
 PRMB,Primo Brands Corporation,Consumer Defensive,Beverages - Non-Alcoholic,9379111936.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 GE,GE Aerospace,Industrials,Aerospace & Defense,291833085952.0
 RTX,RTX Corporation,Industrials,Aerospace & Defense,212292452352.0
 BA,The Boeing Company,Industrials,Aerospace & Defense,177455153152.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 URI,"United Rentals, Inc.",Industrials,Rental & Leasing Services,61532065792.0
 AER,AerCap Holdings N.V.,Industrials,Rental & Leasing Services,22021285888.0
 UHAL,U-Haul Holding Company,Industrials,Rental & Leasing Services,9895203840.0

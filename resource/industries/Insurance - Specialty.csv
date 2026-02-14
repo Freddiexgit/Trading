@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RYAN,"Ryan Specialty Holdings, Inc.",Financial Services,Insurance - Specialty,14923864064.0
 FNF,"Fidelity National Financial, Inc.",Financial Services,Insurance - Specialty,16268056576.0
 AXS,AXIS Capital Holdings Limited,Financial Services,Insurance - Specialty,7706393088.0

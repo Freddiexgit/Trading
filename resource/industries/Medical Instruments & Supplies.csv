@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 BDX,"Becton, Dickinson and Company",Healthcare,Medical Instruments & Supplies,55313276928.0
 ALC,Alcon Inc.,Healthcare,Medical Instruments & Supplies,39522390016.0
 RMD,ResMed Inc.,Healthcare,Medical Instruments & Supplies,40192385024.0

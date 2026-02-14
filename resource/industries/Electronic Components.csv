@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 APH,Amphenol Corporation,Technology,Electronic Components,132909359104.0
 TEL,TE Connectivity plc,Technology,Electronic Components,61017030656.0
 GLW,Corning Incorporated,Technology,Electronic Components,57419169792.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 DEO,Diageo plc,Consumer Defensive,Beverages - Wineries & Distilleries,62130958336.0
 MGPI,"MGP Ingredients, Inc.",Consumer Defensive,Beverages - Wineries & Distilleries,629625152.0
 SNDL,SNDL Inc.,Consumer Defensive,Beverages - Wineries & Distilleries,689698048.0

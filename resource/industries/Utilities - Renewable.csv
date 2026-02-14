@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 BEP,Brookfield Renewable Partners L.P.,Utilities,Utilities - Renewable,16683010048.0
 EBR,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilities,Utilities - Renewable,18826340352.0
 BEPC,Brookfield Renewable Corporation,Utilities,Utilities - Renewable,6050970112.0

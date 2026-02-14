@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 JPM,JPMorgan Chase & Co.,Financial Services,Banks - Diversified,828829663232.0
 BAC,Bank of America Corporation,Financial Services,Banks - Diversified,375828643840.0
 WFC,Wells Fargo & Company,Financial Services,Banks - Diversified,263258718208.0

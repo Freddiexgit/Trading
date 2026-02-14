@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AZO,"AutoZone, Inc.",Consumer Cyclical,Auto Parts,70235947008.0
 GPC,Genuine Parts Company,Consumer Cyclical,Auto Parts,19379689472.0
 APTV,Aptiv PLC,Consumer Cyclical,Auto Parts,17318453248.0

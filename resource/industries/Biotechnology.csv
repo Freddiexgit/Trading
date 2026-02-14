@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 BHVN,Biohaven Ltd.,Healthcare,Biotechnology,1628123520.0
 RCUS,"Arcus Biosciences, Inc.",Healthcare,Biotechnology,1127104256.0
 NUVB,Nuvation Bio Inc.,Healthcare,Biotechnology,1016550784.0

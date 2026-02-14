@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 CAT,Caterpillar Inc.,Industrials,Farm & Heavy Construction Machinery,196311449600.0
 DE,Deere & Company,Industrials,Farm & Heavy Construction Machinery,129390272512.0
 CNH,CNH Industrial N.V.,Industrials,Farm & Heavy Construction Machinery,14321888256.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MCD,McDonald's Corporation,Consumer Cyclical,Restaurants,223743393792.0
 CMG,"Chipotle Mexican Grill, Inc.",Consumer Cyclical,Restaurants,56504680448.0
 YUM,"Yum! Brands, Inc.",Consumer Cyclical,Restaurants,40789467136.0

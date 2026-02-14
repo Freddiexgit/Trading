@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 NEE,"NextEra Energy, Inc.",Utilities,Utilities - Regulated Electric,148371849216.0
 SO,The Southern Company,Utilities,Utilities - Regulated Electric,101534621696.0
 DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0

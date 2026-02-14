@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 IX,ORIX Corporation,Financial Services,Financial Conglomerates,29218320384.0
 VOYA,"Voya Financial, Inc.",Financial Services,Financial Conglomerates,7240012288.0
 HTH,Hilltop Holdings Inc.,Financial Services,Financial Conglomerates,2210103296.0

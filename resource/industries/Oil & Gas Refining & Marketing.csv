@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MPC,Marathon Petroleum Corporation,Energy,Oil & Gas Refining & Marketing,54635438080.0
 PSX,Phillips 66,Energy,Oil & Gas Refining & Marketing,53982883840.0
 VLO,Valero Energy Corporation,Energy,Oil & Gas Refining & Marketing,47222210560.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 WM,"Waste Management, Inc.",Industrials,Waste Management,91196686336.0
 RSG,"Republic Services, Inc.",Industrials,Waste Management,73049178112.0
 WCN,"Waste Connections, Inc.",Industrials,Waste Management,47517237248.0

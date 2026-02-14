@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 CVNA,Carvana Co.,Consumer Cyclical,Auto & Truck Dealerships,43494928384.0
 PAG,"Penske Automotive Group, Inc.",Consumer Cyclical,Auto & Truck Dealerships,12179248128.0
 KMX,"CarMax, Inc.",Consumer Cyclical,Auto & Truck Dealerships,9206917120.0

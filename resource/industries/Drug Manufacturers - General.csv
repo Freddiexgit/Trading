@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 LLY,Eli Lilly and Company,Healthcare,Drug Manufacturers - General,656726491136.0
 JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers - General,426685595648.0
 ABBV,AbbVie Inc.,Healthcare,Drug Manufacturers - General,371684212736.0

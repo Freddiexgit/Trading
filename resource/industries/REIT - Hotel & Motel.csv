@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RHP,"Ryman Hospitality Properties, Inc.",Real Estate,REIT - Hotel & Motel,6223750144.0
 APLE,"Apple Hospitality REIT, Inc.",Real Estate,REIT - Hotel & Motel,3095089408.0
 PK,Park Hotels & Resorts Inc.,Real Estate,REIT - Hotel & Motel,2350988800.0

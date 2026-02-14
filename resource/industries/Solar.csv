@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 JKS,"JinkoSolar Holding Co., Ltd.",Technology,Solar,1191620864.0
 SOL,Emeren Group Ltd,Technology,Solar,93405312.0
 SPRU,Spruce Power Holding Corporation,Technology,Solar,25859880.0

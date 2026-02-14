@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 NUE,Nucor Corporation,Basic Materials,Steel,34138740736.0
 MT,ArcelorMittal S.A.,Basic Materials,Steel,25369946112.0
 PKX,POSCO Holdings Inc.,Basic Materials,Steel,15605098496.0

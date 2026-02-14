@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AFL,Aflac Incorporated,Financial Services,Insurance - Life,57152040960.0
 MFC,Manulife Financial Corporation,Financial Services,Insurance - Life,52230107136.0
 MET,"MetLife, Inc.",Financial Services,Insurance - Life,54106513408.0

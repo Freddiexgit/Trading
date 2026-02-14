@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ADM,Archer-Daniels-Midland Company,Consumer Defensive,Farm Products,30096265216.0
 TSN,"Tyson Foods, Inc.",Consumer Defensive,Farm Products,20200562688.0
 BG,Bunge Global SA,Consumer Defensive,Farm Products,16849221632.0

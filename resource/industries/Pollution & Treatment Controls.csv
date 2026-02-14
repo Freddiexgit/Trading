@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 VLTO,Veralto Corporation,Industrials,Pollution & Treatment Controls,26352216064.0
 ZWS,Zurn Elkay Water Solutions Corporation,Industrials,Pollution & Treatment Controls,7600203776.0
 FSS,Federal Signal Corporation,Industrials,Pollution & Treatment Controls,7476795904.0

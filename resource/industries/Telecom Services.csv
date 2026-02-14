@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 T,AT&T Inc.,Communication Services,Telecom Services,209434918912.0
 AMX,"América Móvil, S.A.B. de C.V.",Communication Services,Telecom Services,60329218048.0
 CHT,"Chunghwa Telecom Co., Ltd.",Communication Services,Telecom Services,33981046784.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 PLD,"Prologis, Inc.",Real Estate,REIT - Industrial,105595002880.0
 PSA,Public Storage,Real Estate,REIT - Industrial,51686694912.0
 EXR,Extra Space Storage Inc.,Real Estate,REIT - Industrial,31817469952.0

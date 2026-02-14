@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 GWW,"W.W. Grainger, Inc.",Industrials,Industrial Distribution,48477933568.0
 FERG,Ferguson Enterprises Inc.,Industrials,Industrial Distribution,46388568064.0
 WSO,"Watsco, Inc.",Industrials,Industrial Distribution,16498224128.0

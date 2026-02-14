@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SYY,Sysco Corporation,Consumer Defensive,Food Distribution,38481719296.0
 USFD,US Foods Holding Corp.,Consumer Defensive,Food Distribution,17473347584.0
 PFGC,Performance Food Group Company,Consumer Defensive,Food Distribution,15871027200.0

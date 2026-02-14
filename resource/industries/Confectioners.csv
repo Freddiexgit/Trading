@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 HSY,The Hershey Company,Consumer Defensive,Confectioners,37250535424.0
 TR,"Tootsie Roll Industries, Inc.",Consumer Defensive,Confectioners,1676756992.0
 MDLZ,"Mondelez International, Inc.",Consumer Defensive,Confectioners,79500279808.0

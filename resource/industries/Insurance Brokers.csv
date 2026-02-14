@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MMC,"Marsh & McLennan Companies, Inc.",Financial Services,Insurance Brokers,101181136896.0
 AON,Aon plc,Financial Services,Insurance Brokers,79135113216.0
 AJG,Arthur J. Gallagher & Co.,Financial Services,Insurance Brokers,77613899776.0

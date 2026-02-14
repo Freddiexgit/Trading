@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 HLT,Hilton Worldwide Holdings Inc.,Consumer Cyclical,Lodging,64927653888.0
 IHG,InterContinental Hotels Group PLC,Consumer Cyclical,Lodging,18705543168.0
 H,Hyatt Hotels Corporation,Consumer Cyclical,Lodging,13776575488.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RHI,Robert Half Inc.,Industrials,Staffing & Employment Services,3796899328.0
 KFY,Korn Ferry,Industrials,Staffing & Employment Services,3879568128.0
 TNET,"TriNet Group, Inc.",Industrials,Staffing & Employment Services,3518880512.0

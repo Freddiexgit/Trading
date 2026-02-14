@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SRE,Sempra,Utilities,Utilities - Diversified,53868085248.0
 BIP,Brookfield Infrastructure Partners L.P.,Utilities,Utilities - Diversified,14552324096.0
 AES,The AES Corporation,Utilities,Utilities - Diversified,9641156608.0

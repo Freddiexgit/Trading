@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 PWR,"Quanta Services, Inc.",Industrials,Engineering & Construction,56318308352.0
 EME,"EMCOR Group, Inc.",Industrials,Engineering & Construction,27753803776.0
 FIX,"Comfort Systems USA, Inc.",Industrials,Engineering & Construction,24816302080.0

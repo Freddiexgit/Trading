@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 UNH,UnitedHealth Group Incorporated,Healthcare,Healthcare Plans,280641208320.0
 CI,The Cigna Group,Healthcare,Healthcare Plans,80310624256.0
 CVS,CVS Health Corporation,Healthcare,Healthcare Plans,92778340352.0

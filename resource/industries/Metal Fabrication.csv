@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 CRS,Carpenter Technology Corporation,Industrials,Metal Fabrication,12007891968.0
 ATI,ATI Inc.,Industrials,Metal Fabrication,10687493120.0
 MLI,"Mueller Industries, Inc.",Industrials,Metal Fabrication,10620654592.0

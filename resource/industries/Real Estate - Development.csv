@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 HHH,Howard Hughes Holdings Inc.,Real Estate,Real Estate - Development,4530529280.0
 VTMX,"Corporación Inmobiliaria Vesta, S.A.B. de C.V.",Real Estate,Real Estate - Development,2326485248.0
 CCS,"Century Communities, Inc.",Real Estate,Real Estate - Development,1955305088.0

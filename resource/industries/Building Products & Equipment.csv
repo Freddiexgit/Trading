@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TT,Trane Technologies plc,Industrials,Building Products & Equipment,92477235200.0
 JCI,Johnson Controls International plc,Industrials,Building Products & Equipment,69947211776.0
 CARR,Carrier Global Corporation,Industrials,Building Products & Equipment,55486697472.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MSI,"Motorola Solutions, Inc.",Technology,Communication Equipment,78713724928.0
 HPE,Hewlett Packard Enterprise Company,Technology,Communication Equipment,29616805888.0
 UI,Ubiquiti Inc.,Technology,Communication Equipment,31951177728.0

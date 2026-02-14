@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 VEEV,Veeva Systems Inc.,Healthcare,Health Information Services,44124037120.0
 DOCS,"Doximity, Inc.",Healthcare,Health Information Services,12725095424.0
 HNGE,"Hinge Health, Inc.",Healthcare,Health Information Services,4398646272.0

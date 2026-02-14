@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 DHI,"D.R. Horton, Inc.",Consumer Cyclical,Residential Construction,50526052352.0
 LEN,Lennar Corporation,Consumer Cyclical,Residential Construction,34296995840.0
 PHM,"PulteGroup, Inc.",Consumer Cyclical,Residential Construction,26047283200.0

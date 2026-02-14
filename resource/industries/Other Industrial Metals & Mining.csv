@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 BHP,BHP Group Limited,Basic Materials,Other Industrial Metals & Mining,141882785792.0
 RIO,Rio Tinto Group,Basic Materials,Other Industrial Metals & Mining,101898051584.0
 VALE,Vale S.A.,Basic Materials,Other Industrial Metals & Mining,43883057152.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ARE,"Alexandria Real Estate Equities, Inc.",Real Estate,REIT - Office,14074238976.0
 BXP,"BXP, Inc.",Real Estate,REIT - Office,12819986432.0
 VNO,Vornado Realty Trust,Real Estate,REIT - Office,7938723840.0

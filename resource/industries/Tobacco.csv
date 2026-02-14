@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 PM,Philip Morris International Inc.,Consumer Defensive,Tobacco,260152885248.0
 BTI,British American Tobacco p.l.c.,Consumer Defensive,Tobacco,124198838272.0
 MO,"Altria Group, Inc.",Consumer Defensive,Tobacco,112905412608.0

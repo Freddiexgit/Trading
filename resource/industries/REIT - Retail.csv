@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SPG,"Simon Property Group, Inc.",Real Estate,REIT - Retail,68146221056.0
 O,Realty Income Corporation,Real Estate,REIT - Retail,53724618752.0
 KIM,Kimco Realty Corporation,Real Estate,REIT - Retail,15230227456.0

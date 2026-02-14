@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 IP,International Paper Company,Consumer Cyclical,Packaging & Containers,26230147072.0
 SW,Smurfit Westrock Plc,Consumer Cyclical,Packaging & Containers,24727840768.0
 PKG,Packaging Corporation of America,Consumer Cyclical,Packaging & Containers,19611779072.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ABT,Abbott Laboratories,Healthcare,Medical Devices,230889439232.0
 BSX,Boston Scientific Corporation,Healthcare,Medical Devices,156324626432.0
 SYK,Stryker Corporation,Healthcare,Medical Devices,149638791168.0

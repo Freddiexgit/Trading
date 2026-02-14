@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 NKE,"NIKE, Inc.",Consumer Cyclical,Footwear & Accessories,114267758592.0
 ONON,On Holding AG,Consumer Cyclical,Footwear & Accessories,14720378880.0
 DECK,Deckers Outdoor Corporation,Consumer Cyclical,Footwear & Accessories,17746274304.0

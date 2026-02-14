@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AVB,"AvalonBay Communities, Inc.",Real Estate,REIT - Residential,27885713408.0
 EQR,Equity Residential,Real Estate,REIT - Residential,26022320128.0
 INVH,Invitation Homes Inc.,Real Estate,REIT - Residential,19181021184.0

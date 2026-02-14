@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 OMC,Omnicom Group Inc.,Communication Services,Advertising Agencies,15174323200.0
 IPG,"The Interpublic Group of Companies, Inc.",Communication Services,Advertising Agencies,9830579200.0
 WPP,WPP plc,Communication Services,Advertising Agencies,5726084608.0

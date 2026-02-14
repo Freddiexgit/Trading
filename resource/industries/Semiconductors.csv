@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TSM,Taiwan Semiconductor Manufacturing Company Limited,Technology,Semiconductors,1197411926016.0
 STM,STMicroelectronics N.V.,Technology,Semiconductors,24240799744.0
 ASX,"ASE Technology Holding Co., Ltd.",Technology,Semiconductors,22179471360.0

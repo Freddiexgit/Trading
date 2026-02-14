@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SSD,"Simpson Manufacturing Co., Inc.",Basic Materials,Lumber & Wood Production,7953897984.0
 WFG,West Fraser Timber Co. Ltd.,Basic Materials,Lumber & Wood Production,5741852160.0
 BCC,Boise Cascade Company,Basic Materials,Lumber & Wood Production,3248362496.0

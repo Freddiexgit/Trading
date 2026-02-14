@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ONTO,Onto Innovation Inc.,Technology,Semiconductor Equipment & Materials,5194381824.0
 DQ,Daqo New Energy Corp.,Technology,Semiconductor Equipment & Materials,1699887360.0
 ASML,ASML Holding N.V.,Technology,Semiconductor Equipment & Materials,292382113792.0

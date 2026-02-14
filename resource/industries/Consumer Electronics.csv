@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SONY,Sony Group Corporation,Technology,Consumer Electronics,164926537728.0
 LPL,"LG Display Co., Ltd.",Technology,Consumer Electronics,4409999872.0
 ZEPP,Zepp Health Corporation,Technology,Consumer Electronics,646564480.0

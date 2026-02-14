@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 UPS,"United Parcel Service, Inc.",Industrials,Integrated Freight & Logistics,74111524864.0
 FDX,FedEx Corporation,Industrials,Integrated Freight & Logistics,54520504320.0
 ZTO,ZTO Express (Cayman) Inc.,Industrials,Integrated Freight & Logistics,14536176640.0

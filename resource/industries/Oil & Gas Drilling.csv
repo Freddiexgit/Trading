@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 NE,Noble Corporation plc,Energy,Oil & Gas Drilling,4577336320.0
 RIG,Transocean Ltd.,Energy,Oil & Gas Drilling,2857668608.0
 SOC,Sable Offshore Corp.,Energy,Oil & Gas Drilling,2684704256.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 NEM,Newmont Corporation,Basic Materials,Gold,81724686336.0
 AEM,Agnico Eagle Mines Limited,Basic Materials,Gold,72422645760.0
 WPM,Wheaton Precious Metals Corp.,Basic Materials,Gold,45586161664.0

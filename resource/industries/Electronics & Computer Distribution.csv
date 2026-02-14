@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SNX,TD SYNNEX Corporation,Technology,Electronics & Computer Distribution,12210905088.0
 ARW,"Arrow Electronics, Inc.",Technology,Electronics & Computer Distribution,6506209792.0
 NSIT,"Insight Enterprises, Inc.",Technology,Electronics & Computer Distribution,4096239360.0

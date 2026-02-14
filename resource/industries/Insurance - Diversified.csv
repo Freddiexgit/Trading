@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AIG,"American International Group, Inc.",Financial Services,Insurance - Diversified,45051600896.0
 SLF,Sun Life Financial Inc.,Financial Services,Insurance - Diversified,32843972608.0
 BNT,Brookfield Wealth Solutions Ltd.,Financial Services,Insurance - Diversified,18643978240.0

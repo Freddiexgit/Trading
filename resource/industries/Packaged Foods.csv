@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 JBS,JBS N.V.,Consumer Defensive,Packaged Foods,35955720192.0
 K,Kellanova,Consumer Defensive,Packaged Foods,27639685120.0
 GIS,"General Mills, Inc.",Consumer Defensive,Packaged Foods,26376062976.0

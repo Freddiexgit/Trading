@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RCL,Royal Caribbean Cruises Ltd.,Consumer Cyclical,Travel Services,98660720640.0
 CCL,Carnival Corporation & plc,Consumer Cyclical,Travel Services,43239010304.0
 CUK,Carnival Corporation & plc,Consumer Cyclical,Travel Services,38316294144.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SPGI,S&P Global Inc.,Financial Services,Financial Data & Stock Exchanges,167438729216.0
 ICE,"Intercontinental Exchange, Inc.",Financial Services,Financial Data & Stock Exchanges,101089902592.0
 MCO,Moody's Corporation,Financial Services,Financial Data & Stock Exchanges,91430051840.0

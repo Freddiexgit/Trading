@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 EDU,New Oriental Education & Technology Group Inc.,Consumer Defensive,Education & Training Services,7974995968.0
 TAL,TAL Education Group,Consumer Defensive,Education & Training Services,6462503424.0
 LRN,"Stride, Inc.",Consumer Defensive,Education & Training Services,7119473664.0

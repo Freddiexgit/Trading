@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 CBRE,"CBRE Group, Inc.",Real Estate,Real Estate Services,48239452160.0
 BEKE,KE Holdings Inc.,Real Estate,Real Estate Services,21429491712.0
 JLL,Jones Lang LaSalle Incorporated,Real Estate,Real Estate Services,14478273536.0

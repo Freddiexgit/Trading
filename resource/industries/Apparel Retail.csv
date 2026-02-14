@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TJX,"The TJX Companies, Inc.",Consumer Cyclical,Apparel Retail,152038735872.0
 BURL,"Burlington Stores, Inc.",Consumer Cyclical,Apparel Retail,18323013632.0
 GAP,"The Gap, Inc.",Consumer Cyclical,Apparel Retail,8166744576.0

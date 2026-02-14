@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 GEV,GE Vernova Inc.,Industrials,Specialty Industrial Machinery,166865141760.0
 ETN,Eaton Corporation plc,Industrials,Specialty Industrial Machinery,135920205824.0
 PH,Parker-Hannifin Corporation,Industrials,Specialty Industrial Machinery,96195977216.0

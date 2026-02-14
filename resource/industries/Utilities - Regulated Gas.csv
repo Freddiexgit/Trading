@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ATO,Atmos Energy Corporation,Utilities,Utilities - Regulated Gas,26667853824.0
 NI,NiSource Inc.,Utilities,Utilities - Regulated Gas,19903041536.0
 UGI,UGI Corporation,Utilities,Utilities - Regulated Gas,7444967424.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SLB,Schlumberger Limited,Energy,Oil & Gas Equipment & Services,54953123840.0
 TS,Tenaris S.A.,Energy,Oil & Gas Equipment & Services,18908080128.0
 HAL,Halliburton Company,Energy,Oil & Gas Equipment & Services,19379642368.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 FLUT,Flutter Entertainment plc,Consumer Cyclical,Gambling,53996187648.0
 SGHC,Super Group (SGHC) Limited,Consumer Cyclical,Gambling,5880570368.0
 RSI,"Rush Street Interactive, Inc.",Consumer Cyclical,Gambling,5093855232.0

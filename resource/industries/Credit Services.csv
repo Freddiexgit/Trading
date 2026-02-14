@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 V,Visa Inc.,Financial Services,Credit Services,682783866880.0
 MA,Mastercard Incorporated,Financial Services,Credit Services,538149289984.0
 AXP,American Express Company,Financial Services,Credit Services,230531776512.0

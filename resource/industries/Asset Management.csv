@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 BLK,"BlackRock, Inc.",Financial Services,Asset Management,174540996608.0
 KKR,KKR & Co. Inc.,Financial Services,Asset Management,129100374016.0
 BX,Blackstone Inc.,Financial Services,Asset Management,210510036992.0

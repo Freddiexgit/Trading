@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RKT,"Rocket Companies, Inc.",Financial Services,Mortgage Finance,37506961408.0
 UWMC,UWM Holdings Corporation,Financial Services,Mortgage Finance,9868580864.0
 PFSI,"PennyMac Financial Services, Inc.",Financial Services,Mortgage Finance,5693271040.0

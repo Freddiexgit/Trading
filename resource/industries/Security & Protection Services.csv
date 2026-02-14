@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ALLE,Allegion plc,Industrials,Security & Protection Services,14576735232.0
 MSA,MSA Safety Incorporated,Industrials,Security & Protection Services,6677830144.0
 ADT,ADT Inc.,Industrials,Security & Protection Services,7142905856.0

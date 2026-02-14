@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SN,"SharkNinja, Inc.",Consumer Cyclical,"Furnishings, Fixtures & Appliances",16507500544.0
 SGI,Somnigroup International Inc.,Consumer Cyclical,"Furnishings, Fixtures & Appliances",17620097024.0
 MHK,"Mohawk Industries, Inc.",Consumer Cyclical,"Furnishings, Fixtures & Appliances",8244281856.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 MMM,3M Company,Industrials,Conglomerates,82839945216.0
 VMI,"Valmont Industries, Inc.",Industrials,Conglomerates,7246397952.0
 BBU,Brookfield Business Partners L.P.,Industrials,Conglomerates,2390374912.0

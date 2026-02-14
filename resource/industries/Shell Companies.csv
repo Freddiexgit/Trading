@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AACT,Ares Acquisition Corporation II,Financial Services,Shell Companies,705819136.0
 AAM,AA Mission Acquisition Corp.,Financial Services,Shell Companies,461727008.0
 COPL,Copley Acquisition Corp,Financial Services,Shell Companies,239182272.0

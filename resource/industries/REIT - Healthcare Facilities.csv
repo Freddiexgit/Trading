@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 WELL,Welltower Inc.,Real Estate,REIT - Healthcare Facilities,112550035456.0
 VTR,"Ventas, Inc.",Real Estate,REIT - Healthcare Facilities,30940387328.0
 DOC,"Healthpeak Properties, Inc.",Real Estate,REIT - Healthcare Facilities,12466919424.0

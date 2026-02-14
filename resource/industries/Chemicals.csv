@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 DOW,Dow Inc.,Basic Materials,Chemicals,17458827264.0
 CE,Celanese Corporation,Basic Materials,Chemicals,5215675392.0
 OLN,Olin Corporation,Basic Materials,Chemicals,2712429824.0

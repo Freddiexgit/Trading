@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RBLX,Roblox Corporation,Communication Services,Electronic Gaming & Multimedia,86371639296.0
 SKLZ,Skillz Inc.,Communication Services,Electronic Gaming & Multimedia,135211472.0
 NTES,"NetEase, Inc.",Communication Services,Electronic Gaming & Multimedia,87555465216.0

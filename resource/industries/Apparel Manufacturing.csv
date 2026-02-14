@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RL,Ralph Lauren Corporation,Consumer Cyclical,Apparel Manufacturing,17986326528.0
 LEVI,Levi Strauss & Co.,Consumer Cyclical,Apparel Manufacturing,8850780160.0
 GIL,Gildan Activewear Inc.,Consumer Cyclical,Apparel Manufacturing,8138840064.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 KR,The Kroger Co.,Consumer Defensive,Grocery Stores,44852817920.0
 ACI,"Albertsons Companies, Inc.",Consumer Defensive,Grocery Stores,10894603264.0
 WMK,"Weis Markets, Inc.",Consumer Defensive,Grocery Stores,1772950656.0

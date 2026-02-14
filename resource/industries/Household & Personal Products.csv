@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 PG,The Procter & Gamble Company,Consumer Defensive,Household & Personal Products,367845769216.0
 UL,Unilever PLC,Consumer Defensive,Household & Personal Products,154956283904.0
 CL,Colgate-Palmolive Company,Consumer Defensive,Household & Personal Products,67947139072.0

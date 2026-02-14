@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 IBM,International Business Machines Corporation,Technology,Information Technology Services,226815557632.0
 ACN,Accenture plc,Technology,Information Technology Services,161923088384.0
 FI,"Fiserv, Inc.",Technology,Information Technology Services,75113676800.0

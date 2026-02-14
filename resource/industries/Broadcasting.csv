@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 TGNA,TEGNA Inc.,Communication Services,Broadcasting,3413645056.0
 NMAX,,Communication Services,Broadcasting,1274410880.0
 FUBO,fuboTV Inc.,Communication Services,Broadcasting,1208788480.0

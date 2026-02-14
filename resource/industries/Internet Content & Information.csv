@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SPOT,Spotify Technology S.A.,Communication Services,Internet Content & Information,140315901952.0
 TME,Tencent Music Entertainment Group,Communication Services,Internet Content & Information,38166851584.0
 RDDT,"Reddit, Inc.",Communication Services,Internet Content & Information,42125074432.0

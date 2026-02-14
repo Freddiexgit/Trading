@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AIN,Albany International Corp.,Consumer Cyclical,Textile Manufacturing,1871518976.0
 UFI,"Unifi, Inc.",Consumer Cyclical,Textile Manufacturing,81154296.0
 CULP,"Culp, Inc.",Consumer Cyclical,Textile Manufacturing,54391872.0

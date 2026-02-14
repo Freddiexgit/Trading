@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 LVS,Las Vegas Sands Corp.,Consumer Cyclical,Resorts & Casinos,39560347648.0
 MGM,MGM Resorts International,Consumer Cyclical,Resorts & Casinos,10803260416.0
 BYD,Boyd Gaming Corporation,Consumer Cyclical,Resorts & Casinos,6884615680.0

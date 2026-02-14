@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 JOBY,"Joby Aviation, Inc.",Industrials,Airports & Air Services,12112145408.0
 PAC,"Grupo Aeroportuario del Pacífico, S.A.B. de C.V.",Industrials,Airports & Air Services,12102080512.0
 ASR,"Grupo Aeroportuario del Sureste, S. A. B. de C. V.",Industrials,Airports & Air Services,9754200064.0

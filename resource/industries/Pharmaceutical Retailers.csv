@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 WBA,"Walgreens Boots Alliance, Inc.",Healthcare,Pharmaceutical Retailers,10369420288.0
 HITI,High Tide Inc.,Healthcare,Pharmaceutical Retailers,291956800.0
 PETS,"PetMed Express, Inc.",Healthcare,Pharmaceutical Retailers,63415452.0

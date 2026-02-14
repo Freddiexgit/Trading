@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 PSO,Pearson plc,Communication Services,Publishing,9408271360.0
 NYT,The New York Times Company,Communication Services,Publishing,9743089664.0
 WLY,"John Wiley & Sons, Inc.",Communication Services,Publishing,2157618432.0

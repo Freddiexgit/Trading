@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AMT,American Tower Corporation,Real Estate,REIT - Specialty,95452971008.0
 DLR,"Digital Realty Trust, Inc.",Real Estate,REIT - Specialty,58225057792.0
 CCI,Crown Castle Inc.,Real Estate,REIT - Specialty,43172495360.0

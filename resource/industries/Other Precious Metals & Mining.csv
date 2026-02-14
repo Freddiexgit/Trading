@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SBSW,Sibanye Stillwater Limited,Basic Materials,Other Precious Metals & Mining,5356850176.0
 TFPM,Triple Flag Precious Metals Corp.,Basic Materials,Other Precious Metals & Mining,5651768320.0
 BVN,Compañía de Minas Buenaventura S.A.A.,Basic Materials,Other Precious Metals & Mining,4856104960.0

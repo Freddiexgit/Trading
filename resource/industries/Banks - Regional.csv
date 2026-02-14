@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 HDB,HDFC Bank Limited,Financial Services,Banks - Regional,182005940224.0
 IBN,ICICI Bank Limited,Financial Services,Banks - Regional,114271297536.0
 PNC,"The PNC Financial Services Group, Inc.",Financial Services,Banks - Regional,81691328512.0

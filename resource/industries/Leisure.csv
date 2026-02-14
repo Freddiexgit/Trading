@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 AS,"Amer Sports, Inc.",Consumer Cyclical,Leisure,21805731840.0
 PLNT,"Planet Fitness, Inc.",Consumer Cyclical,Leisure,8827681792.0
 LTH,"Life Time Group Holdings, Inc.",Consumer Cyclical,Leisure,6142288384.0

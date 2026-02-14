@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SCCO,Southern Copper Corporation,Basic Materials,Copper,78043234304.0
 FCX,Freeport-McMoRan Inc.,Basic Materials,Copper,63748190208.0
 HBM,Hudbay Minerals Inc.,Basic Materials,Copper,4748160000.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 EFX,Equifax Inc.,Industrials,Consulting Services,30343421952.0
 BAH,Booz Allen Hamilton Holding Corporation,Industrials,Consulting Services,13399631872.0
 FCN,"FTI Consulting, Inc.",Industrials,Consulting Services,5456886784.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ROL,"Rollins, Inc.",Consumer Cyclical,Personal Services,27401545728.0
 SCI,Service Corporation International,Consumer Cyclical,Personal Services,11114019840.0
 HRB,"H&R Block, Inc.",Consumer Cyclical,Personal Services,6744231424.0

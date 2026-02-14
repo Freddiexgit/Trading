@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ZTS,Zoetis Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,69313822720.0
 TAK,Takeda Pharmaceutical Company Limited,Healthcare,Drug Manufacturers - Specialty & Generic,47976091648.0
 HLN,Haleon plc,Healthcare,Drug Manufacturers - Specialty & Generic,43914190848.0

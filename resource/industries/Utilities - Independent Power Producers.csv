@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 VST,Vistra Corp.,Utilities,Utilities - Independent Power Producers,64074252288.0
 NRG,"NRG Energy, Inc.",Utilities,Utilities - Independent Power Producers,28155817984.0
 PAM,Pampa Energía S.A.,Utilities,Utilities - Independent Power Producers,3715068416.0

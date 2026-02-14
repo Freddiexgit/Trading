@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 XOM,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,487246823424.0
 CVX,Chevron Corporation,Energy,Oil & Gas Integrated,323580100608.0
 SHEL,Shell plc,Energy,Oil & Gas Integrated,214750674944.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 KEX,Kirby Corporation,Industrials,Marine Shipping,5423759872.0
 MATX,"Matson, Inc.",Industrials,Marine Shipping,3307645440.0
 HAFN,Hafnia Limited,Industrials,Marine Shipping,3052678912.0

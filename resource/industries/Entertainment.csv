@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 DIS,The Walt Disney Company,Communication Services,Entertainment,212838940672.0
 LYV,"Live Nation Entertainment, Inc.",Communication Services,Entertainment,38617358336.0
 TKO,"TKO Group Holdings, Inc.",Communication Services,Entertainment,15569869824.0

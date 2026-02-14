@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 SHW,The Sherwin-Williams Company,Basic Materials,Specialty Chemicals,91213488128.0
 ECL,Ecolab Inc.,Basic Materials,Specialty Chemicals,78575468544.0
 APD,"Air Products and Chemicals, Inc.",Basic Materials,Specialty Chemicals,65455353856.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 CRH,CRH plc,Basic Materials,Building Materials,75846492160.0
 VMC,Vulcan Materials Company,Basic Materials,Building Materials,38469222400.0
 MLM,"Martin Marietta Materials, Inc.",Basic Materials,Building Materials,37172621312.0

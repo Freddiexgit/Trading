@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 PGR,The Progressive Corporation,Financial Services,Insurance - Property & Casualty,144875978752.0
 CB,Chubb Limited,Financial Services,Insurance - Property & Casualty,109667655680.0
 TRV,"The Travelers Companies, Inc.",Financial Services,Insurance - Property & Casualty,61126135808.0

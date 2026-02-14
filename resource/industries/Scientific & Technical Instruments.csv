@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 GRMN,Garmin Ltd.,Technology,Scientific & Technical Instruments,46548901888.0
 KEYS,"Keysight Technologies, Inc.",Technology,Scientific & Technical Instruments,28086425600.0
 TDY,Teledyne Technologies Incorporated,Technology,Scientific & Technical Instruments,25233983488.0

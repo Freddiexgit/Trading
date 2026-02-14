@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 VICI,VICI Properties Inc.,Real Estate,REIT - Diversified,36021977088.0
 WPC,W. P. Carey Inc.,Real Estate,REIT - Diversified,14694296576.0
 BNL,"Broadstone Net Lease, Inc.",Real Estate,REIT - Diversified,3672119808.0

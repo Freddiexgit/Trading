@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 VRT,Vertiv Holdings Co,Industrials,Electrical Equipment & Parts,48707137536.0
 HUBB,Hubbell Incorporated,Industrials,Electrical Equipment & Parts,22902808576.0
 NVT,nVent Electric plc,Industrials,Electrical Equipment & Parts,14547999744.0

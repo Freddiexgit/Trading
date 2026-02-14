@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 RELX,RELX PLC,Industrials,Specialty Business Services,85283356672.0
 GPN,Global Payments Inc.,Industrials,Specialty Business Services,21548353536.0
 RBA,"RB Global, Inc.",Industrials,Specialty Business Services,21258510336.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 ORCL,Oracle Corporation,Technology,Software - Infrastructure,635160756224.0
 NET,"Cloudflare, Inc.",Technology,Software - Infrastructure,72731680768.0
 XYZ,"Block, Inc.",Technology,Software - Infrastructure,48547270656.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 UNP,Union Pacific Corporation,Industrials,Railroads,132585955328.0
 CP,Canadian Pacific Kansas City Limited,Industrials,Railroads,69940592640.0
 NSC,Norfolk Southern Corporation,Industrials,Railroads,62814633984.0

@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 HCA,"HCA Healthcare, Inc.",Healthcare,Medical Care Facilities,94524211200.0
 FMS,Fresenius Medical Care AG,Healthcare,Medical Care Facilities,15081454592.0
 THC,Tenet Healthcare Corporation,Healthcare,Medical Care Facilities,16285740032.0

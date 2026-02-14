@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 COP,ConocoPhillips,Energy,Oil & Gas E&P,123607597056.0
 CNQ,Canadian Natural Resources Limited,Energy,Oil & Gas E&P,65856372736.0
 EOG,"EOG Resources, Inc.",Energy,Oil & Gas E&P,68150849536.0

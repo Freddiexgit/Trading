@@ -1,4 +1,4 @@
-ticker,name,sector,industry,marketCap
+symbol,name,sector,industry,marketCap
 XPO,"XPO, Inc.",Industrials,Trucking,15273731072.0
 TFII,TFI International Inc.,Industrials,Trucking,7871344640.0
 KNX,Knight-Swift Transportation Holdings Inc.,Industrials,Trucking,7125058048.0
