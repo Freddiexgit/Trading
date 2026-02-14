@@ -16,5 +16,7 @@ df_all = pd.read_csv("../resource/stocks_by_industry.csv")
 
 for industry, group_df in df_all.groupby('industry'):
     file_name = f"{industry}.csv"
+    group_df.columns.values[1] = "symbol"
+
     group_df.to_csv(f"../resource/industries/{file_name}", index=False)
     print(f"Saved {file_name}")
