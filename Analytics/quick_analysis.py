@@ -1,143 +1,203 @@
-import pandas as pd
-#
-# 如何在30秒內分析一支股票（流程圖整理）：
-#
-# 1. 公司收入每年至少增長10%？
-#    - 否：停止，收入增長緩慢。
-#    - 是：下一步。
-#
-# 2. 市盈率是否低於25？
-#    - 否：PEG比率是否低於2？
-#      - 是：好，成長股。
-#      - 否：估值過高。
-#    - 是：下一步。
-#
-# 3. 公司過去五年平均淨資產收益率是否超過5%？
-#    - 否：盈利能力弱。
-#    - 是：下一步。
-#
-# 4. 速動比率是否高於1.5？
-#    - 否：流動性問題。
-#    - 是：下一步。
-#
-# 5. 現金流是否正向？
-#    - 否：不適合。
-#    - 是：投資！
-
-
-# 1. 讀取數據
 import yfinance as yf
 import pandas as pd
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
-pd.set_option('display.width', 1000)
-# 1. 讀取只有 Ticker 的文件
-try:
-    df_all = pd.read_csv("../resource/my_watch_list.csv")
-    tickers = df_all['symbol'].unique().tolist()  # 假設欄位叫
-except:
-    # 測試用：如果讀不到文件，手動輸入幾個 Ticker
-    tickers = [ "ENLT"]
+import logging
+import time
+
+# ---------------- Logging ----------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
+
+# ---------------- Configuration ----------------
+CONFIG = {
+    "MIN_MARKET_CAP": 5e8,  # 市值門檻
+    "MIN_VOLUME": 200_000,  # 成交量門檻
+    "MAX_DEBT_EBITDA": 3.5,  # 債務槓桿上限
+    "MIN_REV_GROWTH": 0.10,  # 營收增長下限
+    "MIN_ROE": 0.05  # ROE 下限
+}
 
 
-def get_reliable_peg(info):
-    # 1. 嘗試直接獲取
-    peg = info.get('pegRatio')
+# ---------------- Helpers ----------------
+def safe_get(info: dict, key: str, default=0.0):
+    val = info.get(key)
+    if val is None or str(val).lower() == 'nan':
+        return default
+    return val
 
-    # 2. 如果沒有現成的 PEG，手動計算
-    if peg is None or peg == 0:
-        pe = info.get('trailingPE')
-        # 使用盈餘增長 (Earnings Growth) 作為分母
-        growth = info.get('earningsQuarterlyGrowth')
 
-        # 如果盈餘增長數據也沒有，退而求其次使用收入增長
-        if growth is None:
-            growth = info.get('revenueGrowth')
+def get_reliable_peg(info: dict) -> float:
+    """ 計算 PEG：優先使用現成數據，若無則手動計算 """
+    peg = info.get('trailingPegRatio') or info.get('pegRatio')
+    if peg and 0 < peg < 10:
+        return float(peg)
 
-        if pe and growth and growth > 0:
-            # yfinance 的 growth 通常是小數 (例如 0.25 代表 25%)
-            # 計算公式需要將 0.25 轉為 25
-            peg = pe / (growth * 100)
+    pe = info.get('forwardPE') or info.get('trailingPE')
+    growth = info.get('earningsQuarterlyGrowth') or info.get('revenueGrowth')
+
+    if pe and growth and growth > 0:
+        return float(pe / (growth * 100))
+    return 9.9
+
+
+def compute_bollinger_bands(hist: pd.DataFrame, window: int = 20, num_std: int = 2):
+    if len(hist) < window:
+        return "N/A", 50.0
+
+    sma = hist['Close'].rolling(window=window).mean()
+    std = hist['Close'].rolling(window=window).std()
+
+    upper_band = sma + (std * num_std)
+    lower_band = sma - (std * num_std)
+
+    current_price = hist['Close'].iloc[-1]
+    last_upper = upper_band.iloc[-1]
+    last_lower = lower_band.iloc[-1]
+
+    # 計算百分比位置 (0% = 下軌, 100% = 上軌)
+    bb_pos = (current_price - last_lower) / (last_upper - last_lower) * 100
+
+    # 狀態判定
+    if current_price <= last_lower:
+        status = "OVERSOLD"
+    elif current_price >= last_upper:
+        status = "OVERBOUGHT"
+    else:
+        status = "NEUTRAL"
+
+    return status, round(bb_pos, 2)
+
+def get_fpe_otherwise_pe(info: dict):
+    return info.get('forwardPE') or info.get('trailingPE') or 99.0
+
+
+# ---------------- Core Logic ----------------
+
+def process_ticker(symbol: str) -> dict | None:
+    """
+    同步處理單個股票
+    """
+    try:
+        logging.info(f"正在分析: {symbol}...")
+        stock = yf.Ticker(symbol)
+        info = stock.info
+
+        if not info or 'marketCap' not in info:
+            logging.warning(f"跳過 {symbol}: 無法獲取基礎數據")
+            return None
+
+        # --- 1. 硬性過濾 (Hard Filters) ---
+        mkt_cap = safe_get(info, 'marketCap', 0)
+        avg_vol = safe_get(info, 'averageVolume', 0)
+
+        if mkt_cap < CONFIG["MIN_MARKET_CAP"] or avg_vol < CONFIG["MIN_VOLUME"]:
+            return None
+
+        rev_growth = safe_get(info, 'revenueGrowth', 0)
+        roe = safe_get(info, 'returnOnEquity', 0)
+        debt = safe_get(info, 'totalDebt', 0)
+        ebitda = safe_get(info, 'ebitda', 0)
+        pe_ratio = get_fpe_otherwise_pe(info)
+        peg_ratio = get_reliable_peg(info)
+        fcf = safe_get(info, 'freeCashflow', 0)
+        # ----bollinger_bands
+        hist = stock.history(period="3mo")
+        bb_status, bb_pos = compute_bollinger_bands(hist)
+
+        # 核心財務條件過濾
+        if rev_growth < CONFIG["MIN_REV_GROWTH"] or roe < CONFIG["MIN_ROE"]:
+            return None
+
+        leverage = debt / ebitda if ebitda > 0 else 99.0
+        if leverage > CONFIG["MAX_DEBT_EBITDA"] or fcf <= 0:
+            return None
+
+        if pe_ratio > 45 or peg_ratio > 2.5:
+            return None
+
+        # --- 2. 計算動能 (Momentum) ---
+        # 同步抓取歷史數據
+        hist = stock.history(period="3mo")
+        if len(hist) < 20:
+            momentum = 0.0
         else:
-            peg = 999  # 代表數據不足，無法評估
+            momentum = (hist['Close'].iloc[-1] / hist['Close'].iloc[-20]) - 1
 
-    return peg
+        # --- 3. 評分系統 ---
+        score = 0
+        if rev_growth > 0.20:
+            score += 2
+        elif rev_growth > 0.10:
+            score += 1
+
+        if roe > 0.15: score += 2
+
+        if peg_ratio < 1.0:
+            score += 2
+        elif peg_ratio < 1.5:
+            score += 1
+
+        if momentum > 0: score += 1
+
+        # 門檻設定 (4分以上視為優質標的)
+        if score < 4:
+            return None
+
+        return {
+            'Symbol': symbol,
+            'Score': score,
+            'Rating': safe_get(info, 'recommendationMean', 3.0),
+            'PEG': round(peg_ratio, 2),
+            'PE_Fwd': round(pe_ratio, 2),
+            'ROE': f"{roe:.2%}",
+            'Debt_EBITDA': round(leverage, 2),
+            'Mkt_Cap_B': round(mkt_cap / 1e9, 2),
+            'Momentum_20d': f"{momentum:.2%}",
+            'Sector': info.get('sector', 'N/A'),
+            'BB_Status': bb_status,
+            'BB_Pos': bb_pos
+        }
+
+    except Exception as e:
+        logging.error(f"處理 {symbol} 時發生錯誤: {e}")
+        return None
 
 
-def get_fpe_otherwise_pe(info):
-    fpe = info.get('forwardPE')
-    pe = info.get('trailingPE')
-
-    # 邏輯：如果有 FPE，優先用 FPE（代表市場對未來的預期）
-    # 如果沒有 FPE (通常是分析師覆蓋不足)，則退而求其次使用真實的 PE
-    current_val = fpe if fpe is not None else pe
-
-    return current_val
-
-def get_stock_data_and_screen(ticker_list):
+def run_sequential_screening(ticker_list):
+    """
+    循序漸進處理清單，並加入微小延遲以防被鎖 IP
+    """
     results = []
-    print(f"🚀 開始分析 {len(ticker_list)} 隻股票並獲取華爾街評級...")
+    total = len(ticker_list)
 
-    for symbol in ticker_list:
-        try:
-            stock = yf.Ticker(symbol)
-            info = stock.info
+    for i, symbol in enumerate(ticker_list):
+        res = process_ticker(symbol)
+        if res:
+            results.append(res)
+            logging.info(f">>> [成功符合] {symbol} | 目前進度: {i + 1}/{total}")
 
-            # --- 獲取數據 (含評分) ---
-            rating = info.get('recommendationMean', 3.0)  # 預設為 3 (Hold)
-            rev_growth = info.get('revenueGrowth', 0)
-            pe_ratio = get_fpe_otherwise_pe(info)
-            peg_ratio = get_reliable_peg(info)
-            roe = info.get('returnOnEquity', 0)
-            quick_ratio = info.get('quickRatio', 0)
-            fcf = info.get('freeCashflow', 0)
-
-            # --- 基礎篩選 (你的 5 個條件) ---
-            if rev_growth < 0.10: continue
-            if not (pe_ratio < 25 or peg_ratio < 2): continue
-            if roe < 0.05: continue
-            if quick_ratio < 1.5: continue
-            if fcf <= 0: continue
-
-            # --- 儲存符合條件的結果 ---
-            results.append({
-                'Symbol': symbol,
-                'Analyst_Rating': rating,  # 數字越小越強
-                'PEG_Ratio': peg_ratio,
-                'ROE': roe,
-                'Revenue_Growth': rev_growth,
-                'Sector': info.get('sector', 'N/A'),
-                'Current_Price': info.get('currentPrice', 0)
-            })
-            print(f"🎯 {symbol} 符合條件！評分: {rating}")
-
-        except Exception as e:
-            continue
+        # 每處理完一個股票稍作休息 (可選)
+        # time.sleep(0.5)
 
     df = pd.DataFrame(results)
-
-    if df.empty:
-        return df
-
-    # --- 強烈買入排序邏輯 ---
-    # 權重 1: Analyst_Rating (升序: 1.0 最優)
-    # 權重 2: PEG_Ratio (升序: 越小越便宜)
-    # 權重 3: ROE (降序: 效率越高越好)
-    final_sorted = df.sort_values(
-        by=['Analyst_Rating', 'PEG_Ratio', 'ROE'],
-        ascending=[True, True, False]
-    )
-
-    return final_sorted
+    if not df.empty:
+        df = df.sort_values(['Score', 'Rating', 'PEG'], ascending=[False, True, True])
+    return df
 
 
-# 執行
-final_df = get_stock_data_and_screen(tickers)
+# ---------------- Execution ----------------
+if __name__ == "__main__":
+    try:
+        watch_list = pd.read_csv("../resource/my_watch_list.csv")['symbol'].tolist()
+    except:
+        watch_list = ["AAPL", "NVDA", "ENLT", "SIDU", "GOOGL", "MSFT", "AMZN", "META"]
 
-# 顯示與儲存
-if not final_df.empty:
-    print("\n符合所有條件的股票名單：")
-    print(final_df)
-    final_df.to_csv("yfinance_screened_results.csv", index=False)
-else:
-    print("\n今日無符合條件的股票。")
+    final_df = run_sequential_screening(watch_list)
+
+    if not final_df.empty:
+        print("\n🏆 符合條件的優質標的 (按分數排序):")
+        print(final_df.to_string(index=False))
+        final_df.to_csv("strategy_results_sync.csv", index=False)
+    else:
+        print("\n今日無標的符合篩選條件。")
