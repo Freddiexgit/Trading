@@ -19,42 +19,49 @@ def detect_ema_converge_diverge(ticker, period="1mo", converge_thresh=0.002, div
     df["EMA5"] = df["Close"].ewm(span=5, adjust=False).mean()
     df["EMA10"] = df["Close"].ewm(span=10, adjust=False).mean()
     df["EMA20"] = df["Close"].ewm(span=20, adjust=False).mean()
+    df["EMA50"] = df["Close"].ewm(span=50, adjust=False).mean()
 
-    # --- EMA spread (max-min of the 3 EMAs) ---
+    # --- EMA Spread ---
     df["EMA_range"] = df[["EMA5", "EMA10", "EMA20"]].max(axis=1) - \
                       df[["EMA5", "EMA10", "EMA20"]].min(axis=1)
 
-    # Remove first row (all EMAs equal)
     df = df.iloc[1:].copy()
 
-    # --- Convergence & divergence conditions ---
+    # --- Convergence & Divergence ---
     df["Converged"] = df["EMA_range"] < df["EMA10"] * converge_thresh
-    df["Diverged"]  = df["EMA_range"] > df["EMA10"] * diverge_thresh
+    df["Diverged"] = df["EMA_range"] > df["EMA10"] * diverge_thresh
 
-    # --- Must have at least one convergence ---
     if not df["Converged"].any():
         return pd.DataFrame()
 
-    # --- Find last convergence ---
-    last_converge_idx = df[df["Converged"]].index[-1]
-
-    # --- Look ONLY after last convergence for divergence ---
-    df_after = df.loc[last_converge_idx:]
+    last_converge = df[df["Converged"]].index[-1]
+    df_after = df.loc[last_converge:]
 
     if not df_after["Diverged"].any():
         return pd.DataFrame()
 
-    first_diverge_idx = df_after[df_after["Diverged"]].index[0]
+    first_diverge = df_after[df_after["Diverged"]].index[0]
 
-    # --- Trend confirmation (bullish) ---
-    latest_ema5 = df.iloc[-1]["EMA5"]
-    latest_ema20 = df.iloc[-1]["EMA20"]
+    # --- Add RSI (Wilder EMA) ---
+    delta = df["Close"].diff()
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.ewm(alpha=1 / 14, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1 / 14, adjust=False).mean()
+    df["RSI"] = 100 - (100 / (1 + avg_gain / avg_loss))
 
-    if latest_ema5 > latest_ema20:
-        return df.loc[last_converge_idx:first_diverge_idx]
+    # --- Strict Filters ---
+    momentum_ok = df["Close"].pct_change(20).iloc[-1] > 0
+    rsi_ok = df["RSI"].iloc[-1] > 50
+    vol_ok = df["Volume"].iloc[-1] > df["Volume"].rolling(20).mean().iloc[-1]
+    trend_ok = df["EMA20"].iloc[-1] > df["EMA50"].iloc[-1]
+    price_ok = df["Close"].iloc[-1] > df["EMA20"].iloc[-1]
+    recent = (df.index[-1] - first_diverge).days <= 5
+
+    if all([momentum_ok, rsi_ok, vol_ok, trend_ok, price_ok, recent]):
+        return df.loc[last_converge:first_diverge]
 
     return pd.DataFrame()
-
 
 
 # def detect_ema_converge_diverge(ticker, period="1mo", converge_thresh=0.005, diverge_thresh=0.03):

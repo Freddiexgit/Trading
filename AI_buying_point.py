@@ -36,7 +36,7 @@ def identify_buy_signals(df) -> pd.DataFrame:
 
     # Only buy if there's room to grow (Price is not already touching the Upper Band)
     df['Room_To_Grow'] = df['Close'] < df['Upper_Band']
-
+    df["MOM"] = df["Close"].pct_change(10)
     # --- Signal Logic Integration ---
     # Added: Check if MACD is actually below 0 (Oversold start) for higher probability
     buy_conditions = (
@@ -45,7 +45,8 @@ def identify_buy_signals(df) -> pd.DataFrame:
             (df['RSI'].between(30, 70)) &  # Healthy Momentum (not overbought)
             (df['Volume'] > df['Volume'].rolling(20).mean()) &  # Volume Support
             (df['SMA50'] > df['SMA50'].shift(1)) &  # Upward Sloping Trend
-            (df['Room_To_Grow'])  # Volatility Check
+            (df['Room_To_Grow'])
+            & (df['MOM'] > 0)
     )
 
     df['Buy_Signal'] = buy_conditions.astype(int)

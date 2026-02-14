@@ -79,10 +79,11 @@ def bid_ask_screener(file_name, output_file=None):
         (res_df['RSI'] < 70) &
         (res_df['Buy Pressure'] > 0.6)
         ]
+    picks = picks.sort_values(by="Buy Pressure", ascending=False)
     return_tickers = picks['Ticker'].tolist()
     df2 = pd.DataFrame(return_tickers, columns=['symbol']).drop_duplicates()
     df2.to_csv(f'{output_file}', index=False)
-    return picks.sort_values(by="Buy Pressure", ascending=False)
+    return picks
 
 
 
