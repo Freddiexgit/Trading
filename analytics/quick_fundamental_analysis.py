@@ -1,7 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import logging
-import time
+import data_downloader as dd
 
 # ---------------- Logging ----------------
 logging.basicConfig(
@@ -80,9 +80,8 @@ def process_ticker(symbol: str) -> dict | None:
     """
     try:
         logging.info(f"正在分析: {symbol}...")
-        stock = yf.Ticker(symbol)
-        info = stock.info
-
+        stock = dd.get_stock_obj(symbol)
+        info = stock.get_info()
         if not info or 'marketCap' not in info:
             logging.warning(f"跳過 {symbol}: 無法獲取基礎數據")
             return None
@@ -187,9 +186,9 @@ def run_sequential_screening(ticker_list):
 
 
 # ---------------- Execution ----------------
-if __name__ == "__main__":
+def run_quick_fundamental_analysis(input_file=None,output_file=None):
     try:
-        watch_list = pd.read_csv("../resource/industries/Aerospace & Defense.csv")['ticker'].tolist()
+        watch_list = pd.read_csv(f"{input_file}")['symbol'].tolist()
     except:
         watch_list = ["AAPL", "NVDA", "ENLT", "SIDU", "GOOGL", "MSFT", "AMZN", "META"]
 
@@ -197,7 +196,7 @@ if __name__ == "__main__":
 
     if not final_df.empty:
         print("\n🏆 符合條件的優質標的 (按分數排序):")
-        print(final_df.to_string(index=False))
-        final_df.to_csv("strategy_results_sync.csv", index=False)
+        # print(final_df.to_string(index=False))
+        final_df.to_csv(f"{output_file}", index=False)
     else:
         print("\n今日無標的符合篩選條件。")
