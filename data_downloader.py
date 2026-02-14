@@ -1,3 +1,5 @@
+from time import sleep
+
 import yfinance as yf
 import pandas as pd
 # Global variable
@@ -35,3 +37,12 @@ def get_stock_obj(symbol, period="10m", interval="4h"):
         df = stock.history(period=period, interval=interval)
         symbol_and_df[symbol] = df
     return stock
+
+
+
+if __name__ == "__main__":
+    # Example usage
+    df = get_stock_obj("QQQ")
+    print(df.head())
+    sleep(1)
+    print(get_transaction_df("AAA"))
