@@ -9,7 +9,7 @@ import  ask_bid
 from RSI_bottom_finder import rsi_bottom
 from find_cross_ema_5_20_90 import find_cross
 from institute_enter import institute_enter
-from RSI_Momentum_Combo_Strategy_copilot import run_momentum
+from analytics/quick_fundamental_analysis import qfa
 import pandas as pd
 import glob
 import  data_downloader as data
@@ -31,6 +31,16 @@ output_folder = f"output/{date}/us/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
     # Create the directory
     os.makedirs(f"{output_folder}")
+
+try:
+    qfa.run_quick_fundamental_analysis(input_file=f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/quick_fundamental_analysis.csv")
+    df_tickers_fqa = pd.read_csv(f"{output_folder}/quick_fundamental_analysis.csv")
+    di.generate_pdf(df_tickers_fqa['symbol'], f"{output_folder}/quick_fundamental_analysis.pdf", "No", "us")
+except Exception  as e:
+    print("error:", e)
+
+
+
 try:
     print("running ai entry point...")
     ai.run_ai_buying_point(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ai_buy.csv")
