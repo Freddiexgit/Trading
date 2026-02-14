@@ -1,0 +1,68 @@
+ticker,name,sector,industry,marketCap
+COP,ConocoPhillips,Energy,Oil & Gas E&P,123607597056.0
+CNQ,Canadian Natural Resources Limited,Energy,Oil & Gas E&P,65856372736.0
+EOG,"EOG Resources, Inc.",Energy,Oil & Gas E&P,68150849536.0
+OXY,Occidental Petroleum Corporation,Energy,Oil & Gas E&P,46869188608.0
+WDS,Woodside Energy Group Ltd,Energy,Oil & Gas E&P,32620525568.0
+EQT,EQT Corporation,Energy,Oil & Gas E&P,32351424512.0
+TPL,Texas Pacific Land Corporation,Energy,Oil & Gas E&P,21458184192.0
+DVN,Devon Energy Corporation,Energy,Oil & Gas E&P,22916278272.0
+CTRA,Coterra Energy Inc.,Energy,Oil & Gas E&P,18651142144.0
+PR,Permian Resources Corporation,Energy,Oil & Gas E&P,11438173184.0
+OVV,Ovintiv Inc.,Energy,Oil & Gas E&P,10826397696.0
+AR,Antero Resources Corporation,Energy,Oil & Gas E&P,9861078016.0
+RRC,Range Resources Corporation,Energy,Oil & Gas E&P,8162805760.0
+MTDR,Matador Resources Company,Energy,Oil & Gas E&P,6269517824.0
+CRK,"Comstock Resources, Inc.",Energy,Oil & Gas E&P,4727170560.0
+MGY,Magnolia Oil & Gas Corporation,Energy,Oil & Gas E&P,4747476992.0
+CRC,California Resources Corporation,Energy,Oil & Gas E&P,4157222400.0
+VIST,"Vista Energy, S.A.B. de C.V.",Energy,Oil & Gas E&P,4063898880.0
+CNX,CNX Resources Corporation,Energy,Oil & Gas E&P,4129435136.0
+MUR,Murphy Oil Corporation,Energy,Oil & Gas E&P,3548317696.0
+SM,SM Energy Company,Energy,Oil & Gas E&P,3281936640.0
+GPOR,Gulfport Energy Corporation,Energy,Oil & Gas E&P,3056262656.0
+CIVI,"Civitas Resources, Inc.",Energy,Oil & Gas E&P,3408034560.0
+NOG,"Northern Oil and Gas, Inc.",Energy,Oil & Gas E&P,2553077504.0
+STR,Sitio Royalties Corp.,Energy,Oil & Gas E&P,2735159808.0
+BSM,"Black Stone Minerals, L.P.",Energy,Oil & Gas E&P,2576132352.0
+MNR,,Energy,Oil & Gas E&P,1683949696.0
+BKV,BKV Corporation,Energy,Oil & Gas E&P,1974617984.0
+BTE,Baytex Energy Corp.,Energy,Oil & Gas E&P,1713346944.0
+VTLE,"Vital Energy, Inc.",Energy,Oil & Gas E&P,689573376.0
+TALO,Talos Energy Inc.,Energy,Oil & Gas E&P,1725621120.0
+KRP,"Kimbell Royalty Partners, LP",Energy,Oil & Gas E&P,1507195392.0
+VET,Vermilion Energy Inc.,Energy,Oil & Gas E&P,1162843520.0
+KOS,Kosmos Energy Ltd.,Energy,Oil & Gas E&P,856074688.0
+VTS,"Vitesse Energy, Inc.",Energy,Oil & Gas E&P,1027507904.0
+INR,"Infinity Natural Resources, Inc.",Energy,Oil & Gas E&P,227038752.0
+GRNT,"Granite Ridge Resources, Inc.",Energy,Oil & Gas E&P,729738880.0
+TXO,"TXO Partners, L.P.",Energy,Oil & Gas E&P,771910784.0
+EGY,"VAALCO Energy, Inc.",Energy,Oil & Gas E&P,404521056.0
+SD,"SandRidge Energy, Inc.",Energy,Oil & Gas E&P,435142496.0
+GPRK,GeoPark Limited,Energy,Oil & Gas E&P,340346816.0
+GFR,Greenfire Resources Ltd.,Energy,Oil & Gas E&P,362505472.0
+TBN,Tamboran Resources Corporation,Energy,Oil & Gas E&P,363590560.0
+WTI,"W&T Offshore, Inc.",Energy,Oil & Gas E&P,269976992.0
+SJT,San Juan Basin Royalty Trust,Energy,Oil & Gas E&P,268000608.0
+AMPY,Amplify Energy Corp.,Energy,Oil & Gas E&P,164697040.0
+MVO,MV Oil Trust,Energy,Oil & Gas E&P,69230000.0
+PVL,Permianville Royalty Trust,Energy,Oil & Gas E&P,65491800.0
+VOC,VOC Energy Trust,Energy,Oil & Gas E&P,46070000.0
+CRT,Cross Timbers Royalty Trust,Energy,Oil & Gas E&P,52795200.0
+PRT,PermRock Royalty Trust,Energy,Oil & Gas E&P,48906112.0
+NRT,North European Oil Royalty Trust,Energy,Oil & Gas E&P,49169656.0
+MTR,Mesa Royalty Trust,Energy,Oil & Gas E&P,10398832.0
+EP,Empire Petroleum Corporation,Energy,Oil & Gas E&P,170837472.0
+FANG,"Diamondback Energy, Inc.",Energy,Oil & Gas E&P,43063939072.0
+EXE,Expand Energy Corporation,Energy,Oil & Gas E&P,23047770112.0
+APA,APA Corporation,Energy,Oil & Gas E&P,8307790336.0
+CHRD,Chord Energy Corporation,Energy,Oil & Gas E&P,6292092416.0
+DMLP,"Dorchester Minerals, L.P.",Energy,Oil & Gas E&P,1191306112.0
+HPK,"HighPeak Energy, Inc.",Energy,Oil & Gas E&P,971216384.0
+ANNA,"AleAnna, Inc.",Energy,Oil & Gas E&P,164672608.0
+PNRG,PrimeEnergy Resources Corporation,Energy,Oil & Gas E&P,249444240.0
+BRY,Berry Corporation,Energy,Oil & Gas E&P,259188672.0
+KGEI,Kolibri Global Energy Inc.,Energy,Oil & Gas E&P,199773312.0
+PROP,Prairie Operating Co.,Energy,Oil & Gas E&P,128208136.0
+EPSN,Epsilon Energy Ltd.,Energy,Oil & Gas E&P,129263400.0
+USEG,U.S. Energy Corp.,Energy,Oil & Gas E&P,40487968.0

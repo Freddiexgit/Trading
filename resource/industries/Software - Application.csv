@@ -1,0 +1,223 @@
+ticker,name,sector,industry,marketCap
+SAP,SAP SE,Technology,Software - Application,316957556736.0
+CRM,"Salesforce, Inc.",Technology,Software - Application,244974993408.0
+NOW,"ServiceNow, Inc.",Technology,Software - Application,190390386688.0
+UBER,"Uber Technologies, Inc.",Technology,Software - Application,195508125696.0
+YMM,Full Truck Alliance Co. Ltd.,Technology,Software - Application,13648864256.0
+SNOW,Snowflake Inc.,Technology,Software - Application,79630819328.0
+FICO,Fair Isaac Corporation,Technology,Software - Application,36524990464.0
+HUBS,"HubSpot, Inc.",Technology,Software - Application,25459726336.0
+TYL,"Tyler Technologies, Inc.",Technology,Software - Application,24351201280.0
+GWRE,"Guidewire Software, Inc.",Technology,Software - Application,18272043008.0
+DT,"Dynatrace, Inc.",Technology,Software - Application,15256202240.0
+PAYC,"Paycom Software, Inc.",Technology,Software - Application,12778686464.0
+U,Unity Software Inc.,Technology,Software - Application,16651435008.0
+PCOR,"Procore Technologies, Inc.",Technology,Software - Application,10439915520.0
+DAY,Dayforce Inc,Technology,Software - Application,11009774592.0
+ESTC,Elastic N.V.,Technology,Software - Application,9039411200.0
+CWAN,"Clearwater Analytics Holdings, Inc.",Technology,Software - Application,6731164672.0
+QTWO,"Q2 Holdings, Inc.",Technology,Software - Application,4916090368.0
+BILL,"BILL Holdings, Inc.",Technology,Software - Application,4717618176.0
+YOU,"Clear Secure, Inc.",Technology,Software - Application,4826543104.0
+WK,Workiva Inc.,Technology,Software - Application,4606723072.0
+ASAN,"Asana, Inc.",Technology,Software - Application,3435701248.0
+GRND,Grindr Inc.,Technology,Software - Application,3002535936.0
+ALIT,"Alight, Inc.",Technology,Software - Application,2132021248.0
+PAR,PAR Technology Corporation,Technology,Software - Application,2076940672.0
+DV,"DoubleVerify Holdings, Inc.",Technology,Software - Application,2662227712.0
+CXM,"Sprinklr, Inc.",Technology,Software - Application,2236360448.0
+RNG,"RingCentral, Inc.",Technology,Software - Application,2762457856.0
+DBD,"Diebold Nixdorf, Incorporated",Technology,Software - Application,2238673152.0
+MNTN,"MNTN, Inc.",Technology,Software - Application,1482012928.0
+NATL,NCR Atleos Corporation,Technology,Software - Application,2915477248.0
+LSPD,Lightspeed Commerce Inc.,Technology,Software - Application,1672968320.0
+DFIN,"Donnelley Financial Solutions, Inc.",Technology,Software - Application,1560879872.0
+OLO,Olo Inc.,Technology,Software - Application,1736360192.0
+PD,"PagerDuty, Inc.",Technology,Software - Application,1542992768.0
+SEMR,"Semrush Holdings, Inc.",Technology,Software - Application,1174777472.0
+MLNK,"MeridianLink, Inc.",Technology,Software - Application,1471736576.0
+YALA,Yalla Group Limited,Technology,Software - Application,1233506816.0
+VTEX,VTEX,Technology,Software - Application,742409088.0
+IBTA,"Ibotta, Inc.",Technology,Software - Application,680542144.0
+ETWO,"E2open Parent Holdings, Inc.",Technology,Software - Application,1032451200.0
+FSLY,"Fastly, Inc.",Technology,Software - Application,1121714048.0
+BLND,"Blend Labs, Inc.",Technology,Software - Application,938752832.0
+RSKD,Riskified Ltd.,Technology,Software - Application,782547136.0
+PRO,"PROS Holdings, Inc.",Technology,Software - Application,745650752.0
+SMWB,Similarweb Ltd.,Technology,Software - Application,881768128.0
+TRAK,"ReposiTrak, Inc.",Technology,Software - Application,296077696.0
+OOMA,"Ooma, Inc.",Technology,Software - Application,356084256.0
+XPER,Xperi Inc.,Technology,Software - Application,277561216.0
+NRDY,"Nerdy, Inc.",Technology,Software - Application,252686656.0
+OCFT,"OneConnect Financial Technology Co., Ltd.",Technology,Software - Application,283638528.0
+LAW,"CS Disco, Inc.",Technology,Software - Application,337727648.0
+HKD,AMTD Digital Inc.,Technology,Software - Application,509132000.0
+ONTF,"ON24, Inc.",Technology,Software - Application,241992032.0
+PERF,Perfect Corp.,Technology,Software - Application,208790448.0
+CCRD,CoreCard Corporation,Technology,Software - Application,215615152.0
+SMRT,"SmartRent, Inc.",Technology,Software - Application,278345088.0
+DHX,"DHI Group, Inc.",Technology,Software - Application,132028600.0
+PSQH,"PSQ Holdings, Inc.",Technology,Software - Application,76214248.0
+INTU,Intuit Inc.,Technology,Software - Application,186057654272.0
+SHOP,Shopify Inc.,Technology,Software - Application,183487397888.0
+ADBE,Adobe Inc.,Technology,Software - Application,151312138240.0
+ADP,"Automatic Data Processing, Inc.",Technology,Software - Application,123153317888.0
+MSTR,Strategy Inc,Technology,Software - Application,94822957056.0
+CDNS,"Cadence Design Systems, Inc.",Technology,Software - Application,95488663552.0
+ADSK,"Autodesk, Inc.",Technology,Software - Application,67328491520.0
+WDAY,"Workday, Inc.",Technology,Software - Application,61628940288.0
+ROP,"Roper Technologies, Inc.",Technology,Software - Application,56638324736.0
+PAYX,"Paychex, Inc.",Technology,Software - Application,50149273600.0
+TEAM,Atlassian Corporation,Technology,Software - Application,46637916160.0
+DDOG,"Datadog, Inc.",Technology,Software - Application,47666462720.0
+PTC,PTC Inc.,Technology,Software - Application,25575804928.0
+STRD,Strategy Inc,Technology,Software - Application,932470144.0
+ZM,Zoom Communications Inc.,Technology,Software - Application,24367810560.0
+GRAB,Grab Holdings Limited,Technology,Software - Application,20342032384.0
+SSNC,"SS&C Technologies Holdings, Inc.",Technology,Software - Application,21652633600.0
+BSY,"Bentley Systems, Incorporated",Technology,Software - Application,16897065984.0
+DOCU,"DocuSign, Inc.",Technology,Software - Application,15490151424.0
+DUOL,"Duolingo, Inc.",Technology,Software - Application,13648509952.0
+MNDY,monday.com Ltd.,Technology,Software - Application,9949440000.0
+MANH,"Manhattan Associates, Inc.",Technology,Software - Application,13027355648.0
+CHYM,"Chime Financial, Inc.",Technology,Software - Application,9816887296.0
+TTAN,"ServiceTitan, Inc.",Technology,Software - Application,9722640384.0
+PCTY,Paylocity Holding Corporation,Technology,Software - Application,9886613504.0
+NICE,NICE Ltd.,Technology,Software - Application,8727189504.0
+PEGA,Pegasystems Inc.,Technology,Software - Application,9274300416.0
+APPF,"AppFolio, Inc.",Technology,Software - Application,9944905728.0
+DSGX,The Descartes Systems Group Inc.,Technology,Software - Application,8573990400.0
+CVLT,"Commvault Systems, Inc.",Technology,Software - Application,8298181120.0
+SRAD,Sportradar Group AG,Technology,Software - Application,9156755456.0
+OTEX,Open Text Corporation,Technology,Software - Application,8410263040.0
+CCCS,CCC Intelligent Solutions Holdings Inc.,Technology,Software - Application,6447424000.0
+BULL,Webull Corporation,Technology,Software - Application,6587712000.0
+LYFT,"Lyft, Inc.",Technology,Software - Application,6592488448.0
+LIF,"Life360, Inc.",Technology,Software - Application,7013882880.0
+IDCC,"InterDigital, Inc.",Technology,Software - Application,7010769920.0
+VERX,"Vertex, Inc.",Technology,Software - Application,4117618688.0
+SPSC,"SPS Commerce, Inc.",Technology,Software - Application,4181340672.0
+FROG,JFrog Ltd.,Technology,Software - Application,5763552256.0
+SOUN,"SoundHound AI, Inc.",Technology,Software - Application,5308071936.0
+FRSH,Freshworks Inc.,Technology,Software - Application,3925548544.0
+KC,Kingsoft Cloud Holdings Limited,Technology,Software - Application,4069799680.0
+GTM,ZoomInfo Technologies Inc.,Technology,Software - Application,11333601280.0
+BL,"BlackLine, Inc.",Technology,Software - Application,3364839680.0
+NCNO,"nCino, Inc.",Technology,Software - Application,3718819840.0
+INTA,"Intapp, Inc.",Technology,Software - Application,3776698880.0
+AGYS,"Agilysys, Inc.",Technology,Software - Application,3060030464.0
+BLKB,"Blackbaud, Inc.",Technology,Software - Application,3236035328.0
+BRZE,"Braze, Inc.",Technology,Software - Application,2925452544.0
+DAVE,Dave Inc.,Technology,Software - Application,2878192896.0
+WRD,WeRide Inc.,Technology,Software - Application,2663191296.0
+ALRM,"Alarm.com Holdings, Inc.",Technology,Software - Application,2925930240.0
+ALKT,"Alkami Technology, Inc.",Technology,Software - Application,2664524800.0
+BTDR,Bitdeer Technologies Group,Technology,Software - Application,3056388096.0
+PLUS,ePlus inc.,Technology,Software - Application,1926894720.0
+AMPL,"Amplitude, Inc.",Technology,Software - Application,1514703616.0
+SPNS,Sapiens International Corporation N.V.,Technology,Software - Application,2398135808.0
+PRCH,"Porch Group, Inc.",Technology,Software - Application,1769444864.0
+KARO,Karooooo Ltd.,Technology,Software - Application,1626686720.0
+UPBD,"Upbound Group, Inc.",Technology,Software - Application,1471127168.0
+ADEA,Adeia Inc.,Technology,Software - Application,1644909696.0
+YB,Yuanbao Inc.,Technology,Software - Application,1055327488.0
+SPT,"Sprout Social, Inc.",Technology,Software - Application,928692032.0
+JAMF,Jamf Holding Corp.,Technology,Software - Application,1238040832.0
+PDFS,"PDF Solutions, Inc.",Technology,Software - Application,807629824.0
+DCBO,Docebo Inc.,Technology,Software - Application,895589376.0
+NXTT,Next Technology Holding Inc.,Technology,Software - Application,201349744.0
+DSP,Viant Technology Inc.,Technology,Software - Application,654691392.0
+RBBN,Ribbon Communications Inc.,Technology,Software - Application,722494528.0
+DOMO,"Domo, Inc.",Technology,Software - Application,590651264.0
+VMEO,"Vimeo, Inc.",Technology,Software - Application,695981952.0
+RDVT,"Red Violet, Inc.",Technology,Software - Application,702239680.0
+PUBM,"PubMatic, Inc.",Technology,Software - Application,396418400.0
+DJCO,Daily Journal Corporation,Technology,Software - Application,643535296.0
+APPS,"Digital Turbine, Inc.",Technology,Software - Application,455174976.0
+RMNI,"Rimini Street, Inc.",Technology,Software - Application,400602944.0
+BZAI,"Blaize Holdings, Inc.",Technology,Software - Application,366353408.0
+MITK,"Mitek Systems, Inc.",Technology,Software - Application,464229984.0
+BIGC,"Commerce.com, Inc.",Technology,Software - Application,385913824.0
+CRNC,Cerence Inc.,Technology,Software - Application,456156416.0
+API,"Agora, Inc.",Technology,Software - Application,313001248.0
+AZ,A2Z Cust2Mate Solutions Corp.,Technology,Software - Application,319487648.0
+MTLS,Materialise NV,Technology,Software - Application,301833408.0
+KLTR,"Kaltura, Inc.",Technology,Software - Application,245640704.0
+ASUR,"Asure Software, Inc.",Technology,Software - Application,230369984.0
+DMRC,Digimarc Corporation,Technology,Software - Application,187760928.0
+IMMR,Immersion Corporation,Technology,Software - Application,228718576.0
+EXFY,"Expensify, Inc.",Technology,Software - Application,181595184.0
+EGAN,eGain Corporation,Technology,Software - Application,172035904.0
+AEYE,"AudioEye, Inc.",Technology,Software - Application,159437664.0
+SSTI,"SoundThinking, Inc.",Technology,Software - Application,162833248.0
+MAPS,"WM Technology, Inc.",Technology,Software - Application,212064800.0
+SVCO,"Silvaco Group, Inc.",Technology,Software - Application,162240416.0
+RCT,RedCloud Holdings plc,Technology,Software - Application,74742960.0
+ATHR,"Aether Holdings, Inc.",Technology,Software - Application,82288840.0
+ALTS,ALT5 Sigma Corporation,Technology,Software - Application,966158912.0
+IDN,"Intellicheck, Inc.",Technology,Software - Application,109203280.0
+ILLR,Triller Group Inc.,Technology,Software - Application,74064416.0
+LPSN,"LivePerson, Inc.",Technology,Software - Application,87476488.0
+HIT,"Health In Tech, Inc.",Technology,Software - Application,155070576.0
+RSSS,"Research Solutions, Inc.",Technology,Software - Application,98349864.0
+RDZN,"Roadzen, Inc.",Technology,Software - Application,74417744.0
+DUOT,"Duos Technologies Group, Inc.",Technology,Software - Application,124251520.0
+ZENV,Zenvia Inc.,Technology,Software - Application,83116296.0
+UPLD,"Upland Software, Inc.",Technology,Software - Application,81425040.0
+VTSI,"VirTra, Inc.",Technology,Software - Application,67383840.0
+BZAIW,"Blaize Holdings, Inc.",Technology,Software - Application,8037747.0
+STEC,Santech Holdings Limited,Technology,Software - Application,59539200.0
+NVNI,Nvni Group Limited,Technology,Software - Application,56554028.0
+PHUN,"Phunware, Inc.",Technology,Software - Application,52081168.0
+NTWK,"NetSol Technologies, Inc.",Technology,Software - Application,47423476.0
+AWRE,"Aware, Inc.",Technology,Software - Application,46891240.0
+BMR,Beamr Imaging Ltd.,Technology,Software - Application,43639020.0
+YXT,YXT.COM Group Holding Limited,Technology,Software - Application,50737860.0
+LGCL,Lucas GC Limited,Technology,Software - Application,55808500.0
+NTCL,NetClass Technology Inc,Technology,Software - Application,33074124.0
+HKIT,Hitek Global Inc.,Technology,Software - Application,43363112.0
+MFI,mF International Limited,Technology,Software - Application,64601940.0
+NUKK,Nukkleus Inc.,Technology,Software - Application,34444144.0
+WETO,Webus International Limited,Technology,Software - Application,48182200.0
+AIFF,"Firefly Neuroscience, Inc.",Technology,Software - Application,35491188.0
+CREX,"Creative Realities, Inc.",Technology,Software - Application,25245362.0
+MNDO,MIND C.T.I. Ltd,Technology,Software - Application,24439560.0
+BLBX,Blackboxstocks Inc.,Technology,Software - Application,24189418.0
+SAGT,Sagtec Global Limited,Technology,Software - Application,24832686.0
+XTKG,"X3 Holdings Co., Ltd.",Technology,Software - Application,216132512.0
+MTC,"MMTec, Inc.",Technology,Software - Application,24544634.0
+AIXI,Xiao-I Corporation,Technology,Software - Application,21007398.0
+BLIV,BeLive Holdings,Technology,Software - Application,41890324.0
+CXAI,CXApp Inc.,Technology,Software - Application,17637332.0
+IPM,Intelligent Protection Management Corp.,Technology,Software - Application,25547410.0
+NXPL,NextPlat Corp,Technology,Software - Application,18285810.0
+ORKT,Orangekloud Technology Inc.,Technology,Software - Application,16348963.0
+AMOD,"Alpha Modus Holdings, Inc.",Technology,Software - Application,44477596.0
+VERB,"Verb Technology Company, Inc.",Technology,Software - Application,877814080.0
+SMSI,"Smith Micro Software, Inc.",Technology,Software - Application,15540425.0
+AMST,Amesite Inc.,Technology,Software - Application,12620680.0
+CYN,Cyngn Inc.,Technology,Software - Application,38504804.0
+YAAS,Youxin Technology Ltd,Technology,Software - Application,10125390.0
+MASK,3 E Network Technology Group Limited,Technology,Software - Application,8411558.0
+VS,Versus Systems Inc.,Technology,Software - Application,9558276.0
+EPWK,EPWK Holdings Ltd.,Technology,Software - Application,7240575.0
+HTCR,"HeartCore Enterprises, Inc.",Technology,Software - Application,26108096.0
+FTFT,Future FinTech Group Inc.,Technology,Software - Application,7660709.0
+DATS,"Myseum, Inc.",Technology,Software - Application,13344747.0
+BIYA,Baiya International Group Inc.,Technology,Software - Application,7199000.0
+WCT,Wellchange Holdings Company Limited,Technology,Software - Application,11180324.0
+ELWS,"Earlyworks Co., Ltd",Technology,Software - Application,7493219.0
+QH,Quhuo Limited,Technology,Software - Application,4743868.0
+JTAI,Jet.AI Inc.,Technology,Software - Application,11316572.0
+IFBD,"Infobird Co., Ltd",Technology,Software - Application,8106684.0
+BNZI,"Banzai International, Inc.",Technology,Software - Application,11480759.0
+IDAI,T Stamp Inc.,Technology,Software - Application,7278576.0
+SOPA,Society Pass Incorporated,Technology,Software - Application,7184973.0
+ULY,Urgent.ly Inc.,Technology,Software - Application,5986823.0
+OBLG,"Oblong, Inc.",Technology,Software - Application,6792396.0
+MYSZ,"My Size, Inc.",Technology,Software - Application,3745389.0
+FRGT,"Freight Technologies, Inc.",Technology,Software - Application,3385353.0
+AUUD,Auddia Inc.,Technology,Software - Application,4827442.0
+TGL,Treasure Global Inc.,Technology,Software - Application,4481352.0
+PET,Wag! Group Co.,Technology,Software - Application,2379663.0
+NUKKW,Nukkleus Inc.,Technology,Software - Application,1423937536.0

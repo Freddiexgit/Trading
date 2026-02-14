@@ -1,0 +1,75 @@
+ticker,name,sector,industry,marketCap
+SPOT,Spotify Technology S.A.,Communication Services,Internet Content & Information,140315901952.0
+TME,Tencent Music Entertainment Group,Communication Services,Internet Content & Information,38166851584.0
+RDDT,"Reddit, Inc.",Communication Services,Internet Content & Information,42125074432.0
+PINS,"Pinterest, Inc.",Communication Services,Internet Content & Information,24905836544.0
+SNAP,Snap Inc.,Communication Services,Internet Content & Information,12065386496.0
+CMCM,Cheetah Mobile Inc.,Communication Services,Internet Content & Information,184451120.0
+ATHM,Autohome Inc.,Communication Services,Internet Content & Information,3421413376.0
+GENI,Genius Sports Limited,Communication Services,Internet Content & Information,3049660160.0
+YELP,Yelp Inc.,Communication Services,Internet Content & Information,1993979392.0
+FVRR,Fiverr International Ltd.,Communication Services,Internet Content & Information,869769792.0
+CARS,Cars.com Inc.,Communication Services,Internet Content & Information,801863808.0
+GETY,"Getty Images Holdings, Inc.",Communication Services,Internet Content & Information,763252288.0
+SSTK,"Shutterstock, Inc.",Communication Services,Internet Content & Information,742472896.0
+NXDR,,Communication Services,Internet Content & Information,793883008.0
+MAX,"MediaAlpha, Inc.",Communication Services,Internet Content & Information,693550528.0
+ZIP,"ZipRecruiter, Inc.",Communication Services,Internet Content & Information,427395008.0
+ZH,Zhihu Inc.,Communication Services,Internet Content & Information,419253152.0
+EB,"Eventbrite, Inc.",Communication Services,Internet Content & Information,255725264.0
+BODI,"The Beachbody Company, Inc.",Communication Services,Internet Content & Information,38939280.0
+FENG,Phoenix New Media Limited,Communication Services,Internet Content & Information,28705814.0
+GOOG,Alphabet Inc.,Communication Services,Internet Content & Information,2578310758400.0
+GOOGL,Alphabet Inc.,Communication Services,Internet Content & Information,2578297651200.0
+META,"Meta Platforms, Inc.",Communication Services,Internet Content & Information,1855717900288.0
+BIDU,"Baidu, Inc.",Communication Services,Internet Content & Information,32754135040.0
+Z,"Zillow Group, Inc.",Communication Services,Internet Content & Information,20266606592.0
+ZG,"Zillow Group, Inc.",Communication Services,Internet Content & Information,20266602496.0
+NBIS,,Communication Services,Internet Content & Information,16308597760.0
+BILI,Bilibili Inc.,Communication Services,Internet Content & Information,9747592192.0
+BZ,Kanzhun Limited,Communication Services,Internet Content & Information,10784090112.0
+MTCH,"Match Group, Inc.",Communication Services,Internet Content & Information,8984825856.0
+DJT,Trump Media & Technology Group Corp.,Communication Services,Internet Content & Information,4906033664.0
+RUM,Rumble Inc.,Communication Services,Internet Content & Information,2470420736.0
+IAC,IAC Inc.,Communication Services,Internet Content & Information,2935360000.0
+JOYY,JOYY Inc.,Communication Services,Internet Content & Information,2776678400.0
+WB,Weibo Corporation,Communication Services,Internet Content & Information,2799643648.0
+DJTWW,Trump Media & Technology Group Corp.,Communication Services,Internet Content & Information,3001748992.0
+UPWK,Upwork Inc.,Communication Services,Internet Content & Information,2040821760.0
+OPRA,Opera Limited,Communication Services,Internet Content & Information,1454591104.0
+MOMO,Hello Group Inc.,Communication Services,Internet Content & Information,1333552640.0
+WBTN,WEBTOON Entertainment Inc.,Communication Services,Internet Content & Information,1889897856.0
+GRPN,"Groupon, Inc.",Communication Services,Internet Content & Information,1055118592.0
+TBLA,Taboola.com Ltd.,Communication Services,Internet Content & Information,991041472.0
+NRDS,"NerdWallet, Inc.",Communication Services,Internet Content & Information,785841024.0
+EVER,"EverQuote, Inc.",Communication Services,Internet Content & Information,848924928.0
+BMBL,Bumble Inc.,Communication Services,Internet Content & Information,926857408.0
+ANGI,Angi Inc.,Communication Services,Internet Content & Information,785743744.0
+JFIN,Jiayin Group Inc.,Communication Services,Internet Content & Information,671388288.0
+THRY,"Thryv Holdings, Inc.",Communication Services,Internet Content & Information,565020800.0
+PERI,Perion Network Ltd.,Communication Services,Internet Content & Information,415693344.0
+SEAT,Vivid Seats Inc.,Communication Services,Internet Content & Information,182510832.0
+TRVG,trivago N.V.,Communication Services,Internet Content & Information,236743584.0
+DOYU,DouYu International Holdings Limited,Communication Services,Internet Content & Information,232981104.0
+TEAD,Teads Holding Co.,Communication Services,Internet Content & Information,166200464.0
+UPXI,"Upexi, Inc.",Communication Services,Internet Content & Information,423768384.0
+TRUE,"TrueCar, Inc.",Communication Services,Internet Content & Information,194571312.0
+TZOO,Travelzoo,Communication Services,Internet Content & Information,107722632.0
+BZFD,"BuzzFeed, Inc.",Communication Services,Internet Content & Information,72592912.0
+MNY,MoneyHero Limited,Communication Services,Internet Content & Information,78356952.0
+GIBO,GIBO Holdings Limited,Communication Services,Internet Content & Information,8327343.0
+IZEA,"IZEA Worldwide, Inc.",Communication Services,Internet Content & Information,64292508.0
+NAMI,Jinxin Technology Holding Company,Communication Services,Internet Content & Information,84091656.0
+CCG,Cheche Group Inc.,Communication Services,Internet Content & Information,74466112.0
+ASST,Asset Entities Inc.,Communication Services,Internet Content & Information,102240064.0
+PODC,"PodcastOne, Inc.",Communication Services,Internet Content & Information,41731436.0
+SJ,Scienjoy Holding Corporation,Communication Services,Internet Content & Information,26987184.0
+VBIX,Viewbix Inc.,Communication Services,Internet Content & Information,30831170.0
+GIFT,"Giftify, Inc.",Communication Services,Internet Content & Information,33901844.0
+SCOR,"comScore, Inc.",Communication Services,Internet Content & Information,33398434.0
+SOGP,Sound Group Inc.,Communication Services,Internet Content & Information,59177484.0
+LCFY,Locafy Limited,Communication Services,Internet Content & Information,5611650.0
+GITS,"Global Interactive Technologies, Inc.",Communication Services,Internet Content & Information,7736449.0
+ONFO,"Onfolio Holdings, Inc.",Communication Services,Internet Content & Information,5332496.0
+SLE,"Super League Enterprise, Inc.",Communication Services,Internet Content & Information,3632994.0
+DGLY,"Digital Ally, Inc.",Communication Services,Internet Content & Information,3126630.0

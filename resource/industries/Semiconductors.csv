@@ -1,0 +1,66 @@
+ticker,name,sector,industry,marketCap
+TSM,Taiwan Semiconductor Manufacturing Company Limited,Technology,Semiconductors,1197411926016.0
+STM,STMicroelectronics N.V.,Technology,Semiconductors,24240799744.0
+ASX,"ASE Technology Holding Co., Ltd.",Technology,Semiconductors,22179471360.0
+UMC,United Microelectronics Corporation,Technology,Semiconductors,16726426624.0
+VSH,"Vishay Intertechnology, Inc.",Technology,Semiconductors,2096159616.0
+VLN,Valens Semiconductor Ltd.,Technology,Semiconductors,206708400.0
+WOLF,"Wolfspeed, Inc.",Technology,Semiconductors,194025280.0
+MX,Magnachip Semiconductor Corporation,Technology,Semiconductors,113160600.0
+GCTS,"GCT Semiconductor Holding, Inc.",Technology,Semiconductors,73735072.0
+SQNS,Sequans Communications S.A.,Technology,Semiconductors,128704952.0
+NVDA,NVIDIA Corporation,Technology,Semiconductors,4239080554496.0
+AVGO,Broadcom Inc.,Technology,Semiconductors,1398764994560.0
+AMD,"Advanced Micro Devices, Inc.",Technology,Semiconductors,263922483200.0
+QCOM,QUALCOMM Incorporated,Technology,Semiconductors,173427671040.0
+TXN,Texas Instruments Incorporated,Technology,Semiconductors,184082055168.0
+ARM,Arm Holdings plc,Technology,Semiconductors,146506252288.0
+MU,"Micron Technology, Inc.",Technology,Semiconductors,133187657728.0
+ADI,"Analog Devices, Inc.",Technology,Semiconductors,123633213440.0
+INTC,Intel Corporation,Technology,Semiconductors,106579460096.0
+MRVL,"Marvell Technology, Inc.",Technology,Semiconductors,54195916800.0
+NXPI,NXP Semiconductors N.V.,Technology,Semiconductors,59209211904.0
+MCHP,Microchip Technology Incorporated,Technology,Semiconductors,35079200768.0
+MPWR,"Monolithic Power Systems, Inc.",Technology,Semiconductors,40026218496.0
+ON,ON Semiconductor Corporation,Technology,Semiconductors,20281022464.0
+GFS,GLOBALFOUNDRIES Inc.,Technology,Semiconductors,18530514944.0
+ALAB,"Astera Labs, Inc.",Technology,Semiconductors,30285103104.0
+CRDO,Credo Technology Group Holding Ltd,Technology,Semiconductors,21285316608.0
+SWKS,"Skyworks Solutions, Inc.",Technology,Semiconductors,11123194880.0
+MTSI,"MACOM Technology Solutions Holdings, Inc.",Technology,Semiconductors,9543495680.0
+QRVO,"Qorvo, Inc.",Technology,Semiconductors,8403745280.0
+RMBS,Rambus Inc.,Technology,Semiconductors,7937208832.0
+LSCC,Lattice Semiconductor Corporation,Technology,Semiconductors,9087156224.0
+ALGM,"Allegro MicroSystems, Inc.",Technology,Semiconductors,5708484096.0
+CRUS,"Cirrus Logic, Inc.",Technology,Semiconductors,5861623808.0
+TSEM,Tower Semiconductor Ltd.,Technology,Semiconductors,6578781696.0
+SMTC,Semtech Corporation,Technology,Semiconductors,5040701440.0
+SITM,SiTime Corporation,Technology,Semiconductors,6284386816.0
+SLAB,Silicon Laboratories Inc.,Technology,Semiconductors,4408735744.0
+PI,"Impinj, Inc.",Technology,Semiconductors,5453446144.0
+POWI,"Power Integrations, Inc.",Technology,Semiconductors,2529911552.0
+SIMO,Silicon Motion Technology Corporation,Technology,Semiconductors,2707821312.0
+SYNA,Synaptics Incorporated,Technology,Semiconductors,2700536064.0
+DIOD,Diodes Incorporated,Technology,Semiconductors,2528108544.0
+HIMX,"Himax Technologies, Inc.",Technology,Semiconductors,1418802048.0
+MXL,"MaxLinear, Inc.",Technology,Semiconductors,1368905472.0
+NVTS,Navitas Semiconductor Corporation,Technology,Semiconductors,1248807040.0
+LASR,"nLIGHT, Inc.",Technology,Semiconductors,1437105536.0
+AOSL,Alpha and Omega Semiconductor Limited,Technology,Semiconductors,863491264.0
+IMOS,ChipMOS TECHNOLOGIES INC.,Technology,Semiconductors,556417856.0
+CEVA,"CEVA, Inc.",Technology,Semiconductors,530662464.0
+SKYT,"SkyWater Technology, Inc.",Technology,Semiconductors,577627840.0
+POET,POET Technologies Inc.,Technology,Semiconductors,486260832.0
+AIP,"Arteris, Inc.",Technology,Semiconductors,401762048.0
+ALMU,"Aeluma, Inc.",Technology,Semiconductors,361932576.0
+ICG,Intchains Group Limited,Technology,Semiconductors,115115112.0
+LAES,SEALSQ Corp,Technology,Semiconductors,377224096.0
+NVEC,NVE Corporation,Technology,Semiconductors,312384448.0
+MRAM,"Everspin Technologies, Inc.",Technology,Semiconductors,145479392.0
+GSIT,"GSI Technology, Inc.",Technology,Semiconductors,85526368.0
+QUIK,QuickLogic Corporation,Technology,Semiconductors,84270000.0
+PXLW,"Pixelworks, Inc.",Technology,Semiconductors,45990456.0
+WKEY,WISeKey International Holding AG,Technology,Semiconductors,64984140.0
+MOBX,"Mobix Labs, Inc.",Technology,Semiconductors,64763472.0
+LEDS,SemiLEDs Corporation,Technology,Semiconductors,15337243.0
+PRSO,Peraso Inc.,Technology,Semiconductors,5419096.0

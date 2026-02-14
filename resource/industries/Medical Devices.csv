@@ -1,0 +1,141 @@
+ticker,name,sector,industry,marketCap
+ABT,Abbott Laboratories,Healthcare,Medical Devices,230889439232.0
+BSX,Boston Scientific Corporation,Healthcare,Medical Devices,156324626432.0
+SYK,Stryker Corporation,Healthcare,Medical Devices,149638791168.0
+MDT,Medtronic plc,Healthcare,Medical Devices,119046463488.0
+EW,Edwards Lifesciences Corporation,Healthcare,Medical Devices,47754715136.0
+PHG,Koninklijke Philips N.V.,Healthcare,Medical Devices,26216830976.0
+STE,STERIS plc,Healthcare,Medical Devices,24136105984.0
+ZBH,"Zimmer Biomet Holdings, Inc.",Healthcare,Medical Devices,21017985024.0
+SNN,Smith & Nephew plc,Healthcare,Medical Devices,16292061184.0
+PEN,"Penumbra, Inc.",Healthcare,Medical Devices,10632715264.0
+GMED,"Globus Medical, Inc.",Healthcare,Medical Devices,8274941952.0
+BIO,"Bio-Rad Laboratories, Inc.",Healthcare,Medical Devices,7857895936.0
+GKOS,Glaukos Corporation,Healthcare,Medical Devices,5495277056.0
+ITGR,Integer Holdings Corporation,Healthcare,Medical Devices,3779204096.0
+INSP,"Inspire Medical Systems, Inc.",Healthcare,Medical Devices,2770816256.0
+HAE,Haemonetics Corporation,Healthcare,Medical Devices,2627589888.0
+ENOV,Enovis Corporation,Healthcare,Medical Devices,1766237824.0
+CNMD,CONMED Corporation,Healthcare,Medical Devices,1682713856.0
+AORT,"Artivion, Inc.",Healthcare,Medical Devices,2072779904.0
+AVNS,"Avanos Medical, Inc.",Healthcare,Medical Devices,554045824.0
+BFLY,"Butterfly Network, Inc.",Healthcare,Medical Devices,405303008.0
+OWLT,"Owlet, Inc.",Healthcare,Medical Devices,128345088.0
+RBOT,Vicarious Surgical Inc.,Healthcare,Medical Devices,36368188.0
+ALUR,Allurion Technologies Inc.,Healthcare,Medical Devices,16845016.0
+BIO,"Bio-Rad Laboratories, Inc.",Healthcare,Medical Devices,7857895936.0
+DXCM,"DexCom, Inc.",Healthcare,Medical Devices,29544955904.0
+PODD,Insulet Corporation,Healthcare,Medical Devices,23925002240.0
+MASI,Masimo Corporation,Healthcare,Medical Devices,7589718016.0
+BRKR,Bruker Corporation,Healthcare,Medical Devices,5155411968.0
+IRTC,"iRhythm Technologies, Inc.",Healthcare,Medical Devices,5461083136.0
+TMDX,"TransMedics Group, Inc.",Healthcare,Medical Devices,3919032320.0
+PRCT,PROCEPT BioRobotics Corporation,Healthcare,Medical Devices,2234894080.0
+LIVN,LivaNova PLC,Healthcare,Medical Devices,3077863936.0
+UFPT,"UFP Technologies, Inc.",Healthcare,Medical Devices,1620571136.0
+QDEL,QuidelOrtho Corporation,Healthcare,Medical Devices,1948065280.0
+ATEC,"Alphatec Holdings, Inc.",Healthcare,Medical Devices,2352945664.0
+SSII,"SS Innovations International, Inc.",Healthcare,Medical Devices,1355228032.0
+NVCR,NovoCure Limited,Healthcare,Medical Devices,1378481664.0
+AHCO,AdaptHealth Corp.,Healthcare,Medical Devices,1283977984.0
+ESTA,Establishment Labs Holdings Inc.,Healthcare,Medical Devices,1195620864.0
+TNDM,"Tandem Diabetes Care, Inc.",Healthcare,Medical Devices,845294528.0
+IART,Integra LifeSciences Holdings Corporation,Healthcare,Medical Devices,1178790400.0
+INMD,InMode Ltd.,Healthcare,Medical Devices,944345408.0
+SIBN,"SI-BONE, Inc.",Healthcare,Medical Devices,719158784.0
+IRMD,IRADIMED CORPORATION,Healthcare,Medical Devices,921436800.0
+BBNX,"Beta Bionics, Inc.",Healthcare,Medical Devices,818976704.0
+AXGN,"Axogen, Inc.",Healthcare,Medical Devices,742643328.0
+KIDS,OrthoPediatrics Corp.,Healthcare,Medical Devices,535572096.0
+BVS,Bioventus Inc.,Healthcare,Medical Devices,495003040.0
+SRDX,"Surmodics, Inc.",Healthcare,Medical Devices,486690304.0
+CBLL,,Healthcare,Medical Devices,433735104.0
+LAB,Standard BioTools Inc.,Healthcare,Medical Devices,481313696.0
+ZIMV,ZimVie Inc.,Healthcare,Medical Devices,532432960.0
+PACB,"Pacific Biosciences of California, Inc.",Healthcare,Medical Devices,393486016.0
+CTKB,"Cytek Biosciences, Inc.",Healthcare,Medical Devices,526707328.0
+OFIX,Orthofix Medical Inc.,Healthcare,Medical Devices,591624576.0
+SMLR,"Semler Scientific, Inc.",Healthcare,Medical Devices,438811296.0
+DCTH,"Delcath Systems, Inc.",Healthcare,Medical Devices,385493952.0
+TMCI,"Treace Medical Concepts, Inc.",Healthcare,Medical Devices,463690560.0
+VREX,Varex Imaging Corporation,Healthcare,Medical Devices,479564096.0
+RXST,"RxSight, Inc.",Healthcare,Medical Devices,369880640.0
+NNOX,Nano-X Imaging Ltd.,Healthcare,Medical Devices,247446240.0
+OM,"Outset Medical, Inc.",Healthcare,Medical Devices,247127840.0
+QSI,Quantum-Si incorporated,Healthcare,Medical Devices,226794416.0
+SNWV,"SANUWAVE Health, Inc.",Healthcare,Medical Devices,356771520.0
+CLPT,"ClearPoint Neuro, Inc.",Healthcare,Medical Devices,298203424.0
+STIM,"Neuronetics, Inc.",Healthcare,Medical Devices,220195584.0
+NPCE,"NeuroPace, Inc.",Healthcare,Medical Devices,302695712.0
+CERS,Cerus Corporation,Healthcare,Medical Devices,251125696.0
+MASS,908 Devices Inc.,Healthcare,Medical Devices,225535632.0
+VMD,"Viemed Healthcare, Inc.",Healthcare,Medical Devices,285851328.0
+TCMD,"Tactile Systems Technology, Inc.",Healthcare,Medical Devices,296707872.0
+QTRX,Quanterix Corporation,Healthcare,Medical Devices,211419856.0
+MXCT,"MaxCyte, Inc.",Healthcare,Medical Devices,148183728.0
+BWAY,BrainsWay Ltd.,Healthcare,Medical Devices,294112000.0
+CVRX,"CVRx, Inc.",Healthcare,Medical Devices,205290848.0
+CV,"CapsoVision, Inc.",Healthcare,Medical Devices,175402880.0
+MGRM,Monogram Technologies Inc.,Healthcare,Medical Devices,235667920.0
+SGHT,"Sight Sciences, Inc.",Healthcare,Medical Devices,212611648.0
+INGN,"Inogen, Inc.",Healthcare,Medical Devices,216052784.0
+TLSI,"TriSalus Life Sciences, Inc.",Healthcare,Medical Devices,260307296.0
+RPID,"Rapid Micro Biosystems, Inc.",Healthcare,Medical Devices,106546824.0
+PROF,Profound Medical Corp.,Healthcare,Medical Devices,134737856.0
+LNSR,"LENSAR, Inc.",Healthcare,Medical Devices,146559344.0
+RCEL,"AVITA Medical, Inc.",Healthcare,Medical Devices,117262032.0
+ARAY,Accuray Incorporated,Healthcare,Medical Devices,171269040.0
+LUNG,Pulmonx Corporation,Healthcare,Medical Devices,69676688.0
+BSGM,"BioSig Technologies, Inc.",Healthcare,Medical Devices,168594912.0
+SERA,"Sera Prognostics, Inc.",Healthcare,Medical Devices,122939936.0
+LUCD,Lucid Diagnostics Inc.,Healthcare,Medical Devices,128385176.0
+SRTS,"Sensus Healthcare, Inc.",Healthcare,Medical Devices,55731600.0
+NVNO,enVVeno Medical Corporation,Healthcare,Medical Devices,15386131.0
+HYPR,"Hyperfine, Inc.",Healthcare,Medical Devices,97440440.0
+TELA,"TELA Bio, Inc.",Healthcare,Medical Devices,70517192.0
+ELUT,Elutia Inc.,Healthcare,Medical Devices,96661280.0
+BDMD,Baird Medical Investment Holdings Limited,Healthcare,Medical Devices,90688960.0
+NSPR,"InspireMD, Inc.",Healthcare,Medical Devices,101798512.0
+APYX,Apyx Medical Corporation,Healthcare,Medical Devices,75260808.0
+MDAI,"Spectral AI, Inc.",Healthcare,Medical Devices,51590828.0
+ICCM,IceCure Medical Ltd,Healthcare,Medical Devices,76889896.0
+CTSO,Cytosorbents Corporation,Healthcare,Medical Devices,59209484.0
+ECOR,"electroCore, Inc.",Healthcare,Medical Devices,40268064.0
+NMTC,NeuroOne Medical Technologies Corporation,Healthcare,Medical Devices,38209616.0
+MODD,"Modular Medical, Inc.",Healthcare,Medical Devices,39946952.0
+COCH,"Envoy Medical, Inc.",Healthcare,Medical Devices,26470708.0
+IINN,Inspira Technologies Oxy B.H.N. Ltd.,Healthcare,Medical Devices,35436904.0
+VVOS,"Vivos Therapeutics, Inc.",Healthcare,Medical Devices,32495826.0
+PTHL,Pheton Holdings Ltd,Healthcare,Medical Devices,16000140.0
+IRIX,IRIDEX Corporation,Healthcare,Medical Devices,22769682.0
+NSYS,Nortech Systems Incorporated,Healthcare,Medical Devices,26189620.0
+ADGM,"Adagio Medical Holdings, Inc.",Healthcare,Medical Devices,24764376.0
+NXL,"Nexalin Technology, Inc.",Healthcare,Medical Devices,16654996.0
+XYLO,,Healthcare,Medical Devices,6635819.0
+XAIR,"Beyond Air, Inc.",Healthcare,Medical Devices,11602186.0
+TRIB,Trinity Biotech plc,Healthcare,Medical Devices,5440544.0
+DHAI,"DIH Holding US, Inc.",Healthcare,Medical Devices,13785345.0
+WOK,WORK Medical Technology Group LTD,Healthcare,Medical Devices,48274100.0
+INBS,Intelligent Bio Solutions Inc.,Healthcare,Medical Devices,14546045.0
+AIMD,"Ainos, Inc.",Healthcare,Medical Devices,17793024.0
+PAVM,PAVmed Inc.,Healthcare,Medical Devices,10639650.0
+CODX,"Co-Diagnostics, Inc.",Healthcare,Medical Devices,12701231.0
+BMRA,"Biomerica, Inc.",Healthcare,Medical Devices,7968229.0
+LFWD,Lifeward Ltd.,Healthcare,Medical Devices,9969280.0
+TNON,"Tenon Medical, Inc.",Healthcare,Medical Devices,11010233.0
+SSKN,"STRATA Skin Sciences, Inc.",Healthcare,Medical Devices,9927361.0
+HSCS,HeartSciences Inc.,Healthcare,Medical Devices,8644589.0
+SINT,"Sintx Technologies, Inc.",Healthcare,Medical Devices,11449269.0
+HSDT,"Helius Medical Technologies, Inc.",Healthcare,Medical Devices,6592831.0
+PFSA,"Profusa, Inc.",Healthcare,Medical Devices,13871694.0
+MOVE,Movano Inc.,Healthcare,Medical Devices,7529537.0
+AMIX,"Autonomix Medical, Inc.",Healthcare,Medical Devices,6320675.0
+VERO,Venus Concept Inc.,Healthcare,Medical Devices,4108655.0
+TIVC,"Tivic Health Systems, Inc.",Healthcare,Medical Devices,3346562.0
+AEMD,"Aethlon Medical, Inc.",Healthcare,Medical Devices,4859587.0
+BJDX,"Bluejay Diagnostics, Inc.",Healthcare,Medical Devices,2034176.0
+NAOV,"NanoVibronix, Inc.",Healthcare,Medical Devices,4351347.0
+RSLS,ReShape Lifesciences Inc.,Healthcare,Medical Devices,9352963.0
+IVF,"INVO Fertility, Inc.",Healthcare,Medical Devices,4188063.0
+BBLG,Bone Biologics Corporation,Healthcare,Medical Devices,3859809.0
+NUWE,"Nuwellis, Inc.",Healthcare,Medical Devices,4603591.0

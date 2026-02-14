@@ -1,0 +1,359 @@
+ticker,name,sector,industry,marketCap
+HDB,HDFC Bank Limited,Financial Services,Banks - Regional,182005940224.0
+IBN,ICICI Bank Limited,Financial Services,Banks - Regional,114271297536.0
+PNC,"The PNC Financial Services Group, Inc.",Financial Services,Banks - Regional,81691328512.0
+MFG,"Mizuho Financial Group, Inc.",Financial Services,Banks - Regional,82228740096.0
+USB,U.S. Bancorp,Financial Services,Banks - Regional,75988754432.0
+LYG,Lloyds Banking Group plc,Financial Services,Banks - Regional,64179650560.0
+DB,Deutsche Bank Aktiengesellschaft,Financial Services,Banks - Regional,67665653760.0
+ITUB,Itaú Unibanco Holding S.A.,Financial Services,Banks - Regional,72530264064.0
+NU,Nu Holdings Ltd.,Financial Services,Banks - Regional,71518781440.0
+TFC,Truist Financial Corporation,Financial Services,Banks - Regional,60371578880.0
+NWG,NatWest Group plc,Financial Services,Banks - Regional,56253353984.0
+BSBR,Banco Santander (Brasil) S.A.,Financial Services,Banks - Regional,39596142592.0
+MTB,M&T Bank Corporation,Financial Services,Banks - Regional,31513204736.0
+KB,KB Financial Group Inc.,Financial Services,Banks - Regional,28644198400.0
+BBD,Banco Bradesco S.A.,Financial Services,Banks - Regional,30530433024.0
+BBDO,Banco Bradesco S.A.,Financial Services,Banks - Regional,30530424832.0
+SHG,"Shinhan Financial Group Co., Ltd.",Financial Services,Banks - Regional,22929928192.0
+RF,Regions Financial Corporation,Financial Services,Banks - Regional,24440313856.0
+BAP,Credicorp Ltd.,Financial Services,Banks - Regional,20413014016.0
+CFG,"Citizens Financial Group, Inc.",Financial Services,Banks - Regional,22550925312.0
+KEY,KeyCorp,Financial Services,Banks - Regional,21228625920.0
+BCH,Banco de Chile,Financial Services,Banks - Regional,14511091712.0
+WF,Woori Financial Group Inc.,Financial Services,Banks - Regional,13156121600.0
+FHN,First Horizon Corporation,Financial Services,Banks - Regional,11475104768.0
+BSAC,Banco Santander-Chile,Financial Services,Banks - Regional,11325604864.0
+WBS,Webster Financial Corporation,Financial Services,Banks - Regional,10340279296.0
+SSB,SouthState Corporation,Financial Services,Banks - Regional,10329390080.0
+CMA,Comerica Incorporated,Financial Services,Banks - Regional,9071294464.0
+WAL,Western Alliance Bancorporation,Financial Services,Banks - Regional,9883544576.0
+CFR,"Cullen/Frost Bankers, Inc.",Financial Services,Banks - Regional,8299893248.0
+SNV,Synovus Financial Corp.,Financial Services,Banks - Regional,7163674624.0
+CADE,Cadence Bank,Financial Services,Banks - Regional,7012595712.0
+PB,"Prosperity Bancshares, Inc.",Financial Services,Banks - Regional,6567377408.0
+HOMB,"Home Bancshares, Inc. (Conway, AR)",Financial Services,Banks - Regional,5865071104.0
+CIB,Grupo Cibest S.A.,Financial Services,Banks - Regional,12982449152.0
+FNB,F.N.B. Corporation,Financial Services,Banks - Regional,5994113536.0
+GBCI,"Glacier Bancorp, Inc.",Financial Services,Banks - Regional,5826880000.0
+FLG,"Flagstar Financial, Inc.",Financial Services,Banks - Regional,5327491584.0
+AX,"Axos Financial, Inc.",Financial Services,Banks - Regional,5152097280.0
+ABCB,Ameris Bancorp,Financial Services,Banks - Regional,5026040832.0
+AUB,Atlantic Union Bankshares Corporation,Financial Services,Banks - Regional,5091918336.0
+BMA,Banco Macro S.A.,Financial Services,Banks - Regional,3682424832.0
+SFBS,"ServisFirst Bancshares, Inc.",Financial Services,Banks - Regional,4814779392.0
+IFS,Intercorp Financial Services Inc.,Financial Services,Banks - Regional,4451301376.0
+ASB,Associated Banc-Corp,Financial Services,Banks - Regional,4472920576.0
+UCB,"United Community Banks, Inc.",Financial Services,Banks - Regional,4057231872.0
+RNST,Renasant Corporation,Financial Services,Banks - Regional,3718105088.0
+AVAL,Grupo Aval Acciones y Valores S.A.,Financial Services,Banks - Regional,3956605952.0
+FBP,First BanCorp.,Financial Services,Banks - Regional,3567248128.0
+BBAR,Banco BBVA Argentina S.A.,Financial Services,Banks - Regional,2535357952.0
+CBU,"Community Financial System, Inc.",Financial Services,Banks - Regional,3165611776.0
+BKU,"BankUnited, Inc.",Financial Services,Banks - Regional,2947589632.0
+BOH,Bank of Hawaii Corporation,Financial Services,Banks - Regional,2708962304.0
+PFS,"Provident Financial Services, Inc.",Financial Services,Banks - Regional,2591580160.0
+FBK,FB Financial Corporation,Financial Services,Banks - Regional,2890608896.0
+BANC,"Banc of California, Inc.",Financial Services,Banks - Regional,2666067456.0
+CUBI,"Customers Bancorp, Inc.",Financial Services,Banks - Regional,2267088896.0
+NIC,"Nicolet Bankshares, Inc.",Financial Services,Banks - Regional,2054560640.0
+OFG,OFG Bancorp,Financial Services,Banks - Regional,1992234240.0
+FCF,First Commonwealth Financial Corporation,Financial Services,Banks - Regional,1855567232.0
+STEL,"Stellar Bancorp, Inc.",Financial Services,Banks - Regional,1587822336.0
+BLX,"Banco Latinoamericano de Comercio Exterior, S. A.",Financial Services,Banks - Regional,1697159680.0
+LOB,"Live Oak Bancshares, Inc.",Financial Services,Banks - Regional,1769343872.0
+LC,LendingClub Corporation,Financial Services,Banks - Regional,1971233280.0
+NBHC,National Bank Holdings Corporation,Financial Services,Banks - Regional,1492148480.0
+BY,"Byline Bancorp, Inc.",Financial Services,Banks - Regional,1325954304.0
+BHLB,"Berkshire Hills Bancorp, Inc.",Financial Services,Banks - Regional,1212168064.0
+OBK,"Origin Bancorp, Inc.",Financial Services,Banks - Regional,1214328576.0
+SUPV,Grupo Supervielle S.A.,Financial Services,Banks - Regional,690723584.0
+SBSI,"Southside Bancshares, Inc.",Financial Services,Banks - Regional,939702336.0
+AMTB,Amerant Bancorp Inc.,Financial Services,Banks - Regional,901980928.0
+MCB,Metropolitan Bank Holding Corp.,Financial Services,Banks - Regional,827354944.0
+CPF,Central Pacific Financial Corp.,Financial Services,Banks - Regional,845057408.0
+HTB,"HomeTrust Bancshares, Inc.",Financial Services,Banks - Regional,723837248.0
+EQBK,"Equity Bancshares, Inc.",Financial Services,Banks - Regional,778905536.0
+SMBK,"SmartFinancial, Inc.",Financial Services,Banks - Regional,627198016.0
+GNTY,"Guaranty Bancshares, Inc.",Financial Services,Banks - Regional,557625984.0
+NPB,"Northpointe Bancshares, Inc.",Financial Services,Banks - Regional,612378944.0
+FFWM,First Foundation Inc.,Financial Services,Banks - Regional,490197248.0
+CBAN,"Colony Bankcorp, Inc.",Financial Services,Banks - Regional,299986848.0
+COSO,"CoastalSouth Bancshares, Inc.",Financial Services,Banks - Regional,259702560.0
+CBNA,"Chain Bridge Bancorp, Inc.",Financial Services,Banks - Regional,198429440.0
+ASB,Associated Banc-Corp,Financial Services,Banks - Regional,4472920576.0
+ASB,Associated Banc-Corp,Financial Services,Banks - Regional,4472920576.0
+AUB,Atlantic Union Bankshares Corporation,Financial Services,Banks - Regional,5091918336.0
+BANC,"Banc of California, Inc.",Financial Services,Banks - Regional,2666067456.0
+BOH,Bank of Hawaii Corporation,Financial Services,Banks - Regional,2708962304.0
+CADE,Cadence Bank,Financial Services,Banks - Regional,7012595712.0
+CFG,"Citizens Financial Group, Inc.",Financial Services,Banks - Regional,22550925312.0
+CUBI,"Customers Bancorp, Inc.",Financial Services,Banks - Regional,2267088896.0
+FHN,First Horizon Corporation,Financial Services,Banks - Regional,11475104768.0
+FLG,"Flagstar Financial, Inc.",Financial Services,Banks - Regional,5327491584.0
+KEY,KeyCorp,Financial Services,Banks - Regional,21228625920.0
+MTB,M&T Bank Corporation,Financial Services,Banks - Regional,31513204736.0
+RF,Regions Financial Corporation,Financial Services,Banks - Regional,24440313856.0
+SNV,Synovus Financial Corp.,Financial Services,Banks - Regional,7163674624.0
+TFC,Truist Financial Corporation,Financial Services,Banks - Regional,60371578880.0
+UCB,"United Community Banks, Inc.",Financial Services,Banks - Regional,4057231872.0
+USB,U.S. Bancorp,Financial Services,Banks - Regional,75988754432.0
+WAL,Western Alliance Bancorporation,Financial Services,Banks - Regional,9883544576.0
+WBS,Webster Financial Corporation,Financial Services,Banks - Regional,10340279296.0
+FITB,Fifth Third Bancorp,Financial Services,Banks - Regional,30294566912.0
+FCNCA,"First Citizens BancShares, Inc.",Financial Services,Banks - Regional,25308938240.0
+HBAN,Huntington Bancshares Incorporated,Financial Services,Banks - Regional,25983184896.0
+FITBI,Fifth Third Bancorp,Financial Services,Banks - Regional,17873221632.0
+EWBC,"East West Bancorp, Inc.",Financial Services,Banks - Regional,14490604544.0
+VLYPP,Valley National Bancorp,Financial Services,Banks - Regional,3136512512.0
+VLYPO,Valley National Bancorp,Financial Services,Banks - Regional,3324253184.0
+WTFC,Wintrust Financial Corporation,Financial Services,Banks - Regional,9191880704.0
+GGAL,Grupo Financiero Galicia S.A.,Financial Services,Banks - Regional,6381664256.0
+UMBF,UMB Financial Corporation,Financial Services,Banks - Regional,9255660544.0
+CBSH,"Commerce Bancshares, Inc.",Financial Services,Banks - Regional,8265211392.0
+ZION,"Zions Bancorporation, National Association",Financial Services,Banks - Regional,8563667968.0
+BPOP,"Popular, Inc.",Financial Services,Banks - Regional,8491102720.0
+PNFP,"Pinnacle Financial Partners, Inc.",Financial Services,Banks - Regional,7540772352.0
+ONB,Old National Bancorp,Financial Services,Banks - Regional,8969561088.0
+BOKF,BOK Financial Corporation,Financial Services,Banks - Regional,7086913024.0
+OZK,Bank OZK,Financial Services,Banks - Regional,5910273536.0
+VLY,Valley National Bancorp,Financial Services,Banks - Regional,5854682112.0
+HWC,Hancock Whitney Corporation,Financial Services,Banks - Regional,5332784640.0
+UBSI,"United Bankshares, Inc.",Financial Services,Banks - Regional,5430746112.0
+FFIN,"First Financial Bankshares, Inc.",Financial Services,Banks - Regional,5284607488.0
+COLB,"Columbia Banking System, Inc.",Financial Services,Banks - Regional,5629757440.0
+IBOC,International Bancshares Corporation,Financial Services,Banks - Regional,4446668800.0
+BANF,BancFirst Corporation,Financial Services,Banks - Regional,4429137408.0
+TCBI,"Texas Capital Bancshares, Inc.",Financial Services,Banks - Regional,3961018880.0
+TFSL,TFS Financial Corporation,Financial Services,Banks - Regional,3946473472.0
+FULT,Fulton Financial Corporation,Financial Services,Banks - Regional,3580164608.0
+EBC,"Eastern Bankshares, Inc.",Financial Services,Banks - Regional,3399637248.0
+CATY,Cathay General Bancorp,Financial Services,Banks - Regional,3448451584.0
+WSFS,WSFS Financial Corporation,Financial Services,Banks - Regional,3262438912.0
+FHB,"First Hawaiian, Inc.",Financial Services,Banks - Regional,3234096640.0
+FIBK,"First Interstate BancSystem, Inc.",Financial Services,Banks - Regional,3430921216.0
+WSBC,"WesBanco, Inc.",Financial Services,Banks - Regional,3148465408.0
+TBBK,"The Bancorp, Inc.",Financial Services,Banks - Regional,3512026112.0
+INTR,"Inter & Co, Inc.",Financial Services,Banks - Regional,3779952128.0
+INDB,Independent Bank Corp.,Financial Services,Banks - Regional,3569486080.0
+TOWN,TowneBank,Financial Services,Banks - Regional,2767328512.0
+CVBF,CVB Financial Corp.,Financial Services,Banks - Regional,2774276352.0
+SFNC,Simmons First National Corporation,Financial Services,Banks - Regional,3006886656.0
+SBCF,Seacoast Banking Corporation of Florida,Financial Services,Banks - Regional,2733159936.0
+FFBC,First Financial Bancorp.,Financial Services,Banks - Regional,2508381440.0
+WAFD,"WaFd, Inc.",Financial Services,Banks - Regional,2478011392.0
+FRME,First Merchants Corporation,Financial Services,Banks - Regional,2397045248.0
+TRMK,Trustmark Corporation,Financial Services,Banks - Regional,2430962944.0
+SYBT,"Stock Yards Bancorp, Inc.",Financial Services,Banks - Regional,2378790144.0
+BANR,Banner Corporation,Financial Services,Banks - Regional,2318199040.0
+PPBI,"Pacific Premier Bancorp, Inc.",Financial Services,Banks - Regional,2375319296.0
+FBNC,First Bancorp,Financial Services,Banks - Regional,2263432448.0
+EFSC,Enterprise Financial Services Corp,Financial Services,Banks - Regional,2265138944.0
+BUSE,First Busey Corporation,Financial Services,Banks - Regional,2199927808.0
+NBTB,NBT Bancorp Inc.,Financial Services,Banks - Regional,2319486720.0
+CASH,"Pathward Financial, Inc.",Financial Services,Banks - Regional,1809738496.0
+CHCO,City Holding Company,Financial Services,Banks - Regional,1862291840.0
+VBTX,"Veritex Holdings, Inc.",Financial Services,Banks - Regional,1881679232.0
+LKFN,Lakeland Financial Corporation,Financial Services,Banks - Regional,1747542144.0
+NWBI,"Northwest Bancshares, Inc.",Financial Services,Banks - Regional,1849581696.0
+SRCE,1st Source Corporation,Financial Services,Banks - Regional,1580724992.0
+GABC,"German American Bancorp, Inc.",Financial Services,Banks - Regional,1566453376.0
+CLBK,"Columbia Financial, Inc.",Financial Services,Banks - Regional,1577052800.0
+CCB,Coastal Financial Corporation,Financial Services,Banks - Regional,1729991936.0
+TFIN,"Triumph Financial, Inc.",Financial Services,Banks - Regional,1459409792.0
+STBA,"S&T Bancorp, Inc.",Financial Services,Banks - Regional,1515050368.0
+MBIN,Merchants Bancorp,Financial Services,Banks - Regional,1487607808.0
+TCBK,TriCo Bancshares,Financial Services,Banks - Regional,1478829696.0
+RBCAA,"Republic Bancorp, Inc.",Financial Services,Banks - Regional,1498770560.0
+PFBC,Preferred Bank,Financial Services,Banks - Regional,1168303872.0
+HOPE,"Hope Bancorp, Inc.",Financial Services,Banks - Regional,1426643456.0
+WABC,Westamerica Bancorporation,Financial Services,Banks - Regional,1273349632.0
+DCOM,"Dime Community Bancshares, Inc.",Financial Services,Banks - Regional,1350090240.0
+QCRH,"QCR Holdings, Inc.",Financial Services,Banks - Regional,1327913856.0
+BFC,Bank First Corporation,Financial Services,Banks - Regional,1277635840.0
+PEBO,Peoples Bancorp Inc.,Financial Services,Banks - Regional,1103657728.0
+FSUN,FirstSun Capital Bancorp,Financial Services,Banks - Regional,1058008320.0
+CTBI,"Community Trust Bancorp, Inc.",Financial Services,Banks - Regional,1058021248.0
+OCFC,OceanFirst Financial Corp.,Financial Services,Banks - Regional,1055317440.0
+BRKL,"Brookline Bancorp, Inc.",Financial Services,Banks - Regional,975695360.0
+FMBH,"First Mid Bancshares, Inc.",Financial Services,Banks - Regional,970454848.0
+BHRB,Burke & Herbert Financial Services Corp.,Financial Services,Banks - Regional,954830144.0
+AMAL,Amalgamated Financial Corp.,Financial Services,Banks - Regional,869851904.0
+CNOB,"ConnectOne Bancorp, Inc.",Financial Services,Banks - Regional,1286917120.0
+UVSP,Univest Financial Corporation,Financial Services,Banks - Regional,912260672.0
+NBN,Northeast Bank,Financial Services,Banks - Regional,942563776.0
+CFFN,"Capitol Federal Financial, Inc.",Financial Services,Banks - Regional,844214400.0
+ESQ,"Esquire Financial Holdings, Inc.",Financial Services,Banks - Regional,837632704.0
+HBT,"HBT Financial, Inc.",Financial Services,Banks - Regional,834313152.0
+HFWA,Heritage Financial Corporation,Financial Services,Banks - Regional,829816256.0
+OSBC,"Old Second Bancorp, Inc.",Financial Services,Banks - Regional,971926336.0
+MBWM,Mercantile Bank Corporation,Financial Services,Banks - Regional,800243520.0
+MCBS,"MetroCity Bankshares, Inc.",Financial Services,Banks - Regional,764598720.0
+BFST,"Business First Bancshares, Inc.",Financial Services,Banks - Regional,740371008.0
+NBBK,"NB Bancorp, Inc.",Financial Services,Banks - Regional,752320640.0
+HAFC,Hanmi Financial Corporation,Financial Services,Banks - Regional,757970176.0
+HBNC,"Horizon Bancorp, Inc.",Financial Services,Banks - Regional,863837312.0
+FCBC,"First Community Bankshares, Inc.",Financial Services,Banks - Regional,695599872.0
+CCBG,"Capital City Bank Group, Inc.",Financial Services,Banks - Regional,748536704.0
+GSBC,"Great Southern Bancorp, Inc.",Financial Services,Banks - Regional,716968128.0
+FSBC,Five Star Bancorp,Financial Services,Banks - Regional,700232640.0
+IBCP,Independent Bank Corporation,Financial Services,Banks - Regional,681135424.0
+ORRF,"Orrstown Financial Services, Inc.",Financial Services,Banks - Regional,679264832.0
+THFF,First Financial Corporation,Financial Services,Banks - Regional,699185408.0
+TRST,TrustCo Bank Corp NY,Financial Services,Banks - Regional,750081280.0
+SMBC,"Southern Missouri Bancorp, Inc.",Financial Services,Banks - Regional,650116736.0
+CAC,Camden National Corporation,Financial Services,Banks - Regional,691871040.0
+SPFI,"South Plains Financial, Inc.",Financial Services,Banks - Regional,659697152.0
+HTBK,Heritage Commerce Corp,Financial Services,Banks - Regional,634745408.0
+MOFG,"MidWestOne Financial Group, Inc.",Financial Services,Banks - Regional,626158528.0
+ALRS,Alerus Financial Corporation,Financial Services,Banks - Regional,565575616.0
+GBFH,GBank Financial Holdings Inc.,Financial Services,Banks - Regional,567265024.0
+TCBX,"Third Coast Bancshares, Inc.",Financial Services,Banks - Regional,552091648.0
+SHBI,"Shore Bancshares, Inc.",Financial Services,Banks - Regional,574445120.0
+MPB,"Mid Penn Bancorp, Inc.",Financial Services,Banks - Regional,693183808.0
+HIFS,Hingham Institution for Savings,Financial Services,Banks - Regional,619780416.0
+FMNB,Farmers National Banc Corp.,Financial Services,Banks - Regional,571473856.0
+CBNK,"Capital Bancorp, Inc.",Financial Services,Banks - Regional,563673216.0
+WASH,"Washington Trust Bancorp, Inc.",Financial Services,Banks - Regional,580977216.0
+FISI,"Financial Institutions, Inc.",Financial Services,Banks - Regional,556986048.0
+HONE,"HarborOne Bancorp, Inc.",Financial Services,Banks - Regional,555019584.0
+UNTY,"Unity Bancorp, Inc.",Financial Services,Banks - Regional,525227520.0
+BCAL,California BanCorp.,Financial Services,Banks - Regional,547596416.0
+PFIS,Peoples Financial Services Corp.,Financial Services,Banks - Regional,523822240.0
+CCNE,CNB Financial Corporation,Financial Services,Banks - Regional,775489856.0
+NRIM,"Northrim BanCorp, Inc.",Financial Services,Banks - Regional,519296640.0
+NFBK,"Northfield Bancorp, Inc. (Staten Island, NY)",Financial Services,Banks - Regional,495454432.0
+PGC,Peapack-Gladstone Financial Corporation,Financial Services,Banks - Regional,511629056.0
+AROW,Arrow Financial Corporation,Financial Services,Banks - Regional,489623360.0
+ACNB,ACNB Corporation,Financial Services,Banks - Regional,474391616.0
+COFS,"ChoiceOne Financial Services, Inc.",Financial Services,Banks - Regional,463362912.0
+BWB,"Bridgewater Bancshares, Inc.",Financial Services,Banks - Regional,450163328.0
+BSVN,Bank7 Corp.,Financial Services,Banks - Regional,468863136.0
+HBCP,"Home Bancorp, Inc.",Financial Services,Banks - Regional,440259552.0
+FFIC,Flushing Financial Corporation,Financial Services,Banks - Regional,464790784.0
+BSRR,Sierra Bancorp,Financial Services,Banks - Regional,416678592.0
+GCBC,"Greene County Bancorp, Inc.",Financial Services,Banks - Regional,408472928.0
+RRBI,"Red River Bancshares, Inc.",Financial Services,Banks - Regional,436650304.0
+CARE,"Carter Bankshares, Inc.",Financial Services,Banks - Regional,441154272.0
+FBIZ,"First Business Financial Services, Inc.",Financial Services,Banks - Regional,435483936.0
+KRNY,Kearny Financial Corp.,Financial Services,Banks - Regional,423816960.0
+CWBC,Community West Bancshares,Financial Services,Banks - Regional,407862240.0
+VBNK,VersaBank,Financial Services,Banks - Regional,356731232.0
+MSBI,"Midland States Bancorp, Inc.",Financial Services,Banks - Regional,396678400.0
+FRBA,First Bank,Financial Services,Banks - Regional,418654848.0
+BMRC,Bank of Marin Bancorp,Financial Services,Banks - Regional,395714880.0
+FMAO,"Farmers & Merchants Bancorp, Inc.",Financial Services,Banks - Regional,363137024.0
+USCB,"USCB Financial Holdings, Inc.",Financial Services,Banks - Regional,349163360.0
+SFST,"Southern First Bancshares, Inc.",Financial Services,Banks - Regional,368950464.0
+PDLB,"Ponce Financial Group, Inc.",Financial Services,Banks - Regional,337847456.0
+RBB,RBB Bancorp,Financial Services,Banks - Regional,348983680.0
+WTBA,"West Bancorporation, Inc.",Financial Services,Banks - Regional,338138368.0
+PBFS,"Pioneer Bancorp, Inc.",Financial Services,Banks - Regional,331782624.0
+CIVB,"Civista Bancshares, Inc.",Financial Services,Banks - Regional,409240352.0
+FSBW,"FS Bancorp, Inc.",Financial Services,Banks - Regional,324439680.0
+BWFG,"Bankwell Financial Group, Inc.",Financial Services,Banks - Regional,333058144.0
+PCB,PCB Bancorp,Financial Services,Banks - Regional,317126176.0
+NECB,"Northeast Community Bancorp, Inc.",Financial Services,Banks - Regional,287068256.0
+OBT,"Orange County Bancorp, Inc.",Financial Services,Banks - Regional,356522176.0
+NEWT,"NewtekOne, Inc.",Financial Services,Banks - Regional,325601888.0
+BCML,BayCom Corp,Financial Services,Banks - Regional,330551168.0
+MVBF,MVB Financial Corp.,Financial Services,Banks - Regional,310643712.0
+CZNC,Citizens & Northern Corporation,Financial Services,Banks - Regional,313400992.0
+FNLC,"The First Bancorp, Inc.",Financial Services,Banks - Regional,304704096.0
+FRST,Primis Financial Corp.,Financial Services,Banks - Regional,282164640.0
+JMSB,"John Marshall Bancorp, Inc.",Financial Services,Banks - Regional,281678368.0
+LNKB,"LINKBANCORP, Inc.",Financial Services,Banks - Regional,272630912.0
+WSBF,"Waterstone Financial, Inc.",Financial Services,Banks - Regional,280001216.0
+CZFS,"Citizens Financial Services, Inc.",Financial Services,Banks - Regional,288246304.0
+TSBK,"Timberland Bancorp, Inc.",Financial Services,Banks - Regional,264162688.0
+PKBK,"Parke Bancorp, Inc.",Financial Services,Banks - Regional,267154352.0
+HMST,"HomeStreet, Inc.",Financial Services,Banks - Regional,262431488.0
+CHMG,Chemung Financial Corporation,Financial Services,Banks - Regional,258327472.0
+PLBC,Plumas Bancorp,Financial Services,Banks - Regional,301435520.0
+FDBC,"Fidelity D & D Bancorp, Inc.",Financial Services,Banks - Regional,251742656.0
+MBCN,Middlefield Banc Corp.,Financial Services,Banks - Regional,248092544.0
+FBLA,"FB Bancorp, Inc.",Financial Services,Banks - Regional,219781472.0
+FVCB,"FVCBankcorp, Inc.",Financial Services,Banks - Regional,244871296.0
+FINW,FinWise Bancorp,Financial Services,Banks - Regional,261326128.0
+WNEB,"Western New England Bancorp, Inc.",Financial Services,Banks - Regional,256969680.0
+NWFL,Norwood Financial Corp.,Financial Services,Banks - Regional,250618352.0
+OVLY,Oak Valley Bancorp,Financial Services,Banks - Regional,238762160.0
+PVBC,"Provident Bancorp, Inc.",Financial Services,Banks - Regional,228880080.0
+ISTR,Investar Holding Corporation,Financial Services,Banks - Regional,230362464.0
+LCNB,LCNB Corp.,Financial Services,Banks - Regional,229366064.0
+FUNC,First United Corporation,Financial Services,Banks - Regional,242703568.0
+BPRN,"Princeton Bancorp, Inc.",Financial Services,Banks - Regional,230508944.0
+ISBA,Isabella Bank Corporation,Financial Services,Banks - Regional,248102560.0
+MYFW,"First Western Financial, Inc.",Financial Services,Banks - Regional,227010624.0
+CFFI,C&F Financial Corporation,Financial Services,Banks - Regional,233092848.0
+OPOF,Old Point Financial Corporation,Financial Services,Banks - Regional,214802608.0
+VABK,Virginia National Bankshares Corporation,Financial Services,Banks - Regional,224360288.0
+HWBK,"Hawthorn Bancshares, Inc.",Financial Services,Banks - Regional,230866576.0
+INBK,First Internet Bancorp,Financial Services,Banks - Regional,218829248.0
+OPBK,OP Bancorp,Financial Services,Banks - Regional,216436624.0
+FXNC,First National Corporation,Financial Services,Banks - Regional,209986320.0
+FCCO,First Community Corporation,Financial Services,Banks - Regional,209590400.0
+BLFY,Blue Foundry Bancorp,Financial Services,Banks - Regional,199695056.0
+FRAF,Franklin Financial Services Corporation,Financial Services,Banks - Regional,209059552.0
+NKSH,"National Bankshares, Inc.",Financial Services,Banks - Regional,199510448.0
+EFSI,"Eagle Financial Services, Inc.",Financial Services,Banks - Regional,201236784.0
+FSFG,"First Savings Financial Group, Inc.",Financial Services,Banks - Regional,191297280.0
+MRBK,Meridian Corporation,Financial Services,Banks - Regional,177880880.0
+BVFL,"BV Financial, Inc.",Financial Services,Banks - Regional,166784656.0
+CBFV,"CB Financial Services, Inc.",Financial Services,Banks - Regional,165969296.0
+ATLO,Ames National Corporation,Financial Services,Banks - Regional,177665552.0
+OVBC,Ohio Valley Banc Corp.,Financial Services,Banks - Regional,174307008.0
+MNSB,"MainStreet Bancshares, Inc.",Financial Services,Banks - Regional,174538640.0
+PEBK,"Peoples Bancorp of North Carolina, Inc.",Financial Services,Banks - Regional,168188496.0
+UBFO,United Security Bancshares,Financial Services,Banks - Regional,166375344.0
+HNVR,"Hanover Bancorp, Inc.",Financial Services,Banks - Regional,162702528.0
+CFBK,CF Bankshares Inc.,Financial Services,Banks - Regional,158608752.0
+RMBI,"Richmond Mutual Bancorporation, Inc.",Financial Services,Banks - Regional,142934704.0
+CZWI,"Citizens Community Bancorp, Inc.",Financial Services,Banks - Regional,163155904.0
+LARK,"Landmark Bancorp, Inc.",Financial Services,Banks - Regional,153662544.0
+ECBK,"ECB Bancorp, Inc.",Financial Services,Banks - Regional,150644880.0
+RBKB,"Rhinebeck Bancorp, Inc.",Financial Services,Banks - Regional,148477856.0
+BCBP,"BCB Bancorp, Inc.",Financial Services,Banks - Regional,153029264.0
+BFIN,BankFinancial Corporation,Financial Services,Banks - Regional,154263472.0
+EBMT,"Eagle Bancorp Montana, Inc.",Financial Services,Banks - Regional,139401728.0
+FCAP,"First Capital, Inc.",Financial Services,Banks - Regional,137895424.0
+SRBK,"SR Bancorp, Inc.",Financial Services,Banks - Regional,123145712.0
+SBFG,"SB Financial Group, Inc.",Financial Services,Banks - Regional,132948896.0
+UNB,"Union Bankshares, Inc.",Financial Services,Banks - Regional,119108568.0
+AFBI,"Affinity Bancshares, Inc.",Financial Services,Banks - Regional,124778688.0
+SFBC,"Sound Financial Bancorp, Inc.",Financial Services,Banks - Regional,112882648.0
+FNWD,Finward Bancorp,Financial Services,Banks - Regional,138396480.0
+PNBK,"Patriot National Bancorp, Inc.",Financial Services,Banks - Regional,156687008.0
+FGBI,"First Guaranty Bancshares, Inc.",Financial Services,Banks - Regional,127312088.0
+RVSB,"Riverview Bancorp, Inc.",Financial Services,Banks - Regional,105998904.0
+MGYR,"Magyar Bancorp, Inc.",Financial Services,Banks - Regional,110891832.0
+BSBK,Bogota Financial Corp.,Financial Services,Banks - Regional,117160752.0
+PROV,"Provident Financial Holdings, Inc.",Financial Services,Banks - Regional,102020440.0
+AUBN,"Auburn National Bancorporation, Inc.",Financial Services,Banks - Regional,90164360.0
+LSBK,"Lake Shore Bancorp, Inc.",Financial Services,Banks - Regional,105174720.0
+PBHC,"Pathfinder Bancorp, Inc.",Financial Services,Banks - Regional,92032376.0
+CFSB,"CFSB Bancorp, Inc.",Financial Services,Banks - Regional,91418176.0
+IROQ,"IF Bancorp, Inc.",Financial Services,Banks - Regional,81653440.0
+UBCP,"United Bancorp, Inc.",Financial Services,Banks - Regional,83756056.0
+SSBI,Summit State Bank,Financial Services,Banks - Regional,80445776.0
+FDSB,"Fifth District Bancorp, Inc.",Financial Services,Banks - Regional,77276632.0
+FNWB,First Northwest Bancorp,Financial Services,Banks - Regional,66231996.0
+TECTP,"Tectonic Financial, Inc.",Financial Services,Banks - Regional,43595864.0
+FUSB,"First US Bancshares, Inc.",Financial Services,Banks - Regional,71707192.0
+BYFC,Broadway Financial Corporation,Financial Services,Banks - Regional,73626136.0
+CPBI,"Central Plains Bancshares, Inc.",Financial Services,Banks - Regional,66580868.0
+NSTS,"NSTS Bancorp, Inc.",Financial Services,Banks - Regional,62344576.0
+BAFN,BayFirst Financial Corp.,Financial Services,Banks - Regional,37285436.0
+BOTJ,"Bank of the James Financial Group, Inc.",Financial Services,Banks - Regional,70603504.0
+FSEA,"First Seacoast Bancorp, Inc.",Financial Services,Banks - Regional,54078864.0
+CLST,"Catalyst Bancorp, Inc.",Financial Services,Banks - Regional,53100292.0
+TCBS,"Texas Community Bancshares, Inc.",Financial Services,Banks - Regional,48328196.0
+PBBK,"PB Bankshares, Inc.",Financial Services,Banks - Regional,47372672.0
+ASRV,"AmeriServ Financial, Inc.",Financial Services,Banks - Regional,49227516.0
+HFBL,"Home Federal Bancorp, Inc. of Louisiana",Financial Services,Banks - Regional,41150700.0
+MBBC,"Marathon Bancorp, Inc.",Financial Services,Banks - Regional,30596070.0
+KFFB,Kentucky First Federal Bancorp,Financial Services,Banks - Regional,25877504.0
+GLBZ,Glen Burnie Bancorp,Financial Services,Banks - Regional,12008815.0
+CARV,"Carver Bancorp, Inc.",Financial Services,Banks - Regional,8818106.0
+SHFS,"SHF Holdings, Inc.",Financial Services,Banks - Regional,7012883.0
+WSBK,"Winchester Bancorp, Inc.",Financial Services,Banks - Regional,87836696.0

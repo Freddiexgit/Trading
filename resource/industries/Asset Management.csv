@@ -1,0 +1,484 @@
+ticker,name,sector,industry,marketCap
+BLK,"BlackRock, Inc.",Financial Services,Asset Management,174540996608.0
+KKR,KKR & Co. Inc.,Financial Services,Asset Management,129100374016.0
+BX,Blackstone Inc.,Financial Services,Asset Management,210510036992.0
+BN,Brookfield Corporation,Financial Services,Asset Management,98302664704.0
+BAM,Brookfield Asset Management Ltd.,Financial Services,Asset Management,97044701184.0
+APO,"Apollo Global Management, Inc.",Financial Services,Asset Management,77927235584.0
+ARES,Ares Management Corporation,Financial Services,Asset Management,58545893376.0
+AMP,"Ameriprise Financial, Inc.",Financial Services,Asset Management,48531963904.0
+RJF,"Raymond James Financial, Inc.",Financial Services,Asset Management,33783625728.0
+STT,State Street Corporation,Financial Services,Asset Management,32616415232.0
+CRBG,"Corebridge Financial, Inc.",Financial Services,Asset Management,18722949120.0
+OWL,Blue Owl Capital Inc.,Financial Services,Asset Management,28696741888.0
+EQH,"Equitable Holdings, Inc.",Financial Services,Asset Management,15953287168.0
+BEN,"Franklin Resources, Inc.",Financial Services,Asset Management,13322544128.0
+IVZ,Invesco Ltd.,Financial Services,Asset Management,9762151424.0
+OBDC,Blue Owl Capital Corporation,Financial Services,Asset Management,7328428544.0
+OTF,Blue Owl Technology Finance Corp.,Financial Services,Asset Management,6960415744.0
+JHG,Janus Henderson Group plc,Financial Services,Asset Management,6912989696.0
+FSK,FS KKR Capital Corp.,Financial Services,Asset Management,5108403712.0
+AMG,"Affiliated Managers Group, Inc.",Financial Services,Asset Management,6387608576.0
+MAIN,Main Street Capital Corporation,Financial Services,Asset Management,5928341504.0
+PDI,PIMCO Dynamic Income Fund,Financial Services,Asset Management,7437956608.0
+AB,AllianceBernstein Holding L.P.,Financial Services,Asset Management,4375054848.0
+FHI,"Federated Hermes, Inc.",Financial Services,Asset Management,4118440960.0
+CNS,"Cohen & Steers, Inc.",Financial Services,Asset Management,3766616320.0
+APAM,Artisan Partners Asset Management Inc.,Financial Services,Asset Management,3297328896.0
+HTGC,"Hercules Capital, Inc.",Financial Services,Asset Management,3546315520.0
+HASI,"HA Sustainable Infrastructure Capital, Inc.",Financial Services,Asset Management,3511559168.0
+NAN,Nuveen New York Quality Municipal Income Fund,Financial Services,Asset Management,338716320.0
+CII,"BlackRock Enhanced Large Cap Core Fund, Inc.",Financial Services,Asset Management,937547264.0
+BBUC,Brookfield Business Corporation,Financial Services,Asset Management,2310841600.0
+BUR,Burford Capital Limited,Financial Services,Asset Management,3063367936.0
+GDV,The Gabelli Dividend & Income Trust,Financial Services,Asset Management,2387148032.0
+TSLX,"Sixth Street Specialty Lending, Inc.",Financial Services,Asset Management,2304177920.0
+WT,"WisdomTree, Inc.",Financial Services,Asset Management,2002126336.0
+FRA,"BlackRock Floating Rate Income Strategies Fund, Inc.",Financial Services,Asset Management,469198144.0
+DBRG,"DigitalBridge Group, Inc.",Financial Services,Asset Management,2219975168.0
+BGR,BlackRock Energy and Resources Trust,Financial Services,Asset Management,355864320.0
+SII,Sprott Inc.,Financial Services,Asset Management,1700583552.0
+TY,Tri-Continental Corporation,Financial Services,Asset Management,1742775296.0
+ECAT,BlackRock ESG Capital Allocation Term Trust,Financial Services,Asset Management,1638212224.0
+PDO,Pimco Dynamic Income Opportunities Fund,Financial Services,Asset Management,1763158272.0
+BKT,"BlackRock Income Trust, Inc.",Financial Services,Asset Management,285670400.0
+GAB,The Gabelli Equity Trust Inc.,Financial Services,Asset Management,1877266944.0
+BTX,BlackRock Innovation and Growth Term Trust,Financial Services,Asset Management,826306816.0
+RQI,"Cohen & Steers Quality Income Realty Fund, Inc.",Financial Services,Asset Management,1685764864.0
+KYN,"Kayne Anderson Energy Infrastructure Fund, Inc.",Financial Services,Asset Management,2119148672.0
+RVT,"Royce Small-Cap Trust, Inc.",Financial Services,Asset Management,1921225600.0
+MHD,"BlackRock MuniHoldings Fund, Inc.",Financial Services,Asset Management,582943104.0
+BCAT,BlackRock Capital Allocation Term Trust,Financial Services,Asset Management,1574768256.0
+MIY,"BlackRock MuniYield Michigan Quality Fund, Inc.",Financial Services,Asset Management,323536832.0
+MQY,"BlackRock MuniYield Quality Fund, Inc.",Financial Services,Asset Management,795197952.0
+MUJ,"BlackRock MuniHoldings New Jersey Quality Fund, Inc.",Financial Services,Asset Management,588227200.0
+BDJ,BlackRock Enhanced Equity Dividend Trust,Financial Services,Asset Management,1601352192.0
+MYI,"BlackRock MuniYield Quality Fund III, Inc.",Financial Services,Asset Management,704553408.0
+MUA,"BlackRock MuniAssets Fund, Inc.",Financial Services,Asset Management,412872128.0
+ETV,Eaton Vance Tax-Managed Buy-Write Opportunities Fund,Financial Services,Asset Management,1633402368.0
+MUC,"BlackRock MuniHoldings California Quality Fund, Inc.",Financial Services,Asset Management,970094208.0
+MVT,"BlackRock MuniVest Fund II, Inc.",Financial Services,Asset Management,215498256.0
+MYD,"BlackRock MuniYield Fund, Inc.",Financial Services,Asset Management,460079040.0
+FSCO,FS Credit Opportunities Corp.,Financial Services,Asset Management,1487670016.0
+AAMI,Acadian Asset Management Inc.,Financial Services,Asset Management,1825332608.0
+MHN,"BlackRock MuniHoldings New York Quality Fund, Inc.",Financial Services,Asset Management,291529024.0
+MQT,"BlackRock MuniYield Quality Fund II, Inc.",Financial Services,Asset Management,212463584.0
+MUE,"BlackRock MuniHoldings Quality Fund II, Inc.",Financial Services,Asset Management,209098672.0
+PX,"P10, Inc.",Financial Services,Asset Management,1355869824.0
+GAM,"General American Investors Company, Inc.",Financial Services,Asset Management,1399097856.0
+GSBD,"Goldman Sachs BDC, Inc.",Financial Services,Asset Management,1305452672.0
+VRTS,"Virtus Investment Partners, Inc.",Financial Services,Asset Management,1359267712.0
+NCV,Virtus Convertible & Income Fund,Financial Services,Asset Management,334382336.0
+BRDG,Bridge Investment Group Holdings Inc.,Financial Services,Asset Management,1195526400.0
+DSL,DoubleLine Income Solutions Fund,Financial Services,Asset Management,1424211200.0
+BTZ,BlackRock Credit Allocation Income Trust,Financial Services,Asset Management,1026569472.0
+KBDC,"Kayne Anderson BDC, Inc.",Financial Services,Asset Management,1069947328.0
+PDX,PIMCO Dynamic Income Strategy Fund,Financial Services,Asset Management,1103813376.0
+PTA,Cohen & Steers Tax-Advantaged Preferred Securities and Income Fund,Financial Services,Asset Management,1115419264.0
+RNP,"Cohen & Steers REIT and Preferred Income Fund, Inc.",Financial Services,Asset Management,1070923520.0
+PFLT,PennantPark Floating Rate Capital Ltd.,Financial Services,Asset Management,1018967936.0
+PSF,"Cohen & Steers Select Preferred and Income Fund, Inc.",Financial Services,Asset Management,245495568.0
+NCZ,Virtus Convertible & Income Fund II,Financial Services,Asset Management,257651312.0
+BBDC,"Barings BDC, Inc.",Financial Services,Asset Management,1041074048.0
+BCSF,"Bain Capital Specialty Finance, Inc.",Financial Services,Asset Management,1026219648.0
+MVF,"BlackRock MuniVest Fund, Inc.",Financial Services,Asset Management,369514208.0
+ETW,Eaton Vance Tax-Managed Global Buy-Write Opportunities Fund,Financial Services,Asset Management,977382016.0
+FMN,Federated Hermes Premier Municipal Income Fund,Financial Services,Asset Management,83347344.0
+BST,BlackRock Science and Technology Trust,Financial Services,Asset Management,1379078400.0
+AIO,Virtus Artificial Intelligence & Technology Opportunities Fund,Financial Services,Asset Management,843001856.0
+NCDL,Nuveen Churchill Direct Lending Corp.,Financial Services,Asset Management,789205824.0
+NOAH,Noah Holdings Limited,Financial Services,Asset Management,827576384.0
+BCX,Blackrock Resources & Commodities Strategy Trust,Financial Services,Asset Management,790530176.0
+AC,"Associated Capital Group, Inc.",Financial Services,Asset Management,698830976.0
+MSIF,"MSC Income Fund, Inc.",Financial Services,Asset Management,672231872.0
+HQH,Abrdn Healthcare Investors,Financial Services,Asset Management,890880832.0
+DLY,DoubleLine Yield Opportunities Fund,Financial Services,Asset Management,751601216.0
+NIE,Virtus Equity & Convertible Income Fund,Financial Services,Asset Management,688014464.0
+NXP,Nuveen Select Tax-Free Income Portfolio,Financial Services,Asset Management,720099456.0
+FOF,"Cohen & Steers Closed-End Opportunity Fund, Inc.",Financial Services,Asset Management,361467840.0
+ASA,ASA Gold and Precious Metals Limited,Financial Services,Asset Management,710164672.0
+VMO,Invesco Municipal Opportunity Trust,Financial Services,Asset Management,622477696.0
+RFI,"Cohen & Steers Total Return Realty Fund, Inc.",Financial Services,Asset Management,322893344.0
+NDMO,Nuveen Dynamic Municipal Opportunities Fund,Financial Services,Asset Management,594430720.0
+NMCO,Nuveen Municipal Credit Opportunities Fund,Financial Services,Asset Management,566651648.0
+FTHY,First Trust High Yield Opportunities 2027 Term Fund,Financial Services,Asset Management,538724416.0
+IIM,Invesco Value Municipal Income Trust,Financial Services,Asset Management,554936448.0
+CION,CION Investment Corporation,Financial Services,Asset Management,562537472.0
+TYG,Tortoise Energy Infrastructure Corporation,Financial Services,Asset Management,734757888.0
+VGM,Invesco Trust for Investment Grade Municipals,Financial Services,Asset Management,517373280.0
+BLW,BlackRock Limited Duration Income Trust,Financial Services,Asset Management,548855104.0
+VKQ,Invesco Municipal Trust,Financial Services,Asset Management,505766496.0
+IQI,Invesco Quality Municipal Income Trust,Financial Services,Asset Management,498165408.0
+BME,BlackRock Health Sciences Trust,Financial Services,Asset Management,474702176.0
+VCV,Invesco California Value Municipal Income Trust,Financial Services,Asset Management,489569504.0
+PNNT,PennantPark Investment Corporation,Financial Services,Asset Management,468173056.0
+BSTZ,BlackRock Science and Technology Term Trust,Financial Services,Asset Management,1554674944.0
+JPI,Nuveen Preferred Securities & Income Opportunities Fund,Financial Services,Asset Management,284958976.0
+ETO,Eaton Vance Tax-Advantaged Global Dividend Opportunities Fund,Financial Services,Asset Management,449361696.0
+RMT,"Royce Micro-Cap Trust, Inc.",Financial Services,Asset Management,534869792.0
+GUT,The Gabelli Utility Trust,Financial Services,Asset Management,522328128.0
+MCI,Barings Corporate Investors,Financial Services,Asset Management,443321440.0
+ECC,Eagle Point Credit Company Inc.,Financial Services,Asset Management,953806656.0
+ETB,Eaton Vance Tax-Managed Buy-Write Income Fund,Financial Services,Asset Management,438564288.0
+EVN,Eaton Vance Municipal Income Trust,Financial Services,Asset Management,414522240.0
+SDHY,PGIM Short Duration High Yield Opportunities Fund,Financial Services,Asset Management,420429632.0
+SCM,Stellus Capital Investment Corporation,Financial Services,Asset Management,412885920.0
+SAR,Saratoga Investment Corp.,Financial Services,Asset Management,407408992.0
+SOR,Source Capital,Financial Services,Asset Management,364888416.0
+LEO,"BNY Mellon Strategic Municipals, Inc.",Financial Services,Asset Management,370630848.0
+PPT,Putnam Premier Income Trust,Financial Services,Asset Management,352644096.0
+EFT,Eaton Vance Floating-Rate Income Trust,Financial Services,Asset Management,321860768.0
+HQL,Abrdn Life Sciences Investors,Financial Services,Asset Management,402769984.0
+KTF,DWS Municipal Income Trust,Financial Services,Asset Management,346679296.0
+GBAB,Guggenheim Taxable Municipal Bond & Investment Grade Debt Trust,Financial Services,Asset Management,419977376.0
+PMO,Putnam Municipal Opportunities Trust,Financial Services,Asset Management,278057760.0
+ARDC,"Ares Dynamic Credit Allocation Fund, Inc.",Financial Services,Asset Management,351167424.0
+FINS,Angel Oak Financial Strategies Income Term Trust,Financial Services,Asset Management,445447264.0
+MIN,MFS Intermediate Income Trust,Financial Services,Asset Management,306116640.0
+RFMZ,"RiverNorth Flexible Municipal Income Fund II, Inc.",Financial Services,Asset Management,305371584.0
+TPVG,TriplePoint Venture Growth BDC Corp.,Financial Services,Asset Management,273394688.0
+PMM,Putnam Managed Municipal Income Trust,Financial Services,Asset Management,251893280.0
+MCR,MFS Charter Income Trust,Financial Services,Asset Management,266388864.0
+RMMZ,"RiverNorth Managed Duration Municipal Income Fund II, Inc.",Financial Services,Asset Management,123654376.0
+MMT,MFS Multimarket Income Trust,Financial Services,Asset Management,261544880.0
+RMM,Rivernorth Managed Duration Municipal Income Fund Inc.,Financial Services,Asset Management,265700944.0
+OIA,Invesco Municipal Income Opportunities Trust,Financial Services,Asset Management,273188064.0
+EOT,Eaton Vance National Municipal Opportunities Trust,Financial Services,Asset Management,259373344.0
+TGE,The Generation Essentials Group,Financial Services,Asset Management,152167856.0
+VPV,Invesco Pennsylvania Value Municipal Income Trust,Financial Services,Asset Management,178007120.0
+ACV,Virtus Diversified Income & Convertible Fund,Financial Services,Asset Management,239120688.0
+EARN,Ellington Credit Company,Financial Services,Asset Management,214463040.0
+MFM,MFS Municipal Income Trust,Financial Services,Asset Management,213763648.0
+MPV,Barings Participation Investors,Financial Services,Asset Management,211810656.0
+VTN,Invesco Trust for Investment Grade New York Municipals,Financial Services,Asset Management,147836000.0
+ETX,Eaton Vance Municipal Income 2028 Term Trust,Financial Services,Asset Management,206661824.0
+XFLT,XAI Octagon Floating Rate & Alternative Income Trust,Financial Services,Asset Management,423419584.0
+FT,Franklin Universal Trust,Financial Services,Asset Management,199295968.0
+BMEZ,BlackRock Health Sciences Term Trust,Financial Services,Asset Management,1453009280.0
+WHG,"Westwood Holdings Group, Inc.",Financial Services,Asset Management,167088384.0
+PIM,Putnam Master Intermediate Income Trust,Financial Services,Asset Management,161417408.0
+TEAF,Ecofin Sustainable and Social Impact Term Fund,Financial Services,Asset Management,163781952.0
+GRX,The Gabelli Healthcare & Wellness Trust,Financial Services,Asset Management,146767008.0
+JHS,John Hancock Income Securities Trust,Financial Services,Asset Management,134867632.0
+NXG,NXG NextGen Infrastructure Income Fund,Financial Services,Asset Management,199840960.0
+JHI,John Hancock Investors Trust,Financial Services,Asset Management,123997720.0
+GGZ,The Gabelli Global Small and Mid Cap Value Trust,Financial Services,Asset Management,115997936.0
+GNT,"GAMCO Natural Resources, Gold & Income Trust",Financial Services,Asset Management,110632336.0
+EIC,Eagle Point Income Company Inc.,Financial Services,Asset Management,368019872.0
+GGT,The Gabelli Multimedia Trust Inc.,Financial Services,Asset Management,142444208.0
+CXE,MFS High Income Municipal Trust,Financial Services,Asset Management,111916592.0
+JEQ,Abrdn Japan Equity Fund Inc,Financial Services,Asset Management,114441144.0
+MGF,MFS Government Markets Income Trust,Financial Services,Asset Management,100703712.0
+EVF,Eaton Vance Senior Income Trust,Financial Services,Asset Management,101026864.0
+AMTD,AMTD IDEA Group,Financial Services,Asset Management,1092457600.0
+CMU,MFS High Yield Municipal Trust,Financial Services,Asset Management,84126240.0
+RMI,"RiverNorth Opportunistic Municipal Income Fund, Inc.",Financial Services,Asset Management,88669848.0
+RFM,"RiverNorth Flexible Municipal Income Fund, Inc.",Financial Services,Asset Management,84321712.0
+NXC,Nuveen California Select Tax-Free Income Portfolio,Financial Services,Asset Management,82364584.0
+DTF,DTF Tax-Free Income 2028 Term Fund Inc.,Financial Services,Asset Management,79504440.0
+RGT,"Royce Global Trust, Inc.",Financial Services,Asset Management,83019592.0
+GCV,The Gabelli Convertible and Income Securities Fund Inc.,Financial Services,Asset Management,81069928.0
+CXH,MFS Investment Grade Municipal Trust,Financial Services,Asset Management,61248172.0
+RSF,"RiverNorth Capital and Income Fund, Inc.",Financial Services,Asset Management,63036788.0
+NXN,Nuveen New York Select Tax-Free Income Portfolio,Financial Services,Asset Management,46156708.0
+EQS,"Equus Total Return, Inc.",Financial Services,Asset Management,28123434.0
+ACP,Abrdn Income Credit Strategies Fund,Financial Services,Asset Management,745297728.0
+ACP,Abrdn Income Credit Strategies Fund,Financial Services,Asset Management,745297728.0
+ADX,"Adams Diversified Equity Fund, Inc.",Financial Services,Asset Management,2605511424.0
+AFB,"AllianceBernstein National Municipal Income Fund, Inc.",Financial Services,Asset Management,298372064.0
+AOD,Abrdn Total Dynamic Dividend Fund,Financial Services,Asset Management,962585024.0
+APO,"Apollo Global Management, Inc.",Financial Services,Asset Management,77927235584.0
+ARES,Ares Management Corporation,Financial Services,Asset Management,58545893376.0
+ASG,"Liberty All-Star Growth Fund, Inc.",Financial Services,Asset Management,343870784.0
+ASGI,Abrdn Global Infrastructure Income Fund,Financial Services,Asset Management,596250560.0
+AVK,Advent Convertible and Income Fund,Financial Services,Asset Management,549651328.0
+AWF,AllianceBernstein Global High Income Fund,Financial Services,Asset Management,972670976.0
+AWP,abrdn Global Premier Properties Fund,Financial Services,Asset Management,346708000.0
+BBN,BlackRock Taxable Municipal Bond Trust,Financial Services,Asset Management,1015250816.0
+BFK,BlackRock Municipal Income Trust,Financial Services,Asset Management,424514464.0
+BFZ,BlackRock California Municipal Income Trust,Financial Services,Asset Management,313563360.0
+BGB,Blackstone Strategic Credit 2027 Term Fund,Financial Services,Asset Management,562771456.0
+BGH,Barings Global Short Duration High Yield Fund,Financial Services,Asset Management,328452608.0
+BGT,BlackRock Floating Rate Income Trust,Financial Services,Asset Management,319273984.0
+BGX,Blackstone Long-Short Credit Income Fund,Financial Services,Asset Management,158853744.0
+BGY,BlackRock Enhanced International Dividend Trust,Financial Services,Asset Management,535322336.0
+BHK,BlackRock Core Bond Trust,Financial Services,Asset Management,699852480.0
+BHV,BlackRock Virginia Municipal Bond Trust,Financial Services,Asset Management,15978902.0
+BIT,BlackRock Multi-Sector Income Trust,Financial Services,Asset Management,586318912.0
+BKN,BlackRock Investment Quality Municipal Trust Inc.,Financial Services,Asset Management,184962352.0
+BLE,BlackRock Municipal Income Trust II,Financial Services,Asset Management,475361920.0
+BMN,Blackrock 2037 Municipal Target Term Trust,Financial Services,Asset Management,148896080.0
+BNY,BlackRock New York Municipal Income Trust,Financial Services,Asset Management,230800640.0
+BOE,BlackRock Enhanced Global Dividend Trust,Financial Services,Asset Management,658648000.0
+BRW,Saba Capital Income & Opportunities Fund,Financial Services,Asset Management,352569568.0
+BSL,Blackstone Senior Floating Rate 2027 Term Fund,Financial Services,Asset Management,185662688.0
+BTA,BlackRock Long-Term Municipal Advantage Trust,Financial Services,Asset Management,120690296.0
+BTO,John Hancock Financial Opportunities Fund,Financial Services,Asset Management,746265728.0
+BTT,Blackrock Municipal 2030 Target Term Trust,Financial Services,Asset Management,1467740544.0
+BUI,"BlackRock Utilities, Infrastructure & Power Opportunities Trust",Financial Services,Asset Management,620128128.0
+BWG,Legg Mason BW Global Income Opportunities Fund Inc.,Financial Services,Asset Management,144745312.0
+BXMX,Nuveen S&P 500 Buy-Write Income Fund,Financial Services,Asset Management,1480184704.0
+BXSL,Blackstone Secured Lending Fund,Financial Services,Asset Management,6900082688.0
+BYM,BlackRock Municipal Income Quality Trust,Financial Services,Asset Management,273797888.0
+CAF,"Morgan Stanley China A Share Fund, Inc.",Financial Services,Asset Management,262463056.0
+CCIF,Carlyle Credit Income Fund,Financial Services,Asset Management,121441176.0
+CEE,"The Central and Eastern Europe Fund, Inc.",Financial Services,Asset Management,105465016.0
+CHN,"The China Fund, Inc.",Financial Services,Asset Management,165924592.0
+CIF,MFS Intermediate High Income Fund,Financial Services,Asset Management,31328500.0
+DBL,DoubleLine Opportunistic Credit Fund,Financial Services,Asset Management,294106784.0
+DBRG,"DigitalBridge Group, Inc.",Financial Services,Asset Management,2219975168.0
+DFP,Flaherty & Crumrine Dynamic Preferred and Income Fund Inc.,Financial Services,Asset Management,429862432.0
+DHF,BNY Mellon High Yield Strategies Fund,Financial Services,Asset Management,189114880.0
+DIAX,Nuveen Dow 30 Dynamic Overwrite Fund,Financial Services,Asset Management,536048096.0
+DMA,Destra Multi-Alternative Fund,Financial Services,Asset Management,77980184.0
+DMB,"BNY Mellon Municipal Bond Infrastructure Fund, Inc.",Financial Services,Asset Management,184428128.0
+DMO,Western Asset Mortgage Opportunity Fund Inc.,Financial Services,Asset Management,135511248.0
+DNP,DNP Select Income Fund Inc.,Financial Services,Asset Management,3678618112.0
+DPG,Duff & Phelps Utility and Infrastructure Fund Inc.,Financial Services,Asset Management,468552320.0
+DSM,"BNY Mellon Strategic Municipal Bond Fund, Inc.",Financial Services,Asset Management,280755008.0
+DSU,"BlackRock Debt Strategies Fund, Inc.",Financial Services,Asset Management,550214784.0
+DXYZ,Destiny Tech100 Inc.,Financial Services,Asset Management,297674080.0
+ECC,Eagle Point Credit Company Inc.,Financial Services,Asset Management,953806656.0
+EDD,"Morgan Stanley Emerging Markets Domestic Debt Fund, Inc.",Financial Services,Asset Management,342905920.0
+EDF,Virtus Stone Harbor Emerging Markets Income Fund,Financial Services,Asset Management,160474848.0
+EEA,"The European Equity Fund, Inc.",Financial Services,Asset Management,71225376.0
+EFR,Eaton Vance Senior Floating-Rate Trust,Financial Services,Asset Management,344540416.0
+EHI,Western Asset Global High Income Fund Inc.,Financial Services,Asset Management,200584016.0
+EMD,Western Asset Emerging Markets Debt Fund Inc.,Financial Services,Asset Management,598743104.0
+EMF,Templeton Emerging Markets Fund,Financial Services,Asset Management,229500752.0
+EMO,ClearBridge Energy Midstream Opportunity Fund Inc,Financial Services,Asset Management,885862784.0
+EOD,Wells Fargo Advantage Funds - Allspring Global Dividend Opportunity Fund,Financial Services,Asset Management,246336944.0
+EOI,Eaton Vance Enhanced Equity Income Fund,Financial Services,Asset Management,874162176.0
+EOS,Eaton Vance Enhanced Equity Income Fund II,Financial Services,Asset Management,1274439936.0
+EQH,"Equitable Holdings, Inc.",Financial Services,Asset Management,15953287168.0
+ETG,Eaton Vance Tax-Advantaged Global Dividend Income Fund,Financial Services,Asset Management,1592838144.0
+ETJ,Eaton Vance Risk-Managed Diversified Equity Income Fund,Financial Services,Asset Management,605043136.0
+ETY,Eaton Vance Tax-Managed Diversified Equity Income Fund,Financial Services,Asset Management,2494831616.0
+EVG,Eaton Vance Short Duration Diversified Income Fund,Financial Services,Asset Management,151748704.0
+EVT,Eaton Vance Tax-Advantaged Dividend Income Fund,Financial Services,Asset Management,1859964928.0
+EXG,Eaton Vance Tax-Managed Global Diversified Equity Income Fund,Financial Services,Asset Management,2732008448.0
+FCT,First Trust Senior Floating Rate Income Fund II,Financial Services,Asset Management,265550352.0
+FFA,First Trust Enhanced Equity Income Fund,Financial Services,Asset Management,424347360.0
+FFC,Flaherty & Crumrine Preferred Securities Income Fund Inc.,Financial Services,Asset Management,783372672.0
+FLC,Flaherty & Crumrine Total Return Fund Inc.,Financial Services,Asset Management,179856960.0
+FMY,First Trust Mortgage Income Fund,Financial Services,Asset Management,51859296.0
+FPF,First Trust Intermediate Duration Preferred & Income Fund,Financial Services,Asset Management,1175579520.0
+GAB,The Gabelli Equity Trust Inc.,Financial Services,Asset Management,1877266944.0
+GAM,"General American Investors Company, Inc.",Financial Services,Asset Management,1399097856.0
+GDL,The GDL Fund,Financial Services,Asset Management,95908760.0
+GDO,Western Asset Global Corporate Defined Opportunity Fund Inc.,Financial Services,Asset Management,90157608.0
+GDV,The Gabelli Dividend & Income Trust,Financial Services,Asset Management,2387148032.0
+GF,"The New Germany Fund, Inc.",Financial Services,Asset Management,188818272.0
+GGT,The Gabelli Multimedia Trust Inc.,Financial Services,Asset Management,142444208.0
+GHY,"PGIM Global High Yield Fund, Inc",Financial Services,Asset Management,546334080.0
+GOF,Guggenheim Strategic Opportunities Fund,Financial Services,Asset Management,2624350464.0
+GUG,Guggenheim Active Allocation Fund,Financial Services,Asset Management,520425984.0
+GUT,The Gabelli Utility Trust,Financial Services,Asset Management,522328128.0
+HEQ,John Hancock Diversified Income Fund,Financial Services,Asset Management,130371160.0
+HFRO,Highland Funds I - Highland Opportunities and Income Fund,Financial Services,Asset Management,340259840.0
+HGLB,Highland Global Allocation Fund,Financial Services,Asset Management,199833152.0
+HIO,Western Asset High Income Opportunity Fund Inc.,Financial Services,Asset Management,378494816.0
+HIX,Western Asset High Income Fund II Inc.,Financial Services,Asset Management,389101088.0
+HPF,John Hancock Preferred Income Fund II,Financial Services,Asset Management,348905696.0
+HPI,John Hancock Preferred Income Fund,Financial Services,Asset Management,429183360.0
+HPS,John Hancock Preferred Income Fund III,Financial Services,Asset Management,473752192.0
+HTD,John Hancock Tax-Advantaged Dividend Income Fund,Financial Services,Asset Management,870913664.0
+HYI,Western Asset High Yield Opportunity Fund Inc.,Financial Services,Asset Management,271097312.0
+HYT,"BlackRock Corporate High Yield Fund, Inc.",Financial Services,Asset Management,1470316416.0
+IAE,Voya Asia Pacific High Dividend Equity Income Fund,Financial Services,Asset Management,77939672.0
+IDE,"Voya Infrastructure, Industrials and Materials Fund",Financial Services,Asset Management,189756880.0
+IFN,"The India Fund, Inc.",Financial Services,Asset Management,600856384.0
+IGA,Voya Global Advantage and Premium Opportunity Fund,Financial Services,Asset Management,153414000.0
+IGD,Voya Global Equity Dividend and Premium Opportunity Fund,Financial Services,Asset Management,472422272.0
+IGI,Western Asset Investment Grade Opportunity Trust Inc.,Financial Services,Asset Management,99494592.0
+IGR,CBRE Global Real Estate Income Fund,Financial Services,Asset Management,760342784.0
+IHD,Voya Emerging Markets High Dividend Equity Fund,Financial Services,Asset Management,105883320.0
+IIF,"Morgan Stanley India Investment Fund, Inc.",Financial Services,Asset Management,250288496.0
+ISD,"PGIM High Yield Bond Fund, Inc.",Financial Services,Asset Management,485968032.0
+JCE,Nuveen Core Equity Alpha Fund,Financial Services,Asset Management,264795664.0
+JFR,Nuveen Floating Rate Income Fund,Financial Services,Asset Management,1132773120.0
+JGH,Nuveen Global High Income Fund,Financial Services,Asset Management,314749088.0
+JLS,Nuveen Mortgage and Income Fund,Financial Services,Asset Management,102960640.0
+JMM,Nuveen Multi-Market Income Fund,Financial Services,Asset Management,60180548.0
+JOF,"Japan Smaller Capitalization Fund, Inc.",Financial Services,Asset Management,303456064.0
+JPC,Nuveen Preferred & Income Opportunities Fund,Financial Services,Asset Management,2599335936.0
+JQC,Nuveen Credit Strategies Income Fund,Financial Services,Asset Management,750462016.0
+JRI,Nuveen Real Asset Income and Growth Fund,Financial Services,Asset Management,372867136.0
+JRS,Nuveen Real Estate Income Fund,Financial Services,Asset Management,234462624.0
+KF,"The Korea Fund, Inc.",Financial Services,Asset Management,114066584.0
+KIO,KKR Income Opportunities Fund,Financial Services,Asset Management,510473792.0
+KKR,KKR & Co. Inc.,Financial Services,Asset Management,129100374016.0
+LDP,"Cohen & Steers Limited Duration Preferred and Income Fund, Inc.",Financial Services,Asset Management,622004096.0
+LGI,"Lazard Global Total Return and Income Fund, Inc.",Financial Services,Asset Management,231629616.0
+MAV,"Pioneer Municipal High Income Advantage Fund, Inc.",Financial Services,Asset Management,193228352.0
+MCN,XAI Madison Equity Premium Income Fund,Financial Services,Asset Management,133457544.0
+MEGI,NYLI CBRE Global Infrastructure Megatrends Term Fund,Financial Services,Asset Management,757811648.0
+MHF,Western Asset Municipal High Income Fund Inc.,Financial Services,Asset Management,150744800.0
+MHI,"Pioneer Municipal High Income Fund, Inc.",Financial Services,Asset Management,203690160.0
+MIO,"Pioneer Municipal High Income Opportunities Fund, Inc.",Financial Services,Asset Management,192239152.0
+MMD,NYLI MacKay DefinedTerm Muni Opportunities Fund,Financial Services,Asset Management,275307456.0
+MPA,BlackRock MuniYield Pennsylvania Quality Fund,Financial Services,Asset Management,140114672.0
+MSD,"Morgan Stanley Emerging Markets Debt Fund, Inc.",Financial Services,Asset Management,152066432.0
+MSDL,Morgan Stanley Direct Lending Fund,Financial Services,Asset Management,1573450240.0
+MXE,Mexico Equity & Income Fund Inc.,Financial Services,Asset Management,48974336.0
+MXF,"The Mexico Fund, Inc.",Financial Services,Asset Management,262301632.0
+MYN,"BlackRock MuniYield New York Quality Fund, Inc.",Financial Services,Asset Management,357079008.0
+NAC,Nuveen California Quality Municipal Income Fund,Financial Services,Asset Management,1625228032.0
+NAD,Nuveen Quality Municipal Income Fund,Financial Services,Asset Management,2644478464.0
+NAZ,Nuveen Arizona Quality Municipal Income Fund,Financial Services,Asset Management,137543968.0
+NBB,Nuveen Taxable Municipal Income Fund,Financial Services,Asset Management,468847040.0
+NBXG,Neuberger Berman Next Generation Connectivity Fund Inc.,Financial Services,Asset Management,1167245440.0
+NCA,Nuveen California Municipal Value Fund,Financial Services,Asset Management,282081888.0
+NCV,Virtus Convertible & Income Fund,Financial Services,Asset Management,334382336.0
+NCZ,Virtus Convertible & Income Fund II,Financial Services,Asset Management,257651312.0
+NEA,Nuveen AMT-Free Quality Municipal Income Fund,Financial Services,Asset Management,3288911872.0
+NFJ,"Virtus Dividend, Interest & Premium Strategy Fund",Financial Services,Asset Management,1240004864.0
+NIM,Nuveen Select Maturities Municipal Fund,Financial Services,Asset Management,113761928.0
+NKX,Nuveen California AMT-Free Quality Municipal Income Fund,Financial Services,Asset Management,564644928.0
+NMAI,Nuveen Multi-Asset Income Fund,Financial Services,Asset Management,422833824.0
+NMI,"Nuveen Municipal Income Fund, Inc.",Financial Services,Asset Management,99299464.0
+NMS,Nuveen Minnesota Quality Municipal Income Fund,Financial Services,Asset Management,68831376.0
+NMT,Nuveen Massachusetts Quality Municipal Income Fund,Financial Services,Asset Management,105732240.0
+NMZ,Nuveen Municipal High Income Opportunity Fund,Financial Services,Asset Management,1165973120.0
+NNY,Nuveen New York Municipal Value Fund,Financial Services,Asset Management,152788544.0
+NOM,Nuveen Missouri Quality Municipal Income Fund,Financial Services,Asset Management,25822520.0
+NPCT,Nuveen Core Plus Impact Fund,Financial Services,Asset Management,313717056.0
+NPFD,Nuveen Variable Rate Preferred & Income Fund,Financial Services,Asset Management,474582912.0
+NPV,Nuveen Virginia Quality Municipal Income Fund,Financial Services,Asset Management,209354544.0
+NQP,Nuveen Pennsylvania Quality Municipal Income Fund,Financial Services,Asset Management,407907104.0
+NRK,Nuveen New York AMT-Free Quality Municipal Income Fund,Financial Services,Asset Management,829607680.0
+NUV,"Nuveen Municipal Value Fund, Inc.",Financial Services,Asset Management,1801464576.0
+NUW,Nuveen AMT-Free Municipal Value Fund,Financial Services,Asset Management,246112320.0
+NVG,Nuveen AMT-Free Municipal Credit Income Fund,Financial Services,Asset Management,2532370944.0
+NXJ,Nuveen New Jersey Quality Municipal Income Fund,Financial Services,Asset Management,470879712.0
+NZF,Nuveen Municipal Credit Income Fund,Financial Services,Asset Management,2318936064.0
+OPP,"RiverNorth/DoubleLine Strategic Opportunity Fund, Inc.",Financial Services,Asset Management,207143520.0
+PAI,Western Asset Investment Grade Income Fund Inc.,Financial Services,Asset Management,119552768.0
+PAXS,PIMCO Access Income Fund,Financial Services,Asset Management,723125632.0
+PCF,High Income Securities Fund,Financial Services,Asset Management,121469432.0
+PCK,PIMCO California Municipal Income Fund II,Financial Services,Asset Management,169973312.0
+PCM,PCM Fund Inc.,Financial Services,Asset Management,77382368.0
+PCN,PIMCO Corporate & Income Strategy Fund,Financial Services,Asset Management,836192448.0
+PCQ,PIMCO California Municipal Income Fund,Financial Services,Asset Management,157162672.0
+PDCC,Pearl Diver Credit Company Inc.,Financial Services,Asset Management,118794136.0
+PDT,John Hancock Premium Dividend Fund,Financial Services,Asset Management,659081664.0
+PEO,"Adams Natural Resources Fund, Inc.",Financial Services,Asset Management,594240256.0
+PFD,Flaherty & Crumrine Preferred Income Fund Inc.,Financial Services,Asset Management,147676368.0
+PFL,PIMCO Income Strategy Fund,Financial Services,Asset Management,381229248.0
+PFN,PIMCO Income Strategy Fund II,Financial Services,Asset Management,709509376.0
+PFO,Flaherty & Crumrine Preferred Income Opportunity Fund Inc.,Financial Services,Asset Management,121749672.0
+PGP,PIMCO Global StocksPLUS & Income Fund,Financial Services,Asset Management,98124848.0
+PGZ,Principal Real Estate Income Fund,Financial Services,Asset Management,70355096.0
+PHD,"Pioneer Floating Rate Fund, Inc.",Financial Services,Asset Management,122511504.0
+PHK,PIMCO High Income Fund,Financial Services,Asset Management,850600320.0
+PHT,"Pioneer High Income Fund, Inc.",Financial Services,Asset Management,244122096.0
+PMF,PIMCO Municipal Income Fund,Financial Services,Asset Management,203948320.0
+PML,PIMCO Municipal Income Fund II,Financial Services,Asset Management,483271808.0
+PMX,PIMCO Municipal Income Fund III,Financial Services,Asset Management,223352480.0
+PNF,PIMCO New York Municipal Income Fund,Financial Services,Asset Management,53541740.0
+PNI,PIMCO New York Municipal Income Fund II,Financial Services,Asset Management,73979400.0
+PSBD,Palmer Square Capital BDC Inc.,Financial Services,Asset Management,456184928.0
+PSEC,Prospect Capital Corporation,Financial Services,Asset Management,1377782144.0
+PTY,PIMCO Corporate & Income Opportunity Fund,Financial Services,Asset Management,2637503232.0
+PYN,PIMCO New York Municipal Income Fund III,Financial Services,Asset Management,29597050.0
+PZC,PIMCO California Municipal Income Fund III,Financial Services,Asset Management,137176800.0
+RA,Brookfield Real Assets Income Fund Inc.,Financial Services,Asset Management,747043584.0
+RCS,"PIMCO Strategic Income Fund, Inc.",Financial Services,Asset Management,337306240.0
+RIV,"RiverNorth Opportunities Fund, Inc.",Financial Services,Asset Management,268402496.0
+RJF,"Raymond James Financial, Inc.",Financial Services,Asset Management,33783625728.0
+RLTY,Cohen & Steers Real Estate Opportunities & Income Fund,Financial Services,Asset Management,261036656.0
+SABA,Saba Capital Income & Opportunities Fund II,Financial Services,Asset Management,255952496.0
+SBI,Western Asset Intermediate Muni Fund Inc.,Financial Services,Asset Management,107588768.0
+SPE,"Special Opportunities Fund, Inc.",Financial Services,Asset Management,166650176.0
+SPXX,Nuveen S&P 500 Dynamic Overwrite Fund,Financial Services,Asset Management,325076000.0
+SRV,NXG Cushing Midstream Energy Fund,Financial Services,Asset Management,194875536.0
+STEW,"SRH Total Return Fund, Inc.",Financial Services,Asset Management,1785132288.0
+STK,Columbia Seligman Premium Technology Growth Fund,Financial Services,Asset Management,525550336.0
+STT,State Street Corporation,Financial Services,Asset Management,32616415232.0
+TDF,"Templeton Dragon Fund, Inc.",Financial Services,Asset Management,283700064.0
+TEI,Templeton Emerging Markets Income Fund,Financial Services,Asset Management,290926944.0
+THQ,Abrdn Healthcare Opportunities Fund,Financial Services,Asset Management,703860224.0
+THW,Abrdn World Healthcare Fund,Financial Services,Asset Management,469217408.0
+TSI,"TCW Strategic Income Fund, Inc.",Financial Services,Asset Management,237015584.0
+TWN,"The Taiwan Fund, Inc.",Financial Services,Asset Management,320228160.0
+TY,Tri-Continental Corporation,Financial Services,Asset Management,1742775296.0
+USA,Liberty All-Star Equity Fund,Financial Services,Asset Management,1945508480.0
+UTF,"Cohen & Steers Infrastructure Fund, Inc",Financial Services,Asset Management,2575713280.0
+VBF,Invesco Bond Fund,Financial Services,Asset Management,176746304.0
+VGI,Virtus Global Multi-Sector Income Fund,Financial Services,Asset Management,90504800.0
+VLT,Invesco High Income Trust II,Financial Services,Asset Management,72453144.0
+VVR,Invesco Senior Income Trust,Financial Services,Asset Management,560742208.0
+WDI,Western Asset Diversified Income Fund,Financial Services,Asset Management,780052032.0
+WEA,Western Asset Premier Bond Fund,Financial Services,Asset Management,130877568.0
+WIW,Western Asset Inflation-Linked Opportunities & Income Fund,Financial Services,Asset Management,546985856.0
+NTRS,Northern Trust Corporation,Financial Services,Asset Management,25029974016.0
+TROW,"T. Rowe Price Group, Inc.",Financial Services,Asset Management,23645728768.0
+CG,The Carlyle Group Inc.,Financial Services,Asset Management,23351672832.0
+TPG,TPG Inc.,Financial Services,Asset Management,22804514816.0
+PFG,"Principal Financial Group, Inc.",Financial Services,Asset Management,17935052800.0
+ARCC,Ares Capital Corporation,Financial Services,Asset Management,15800219648.0
+SEIC,SEI Investments Company,Financial Services,Asset Management,10913614848.0
+HLNE,Hamilton Lane Incorporated,Financial Services,Asset Management,8593481728.0
+STEP,StepStone Group Inc.,Financial Services,Asset Management,7681538560.0
+VCTR,"Victory Capital Holdings, Inc.",Financial Services,Asset Management,4760320512.0
+OXLCO,Oxford Lane Capital Corp.,Financial Services,Asset Management,433904736.0
+GBDC,"Golub Capital BDC, Inc.",Financial Services,Asset Management,3974329856.0
+CSQ,Calamos Strategic Total Return Fund,Financial Services,Asset Management,2986089472.0
+GCMG,GCM Grosvenor Inc.,Financial Services,Asset Management,2421964800.0
+PAX,Patria Investments Limited,Financial Services,Asset Management,2159183360.0
+PSEC,Prospect Capital Corporation,Financial Services,Asset Management,1377782144.0
+OCSL,Oaktree Specialty Lending Corporation,Financial Services,Asset Management,1233197056.0
+CSWC,Capital Southwest Corporation,Financial Services,Asset Management,1277230336.0
+MFIC,MidCap Financial Investment Corporation,Financial Services,Asset Management,1233473664.0
+NMFC,New Mountain Finance Corporation,Financial Services,Asset Management,1133808256.0
+CGBD,"Carlyle Secured Lending, Inc.",Financial Services,Asset Management,1019912960.0
+TRIN,Trinity Capital Inc.,Financial Services,Asset Management,1139090048.0
+SLRC,SLR Investment Corp.,Financial Services,Asset Management,906697472.0
+FDUS,Fidus Investment Corporation,Financial Services,Asset Management,761729280.0
+OXLC,Oxford Lane Capital Corp.,Financial Services,Asset Management,1806000000.0
+VINP,Vinci Compass Investments Ltd.,Financial Services,Asset Management,636241728.0
+GLAD,Gladstone Capital Corporation,Financial Services,Asset Management,589955968.0
+TCPC,BlackRock TCP Capital Corp.,Financial Services,Asset Management,613113152.0
+TBLD,Thornburg Income Builder Opportunities Trust,Financial Services,Asset Management,642343808.0
+ALTI,"AlTi Global, Inc.",Financial Services,Asset Management,635007424.0
+CCAP,"Crescent Capital BDC, Inc.",Financial Services,Asset Management,582236160.0
+GAIN,Gladstone Investment Corporation,Financial Services,Asset Management,541566080.0
+DHIL,"Diamond Hill Investment Group, Inc.",Financial Services,Asset Management,397219296.0
+RWAY,Runway Growth Finance Corp.,Financial Services,Asset Management,394398784.0
+HRZN,Horizon Technology Finance Corporation,Financial Services,Asset Management,293565344.0
+CPZ,Calamos Long/Short Equity & Dynamic Income Term Trust,Financial Services,Asset Management,328250368.0
+INV,"Innventure, Inc.",Financial Services,Asset Management,305339520.0
+WTF,Waton Financial Limited,Financial Services,Asset Management,234916624.0
+LIEN,"Chicago Atlantic BDC, Inc.",Financial Services,Asset Management,251254816.0
+FUND,"Sprott Focus Trust, Inc.",Financial Services,Asset Management,243656432.0
+SAMG,Silvercrest Asset Management Group Inc.,Financial Services,Asset Management,138340944.0
+WHF,"WhiteHorse Finance, Inc.",Financial Services,Asset Management,198728512.0
+SSSS,SuRo Capital Corp.,Financial Services,Asset Management,207826464.0
+SWKH,SWK Holdings Corporation,Financial Services,Asset Management,181117728.0
+OXSQ,Oxford Square Capital Corp.,Financial Services,Asset Management,170895776.0
+BANX,ArrowMark Financial Corp.,Financial Services,Asset Management,146498272.0
+MRCC,Monroe Capital Corporation,Financial Services,Asset Management,161847264.0
+PTMN,BCP Investment Corp.,Financial Services,Asset Management,161864624.0
+OFS,OFS Capital Corporation,Financial Services,Asset Management,113749864.0
+PFX,PhenixFIN Corporation,Financial Services,Asset Management,97348008.0
+HNNA,"Hennessy Advisors, Inc.",Financial Services,Asset Management,90979728.0
+GECC,Great Elm Capital Corp.,Financial Services,Asset Management,130144496.0
+OCCI,"OFS Credit Company, Inc.",Financial Services,Asset Management,163757696.0
+MAAS,Carve Group Ltd,Financial Services,Asset Management,89932688.0
+GEG,"Great Elm Group, Inc.",Financial Services,Asset Management,70599504.0
+RAND,Rand Capital Corporation,Financial Services,Asset Management,47903032.0
+TURN,180 Degree Capital Corp.,Financial Services,Asset Management,49800500.0
+ICMB,"Investcorp Credit Management BDC, Inc.",Financial Services,Asset Management,42572040.0
+BCG,"Binah Capital Group, Inc.",Financial Services,Asset Management,32540900.0
+GROW,"U.S. Global Investors, Inc.",Financial Services,Asset Management,32010752.0
+RMCO,Royalty Management Holding Corporation,Financial Services,Asset Management,32983776.0
+PWM,Prestige Wealth Inc.,Financial Services,Asset Management,16833544.0
+CWD,CaliberCos Inc.,Financial Services,Asset Management,8380189.0
+BENF,Beneficient,Financial Services,Asset Management,3512143.0
+CCD,Calamos Dynamic Convertible and Income Fund,Financial Services,Asset Management,555707648.0
+CGO,Calamos Global Total Return Fund,Financial Services,Asset Management,115568936.0
+CHI,Calamos Convertible Opportunities and Income Fund,Financial Services,Asset Management,812199808.0
+CHW,Calamos Global Dynamic Income Fund,Financial Services,Asset Management,466848768.0
+CHY,Calamos Convertible and High Income Fund,Financial Services,Asset Management,869147712.0
+HERZ,"Herzfeld Credit Income Fund, Inc.",Financial Services,Asset Management,38346420.0
+QQQX,Nuveen Nasdaq 100 Dynamic Overwrite Fund,Financial Services,Asset Management,1313929216.0
