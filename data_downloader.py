@@ -28,7 +28,7 @@ def get_transaction_df(symbol, period="10m", interval="4h"):
     return df
 
 
-def get_stock_obj(symbol, period="10m", interval="4h"):
+def get_stock_obj(symbol, period="10mo", interval="4h"):
     """Update the shared variable safely."""
     global symbol_and_stock ,symbol_and_df, global_period, global_interval
     if  global_period and  global_interval:
@@ -46,7 +46,8 @@ def get_stock_obj(symbol, period="10m", interval="4h"):
 
 if __name__ == "__main__":
     # Example usage
-    df = get_stock_obj("QQQ")
+    st = get_stock_obj("AMDL")
+    print(st.get_info())
 
     sleep(1)
-    print(get_transaction_df("QQQ"))
+    print(get_transaction_df("AMDL"))

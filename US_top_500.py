@@ -9,7 +9,7 @@ import  ask_bid
 from RSI_bottom_finder import rsi_bottom
 from find_cross_ema_5_20_90 import find_cross
 from institute_enter import institute_enter
-from analytics/quick_fundamental_analysis import qfa
+from analytics import quick_fundamental_analysis as qfa
 import pandas as pd
 import glob
 import  data_downloader as data
@@ -21,9 +21,9 @@ data.global_interval ="1d"
 
 date = datetime.now().strftime("%Y-%m-%d")
 # ticker_file_name = "nzx_tickers"
-ticker_file_name = "my_vip"
+# ticker_file_name = "my_vip"
 # ticker_file_name = "my_watch_list"
-# ticker_file_name = "nyse_and_nasdaq_top_500"
+ticker_file_name = "nyse_and_nasdaq_top_500"
 # ticker_file_name = "us_top_3000"
 # ticker_file_name = "my_owned"
 ticker_file_name_full = f"{ticker_file_name}.csv"
@@ -35,7 +35,8 @@ if not os.path.exists(f"{output_folder}"):
 try:
     qfa.run_quick_fundamental_analysis(input_file=f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/quick_fundamental_analysis.csv")
     df_tickers_fqa = pd.read_csv(f"{output_folder}/quick_fundamental_analysis.csv")
-    di.generate_pdf(df_tickers_fqa['symbol'], f"{output_folder}/quick_fundamental_analysis.pdf", "No", "us")
+    df_tickers_fqa.columns = df_tickers_fqa.columns.str.lower()
+    di.generate_pdf(df_tickers_fqa[['symbol']], f"{output_folder}/quick_fundamental_analysis.pdf", "No", "us")
 except Exception  as e:
     print("error:", e)
 
@@ -60,14 +61,14 @@ try:
     print("running institute_enter...")
     institute_enter(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/institute_enter.csv")
     df_tickers_inst = pd.read_csv(f"{output_folder}/institute_enter.csv")
-    di.generate_pdf(df_tickers_inst, f"{output_folder}/institute_enter{date}.pdf", "No", "us")
+    di.generate_pdf(df_tickers_inst, f"{output_folder}/institute_enter.pdf", "No", "us")
 except Exception as e:
     print("institute_enter error:", e)
 try:
     print("running bid ask...")
     ask_bid.bid_ask_screener(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/bid_ask.csv")
     df_tickers_ba = pd.read_csv(f"{output_folder}/bid_ask.csv")
-    di.generate_pdf(df_tickers_ba, f"{output_folder}/bid_ask{date}.pdf", "No", "us")
+    di.generate_pdf(df_tickers_ba, f"{output_folder}/bid_ask.pdf", "No", "us")
 except Exception as e:
     print("institute_enter error:", e)
 try:
@@ -102,6 +103,8 @@ try:
     find_cross(df_tickers,output_folder)
     df_tickers_result = pd_read_pattern(f'{output_folder}/find_cross_ema*')
     df_tickers_result = df_tickers_result.drop_duplicates()
-    di.generate_pdf(df_tickers_result, f"{output_folder}/find_cross_ema_{datetime.now().strftime('%Y-%m-%d-%H-%M')}.pdf", "No", "us")
+    di.generate_pdf(df_tickers_result, f"{output_folder}/find_cross_ema.pdf", "No", "us")
 except Exception as e:
     print("find_cross error:", e)
+
+

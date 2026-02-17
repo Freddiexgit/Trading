@@ -17,6 +17,8 @@ df_all = pd.read_csv("../resource/stocks_by_industry.csv")
 for industry, group_df in df_all.groupby('industry'):
     file_name = f"{industry}.csv"
     group_df.columns.values[0] = "symbol"
-
+    group_df["marketCap"] = group_df["marketCap"].astype("float64")
+    group_df = group_df.sort_values(by="marketCap", ascending=False)
+    group_df["marketCap_str"] = ( (group_df["marketCap"] / 1_000_000_000) .round(3) .astype(str) + "B" )
     group_df.to_csv(f"../resource/industries/{file_name}", index=False)
     print(f"Saved {file_name}")

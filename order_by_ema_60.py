@@ -7,7 +7,7 @@ import data_downloader as dt
 
 # Download stock data
 
-def order_by_ema(input_file, output_file, span=60):
+def order_by_ema(input_file, output_file, span=20):
     ticker_and_slopes = {}
     df_tickers = pd.read_csv(input_file)
     for index, row in df_tickers.iterrows():
@@ -21,15 +21,15 @@ def order_by_ema(input_file, output_file, span=60):
         for key, value in sorted_dict.items():
             f.write(f'{key}\n')
 
-def order(ticker, span=60):
-    data = dt.get_transaction_df(ticker, period="2mo", interval="1d")
+def order(ticker, span=20):
+    data = dt.get_transaction_df(ticker)
 
     # Compute EMA60
-    data["EMA60"] = data["Close"].ewm(span=span, adjust=False).mean()
+    data[f"EMA{span}"] = data["Close"].ewm(span=span, adjust=False).mean()
 
     # Rolling regression slope (20-day window)
     N = span
-    ema = data["EMA60"].dropna().values
+    ema = data[f"EMA{span}"].dropna().values
     slopes = []
 
     for i in range(N, len(ema)):
@@ -39,10 +39,10 @@ def order(ticker, span=60):
         slopes.append(model.coef_[0])
 
     # Align with dataframe
-    data["EMA60_RegSlope"] = [None] * (len(data) - len(slopes)) + slopes
+    data[f"EMA{span}_RegSlope"] = [None] * (len(data) - len(slopes)) + slopes
 
     data = data.iloc[-5:]
-    val = data["EMA60_RegSlope"].mean()
+    val = data[f"EMA{span}_RegSlope"].mean()
     return val
 
 if __name__ == "__main__":

@@ -14,14 +14,14 @@ def run_last_day_volume_increase(source_tickers,output_folder =f"resource/{datet
     if not os.path.exists(f"{output_folder}"):
         # Create the directory
         os.makedirs(f"{output_folder}")
-    ema.run(f'resource/{source_tickers}', f'{output_folder}/us_stock_5days_above_20days_{date}.csv')
+    ema.run(f'resource/{source_tickers}', f'{output_folder}/volume_5days_above_20days.csv')
 
-    order_by_ema(f"{output_folder}/us_stock_5days_above_20days_{date}.csv", f"{output_folder}/us_order_by_ema_60_{date}.csv")
-    ft.order_by_last_1day_and10day_volume(f"{output_folder}/us_order_by_ema_60_{date}.csv",
-                                          f"{output_folder}/us_stock_last_day_vol_{date}.csv")
-    df_tickers = pd.read_csv(f"{output_folder}/us_stock_last_day_vol_{date}.csv")
+    order_by_ema(f"{output_folder}/volume_5days_above_20days.csv", f"{output_folder}/volume_order_by_ema_20.csv")
+    ft.order_by_last_1day_and10day_volume(f"{output_folder}/volume_order_by_ema_20.csv",
+                                          f"{output_folder}/volume_last1day_and10.csv")
+    df_tickers = pd.read_csv(f"{output_folder}/volume_last1day_and10.csv")
     di.generate_pdf(df_tickers,
-                    f"{output_folder}/us_stock_Volume_{date}_{datetime.now().strftime('%H-%M')}.pdf", "yes",
+                    f"{output_folder}/volume_last1day_and10.pdf", "yes",
                     "day")
 
 
