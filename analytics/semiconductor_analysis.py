@@ -100,7 +100,7 @@ for t in df["symbol"]:
 # Build DataFrame
 # -----------------------------
 df = pd.DataFrame(rows, columns=[
-    "Symbol","name","sector","industry","marketCap","marketCap_str","RevenueGrowth","GrossMargin","OpMargin",
+    "symbol","name","sector","industry","marketCap","marketCap_str","RevenueGrowth","GrossMargin","OpMargin",
     "FCFMargin","DebtToEquity","Momentum","EPSRevision","CycleWeight"
 ])
 
