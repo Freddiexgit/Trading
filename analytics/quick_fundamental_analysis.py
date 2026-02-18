@@ -200,3 +200,6 @@ def run_quick_fundamental_analysis(input_file=None,output_file=None):
         final_df.to_csv(f"{output_file}", index=False)
     else:
         print("\n今日無標的符合篩選條件。")
+
+if __name__ == "__main__":
+    run_quick_fundamental_analysis()
