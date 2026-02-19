@@ -1,12 +1,13 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
+from datetime import datetime
 pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
-pd.set_option('display.width', 1000)
-# -----------------------------
+pd.set_option('display.width', 1200)
+
+# ---------------------------------------------------------
 # Helper functions
-# -----------------------------
+# ---------------------------------------------------------
 def safe_float(x):
     try:
         return float(x)
@@ -14,120 +15,205 @@ def safe_float(x):
         return np.nan
 
 def normalize(series):
+    series = series.replace([np.inf, -np.inf], np.nan)
     if series.max() == series.min():
         return series.fillna(0)
     return 100 * (series - series.min()) / (series.max() - series.min())
 
-# -----------------------------
-# Major US semiconductor tickers
-# -----------------------------
-df = pd.read_csv("../resource/industries/Semiconductors.csv")
+def compute_revenue_growth(stock):
+    try:
+        fin = stock.financials.T
+        rev = fin["Total Revenue"]
+        if len(rev) >= 2:
+            return (rev.iloc[0] - rev.iloc[1]) / rev.iloc[1]
+    except:
+        pass
+    return np.nan
 
-# SOXX ETF for relative momentum
-soxx = yf.Ticker("SOXX")
-soxx_hist = soxx.history(period="6mo")["Close"]
-soxx_return = soxx_hist.iloc[-1]/soxx_hist.iloc[0] - 1
+def compute_fcf_margin(stock):
+    try:
+        cf = stock.cashflow.T
+        fin = stock.financials.T
+        fcf = cf["Free Cash Flow"].iloc[0]
+        rev = fin["Total Revenue"].iloc[0]
+        return fcf / rev if rev != 0 else np.nan
+    except:
+        return np.nan
 
-# -----------------------------
-# Collect stock data
-# -----------------------------
+def compute_roic(stock):
+    """ROIC = EBIT / (Total Assets - Current Liabilities)"""
+    try:
+        fin = stock.financials.T
+        bs = stock.balance_sheet.T
+        ebit = fin["Ebit"].iloc[0]
+        invested_capital = bs["Total Assets"].iloc[0] - bs["Total Current Liabilities"].iloc[0]
+        return ebit / invested_capital if invested_capital != 0 else np.nan
+    except:
+        return np.nan
+
+def compute_ev_ebitda(stock, info):
+    try:
+        ebitda = safe_float(info.get("ebitda"))
+        market_cap = safe_float(info.get("marketCap"))
+        debt = safe_float(info.get("totalDebt"))
+        cash = safe_float(info.get("totalCash"))
+        ev = market_cap + debt - cash
+        return ev / ebitda if ebitda and ebitda > 0 else np.nan
+    except:
+        return np.nan
+
+def compute_peg(info):
+    try:
+        pe = safe_float(info.get("trailingPE"))
+        growth = safe_float(info.get("earningsQuarterlyGrowth"))
+        return pe / (growth * 100) if pe and growth else np.nan
+    except:
+        return np.nan
+
+def compute_capex_intensity(stock):
+    try:
+        cf = stock.cashflow.T
+        fin = stock.financials.T
+        capex = abs(cf["Capital Expenditures"].iloc[0])
+        rev = fin["Total Revenue"].iloc[0]
+        return capex / rev if rev != 0 else np.nan
+    except:
+        return np.nan
+
+def compute_inventory_cycle(stock):
+    """Inventory growth YoY — useful for memory & WFE cycle."""
+    try:
+        bs = stock.balance_sheet.T
+        inv = bs["Inventory"]
+        if len(inv) >= 2:
+            return (inv.iloc[0] - inv.iloc[1]) / inv.iloc[1]
+    except:
+        pass
+    return np.nan
+
+def compute_multi_momentum(stock):
+    try:
+        hist = stock.history(period="1y")["Close"]
+        if len(hist) < 250:
+            return np.nan, np.nan, np.nan, np.nan, np.nan
+
+        m1 = hist.iloc[-1] / hist.iloc[-21] - 1
+        m3 = hist.iloc[-1] / hist.iloc[-63] - 1
+        m6 = hist.iloc[-1] / hist.iloc[-126] - 1
+        m12 = hist.iloc[-1] / hist.iloc[0] - 1
+        vol = hist.pct_change().std() * np.sqrt(252)
+
+        return m1, m3, m6, m12, m12 / vol if vol > 0 else np.nan
+    except:
+        return np.nan, np.nan, np.nan, np.nan, np.nan
+
+# ---------------------------------------------------------
+# Load tickers
+# ---------------------------------------------------------
+tickers = pd.read_csv("../resource/industries/Semiconductors.csv")["symbol"]
+
+# ---------------------------------------------------------
+# Collect data
+# ---------------------------------------------------------
 rows = []
 
-for t in df["symbol"]:
+for t in tickers:
+    stock = yf.Ticker(t)
+
     try:
-        stock = yf.Ticker(t)
-        info = stock.info
-    except Exception as e:
-        print(f"Error fetching {t}: {e}")
+        info = stock.get_info()
+    except:
         continue
-    name= info.get("longName")
-    sector= info.get("sector")
-    industry= info.get("industry")
-    marketCap= info.get("marketCap")
-    # --- Core fundamental metrics ---
-    rev_growth = safe_float(info.get("revenueGrowth"))
+
+    name = info.get("longName")
+    sector = info.get("sector")
+    industry = info.get("industry")
+    market_cap = safe_float(info.get("marketCap"))
+
+    # Fundamentals
+    rev_growth = compute_revenue_growth(stock)
     gross_margin = safe_float(info.get("grossMargins"))
     op_margin = safe_float(info.get("operatingMargins"))
-    fcf = safe_float(info.get("freeCashflow"))
-    market_cap = safe_float(info.get("marketCap"))
+    fcf_margin = compute_fcf_margin(stock)
     debt_to_equity = safe_float(info.get("debtToEquity"))
 
-    # --- Fallback: compute revenue growth from quarterly financials if missing ---
-    if np.isnan(rev_growth):
-        try:
-            fin = stock.financials.T  # columns = Revenue, Net Income, etc.
-            rev_this = fin["Total Revenue"].iloc[0]
-            rev_last = fin["Total Revenue"].iloc[1]
-            rev_growth = (rev_this - rev_last) / rev_last
-        except:
-            rev_growth = 0
+    # Advanced fundamentals
+    roic = compute_roic(stock)
+    ev_ebitda = compute_ev_ebitda(stock, info)
+    peg = compute_peg(info)
+    capex_intensity = compute_capex_intensity(stock)
+    inventory_cycle = compute_inventory_cycle(stock)
 
-    # --- FCF margin ---
-    fcf_margin = fcf / market_cap if fcf and market_cap else 0
+    # Momentum
+    m1, m3, m6, m12, risk_adj_mom = compute_multi_momentum(stock)
 
-    # --- Momentum vs SOXX ---
-    try:
-        price = stock.history(period="6mo")["Close"]
-        momentum = (price.iloc[-1]/price.iloc[0] - 1) - soxx_return
-    except:
-        momentum = 0
+    # AI exposure (simple heuristic)
+    ai_weight = 1.0
+    if t in ["NVDA", "AMD", "AVGO", "TSM"]:
+        ai_weight = 1.2
 
-    # --- EPS revision score ---
-    try:
-        eps_rev = stock.recommendations
-        eps_rev = eps_rev.tail(30)
-        upgrades = sum(eps_rev["To Grade"].str.contains("Buy|Outperform", na=False))
-        downgrades = sum(eps_rev["To Grade"].str.contains("Sell|Underperform", na=False))
-        eps_revision_score = upgrades - downgrades
-    except:
-        eps_revision_score = 0
+    # Memory cycle
+    memory_weight = 1.0
+    if t in ["MU", "WDC", "STX"]:
+        memory_weight = 1.15
 
-    # --- Cycle weight (simplified) ---
-    cycle_weight = 1
-    if t in ["AMAT","LRCX","KLAC"]:
-        cycle_weight = 1.2  # early-cycle equipment surge
-    elif t in ["NVDA","AMD"]:
-        cycle_weight = 1.1  # AI/data-center growth
-    elif t in ["MU"]:
-        cycle_weight = 1.0
-    marketCap_str = str(round(market_cap / 1_000_000_000, 3)) + "B"
+    # WFE cycle
+    wfe_weight = 1.0
+    if t in ["AMAT", "LRCX", "KLAC", "ASML"]:
+        wfe_weight = 1.25
+
+    cycle_weight = ai_weight * memory_weight * wfe_weight
+
     rows.append([
-        t,name,sector,industry,marketCap,marketCap_str , rev_growth, gross_margin, op_margin, fcf_margin,
-        debt_to_equity, momentum, eps_revision_score, cycle_weight
+        t, name, sector, industry, market_cap,
+        rev_growth, gross_margin, op_margin, fcf_margin,
+        debt_to_equity, roic, ev_ebitda, peg,
+        capex_intensity, inventory_cycle,
+        m1, m3, m6, m12, risk_adj_mom,
+        cycle_weight
     ])
 
-# -----------------------------
+# ---------------------------------------------------------
 # Build DataFrame
-# -----------------------------
-df = pd.DataFrame(rows, columns=[
-    "symbol","name","sector","industry","marketCap","marketCap_str","RevenueGrowth","GrossMargin","OpMargin",
-    "FCFMargin","DebtToEquity","Momentum","EPSRevision","CycleWeight"
-])
+# ---------------------------------------------------------
+cols = [
+    "symbol","Name","Sector","Industry","MarketCap",
+    "RevenueGrowth","GrossMargin","OpMargin","FCFMargin",
+    "DebtToEquity","ROIC","EV_EBITDA","PEG",
+    "CapexIntensity","InventoryCycle",
+    "M1","M3","M6","M12","RiskAdjMomentum",
+    "CycleWeight"
+]
 
-# -----------------------------
-# Compute factor scores
-# -----------------------------
-df["GrowthScore"] = normalize(df["RevenueGrowth"].fillna(0))
-df["ProfitScore"] = normalize((df["GrossMargin"].fillna(0) + df["OpMargin"].fillna(0))/2)
-df["CashScore"] = normalize(df["FCFMargin"].fillna(0))
-df["BalanceScore"] = normalize(-df["DebtToEquity"].fillna(100))  # penalize missing debt
-df["MomentumScore"] = normalize(df["Momentum"].fillna(0))
-df["EPSRevisionScore"] = normalize(df["EPSRevision"].fillna(0))
+df = pd.DataFrame(rows, columns=cols)
 
-# -----------------------------
-# Total weighted score with cycle adjustment
-# -----------------------------
+# ---------------------------------------------------------
+# Factor scoring
+# ---------------------------------------------------------
+df["GrowthScore"] = normalize(df["RevenueGrowth"])
+df["ProfitScore"] = normalize((df["GrossMargin"] + df["OpMargin"]) / 2)
+df["CashScore"] = normalize(df["FCFMargin"])
+df["ROICScore"] = normalize(df["ROIC"])
+df["ValuationScore"] = normalize(-df["EV_EBITDA"])  # lower EV/EBITDA = better
+df["PEGScore"] = normalize(-df["PEG"])  # lower PEG = better
+df["CapexScore"] = normalize(-df["CapexIntensity"])  # lower capex intensity = better
+df["InventoryScore"] = normalize(-df["InventoryCycle"])  # falling inventory = good
+df["MomentumScore"] = normalize(df["RiskAdjMomentum"])
+
+# ---------------------------------------------------------
+# Total score
+# ---------------------------------------------------------
 df["TotalScore"] = (
-    0.25*df["GrowthScore"] +
-    0.20*df["ProfitScore"] +
-    0.15*df["CashScore"] +
-    0.10*df["BalanceScore"] +
-    0.15*df["MomentumScore"] +
-    0.10*df["EPSRevisionScore"]
-) * df["CycleWeight"].fillna(1)
+    0.20*df["GrowthScore"] +
+    0.15*df["ProfitScore"] +
+    0.10*df["CashScore"] +
+    0.15*df["ROICScore"] +
+    0.10*df["ValuationScore"] +
+    0.05*df["PEGScore"] +
+    0.05*df["CapexScore"] +
+    0.05*df["InventoryScore"] +
+    0.15*df["MomentumScore"]
+) * df["CycleWeight"]
 
-# -----------------------------
-# Sort and display
-# -----------------------------
 df = df.sort_values("TotalScore", ascending=False)
-df.to_csv("../resource/industries/Semiconductors.csv", index=False)
+df.to_csv(f"../resource/industries/Semiconductors_{datetime.now().strftime('%Y-%m-%d')}.csv", index=False)
