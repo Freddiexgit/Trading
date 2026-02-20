@@ -1,140 +1,245 @@
+# =========================================================
+# INSTITUTIONAL LEADER ROTATION RADAR
+# =========================================================
+
 import yfinance as yf
 import pandas as pd
 import numpy as np
-from scipy.stats import linregress
-from datetime import datetime
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', 1000)
+# ---------------- CONFIG ----------------
+
+TICKERS = ["NVDA","AMD","AVGO","MU","SMCI"]
+
+SECTOR_MAP = {
+    "NVDA": "SEMI",
+    "AMD": "SEMI",
+    "AVGO": "SEMI",
+    "MU": "SEMI",
+    "SMCI": "AI_SERVER"
+}
+
+SECTOR_ETF = {
+    "SEMI": "SMH",
+    "AI_SERVER": "QQQ"
+}
+
+MARKET_ETF = "SPY"
 
 
-# =========================================================
-# 1. ROBUST HELPERS
-# =========================================================
-def safe_get(df, keys, default=0):
-    """Try multiple keys in a dataframe index to find the data."""
-    for key in keys:
-        if key in df.index:
-            return df.loc[key]
-    return pd.Series([default] * 4)
+# ---------------- UTIL ----------------
+
+def safe_div(a,b):
+    if b == 0 or np.isnan(b):
+        return np.nan
+    return a/b
 
 
-def safe_div(n, d):
-    return n / d if d and d != 0 and not np.isnan(d) else np.nan
-
-
-def compute_trend_slope(series):
-    if series is None or len(series.dropna()) < 2: return 0
-    y = series.dropna().values[::-1]
+def slope(series):
+    y = series.dropna().values
+    if len(y) < 20:
+        return np.nan
     x = np.arange(len(y))
-    try:
-        slope, _, _, _, _ = linregress(x, y)
-        return slope / (abs(y.mean()) + 1e-6)
-    except:
-        return 0
+    return np.polyfit(x,y,1)[0]
 
 
-def sector_normalize(df, column, reverse=False):
-    if df.empty or column not in df.columns: return pd.Series(0, index=df.index)
+def load_data(ticker):
 
-    def z_score(x):
-        if len(x) <= 1 or x.std() == 0: return 0.0
-        return (x - x.mean()) / x.std()
+    df = yf.download(
+        ticker,
+        period="1y",
+        auto_adjust=True,
+        progress=False
+    )
 
-    z_vals = df.groupby("Sector")[column].transform(z_score).fillna(0).clip(-3, 3)
-    if reverse: z_vals = -z_vals
-    min_v, max_v = z_vals.min(), z_vals.max()
-    if max_v == min_v: return z_vals.map(lambda x: 50.0)
-    return 100 * (z_vals - min_v) / (max_v - min_v)
+    # ⭐ 修复 yfinance MultiIndex bug
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+
+    df["MA10"] = df["Close"].ewm(span=10).mean()
+    df["MA20"] = df["Close"].ewm(span=20).mean()
+    df["MA50"] = df["Close"].rolling(50).mean()
+    df["MA60"] = df["Close"].rolling(60).mean()
+    df["MA200"] = df["Close"].rolling(200).mean()
+    df["VOL20"] = df["Volume"].rolling(20).mean()
+
+    return df.dropna()
 
 
 # =========================================================
-# 2. ANALYSIS ENGINE
+# MARKET REGIME FILTER
 # =========================================================
-def analyze_earnings_quality(q_fin, q_cf, q_bs):
-    try:
-        ni = safe_get(q_fin, ["Net Income", "Net Income Common Stockholders"])
-        cfo = safe_get(q_cf, ["Operating Cash Flow", "Cash Flow From Continuing Operating Activities"])
-        assets = safe_get(q_bs, ["Total Assets"])
 
-        accrual_ratio = safe_div((ni.iloc[0] - cfo.iloc[0]), assets.iloc[0])
-        ni_slope = compute_trend_slope(ni.head(4))
-        cfo_slope = compute_trend_slope(cfo.head(4))
+def market_ok():
 
-        if ni_slope > 0.05 and cfo_slope < -0.05:
-            return accrual_ratio, "🚨 DANGER (Divergence)", 0.50
-        elif accrual_ratio > 0.10:
-            return accrual_ratio, "⚠️ LOW (Accruals)", 0.85
-        return accrual_ratio, "✅ HIGH", 1.0
-    except:
-        return 0.0, "❓ N/A", 1.0
+    spy = load_data(MARKET_ETF)
+
+    close = float(spy["Close"].iloc[-1])
+    ma50  = float(spy["MA50"].iloc[-1])
+    ma200 = float(spy["MA200"].iloc[-1])
+
+    cond1 = close > ma200
+    cond2 = ma50 > ma200
+
+    return bool(cond1 and cond2)
+
+# =========================================================
+# SECTOR ROTATION ENGINE ⭐⭐⭐
+# =========================================================
+
+def sector_relative_strength(sector_etf):
+    sec = load_data(sector_etf)["Close"]
+    mkt = load_data(MARKET_ETF)["Close"]
+
+    rs = sec / mkt
+    return slope(rs.tail(90))
 
 
-class UniversalRadar:
-    def __init__(self, tickers):
-        self.tickers = tickers
-        self.results = []
+def sector_breadth(tickers):
 
-    def run_scan(self):
-        print(f"📡 Scanning {len(self.tickers)} symbols...")
-        for t in self.tickers:
-            try:
-                stock = yf.Ticker(t)
-                q_fin = stock.quarterly_financials
-                q_cf = stock.quarterly_cashflow
-                q_bs = stock.quarterly_balance_sheet
-                info = stock.info
-                if q_fin.empty: raise ValueError("No Financials")
+    signals = []
 
-                sector = info.get("sector", "Other")
+    for t in tickers:
+        try:
+            df = load_data(t)
+            signals.append(
+                df["Close"].iloc[-1] > df["MA50"].iloc[-1]
+            )
+        except:
+            pass
 
-                # --- 1. Sector-Adaptive Quality ---
-                if sector == "Financial Services":
-                    quality_val = info.get("returnOnEquity", 0)
-                    q_label = "ROE"
-                else:
-                    # Use soft-search for Operating Income
-                    ebit_series = safe_get(q_fin, ["EBIT", "Operating Income"])
-                    assets_series = safe_get(q_bs, ["Total Assets"])
-                    liab_series = safe_get(q_bs, ["Total Current Liabilities"])
-                    quality_val = safe_div(ebit_series.iloc[0], (assets_series.iloc[0] - liab_series.iloc[0]))
-                    q_label = "ROIC"
+    if len(signals)==0:
+        return np.nan
 
-                # --- 2. Trends & Value ---
-                accrual_val, eq_flag, penalty = analyze_earnings_quality(q_fin, q_cf, q_bs)
-                fcf_series = safe_get(q_cf, ["Free Cash Flow"])
-                fcf_vel = compute_trend_slope(fcf_series.head(4))
+    return np.mean(signals)
 
-                self.results.append({
-                    "Symbol": t, "Sector": sector, "EQ_Flag": eq_flag, "Penalty": penalty,
-                    "Quality_Val": quality_val, "Quality_Type": q_label,
-                    "FCF_Velocity": fcf_vel, "PE": info.get("trailingPE", np.nan),
-                    "EV_FCF": safe_div(info.get("enterpriseValue", 0), fcf_series.head(4).mean() * 4)
-                })
-                print(f"   Done: {t.ljust(5)} | {q_label}: {str(round(quality_val * 100, 1)) + '%':>6} | {eq_flag}")
-            except Exception as e:
-                print(f"   Skipped {t}: {e}")
 
-        return self.process_rankings()
+def sector_score(sector):
 
-    def process_rankings(self):
-        if not self.results: return pd.DataFrame()
-        df = pd.DataFrame(self.results)
-        df["Score_Quality"] = sector_normalize(df, "Quality_Val")
-        df["Score_Trend"] = sector_normalize(df, "FCF_Velocity")
-        df["Score_Value"] = (sector_normalize(df, "PE", reverse=True) + sector_normalize(df, "EV_FCF",
-                                                                                         reverse=True)) / 2
-        df["TotalScore"] = (0.40 * df["Score_Trend"] + 0.35 * df["Score_Quality"] + 0.25 * df["Score_Value"]) * df[
-            "Penalty"]
-        return df.sort_values("TotalScore", ascending=False)
+    etf = SECTOR_ETF[sector]
 
+    rs = sector_relative_strength(etf)
+
+    members = [k for k,v in SECTOR_MAP.items() if v==sector]
+    breadth = sector_breadth(members)
+
+    score = 0.6*rs + 0.4*breadth
+    return score
+
+
+# =========================================================
+# LEADER STRUCTURE SCORE
+# =========================================================
+
+def leader_structure(df):
+
+    trend = slope(df["MA60"].tail(60))
+    alignment = (
+        df["MA10"].iloc[-1] >
+        df["MA20"].iloc[-1] >
+        df["MA50"].iloc[-1]
+    )
+
+    volume_expansion = safe_div(
+        df["Volume"].iloc[-1],
+        df["VOL20"].iloc[-1]
+    )
+
+    score = (
+        0.5*trend +
+        0.3*alignment +
+        0.2*volume_expansion
+    )
+
+    return score
+
+
+# =========================================================
+# FAKE BREAKOUT FILTER
+# =========================================================
+
+def fake_breakout_filter(df):
+
+    breakout = df["Close"].iloc[-1] > df["Close"].rolling(60).max().iloc[-2]
+    volume = df["Volume"].iloc[-1] > 1.2*df["VOL20"].iloc[-1]
+
+    if breakout and volume:
+        return 1.0
+
+    return 0.6
+
+
+# =========================================================
+# EARLY WARNING (-10 DAYS)
+# =========================================================
+
+def early_warning(df):
+
+    ma_angle = slope(df["MA10"].tail(10)) - slope(df["MA60"].tail(10))
+
+    vol_contract = df["Volume"].tail(5).mean() < df["VOL20"].iloc[-1]
+
+    tight_range = (
+        df["High"].tail(5).max() -
+        df["Low"].tail(5).min()
+    ) / df["Close"].iloc[-1] < 0.08
+
+    score = (
+        0.5*(ma_angle>0) +
+        0.3*vol_contract +
+        0.2*tight_range
+    )
+
+    return score
+
+
+# =========================================================
+# MAIN SCAN
+# =========================================================
+
+def run():
+
+    if not market_ok():
+        print("❌ Market regime not favorable")
+        return
+
+    print("\n🔥 MARKET OK — SCANNING...\n")
+
+    results = []
+
+    sector_cache = {}
+
+    for ticker in TICKERS:
+
+        df = load_data(ticker)
+
+        sector = SECTOR_MAP[ticker]
+
+        if sector not in sector_cache:
+            sector_cache[sector] = sector_score(sector)
+
+        sec_score = sector_cache[sector]
+
+        core = leader_structure(df)
+        fake = fake_breakout_filter(df)
+        early = early_warning(df)
+
+        total = (
+            0.55*core +
+            0.25*fake +
+            0.20*early
+        ) * (1 + sec_score)
+
+        results.append((ticker, total))
+
+    print("================================")
+    print("🔥 LEADER ROTATION RANKING")
+    print("================================")
+
+    for r in sorted(results, key=lambda x:x[1], reverse=True):
+        print(r[0], round(r[1],3))
+
+
+# =========================================================
 
 if __name__ == "__main__":
-    ticker_list = ["AAPL", "MSFT", "NVDA", "JPM", "GS", "COST", "WMT", "XOM", "PFE", "LLY"]
-    final_df = UniversalRadar(ticker_list).run_scan()
-    if not final_df.empty:
-        print("\n" + "=" * 95)
-        print(f"🏆 UNIVERSAL FUNDAMENTAL RADAR: TOP PICKS")
-        print("=" * 95)
-        print(final_df.groupby("Sector").head(1)[
-                  ["Symbol", "Sector", "Quality_Type", "Quality_Val", "TotalScore"]].to_string(index=False))
+    run()
