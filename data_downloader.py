@@ -8,7 +8,7 @@ symbol_and_stock = {}
 global_period = None
 global_interval = None
 
-def get_transaction_df(symbol, period="10m", interval="4h"):
+def get_transaction_df(symbol, period="10mo", interval="4h"):
     """Update the shared variable safely."""
     global symbol_and_df
     df = symbol_and_df.get(symbol)

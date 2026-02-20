@@ -5,7 +5,7 @@ import data_downloader as dd
 
 # ---------------- Logging ----------------
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.ERROR,
     format="%(asctime)s [%(levelname)s] %(message)s"
 )
 
@@ -101,7 +101,8 @@ def process_ticker(symbol: str) -> dict | None:
         peg_ratio = get_reliable_peg(info)
         fcf = safe_get(info, 'freeCashflow', 0)
         # ----bollinger_bands
-        hist = stock.history(period="3mo")
+        # hist = stock.history(period="3mo")
+        hist = dd.get_transaction_df(symbol)
         bb_status, bb_pos = compute_bollinger_bands(hist)
 
         # 核心財務條件過濾
@@ -117,7 +118,7 @@ def process_ticker(symbol: str) -> dict | None:
 
         # --- 2. 計算動能 (Momentum) ---
         # 同步抓取歷史數據
-        hist = stock.history(period="3mo")
+        hist = dd.get_transaction_df(symbol)
         if len(hist) < 20:
             momentum = 0.0
         else:
@@ -140,11 +141,11 @@ def process_ticker(symbol: str) -> dict | None:
         if momentum > 0: score += 1
 
         # 門檻設定 (4分以上視為優質標的)
-        if score < 4:
+        if score < 3:
             return None
 
         return {
-            'Symbol': symbol,
+            'symbol': symbol,
             'Score': score,
             'Rating': safe_get(info, 'recommendationMean', 3.0),
             'PEG': round(peg_ratio, 2),
