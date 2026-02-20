@@ -1,0 +1,52 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+TMO,Thermo Fisher Scientific Inc.,Healthcare,Diagnostics & Research,186056982528.0,186.057B
+DHR,Danaher Corporation,Healthcare,Diagnostics & Research,147377815552.0,147.378B
+IDXX,"IDEXX Laboratories, Inc.",Healthcare,Diagnostics & Research,51770245120.0,51.77B
+A,"Agilent Technologies, Inc.",Healthcare,Diagnostics & Research,35624611840.0,35.625B
+IQV,IQVIA Holdings Inc.,Healthcare,Diagnostics & Research,32437700608.0,32.438B
+MTD,Mettler-Toledo International Inc.,Healthcare,Diagnostics & Research,26800123904.0,26.8B
+LH,Labcorp Holdings Inc.,Healthcare,Diagnostics & Research,23100968960.0,23.101B
+NTRA,"Natera, Inc.",Healthcare,Diagnostics & Research,23091976192.0,23.092B
+DGX,Quest Diagnostics Incorporated,Healthcare,Diagnostics & Research,20311529472.0,20.312B
+WAT,Waters Corporation,Healthcare,Diagnostics & Research,17964371968.0,17.964B
+ILMN,"Illumina, Inc.",Healthcare,Diagnostics & Research,15823668224.0,15.824B
+ICLR,ICON Public Limited Company,Healthcare,Diagnostics & Research,13838767104.0,13.839B
+MEDP,"Medpace Holdings, Inc.",Healthcare,Diagnostics & Research,13358502912.0,13.359B
+RVTY,"Revvity, Inc.",Healthcare,Diagnostics & Research,10459337728.0,10.459B
+QGEN,Qiagen N.V.,Healthcare,Diagnostics & Research,10082781184.0,10.083B
+EXAS,Exact Sciences Corporation,Healthcare,Diagnostics & Research,8977507328.0,8.978B
+GH,"Guardant Health, Inc.",Healthcare,Diagnostics & Research,8407678464.0,8.408B
+CRL,"Charles River Laboratories International, Inc.",Healthcare,Diagnostics & Research,8037170688.0,8.037B
+RDNT,"RadNet, Inc.",Healthcare,Diagnostics & Research,5519499264.0,5.519B
+SHC,Sotera Health Company,Healthcare,Diagnostics & Research,4649849856.0,4.65B
+WGS,GeneDx Holdings Corp.,Healthcare,Diagnostics & Research,3719755776.0,3.72B
+VCYT,"Veracyte, Inc.",Healthcare,Diagnostics & Research,2386896384.0,2.387B
+TWST,Twist Bioscience Corporation,Healthcare,Diagnostics & Research,1627933440.0,1.628B
+NEOG,Neogen Corporation,Healthcare,Diagnostics & Research,1248928768.0,1.249B
+GRAL,"GRAIL, Inc.",Healthcare,Diagnostics & Research,1182007424.0,1.182B
+NEO,"NeoGenomics, Inc.",Healthcare,Diagnostics & Research,1134191616.0,1.134B
+OPK,"OPKO Health, Inc.",Healthcare,Diagnostics & Research,1095420544.0,1.095B
+CDNA,"CareDx, Inc",Healthcare,Diagnostics & Research,727079424.0,0.727B
+CSTL,"Castle Biosciences, Inc.",Healthcare,Diagnostics & Research,696489280.0,0.696B
+FLGT,"Fulgent Genetics, Inc.",Healthcare,Diagnostics & Research,678601536.0,0.679B
+MYGN,"Myriad Genetics, Inc.",Healthcare,Diagnostics & Research,592694080.0,0.593B
+PSNL,"Personalis, Inc.",Healthcare,Diagnostics & Research,433631040.0,0.434B
+XGN,Exagen Inc.,Healthcare,Diagnostics & Research,216955488.0,0.217B
+MDXH,MDxHealth SA,Healthcare,Diagnostics & Research,175715408.0,0.176B
+FONR,FONAR Corporation,Healthcare,Diagnostics & Research,100611992.0,0.101B
+PRE,Prenetics Global Limited,Healthcare,Diagnostics & Research,99253904.0,0.099B
+BNR,Burning Rock Biotech Limited,Healthcare,Diagnostics & Research,93561752.0,0.094B
+IMDX,Insight Molecular Diagnostics Inc.,Healthcare,Diagnostics & Research,72408096.0,0.072B
+BDSX,"Biodesix, Inc.",Healthcare,Diagnostics & Research,62553636.0,0.063B
+NOTV,"Inotiv, Inc.",Healthcare,Diagnostics & Research,58058768.0,0.058B
+PRPO,"Precipio, Inc.",Healthcare,Diagnostics & Research,25136206.0,0.025B
+PRPH,"ProPhase Labs, Inc.",Healthcare,Diagnostics & Research,14045079.0,0.014B
+ADVB,Advanced Biomed Inc.,Healthcare,Diagnostics & Research,9119096.0,0.009B
+MYNZ,Mainz Biomed N.V.,Healthcare,Diagnostics & Research,7690788.0,0.008B
+BIAF,"bioAffinity Technologies, Inc.",Healthcare,Diagnostics & Research,6892248.0,0.007B
+STRR,"Star Operating Companies, Inc",Healthcare,Diagnostics & Research,6890508.0,0.007B
+XWEL,"XWELL, Inc.",Healthcare,Diagnostics & Research,6361153.0,0.006B
+ISPC,iSpecimen Inc.,Healthcare,Diagnostics & Research,5840598.0,0.006B
+CHEK,Check-Cap Ltd.,Healthcare,Diagnostics & Research,4294078.0,0.004B
+APDN,"Applied DNA Sciences, Inc.",Healthcare,Diagnostics & Research,4210159.0,0.004B
+NDRA,ENDRA Life Sciences Inc.,Healthcare,Diagnostics & Research,3077337.0,0.003B

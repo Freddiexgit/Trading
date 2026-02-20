@@ -1,0 +1,35 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+TSLA,"Tesla, Inc.",Consumer Cyclical,Auto Manufacturers,1076855177216.0,1076.855B
+TM,Toyota Motor Corporation,Consumer Cyclical,Auto Manufacturers,253590880256.0,253.591B
+RACE,Ferrari N.V.,Consumer Cyclical,Auto Manufacturers,85047410688.0,85.047B
+GM,General Motors Company,Consumer Cyclical,Auto Manufacturers,55782252544.0,55.782B
+F,Ford Motor Company,Consumer Cyclical,Auto Manufacturers,46842953728.0,46.843B
+F,Ford Motor Company,Consumer Cyclical,Auto Manufacturers,46842953728.0,46.843B
+HMC,"Honda Motor Co., Ltd.",Consumer Cyclical,Auto Manufacturers,45298753536.0,45.299B
+STLA,Stellantis N.V.,Consumer Cyclical,Auto Manufacturers,27818373120.0,27.818B
+LI,Li Auto Inc.,Consumer Cyclical,Auto Manufacturers,23928145920.0,23.928B
+XPEV,XPeng Inc.,Consumer Cyclical,Auto Manufacturers,20282093568.0,20.282B
+RIVN,"Rivian Automotive, Inc.",Consumer Cyclical,Auto Manufacturers,16466244608.0,16.466B
+NIO,NIO Inc.,Consumer Cyclical,Auto Manufacturers,15254516736.0,15.255B
+VFS,VinFast Auto Ltd.,Consumer Cyclical,Auto Manufacturers,7998730752.0,7.999B
+ZK,ZEEKR Intelligent Technology Holding Limited,Consumer Cyclical,Auto Manufacturers,7539171328.0,7.539B
+LCID,"Lucid Group, Inc.",Consumer Cyclical,Auto Manufacturers,6083530240.0,6.084B
+PSNYW,Polestar Automotive Holding UK PLC,Consumer Cyclical,Auto Manufacturers,2903430400.0,2.903B
+PSNY,Polestar Automotive Holding UK PLC,Consumer Cyclical,Auto Manufacturers,2903427328.0,2.903B
+LOT,Lotus Technology Inc.,Consumer Cyclical,Auto Manufacturers,1438854528.0,1.439B
+CYD,China Yuchai International Limited,Consumer Cyclical,Auto Manufacturers,1252736000.0,1.253B
+LVWR,"LiveWire Group, Inc.",Consumer Cyclical,Auto Manufacturers,784387392.0,0.784B
+VLCN,Empery Digital Inc.,Consumer Cyclical,Auto Manufacturers,500826656.0,0.501B
+NWTN,Robo.ai Inc.,Consumer Cyclical,Auto Manufacturers,406157984.0,0.406B
+NIU,Niu Technologies,Consumer Cyclical,Auto Manufacturers,340702656.0,0.341B
+FFAI,Faraday Future Intelligent Electric Inc.,Consumer Cyclical,Auto Manufacturers,327428640.0,0.327B
+GGR,Gogoro Inc.,Consumer Cyclical,Auto Manufacturers,110682632.0,0.111B
+CJET,"Chijet Motor Company, Inc.",Consumer Cyclical,Auto Manufacturers,54362000.0,0.054B
+CENN,Cenntro Inc.,Consumer Cyclical,Auto Manufacturers,28100398.0,0.028B
+WKHS,Workhorse Group Inc.,Consumer Cyclical,Auto Manufacturers,20292756.0,0.02B
+FLYE,"Fly-E Group, Inc.",Consumer Cyclical,Auto Manufacturers,13354510.0,0.013B
+EVTV,"Envirotech Vehicles, Inc.",Consumer Cyclical,Auto Manufacturers,7979043.0,0.008B
+ECDA,"ECD Automotive Design, Inc.",Consumer Cyclical,Auto Manufacturers,7978959.0,0.008B
+LOBO,Lobo EV Technologies Ltd.,Consumer Cyclical,Auto Manufacturers,6071223.0,0.006B
+AYRO,"StableX Technologies, Inc.",Consumer Cyclical,Auto Manufacturers,4781825.0,0.005B
+BINI,"Bollinger Innovations, Inc.",Consumer Cyclical,Auto Manufacturers,1206494.0,0.001B

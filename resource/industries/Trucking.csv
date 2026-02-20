@@ -1,0 +1,16 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+ODFL,"Old Dominion Freight Line, Inc.",Industrials,Trucking,31729063936.0,31.729B
+XPO,"XPO, Inc.",Industrials,Trucking,15273731072.0,15.274B
+SAIA,"Saia, Inc.",Industrials,Trucking,7896508416.0,7.897B
+TFII,TFI International Inc.,Industrials,Trucking,7871344640.0,7.871B
+KNX,Knight-Swift Transportation Holdings Inc.,Industrials,Trucking,7125058048.0,7.125B
+SNDR,"Schneider National, Inc.",Industrials,Trucking,4332501504.0,4.333B
+RXO,"RXO, Inc.",Industrials,Trucking,2677907712.0,2.678B
+WERN,"Werner Enterprises, Inc.",Industrials,Trucking,1726104192.0,1.726B
+ARCB,ArcBest Corporation,Industrials,Trucking,1676336256.0,1.676B
+MRTN,"Marten Transport, Ltd.",Industrials,Trucking,965201536.0,0.965B
+ULH,"Universal Logistics Holdings, Inc.",Industrials,Trucking,682989824.0,0.683B
+HTLD,"Heartland Express, Inc.",Industrials,Trucking,664936448.0,0.665B
+CVLG,"Covenant Logistics Group, Inc.",Industrials,Trucking,603722944.0,0.604B
+PAMT,Pamt Corp.,Industrials,Trucking,256343504.0,0.256B
+YGMZ,MingZhu Logistics Holdings Limited,Industrials,Trucking,77445896.0,0.077B

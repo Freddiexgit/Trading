@@ -1,0 +1,71 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+IBM,International Business Machines Corporation,Technology,Information Technology Services,226815557632.0,226.816B
+ACN,Accenture plc,Technology,Information Technology Services,161923088384.0,161.923B
+FI,"Fiserv, Inc.",Technology,Information Technology Services,75113676800.0,75.114B
+INFY,Infosys Limited,Technology,Information Technology Services,70490095616.0,70.49B
+FIS,"Fidelity National Information Services, Inc.",Technology,Information Technology Services,36467277824.0,36.467B
+CTSH,Cognizant Technology Solutions Corporation,Technology,Information Technology Services,35286609920.0,35.287B
+BR,"Broadridge Financial Solutions, Inc.",Technology,Information Technology Services,29940514816.0,29.941B
+WIT,Wipro Limited,Technology,Information Technology Services,29730996224.0,29.731B
+LDOS,"Leidos Holdings, Inc.",Technology,Information Technology Services,23211493376.0,23.211B
+GIB,CGI Inc.,Technology,Information Technology Services,21636640768.0,21.637B
+CDW,CDW Corporation,Technology,Information Technology Services,21593610240.0,21.594B
+IT,"Gartner, Inc.",Technology,Information Technology Services,19024076800.0,19.024B
+JKHY,"Jack Henry & Associates, Inc.",Technology,Information Technology Services,11896984576.0,11.897B
+CACI,CACI International Inc,Technology,Information Technology Services,10550673408.0,10.551B
+AUR,"Aurora Innovation, Inc.",Technology,Information Technology Services,10389208064.0,10.389B
+EPAM,"EPAM Systems, Inc.",Technology,Information Technology Services,9822705664.0,9.823B
+PSN,Parsons Corporation,Technology,Information Technology Services,8554199040.0,8.554B
+G,Genpact Limited,Technology,Information Technology Services,7901401600.0,7.901B
+KD,"Kyndryl Holdings, Inc.",Technology,Information Technology Services,7348067840.0,7.348B
+EXLS,"ExlService Holdings, Inc.",Technology,Information Technology Services,7071038464.0,7.071B
+GDS,GDS Holdings Limited,Technology,Information Technology Services,6485219328.0,6.485B
+SAIC,Science Applications International Corporation,Technology,Information Technology Services,5516928512.0,5.517B
+PONY,Pony AI Inc.,Technology,Information Technology Services,5105560064.0,5.106B
+INGM,Ingram Micro Holding Corporation,Technology,Information Technology Services,4595896832.0,4.596B
+APLD,Applied Digital Corporation,Technology,Information Technology Services,4187303168.0,4.187B
+VRRM,Verra Mobility Corporation,Technology,Information Technology Services,3964593664.0,3.965B
+CNXC,Concentrix Corporation,Technology,Information Technology Services,3325204224.0,3.325B
+WNS,WNS (Holdings) Limited,Technology,Information Technology Services,3243836928.0,3.244B
+GLOB,Globant S.A.,Technology,Information Technology Services,2963052032.0,2.963B
+CLVT,Clarivate Plc,Technology,Information Technology Services,2924152576.0,2.924B
+DXC,DXC Technology Company,Technology,Information Technology Services,2586535680.0,2.587B
+ASGN,ASGN Incorporated,Technology,Information Technology Services,2376150016.0,2.376B
+VNET,"VNET Group, Inc.",Technology,Information Technology Services,2329764864.0,2.33B
+FORTY,Formula Systems (1985) Ltd.,Technology,Information Technology Services,1962585600.0,1.963B
+BBAI,"BigBear.ai Holdings, Inc.",Technology,Information Technology Services,1879464320.0,1.879B
+VYX,NCR Voyix Corporation,Technology,Information Technology Services,1821924224.0,1.822B
+TASK,"TaskUs, Inc.",Technology,Information Technology Services,1574627584.0,1.575B
+NABL,"N-able, Inc.",Technology,Information Technology Services,1507993856.0,1.508B
+PENG,"Penguin Solutions, Inc.",Technology,Information Technology Services,1264438528.0,1.264B
+INOD,Innodata Inc.,Technology,Information Technology Services,1209495936.0,1.209B
+MGIC,Magic Software Enterprises Ltd.,Technology,Information Technology Services,996715776.0,0.997B
+GDYN,"Grid Dynamics Holdings, Inc.",Technology,Information Technology Services,701914304.0,0.702B
+HCKT,"The Hackett Group, Inc.",Technology,Information Technology Services,572772736.0,0.573B
+LZMH,LZ Technology Holdings Limited,Technology,Information Technology Services,555055488.0,0.555B
+XRX,Xerox Holdings Corporation,Technology,Information Technology Services,500799424.0,0.501B
+MFH,Mercurity Fintech Holding Inc.,Technology,Information Technology Services,482848224.0,0.483B
+CNDT,Conduent Incorporated,Technology,Information Technology Services,439167712.0,0.439B
+TTGT,"TechTarget, Inc.",Technology,Information Technology Services,421785120.0,0.422B
+TSSI,"TSS, Inc.",Technology,Information Technology Services,401237728.0,0.401B
+IBEX,IBEX Limited,Technology,Information Technology Services,394886976.0,0.395B
+UIS,Unisys Corporation,Technology,Information Technology Services,278755648.0,0.279B
+III,"Information Services Group, Inc.",Technology,Information Technology Services,249170736.0,0.249B
+TTEC,"TTEC Holdings, Inc.",Technology,Information Technology Services,183676656.0,0.184B
+CSPI,CSP Inc.,Technology,Information Technology Services,118927640.0,0.119B
+DAIC,"CID HoldCo, Inc.",Technology,Information Technology Services,116627712.0,0.117B
+GMM,Global Mofy AI Limited,Technology,Information Technology Services,64867736.0,0.065B
+TDTH,Trident Digital Tech Holdings Ltd,Technology,Information Technology Services,56113500.0,0.056B
+BTCM,BIT Mining Limited,Technology,Information Technology Services,50131524.0,0.05B
+MGRT,Mega Fortune Company Limited,Technology,Information Technology Services,48125000.0,0.048B
+DTST,Data Storage Corporation,Technology,Information Technology Services,33044104.0,0.033B
+CLPS,CLPS Incorporation,Technology,Information Technology Services,29665370.0,0.03B
+VEEA,Veea Inc.,Technology,Information Technology Services,29607910.0,0.03B
+JFU,9F Inc.,Technology,Information Technology Services,29263714.0,0.029B
+GLE,Global Engine Group Holding Limited,Technology,Information Technology Services,15599200.0,0.016B
+SAIH,SAIHEAT Limited,Technology,Information Technology Services,11514854.0,0.012B
+CYCU,"Cycurion, Inc.",Technology,Information Technology Services,10290343.0,0.01B
+ARBB,ARB IOT Group Limited,Technology,Information Technology Services,7714273.0,0.008B
+NOTE,"FiscalNote Holdings, Inc.",Technology,Information Technology Services,6101870.0,0.006B
+JDZG,JIADE Limited,Technology,Information Technology Services,6098233.0,0.006B
+JZ,Jianzhi Education Technology Group Company Limited,Technology,Information Technology Services,4706895.0,0.005B

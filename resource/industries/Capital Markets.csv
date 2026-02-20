@@ -1,0 +1,79 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0,240.217B
+MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0,240.217B
+GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,225.603B
+GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,225.603B
+SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0,173.971B
+SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0,173.971B
+IBKR,"Interactive Brokers Group, Inc.",Financial Services,Capital Markets,105796804608.0,105.797B
+HOOD,"Robinhood Markets, Inc.",Financial Services,Capital Markets,92448858112.0,92.449B
+CRCL,Circle Internet Group,Financial Services,Capital Markets,33129488384.0,33.129B
+LPLA,LPL Financial Holdings Inc.,Financial Services,Capital Markets,29159892992.0,29.16B
+TW,Tradeweb Markets Inc.,Financial Services,Capital Markets,26947868672.0,26.948B
+FUTU,Futu Holdings Limited,Financial Services,Capital Markets,25840717824.0,25.841B
+NMR,"Nomura Holdings, Inc.",Financial Services,Capital Markets,21090785280.0,21.091B
+HLI,"Houlihan Lokey, Inc.",Financial Services,Capital Markets,14009586688.0,14.01B
+JEF,Jefferies Financial Group Inc.,Financial Services,Capital Markets,13377257472.0,13.377B
+EVR,Evercore Inc.,Financial Services,Capital Markets,12411154432.0,12.411B
+SF,Stifel Financial Corp.,Financial Services,Capital Markets,11779525632.0,11.78B
+SF,Stifel Financial Corp.,Financial Services,Capital Markets,11779525632.0,11.78B
+XP,XP Inc.,Financial Services,Capital Markets,9555915776.0,9.556B
+VIRT,"Virtu Financial, Inc.",Financial Services,Capital Markets,8927115264.0,8.927B
+GLXY,Galaxy Digital,Financial Services,Capital Markets,8838981632.0,8.839B
+IREN,IREN Limited,Financial Services,Capital Markets,7202030080.0,7.202B
+PJT,PJT Partners Inc.,Financial Services,Capital Markets,7112958976.0,7.113B
+MKTX,MarketAxess Holdings Inc.,Financial Services,Capital Markets,6868960768.0,6.869B
+MARA,"MARA Holdings, Inc.",Financial Services,Capital Markets,5919918592.0,5.92B
+PIPR,Piper Sandler Companies,Financial Services,Capital Markets,5904912384.0,5.905B
+LAZ,"Lazard, Inc.",Financial Services,Capital Markets,5393468928.0,5.393B
+MC,Moelis & Company,Financial Services,Capital Markets,5349148672.0,5.349B
+SNEX,StoneX Group Inc.,Financial Services,Capital Markets,5330596864.0,5.331B
+RIOT,"Riot Platforms, Inc.",Financial Services,Capital Markets,5086012928.0,5.086B
+BGC,"BGC Group, Inc.",Financial Services,Capital Markets,4653030400.0,4.653B
+ETOR,eToro Group Ltd.,Financial Services,Capital Markets,3716457728.0,3.716B
+WULF,TeraWulf Inc.,Financial Services,Capital Markets,3705874176.0,3.706B
+CIFR,Cipher Mining Inc.,Financial Services,Capital Markets,3004682240.0,3.005B
+HUT,Hut 8 Corp.,Financial Services,Capital Markets,2820763392.0,2.821B
+CLSK,"CleanSpark, Inc.",Financial Services,Capital Markets,2661856256.0,2.662B
+MRX,Marex Group plc,Financial Services,Capital Markets,2577712384.0,2.578B
+TIGR,UP Fintech Holding Limited,Financial Services,Capital Markets,2221274880.0,2.221B
+PWP,Perella Weinberg Partners,Financial Services,Capital Markets,1936465536.0,1.936B
+BTBT,"Bit Digital, Inc.",Financial Services,Capital Markets,826082752.0,0.826B
+OPY,Oppenheimer Holdings Inc.,Financial Services,Capital Markets,763472704.0,0.763B
+BITF,Bitfarms Ltd.,Financial Services,Capital Markets,740484032.0,0.74B
+DEFT,DeFi Technologies Inc.,Financial Services,Capital Markets,705771008.0,0.706B
+HIVE,HIVE Digital Technologies Ltd.,Financial Services,Capital Markets,677320000.0,0.677B
+CNCK,Coincheck Group N.V.,Financial Services,Capital Markets,661923904.0,0.662B
+FUFU,BitFuFu Inc.,Financial Services,Capital Markets,634482560.0,0.634B
+AMRK,"A-Mark Precious Metals, Inc.",Financial Services,Capital Markets,576464192.0,0.576B
+CANG,Cango Inc.,Financial Services,Capital Markets,495316800.0,0.495B
+FRGE,"Forge Global Holdings, Inc.",Financial Services,Capital Markets,256197888.0,0.256B
+BTM,Bitcoin Depot Inc.,Financial Services,Capital Markets,246455392.0,0.246B
+SWIN,Solowin Holdings,Financial Services,Capital Markets,228915280.0,0.229B
+BTCS,BTCS Inc.,Financial Services,Capital Markets,200860688.0,0.201B
+FLD,"Fold Holdings, Inc.",Financial Services,Capital Markets,167507840.0,0.168B
+NCTY,The9 Limited,Financial Services,Capital Markets,128741272.0,0.129B
+GRYP,"Gryphon Digital Mining, Inc.",Financial Services,Capital Markets,127515696.0,0.128B
+MATH,Metalpha Technology Holding Limited,Financial Services,Capital Markets,116125296.0,0.116B
+SIEB,Siebert Financial Corp.,Financial Services,Capital Markets,110365440.0,0.11B
+DOMH,Dominari Holdings Inc.,Financial Services,Capital Markets,98344128.0,0.098B
+GRAN,Grande Group Limited,Financial Services,Capital Markets,97134184.0,0.097B
+BMHL,Bluemount Holdings Limited,Financial Services,Capital Markets,96705872.0,0.097B
+SRL,Scully Royalty Ltd.,Financial Services,Capital Markets,78238024.0,0.078B
+HGBL,Heritage Global Inc.,Financial Services,Capital Markets,66356456.0,0.066B
+PLUT,Plutus Financial Group Limited,Financial Services,Capital Markets,45589500.0,0.046B
+TOP,TOP Financial Group Limited,Financial Services,Capital Markets,42999112.0,0.043B
+MDBH,"MDB Capital Holdings, LLC",Financial Services,Capital Markets,34628192.0,0.035B
+ARBK,Argo Blockchain plc,Financial Services,Capital Markets,19440374.0,0.019B
+GREE,Greenidge Generation Holdings Inc.,Financial Services,Capital Markets,19278282.0,0.019B
+ANY,Sphere 3D Corp.,Financial Services,Capital Markets,17465438.0,0.017B
+SLNH,"Soluna Holdings, Inc.",Financial Services,Capital Markets,14289204.0,0.014B
+SOS,SOS Limited,Financial Services,Capital Markets,11141262.0,0.011B
+NCPL,Netcapital Inc.,Financial Services,Capital Markets,9440120.0,0.009B
+ABTS,Abits Group Inc.,Financial Services,Capital Markets,8911726.0,0.009B
+MIGI,Mawson Infrastructure Group Inc.,Financial Services,Capital Markets,8442671.0,0.008B
+ZBAI,ATIF Holdings Limited,Financial Services,Capital Markets,7617387.0,0.008B
+GSIW,Garden Stage Limited,Financial Services,Capital Markets,7403140.0,0.007B
+MEGL,Magic Empire Global Limited,Financial Services,Capital Markets,7140310.0,0.007B
+WAI,Top KingWin Ltd,Financial Services,Capital Markets,6523577.0,0.007B
+LGHL,Lion Group Holding Ltd.,Financial Services,Capital Markets,3571558.0,0.004B

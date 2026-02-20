@@ -1,0 +1,20 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+XOM,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,487246823424.0,487.247B
+CVX,Chevron Corporation,Energy,Oil & Gas Integrated,323580100608.0,323.58B
+SHEL,Shell plc,Energy,Oil & Gas Integrated,214750674944.0,214.751B
+TTE,TotalEnergies SE,Energy,Oil & Gas Integrated,137096822784.0,137.097B
+BP,BP p.l.c.,Energy,Oil & Gas Integrated,90796163072.0,90.796B
+PBR,Petróleo Brasileiro S.A. - Petrobras,Energy,Oil & Gas Integrated,77651648512.0,77.652B
+EQNR,Equinor ASA,Energy,Oil & Gas Integrated,62471999488.0,62.472B
+E,Eni S.p.A.,Energy,Oil & Gas Integrated,53834567680.0,53.835B
+SU,Suncor Energy Inc.,Energy,Oil & Gas Integrated,50128699392.0,50.129B
+CVE,Cenovus Energy Inc.,Energy,Oil & Gas Integrated,29917767680.0,29.918B
+EC,Ecopetrol S.A.,Energy,Oil & Gas Integrated,19324801024.0,19.325B
+YPF,YPF Sociedad Anónima,Energy,Oil & Gas Integrated,12175172608.0,12.175B
+NFG,National Fuel Gas Company,Energy,Oil & Gas Integrated,7838138368.0,7.838B
+TGS,Transportadora de Gas del Sur S.A.,Energy,Oil & Gas Integrated,4153171712.0,4.153B
+CRGY,Crescent Energy Company,Energy,Oil & Gas Integrated,2429027072.0,2.429B
+DEC,Diversified Energy Company PLC,Energy,Oil & Gas Integrated,1272956416.0,1.273B
+SLNG,"Stabilis Solutions, Inc.",Energy,Oil & Gas Integrated,75686944.0,0.076B
+VIVK,"Vivakor, Inc.",Energy,Oil & Gas Integrated,35187820.0,0.035B
+SKYQ,,Energy,Oil & Gas Integrated,10847111.0,0.011B

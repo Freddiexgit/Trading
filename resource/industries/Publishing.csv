@@ -1,0 +1,11 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+NYT,The New York Times Company,Communication Services,Publishing,9743089664.0,9.743B
+PSO,Pearson plc,Communication Services,Publishing,9408271360.0,9.408B
+WLY,"John Wiley & Sons, Inc.",Communication Services,Publishing,2157618432.0,2.158B
+WLYB,"John Wiley & Sons, Inc.",Communication Services,Publishing,2157618432.0,2.158B
+SCHL,Scholastic Corporation,Communication Services,Publishing,644076288.0,0.644B
+GCI,"Gannett Co., Inc.",Communication Services,Publishing,602595840.0,0.603B
+DALN,DallasNews Corporation,Communication Services,Publishing,79752096.0,0.08B
+LEE,"Lee Enterprises, Incorporated",Communication Services,Publishing,27149976.0,0.027B
+TNMG,TNL Mediagene,Communication Services,Publishing,12674231.0,0.013B
+EDUC,Educational Development Corporation,Communication Services,Publishing,9956512.0,0.01B

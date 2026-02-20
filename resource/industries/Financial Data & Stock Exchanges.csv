@@ -1,0 +1,14 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+SPGI,S&P Global Inc.,Financial Services,Financial Data & Stock Exchanges,167438729216.0,167.439B
+ICE,"Intercontinental Exchange, Inc.",Financial Services,Financial Data & Stock Exchanges,101089902592.0,101.09B
+CME,CME Group Inc.,Financial Services,Financial Data & Stock Exchanges,96044875776.0,96.045B
+MCO,Moody's Corporation,Financial Services,Financial Data & Stock Exchanges,91430051840.0,91.43B
+COIN,"Coinbase Global, Inc.",Financial Services,Financial Data & Stock Exchanges,78247903232.0,78.248B
+NDAQ,"Nasdaq, Inc.",Financial Services,Financial Data & Stock Exchanges,54361337856.0,54.361B
+MSCI,MSCI Inc.,Financial Services,Financial Data & Stock Exchanges,43921768448.0,43.922B
+TRU,TransUnion,Financial Services,Financial Data & Stock Exchanges,17220321280.0,17.22B
+MORN,"Morningstar, Inc.",Financial Services,Financial Data & Stock Exchanges,11068272640.0,11.068B
+DNB,"Dun & Bradstreet Holdings, Inc.",Financial Services,Financial Data & Stock Exchanges,4082629120.0,4.083B
+VALU,"Value Line, Inc.",Financial Services,Financial Data & Stock Exchanges,356997184.0,0.357B
+MKTW,"MarketWise, Inc.",Financial Services,Financial Data & Stock Exchanges,49551456.0,0.05B
+BTOG,Bit Origin Ltd,Financial Services,Financial Data & Stock Exchanges,35283340.0,0.035B

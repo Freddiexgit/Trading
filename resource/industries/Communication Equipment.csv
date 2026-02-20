@@ -1,0 +1,46 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+CSCO,"Cisco Systems, Inc.",Technology,Communication Equipment,273596383232.0,273.596B
+MSI,"Motorola Solutions, Inc.",Technology,Communication Equipment,78713724928.0,78.714B
+UI,Ubiquiti Inc.,Technology,Communication Equipment,31951177728.0,31.951B
+HPE,Hewlett Packard Enterprise Company,Technology,Communication Equipment,29616805888.0,29.617B
+HPE,Hewlett Packard Enterprise Company,Technology,Communication Equipment,29616805888.0,29.617B
+ERIC,Telefonaktiebolaget LM Ericsson (publ),Technology,Communication Equipment,26337427456.0,26.337B
+NOK,Nokia Oyj,Technology,Communication Equipment,23278307328.0,23.278B
+ASTS,"AST SpaceMobile, Inc.",Technology,Communication Equipment,17545871360.0,17.546B
+ZBRA,Zebra Technologies Corporation,Technology,Communication Equipment,16122504192.0,16.123B
+CIEN,Ciena Corporation,Technology,Communication Equipment,13284257792.0,13.284B
+LITE,Lumentum Holdings Inc.,Technology,Communication Equipment,9283419136.0,9.283B
+BDC,Belden Inc.,Technology,Communication Equipment,5158497792.0,5.158B
+VSAT,"Viasat, Inc.",Technology,Communication Equipment,4340723200.0,4.341B
+COMM,"CommScope Holding Company, Inc.",Technology,Communication Equipment,3553277184.0,3.553B
+EXTR,"Extreme Networks, Inc.",Technology,Communication Equipment,2826649600.0,2.827B
+VIAV,Viavi Solutions Inc.,Technology,Communication Equipment,2518214912.0,2.518B
+ONDS,Ondas Holdings Inc.,Technology,Communication Equipment,1608564224.0,1.609B
+AAOI,"Applied Optoelectronics, Inc.",Technology,Communication Equipment,1508962048.0,1.509B
+DGII,Digi International Inc.,Technology,Communication Equipment,1288882816.0,1.289B
+HLIT,Harmonic Inc.,Technology,Communication Equipment,1094371200.0,1.094B
+TSAT,Telesat Corporation,Technology,Communication Equipment,1053774272.0,1.054B
+NTGR,"NETGEAR, Inc.",Technology,Communication Equipment,788163648.0,0.788B
+ADTN,"ADTRAN Holdings, Inc.",Technology,Communication Equipment,750889664.0,0.751B
+GILT,Gilat Satellite Networks Ltd.,Technology,Communication Equipment,538363968.0,0.538B
+CLFD,"Clearfield, Inc.",Technology,Communication Equipment,450351712.0,0.45B
+FEIM,"Frequency Electronics, Inc.",Technology,Communication Equipment,314413952.0,0.314B
+AVNW,"Aviat Networks, Inc.",Technology,Communication Equipment,292402464.0,0.292B
+AUDC,AudioCodes Ltd.,Technology,Communication Equipment,273469472.0,0.273B
+LTRX,"Lantronix, Inc.",Technology,Communication Equipment,193090352.0,0.193B
+INSG,Inseego Corp.,Technology,Communication Equipment,185478960.0,0.185B
+CRNT,Ceragon Networks Ltd.,Technology,Communication Equipment,182476704.0,0.182B
+SILC,Silicom Ltd.,Technology,Communication Equipment,93253832.0,0.093B
+AMPG,"AmpliTech Group, Inc.",Technology,Communication Equipment,78179680.0,0.078B
+CMTL,Comtech Telecommunications Corp.,Technology,Communication Equipment,57320836.0,0.057B
+FKWL,Franklin Wireless Corp.,Technology,Communication Equipment,52322292.0,0.052B
+OCC,Optical Cable Corporation,Technology,Communication Equipment,52208180.0,0.052B
+AIRG,"Airgain, Inc.",Technology,Communication Equipment,50469988.0,0.05B
+SYTA,Siyata Mobile Inc.,Technology,Communication Equipment,37904832.0,0.038B
+BOSC,B.O.S. Better Online Solutions Ltd.,Technology,Communication Equipment,29088002.0,0.029B
+UTSI,UTStarcom Holdings Corp.,Technology,Communication Equipment,24906784.0,0.025B
+CMBM,Cambium Networks Corporation,Technology,Communication Equipment,21456814.0,0.021B
+FIEE,"FiEE, Inc.",Technology,Communication Equipment,16805854.0,0.017B
+SONM,"Sonim Technologies, Inc.",Technology,Communication Equipment,10364839.0,0.01B
+CLRO,"ClearOne, Inc.",Technology,Communication Equipment,6989028.0,0.007B
+ASNS,"Actelis Networks, Inc.",Technology,Communication Equipment,4087740.0,0.004B

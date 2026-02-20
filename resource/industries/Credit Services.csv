@@ -1,0 +1,54 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+V,Visa Inc.,Financial Services,Credit Services,682783866880.0,682.784B
+MA,Mastercard Incorporated,Financial Services,Credit Services,538149289984.0,538.149B
+AXP,American Express Company,Financial Services,Credit Services,230531776512.0,230.532B
+COF,Capital One Financial Corporation,Financial Services,Credit Services,145311055872.0,145.311B
+COF,Capital One Financial Corporation,Financial Services,Credit Services,145311055872.0,145.311B
+PYPL,"PayPal Holdings, Inc.",Financial Services,Credit Services,67057983488.0,67.058B
+SOFI,"SoFi Technologies, Inc.",Financial Services,Credit Services,30582874112.0,30.583B
+SYF,Synchrony Financial,Financial Services,Credit Services,28402905088.0,28.403B
+SYF,Synchrony Financial,Financial Services,Credit Services,28402905088.0,28.403B
+ALLY,Ally Financial Inc.,Financial Services,Credit Services,12635517952.0,12.636B
+OMF,"OneMain Holdings, Inc.",Financial Services,Credit Services,7353298432.0,7.353B
+UPST,"Upstart Holdings, Inc.",Financial Services,Credit Services,7057183232.0,7.057B
+FCFS,"FirstCash Holdings, Inc.",Financial Services,Credit Services,6533574656.0,6.534B
+SLM,SLM Corporation,Financial Services,Credit Services,6521285632.0,6.521B
+CACC,Credit Acceptance Corporation,Financial Services,Credit Services,5784380928.0,5.784B
+SLMBP,SLM Corporation,Financial Services,Credit Services,4971568640.0,4.972B
+NNI,"Nelnet, Inc.",Financial Services,Credit Services,4652312576.0,4.652B
+QFIN,"Qfin Holdings, Inc.",Financial Services,Credit Services,4182097920.0,4.182B
+SEZL,Sezzle Inc.,Financial Services,Credit Services,3218622976.0,3.219B
+BFH,"Bread Financial Holdings, Inc.",Financial Services,Credit Services,3087260672.0,3.087B
+ENVA,"Enova International, Inc.",Financial Services,Credit Services,3034028544.0,3.034B
+WU,The Western Union Company,Financial Services,Credit Services,2800123904.0,2.8B
+LU,Lufax Holding Ltd,Financial Services,Credit Services,2548065792.0,2.548B
+AGM,Federal Agricultural Mortgage Corporation,Financial Services,Credit Services,2195623168.0,2.196B
+AGM,Federal Agricultural Mortgage Corporation,Financial Services,Credit Services,2195623168.0,2.196B
+FINV,FinVolution Group,Financial Services,Credit Services,2090665472.0,2.091B
+NAVI,Navient Corporation,Financial Services,Credit Services,1363198976.0,1.363B
+JCAP,"Jefferson Capital, Inc.",Financial Services,Credit Services,1216726656.0,1.217B
+LX,LexinFintech Holdings Ltd.,Financial Services,Credit Services,1063428480.0,1.063B
+EZPW,"EZCORP, Inc.",Financial Services,Credit Services,1015137984.0,1.015B
+ATLC,Atlanticus Holdings Corporation,Financial Services,Credit Services,1008864128.0,1.009B
+ECPG,"Encore Capital Group, Inc.",Financial Services,Credit Services,962813696.0,0.963B
+WRLD,World Acceptance Corporation,Financial Services,Credit Services,933571712.0,0.934B
+OPFI,OppFi Inc.,Financial Services,Credit Services,891395264.0,0.891B
+GDOT,Green Dot Corporation,Financial Services,Credit Services,771066368.0,0.771B
+QD,Qudian Inc.,Financial Services,Credit Services,752974528.0,0.753B
+PRAA,"PRA Group, Inc.",Financial Services,Credit Services,667769536.0,0.668B
+XYF,X Financial,Financial Services,Credit Services,621429184.0,0.621B
+YRD,Yiren Digital Ltd.,Financial Services,Credit Services,502885824.0,0.503B
+MCVT,SUI Group Holdings Limited,Financial Services,Credit Services,501695776.0,0.502B
+RM,Regional Management Corp.,Financial Services,Credit Services,429591232.0,0.43B
+ANTA,,Financial Services,Credit Services,312306208.0,0.312B
+FOA,Finance of America Companies Inc.,Financial Services,Credit Services,295928096.0,0.296B
+OPRT,Oportun Financial Corporation,Financial Services,Credit Services,290902144.0,0.291B
+LPRO,Open Lending Corporation,Financial Services,Credit Services,249342912.0,0.249B
+MFIN,Medallion Financial Corp.,Financial Services,Credit Services,245484112.0,0.245B
+CPSS,"Consumer Portfolio Services, Inc.",Financial Services,Credit Services,177571360.0,0.178B
+PMTS,CPI Card Group Inc.,Financial Services,Credit Services,176636688.0,0.177B
+TROO,"TROOPS, Inc.",Financial Services,Credit Services,124603200.0,0.125B
+OMCC,Old Market Capital Corporation,Financial Services,Credit Services,37279984.0,0.037B
+LMFA,"LM Funding America, Inc.",Financial Services,Credit Services,18998000.0,0.019B
+PT,Pintec Technology Holdings Limited,Financial Services,Credit Services,15149005.0,0.015B
+SNTG,Sentage Holdings Inc.,Financial Services,Credit Services,4797114.0,0.005B

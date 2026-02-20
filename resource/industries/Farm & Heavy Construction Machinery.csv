@@ -1,0 +1,28 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+CAT,Caterpillar Inc.,Industrials,Farm & Heavy Construction Machinery,196311449600.0,196.311B
+DE,Deere & Company,Industrials,Farm & Heavy Construction Machinery,129390272512.0,129.39B
+PCAR,PACCAR Inc,Industrials,Farm & Heavy Construction Machinery,52499800064.0,52.5B
+CNH,CNH Industrial N.V.,Industrials,Farm & Heavy Construction Machinery,14321888256.0,14.322B
+OSK,Oshkosh Corporation,Industrials,Farm & Heavy Construction Machinery,8919721984.0,8.92B
+AGCO,AGCO Corporation,Industrials,Farm & Heavy Construction Machinery,8073159680.0,8.073B
+TEX,Terex Corporation,Industrials,Farm & Heavy Construction Machinery,3276064000.0,3.276B
+REVG,"REV Group, Inc.",Industrials,Farm & Heavy Construction Machinery,2596509696.0,2.597B
+ALG,Alamo Group Inc.,Industrials,Farm & Heavy Construction Machinery,2560971008.0,2.561B
+BLBD,Blue Bird Corporation,Industrials,Farm & Heavy Construction Machinery,1851424256.0,1.851B
+LNN,Lindsay Corporation,Industrials,Farm & Heavy Construction Machinery,1490619648.0,1.491B
+ASTE,"Astec Industries, Inc.",Industrials,Farm & Heavy Construction Machinery,1058869888.0,1.059B
+AEBI,Aebi Schmidt Holding AG,Industrials,Farm & Heavy Construction Machinery,950057536.0,0.95B
+HY,"Hyster-Yale, Inc.",Industrials,Farm & Heavy Construction Machinery,664522496.0,0.665B
+TWI,"Titan International, Inc.",Industrials,Farm & Heavy Construction Machinery,563556544.0,0.564B
+WNC,Wabash National Corporation,Industrials,Farm & Heavy Construction Machinery,454004640.0,0.454B
+CMCO,Columbus McKinnon Corporation,Industrials,Farm & Heavy Construction Machinery,430304992.0,0.43B
+MTW,"The Manitowoc Company, Inc.",Industrials,Farm & Heavy Construction Machinery,351045088.0,0.351B
+SCAG,Scage Future,Industrials,Farm & Heavy Construction Machinery,250686688.0,0.251B
+AGFY,"RYTHM, Inc.",Industrials,Farm & Heavy Construction Machinery,94361096.0,0.094B
+XOS,"Xos, Inc.",Industrials,Farm & Heavy Construction Machinery,24594340.0,0.025B
+HYFM,"Hydrofarm Holdings Group, Inc.",Industrials,Farm & Heavy Construction Machinery,21617852.0,0.022B
+HCAI,"Huachen AI Parking Management Technology Holding Co., Ltd",Industrials,Farm & Heavy Construction Machinery,20693048.0,0.021B
+ARTW,"Art's-Way Manufacturing Co., Inc.",Industrials,Farm & Heavy Construction Machinery,16090452.0,0.016B
+VAPE,CEA Industries Inc.,Industrials,Farm & Heavy Construction Machinery,14950719.0,0.015B
+GP,GreenPower Motor Company Inc.,Industrials,Farm & Heavy Construction Machinery,12859004.0,0.013B
+UGRO,"urban-gro, Inc.",Industrials,Farm & Heavy Construction Machinery,5315923.0,0.005B

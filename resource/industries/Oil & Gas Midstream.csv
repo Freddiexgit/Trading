@@ -1,0 +1,60 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+ENB,Enbridge Inc.,Energy,Oil & Gas Midstream,105456615424.0,105.457B
+WMB,"The Williams Companies, Inc.",Energy,Oil & Gas Midstream,70681903104.0,70.682B
+EPD,Enterprise Products Partners L.P.,Energy,Oil & Gas Midstream,69591138304.0,69.591B
+ET,Energy Transfer LP,Energy,Oil & Gas Midstream,60827086848.0,60.827B
+ET,Energy Transfer LP,Energy,Oil & Gas Midstream,60827086848.0,60.827B
+KMI,"Kinder Morgan, Inc.",Energy,Oil & Gas Midstream,59951718400.0,59.952B
+TRP,TC Energy Corporation,Energy,Oil & Gas Midstream,54123139072.0,54.123B
+LNG,"Cheniere Energy, Inc.",Energy,Oil & Gas Midstream,53144297472.0,53.144B
+MPLX,MPLX LP,Energy,Oil & Gas Midstream,51840090112.0,51.84B
+OKE,"ONEOK, Inc.",Energy,Oil & Gas Midstream,48100765696.0,48.101B
+TRGP,Targa Resources Corp.,Energy,Oil & Gas Midstream,36100608000.0,36.101B
+VG,,Energy,Oil & Gas Midstream,31563350016.0,31.563B
+CQP,"Cheniere Energy Partners, L.P.",Energy,Oil & Gas Midstream,26738812928.0,26.739B
+PBA,Pembina Pipeline Corporation,Energy,Oil & Gas Midstream,21941800960.0,21.942B
+WES,"Western Midstream Partners, LP",Energy,Oil & Gas Midstream,14951988224.0,14.952B
+VNOM,"Viper Energy, Inc.",Energy,Oil & Gas Midstream,12997679104.0,12.998B
+PAA,"Plains All American Pipeline, L.P.",Energy,Oil & Gas Midstream,12659472384.0,12.659B
+DTM,"DT Midstream, Inc.",Energy,Oil & Gas Midstream,10583958528.0,10.584B
+HESM,Hess Midstream LP,Energy,Oil & Gas Midstream,8654637056.0,8.655B
+AM,Antero Midstream Corporation,Energy,Oil & Gas Midstream,8510932480.0,8.511B
+SOBO,South Bow Corporation,Energy,Oil & Gas Midstream,5776050176.0,5.776B
+FRO,Frontline plc,Energy,Oil & Gas Midstream,4652820992.0,4.653B
+PAGP,"Plains GP Holdings, L.P.",Energy,Oil & Gas Midstream,4494120448.0,4.494B
+GLNG,Golar LNG Limited,Energy,Oil & Gas Midstream,4482785792.0,4.483B
+EE,"Excelerate Energy, Inc.",Energy,Oil & Gas Midstream,2784417280.0,2.784B
+KNTK,Kinetik Holdings Inc.,Energy,Oil & Gas Midstream,2571478528.0,2.571B
+STNG,Scorpio Tankers Inc.,Energy,Oil & Gas Midstream,2571221504.0,2.571B
+CMBT,Cmb.Tech NV,Energy,Oil & Gas Midstream,2498363392.0,2.498B
+INSW,"International Seaways, Inc.",Energy,Oil & Gas Midstream,2242217216.0,2.242B
+TRMD,TORM plc,Energy,Oil & Gas Midstream,2130464640.0,2.13B
+GEL,"Genesis Energy, L.P.",Energy,Oil & Gas Midstream,2080663296.0,2.081B
+DHT,"DHT Holdings, Inc.",Energy,Oil & Gas Midstream,1884564480.0,1.885B
+GLP,Global Partners LP,Energy,Oil & Gas Midstream,1800482176.0,1.8B
+GLP,Global Partners LP,Energy,Oil & Gas Midstream,1800482176.0,1.8B
+TNK,Teekay Tankers Ltd.,Energy,Oil & Gas Midstream,1697869568.0,1.698B
+FLNG,FLEX LNG Ltd.,Energy,Oil & Gas Midstream,1473892608.0,1.474B
+LPG,Dorian LPG Ltd.,Energy,Oil & Gas Midstream,1363873408.0,1.364B
+SBR,Sabine Royalty Trust,Energy,Oil & Gas Midstream,1083241984.0,1.083B
+NVGS,Navigator Holdings Ltd.,Energy,Oil & Gas Midstream,1078280960.0,1.078B
+PBT,Permian Basin Royalty Trust,Energy,Oil & Gas Midstream,781163520.0,0.781B
+TK,Teekay Corporation Ltd.,Energy,Oil & Gas Midstream,699205760.0,0.699B
+NGL,NGL Energy Partners LP,Energy,Oil & Gas Midstream,691652224.0,0.692B
+NGL,NGL Energy Partners LP,Energy,Oil & Gas Midstream,691652224.0,0.692B
+NGL,NGL Energy Partners LP,Energy,Oil & Gas Midstream,691652224.0,0.692B
+NFE,New Fortress Energy Inc.,Energy,Oil & Gas Midstream,674527104.0,0.675B
+TEN,Tsakos Energy Navigation Limited,Energy,Oil & Gas Midstream,670339072.0,0.67B
+TEN,Tsakos Energy Navigation Limited,Energy,Oil & Gas Midstream,670339072.0,0.67B
+NAT,Nordic American Tankers Limited,Energy,Oil & Gas Midstream,658545600.0,0.659B
+CLCO,Cool Company Ltd.,Energy,Oil & Gas Midstream,427702144.0,0.428B
+KNOP,KNOT Offshore Partners LP,Energy,Oil & Gas Midstream,290682496.0,0.291B
+SMC,Summit Midstream Corporation,Energy,Oil & Gas Midstream,281808544.0,0.282B
+MMLP,Martin Midstream Partners L.P.,Energy,Oil & Gas Midstream,133958992.0,0.134B
+DLNG,Dynagas LNG Partners LP,Energy,Oil & Gas Midstream,132278696.0,0.132B
+DLNG,Dynagas LNG Partners LP,Energy,Oil & Gas Midstream,132278696.0,0.132B
+IMPP,Imperial Petroleum Inc.,Energy,Oil & Gas Midstream,118044136.0,0.118B
+PXS,Pyxis Tankers Inc.,Energy,Oil & Gas Midstream,29255660.0,0.029B
+BANL,CBL International Limited,Energy,Oil & Gas Midstream,18086750.0,0.018B
+RBNE,Robin Energy Ltd.,Energy,Oil & Gas Midstream,11809618.0,0.012B
+MARPS,Marine Petroleum Trust,Energy,Oil & Gas Midstream,9700000.0,0.01B

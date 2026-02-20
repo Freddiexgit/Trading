@@ -1,0 +1,51 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+SLB,Schlumberger Limited,Energy,Oil & Gas Equipment & Services,54953123840.0,54.953B
+BKR,Baker Hughes Company,Energy,Oil & Gas Equipment & Services,44758908928.0,44.759B
+HAL,Halliburton Company,Energy,Oil & Gas Equipment & Services,19379642368.0,19.38B
+TS,Tenaris S.A.,Energy,Oil & Gas Equipment & Services,18908080128.0,18.908B
+FTI,TechnipFMC plc,Energy,Oil & Gas Equipment & Services,15108947968.0,15.109B
+NOV,NOV Inc.,Energy,Oil & Gas Equipment & Services,4935440896.0,4.935B
+WFRD,Weatherford International plc,Energy,Oil & Gas Equipment & Services,4576248832.0,4.576B
+AROC,"Archrock, Inc.",Energy,Oil & Gas Equipment & Services,4353327616.0,4.353B
+LB,LandBridge Company LLC,Energy,Oil & Gas Equipment & Services,4068658944.0,4.069B
+VAL,Valaris Limited,Energy,Oil & Gas Equipment & Services,3537174528.0,3.537B
+KGS,"Kodiak Gas Services, Inc.",Energy,Oil & Gas Equipment & Services,3140651264.0,3.141B
+TDW,Tidewater Inc.,Energy,Oil & Gas Equipment & Services,2979436544.0,2.979B
+USAC,"USA Compression Partners, LP",Energy,Oil & Gas Equipment & Services,2951777024.0,2.952B
+WHD,"Cactus, Inc.",Energy,Oil & Gas Equipment & Services,2876717056.0,2.877B
+NEXT,NextDecade Corporation,Energy,Oil & Gas Equipment & Services,2808511488.0,2.809B
+OII,"Oceaneering International, Inc.",Energy,Oil & Gas Equipment & Services,2445075200.0,2.445B
+SEI,"Solaris Energy Infrastructure, Inc.",Energy,Oil & Gas Equipment & Services,2134943744.0,2.135B
+AESI,Atlas Energy Solutions Inc.,Energy,Oil & Gas Equipment & Services,1943824768.0,1.944B
+LBRT,Liberty Energy Inc.,Energy,Oil & Gas Equipment & Services,1822004992.0,1.822B
+FLOC,,Energy,Oil & Gas Equipment & Services,1477944192.0,1.478B
+XPRO,Expro Group Holdings N.V.,Energy,Oil & Gas Equipment & Services,1441444736.0,1.441B
+MRC,MRC Global Inc.,Energy,Oil & Gas Equipment & Services,1283074176.0,1.283B
+EFXT,Enerflex Ltd.,Energy,Oil & Gas Equipment & Services,1233472256.0,1.233B
+INVX,"Innovex International, Inc.",Energy,Oil & Gas Equipment & Services,1187128960.0,1.187B
+VTOL,Bristow Group Inc.,Energy,Oil & Gas Equipment & Services,1109627136.0,1.11B
+RES,"RPC, Inc.",Energy,Oil & Gas Equipment & Services,1052343040.0,1.052B
+WTTR,"Select Water Solutions, Inc.",Energy,Oil & Gas Equipment & Services,1033186368.0,1.033B
+HLX,"Helix Energy Solutions Group, Inc.",Energy,Oil & Gas Equipment & Services,968637760.0,0.969B
+NESR,National Energy Services Reunited Corp.,Energy,Oil & Gas Equipment & Services,934751360.0,0.935B
+NPKI,NPK International Inc.,Energy,Oil & Gas Equipment & Services,878101056.0,0.878B
+ACDC,ProFrac Holding Corp.,Energy,Oil & Gas Equipment & Services,716120000.0,0.716B
+CLB,Core Laboratories Inc.,Energy,Oil & Gas Equipment & Services,539747648.0,0.54B
+PUMP,ProPetro Holding Corp.,Energy,Oil & Gas Equipment & Services,530236800.0,0.53B
+NOA,North American Construction Group Ltd.,Energy,Oil & Gas Equipment & Services,398712896.0,0.399B
+FTK,"Flotek Industries, Inc.",Energy,Oil & Gas Equipment & Services,360982016.0,0.361B
+OIS,"Oil States International, Inc.",Energy,Oil & Gas Equipment & Services,339319104.0,0.339B
+NGS,"Natural Gas Services Group, Inc.",Energy,Oil & Gas Equipment & Services,328106560.0,0.328B
+FET,"Forum Energy Technologies, Inc.",Energy,Oil & Gas Equipment & Services,314842304.0,0.315B
+RNGR,"Ranger Energy Services, Inc.",Energy,Oil & Gas Equipment & Services,311706752.0,0.312B
+OMSE,,Energy,Oil & Gas Equipment & Services,272732896.0,0.273B
+GEOS,Geospace Technologies Corporation,Energy,Oil & Gas Equipment & Services,254106272.0,0.254B
+NCSM,"NCS Multistage Holdings, Inc.",Energy,Oil & Gas Equipment & Services,96819088.0,0.097B
+LSE,"Leishen Energy Holding Co., Ltd.",Energy,Oil & Gas Equipment & Services,92105248.0,0.092B
+SND,"Smart Sand, Inc.",Energy,Oil & Gas Equipment & Services,77070768.0,0.077B
+DTI,Drilling Tools International Corporation,Energy,Oil & Gas Equipment & Services,71322600.0,0.071B
+RCON,"Recon Technology, Ltd.",Energy,Oil & Gas Equipment & Services,64623812.0,0.065B
+DWSN,Dawson Geophysical Company,Energy,Oil & Gas Equipment & Services,50607912.0,0.051B
+KLXE,"KLX Energy Services Holdings, Inc.",Energy,Oil & Gas Equipment & Services,34967380.0,0.035B
+NINE,"Nine Energy Service, Inc.",Energy,Oil & Gas Equipment & Services,29757658.0,0.03B
+STAK,STAK Inc.,Energy,Oil & Gas Equipment & Services,9926961.0,0.01B

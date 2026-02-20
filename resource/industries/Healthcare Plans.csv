@@ -1,0 +1,13 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+UNH,UnitedHealth Group Incorporated,Healthcare,Healthcare Plans,280641208320.0,280.641B
+CVS,CVS Health Corporation,Healthcare,Healthcare Plans,92778340352.0,92.778B
+CI,The Cigna Group,Healthcare,Healthcare Plans,80310624256.0,80.311B
+ELV,"Elevance Health, Inc.",Healthcare,Healthcare Plans,71752966144.0,71.753B
+HUM,Humana Inc.,Healthcare,Healthcare Plans,36521795584.0,36.522B
+CNC,Centene Corporation,Healthcare,Healthcare Plans,14262502400.0,14.263B
+MOH,"Molina Healthcare, Inc.",Healthcare,Healthcare Plans,9800985600.0,9.801B
+OSCR,"Oscar Health, Inc.",Healthcare,Healthcare Plans,4307576320.0,4.308B
+ALHC,"Alignment Healthcare, Inc.",Healthcare,Healthcare Plans,3239787520.0,3.24B
+PGNY,"Progyny, Inc.",Healthcare,Healthcare Plans,2035203456.0,2.035B
+CLOV,"Clover Health Investments, Corp.",Healthcare,Healthcare Plans,1342784000.0,1.343B
+NEUE,"NeueHealth, Inc.",Healthcare,Healthcare Plans,59199012.0,0.059B

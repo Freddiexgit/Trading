@@ -1,0 +1,17 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+DAL,"Delta Air Lines, Inc.",Industrials,Airlines,40339124224.0,40.339B
+UAL,"United Airlines Holdings, Inc.",Industrials,Airlines,33988622336.0,33.989B
+RYAAY,Ryanair Holdings plc,Industrials,Airlines,33654333440.0,33.654B
+LUV,Southwest Airlines Co.,Industrials,Airlines,17278685184.0,17.279B
+LTM,,Industrials,Airlines,15189526528.0,15.19B
+AAL,American Airlines Group Inc.,Industrials,Airlines,8821913600.0,8.822B
+ALK,"Alaska Air Group, Inc.",Industrials,Airlines,7239161856.0,7.239B
+SKYW,"SkyWest, Inc.",Industrials,Airlines,4901925888.0,4.902B
+CPA,"Copa Holdings, S.A.",Industrials,Airlines,4826698752.0,4.827B
+JBLU,JetBlue Airways Corporation,Industrials,Airlines,1945602304.0,1.946B
+ALGT,Allegiant Travel Company,Industrials,Airlines,1149823488.0,1.15B
+ULCC,"Frontier Group Holdings, Inc.",Industrials,Airlines,1117959552.0,1.118B
+VLRS,"Controladora Vuela Compañía de Aviación, S.A.B. de C.V.",Industrials,Airlines,707784000.0,0.708B
+SNCY,"Sun Country Airlines Holdings, Inc.",Industrials,Airlines,706442304.0,0.706B
+SRFM,Surf Air Mobility Inc.,Industrials,Airlines,185865280.0,0.186B
+MESA,"Mesa Air Group, Inc.",Industrials,Airlines,51915080.0,0.052B

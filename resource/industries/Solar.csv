@@ -1,0 +1,25 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+FSLR,"First Solar, Inc.",Technology,Solar,20933736448.0,20.934B
+NXT,Nextracker Inc.,Technology,Solar,10208858112.0,10.209B
+ENPH,"Enphase Energy, Inc.",Technology,Solar,4929312768.0,4.929B
+RUN,Sunrun Inc.,Technology,Solar,3684805888.0,3.685B
+SEDG,"SolarEdge Technologies, Inc.",Technology,Solar,2008055680.0,2.008B
+ARRY,"Array Technologies, Inc.",Technology,Solar,1376052224.0,1.376B
+JKS,"JinkoSolar Holding Co., Ltd.",Technology,Solar,1191620864.0,1.192B
+SHLS,"Shoals Technologies Group, Inc.",Technology,Solar,1089533184.0,1.09B
+CSIQ,Canadian Solar Inc.,Technology,Solar,654988096.0,0.655B
+TOYO,"TOYO Co., Ltd.",Technology,Solar,262799744.0,0.263B
+ZEO,Zeo Energy Corp.,Technology,Solar,194643904.0,0.195B
+SPWR,,Technology,Solar,125494144.0,0.125B
+SOL,Emeren Group Ltd,Technology,Solar,93405312.0,0.093B
+FTCI,"FTC Solar, Inc.",Technology,Solar,92967504.0,0.093B
+TYGO,"Tigo Energy, Inc.",Technology,Solar,92036136.0,0.092B
+SMXT,"SolarMax Technology, Inc.",Technology,Solar,64077536.0,0.064B
+MAXN,"Maxeon Solar Technologies, Ltd.",Technology,Solar,61804720.0,0.062B
+VVPR,VivoPower International PLC,Technology,Solar,52178952.0,0.052B
+BEEM,Beam Global,Technology,Solar,49224376.0,0.049B
+SPRU,Spruce Power Holding Corporation,Technology,Solar,25859880.0,0.026B
+TURB,"Turbo Energy, S.A.",Technology,Solar,25339330.0,0.025B
+PN,Skycorp Solar Group Ltd,Technology,Solar,25020900.0,0.025B
+ASTI,"Ascent Solar Technologies, Inc.",Technology,Solar,6034367.0,0.006B
+SUNE,SUNation Energy Inc.,Technology,Solar,5058816.0,0.005B

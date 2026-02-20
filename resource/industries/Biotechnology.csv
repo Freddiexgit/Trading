@@ -1,0 +1,610 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+VRTX,Vertex Pharmaceuticals Incorporated,Healthcare,Biotechnology,100254007296.0,100.254B
+REGN,"Regeneron Pharmaceuticals, Inc.",Healthcare,Biotechnology,61546651648.0,61.547B
+ALNY,"Alnylam Pharmaceuticals, Inc.",Healthcare,Biotechnology,58528083968.0,58.528B
+ARGX,argenx SE,Healthcare,Biotechnology,43586568192.0,43.587B
+ONC,BeOne Medicines AG,Healthcare,Biotechnology,37655474176.0,37.655B
+INSM,Insmed Incorporated,Healthcare,Biotechnology,28768139264.0,28.768B
+BNTX,BioNTech SE,Healthcare,Biotechnology,24039901184.0,24.04B
+RPRX,Royalty Pharma plc,Healthcare,Biotechnology,20982601728.0,20.983B
+SMMT,Summit Therapeutics Inc.,Healthcare,Biotechnology,17605474304.0,17.605B
+INCY,Incyte Corporation,Healthcare,Biotechnology,16522302464.0,16.522B
+GMAB,Genmab A/S,Healthcare,Biotechnology,15800856576.0,15.801B
+ASND,Ascendis Pharma A/S,Healthcare,Biotechnology,11763903488.0,11.764B
+BMRN,BioMarin Pharmaceutical Inc.,Healthcare,Biotechnology,11188714496.0,11.189B
+CAI,"Caris Life Sciences, Inc.",Healthcare,Biotechnology,10797878272.0,10.798B
+EXEL,"Exelixis, Inc.",Healthcare,Biotechnology,10073576448.0,10.074B
+BBIO,"BridgeBio Pharma, Inc.",Healthcare,Biotechnology,9894906880.0,9.895B
+MDGL,"Madrigal Pharmaceuticals, Inc.",Healthcare,Biotechnology,9759239168.0,9.759B
+MRNA,"Moderna, Inc.",Healthcare,Biotechnology,9372937216.0,9.373B
+VRNA,Verona Pharma plc,Healthcare,Biotechnology,9000115200.0,9.0B
+HALO,"Halozyme Therapeutics, Inc.",Healthcare,Biotechnology,8556063232.0,8.556B
+TECH,Bio-Techne Corporation,Healthcare,Biotechnology,8497696768.0,8.498B
+ROIV,Roivant Sciences Ltd.,Healthcare,Biotechnology,8151562240.0,8.152B
+JAZZ,Jazz Pharmaceuticals plc,Healthcare,Biotechnology,7749161472.0,7.749B
+CORT,Corcept Therapeutics Incorporated,Healthcare,Biotechnology,7346535936.0,7.347B
+RVMD,"Revolution Medicines, Inc.",Healthcare,Biotechnology,7097845760.0,7.098B
+RYTM,"Rhythm Pharmaceuticals, Inc.",Healthcare,Biotechnology,6851233280.0,6.851B
+IONS,"Ionis Pharmaceuticals, Inc.",Healthcare,Biotechnology,6795635200.0,6.796B
+LEGN,Legend Biotech Corporation,Healthcare,Biotechnology,6410150912.0,6.41B
+ABVX,ABIVAX Société Anonyme,Healthcare,Biotechnology,6123720704.0,6.124B
+AXSM,"Axsome Therapeutics, Inc.",Healthcare,Biotechnology,6052054016.0,6.052B
+RNA,"Avidity Biosciences, Inc.",Healthcare,Biotechnology,5992656896.0,5.993B
+NUVL,"Nuvalent, Inc.",Healthcare,Biotechnology,5521785856.0,5.522B
+MRUS,Merus N.V.,Healthcare,Biotechnology,4979768832.0,4.98B
+CRSP,CRISPR Therapeutics AG,Healthcare,Biotechnology,4713959424.0,4.714B
+TGTX,"TG Therapeutics, Inc.",Healthcare,Biotechnology,4653673984.0,4.654B
+ACAD,ACADIA Pharmaceuticals Inc.,Healthcare,Biotechnology,4384824832.0,4.385B
+KRYS,"Krystal Biotech, Inc.",Healthcare,Biotechnology,4274881024.0,4.275B
+CYTK,"Cytokinetics, Incorporated",Healthcare,Biotechnology,4227482112.0,4.227B
+MENS,Jyong Biotech Ltd.,Healthcare,Biotechnology,4167078144.0,4.167B
+ADMA,"ADMA Biologics, Inc.",Healthcare,Biotechnology,4118771200.0,4.119B
+PCVX,"Vaxcyte, Inc.",Healthcare,Biotechnology,3997250304.0,3.997B
+AAPG,,Healthcare,Biotechnology,3970826240.0,3.971B
+PTCT,"PTC Therapeutics, Inc.",Healthcare,Biotechnology,3918681344.0,3.919B
+ACLX,"Arcellx, Inc.",Healthcare,Biotechnology,3848293120.0,3.848B
+AKRO,"Akero Therapeutics, Inc.",Healthcare,Biotechnology,3737885952.0,3.738B
+ZLAB,Zai Lab Limited,Healthcare,Biotechnology,3722326528.0,3.722B
+MIRM,"Mirum Pharmaceuticals, Inc.",Healthcare,Biotechnology,3711051776.0,3.711B
+MTSR,"Metsera, Inc.",Healthcare,Biotechnology,3707426304.0,3.707B
+PTGX,"Protagonist Therapeutics, Inc.",Healthcare,Biotechnology,3673577216.0,3.674B
+SLNO,"Soleno Therapeutics, Inc.",Healthcare,Biotechnology,3596322048.0,3.596B
+MLTX,MoonLake Immunotherapeutics,Healthcare,Biotechnology,3540203008.0,3.54B
+APLS,"Apellis Pharmaceuticals, Inc.",Healthcare,Biotechnology,3481815296.0,3.482B
+TLX,Telix Pharmaceuticals Limited,Healthcare,Biotechnology,3263359232.0,3.263B
+LGND,Ligand Pharmaceuticals Incorporated,Healthcare,Biotechnology,3152455680.0,3.152B
+SRRK,Scholar Rock Holding Corporation,Healthcare,Biotechnology,3138556416.0,3.139B
+ARWR,"Arrowhead Pharmaceuticals, Inc.",Healthcare,Biotechnology,3045823744.0,3.046B
+VKTX,"Viking Therapeutics, Inc.",Healthcare,Biotechnology,3041637120.0,3.042B
+XENE,Xenon Pharmaceuticals Inc.,Healthcare,Biotechnology,2984765440.0,2.985B
+KYMR,"Kymera Therapeutics, Inc.",Healthcare,Biotechnology,2945701120.0,2.946B
+CRNX,"Crinetics Pharmaceuticals, Inc.",Healthcare,Biotechnology,2918514176.0,2.919B
+RARE,Ultragenyx Pharmaceutical Inc.,Healthcare,Biotechnology,2887292928.0,2.887B
+NAMS,NewAmsterdam Pharma Company N.V.,Healthcare,Biotechnology,2708703232.0,2.709B
+IMVT,"Immunovant, Inc.",Healthcare,Biotechnology,2560716544.0,2.561B
+CPRX,"Catalyst Pharmaceuticals, Inc.",Healthcare,Biotechnology,2520030720.0,2.52B
+TARS,"Tarsus Pharmaceuticals, Inc.",Healthcare,Biotechnology,2472902144.0,2.473B
+LQDA,Liquidia Corporation,Healthcare,Biotechnology,2383012864.0,2.383B
+FOLD,"Amicus Therapeutics, Inc.",Healthcare,Biotechnology,2339534080.0,2.34B
+CNTA,Centessa Pharmaceuticals plc,Healthcare,Biotechnology,2251085824.0,2.251B
+DNLI,Denali Therapeutics Inc.,Healthcare,Biotechnology,2232657408.0,2.233B
+IBRX,"ImmunityBio, Inc.",Healthcare,Biotechnology,2211896576.0,2.212B
+AGIO,"Agios Pharmaceuticals, Inc.",Healthcare,Biotechnology,2191007488.0,2.191B
+CELC,Celcuity Inc.,Healthcare,Biotechnology,2173519872.0,2.174B
+APGE,"Apogee Therapeutics, Inc.",Healthcare,Biotechnology,2167521024.0,2.168B
+IDYA,"IDEAYA Biosciences, Inc.",Healthcare,Biotechnology,2151652608.0,2.152B
+OCUL,"Ocular Therapeutix, Inc.",Healthcare,Biotechnology,2124479104.0,2.124B
+HRMY,"Harmony Biosciences Holdings, Inc.",Healthcare,Biotechnology,2122377600.0,2.122B
+GLPG,Galapagos NV,Healthcare,Biotechnology,2073644160.0,2.074B
+IRON,"Disc Medicine, Inc.",Healthcare,Biotechnology,2073594240.0,2.074B
+BLTE,"Belite Bio, Inc",Healthcare,Biotechnology,2069489152.0,2.069B
+RXRX,"Recursion Pharmaceuticals, Inc.",Healthcare,Biotechnology,2051780224.0,2.052B
+CGON,"CG Oncology, Inc.",Healthcare,Biotechnology,2044960640.0,2.045B
+ADPT,Adaptive Biotechnologies Corporation,Healthcare,Biotechnology,2006971392.0,2.007B
+DYN,"Dyne Therapeutics, Inc.",Healthcare,Biotechnology,1919141376.0,1.919B
+SRPT,"Sarepta Therapeutics, Inc.",Healthcare,Biotechnology,1905030528.0,1.905B
+ARQT,"Arcutis Biotherapeutics, Inc.",Healthcare,Biotechnology,1860925696.0,1.861B
+VCEL,Vericel Corporation,Healthcare,Biotechnology,1834732928.0,1.835B
+PROK,ProKidney Corp.,Healthcare,Biotechnology,1811823744.0,1.812B
+MESO,Mesoblast Limited,Healthcare,Biotechnology,1771858048.0,1.772B
+COGT,"Cogent Biosciences, Inc.",Healthcare,Biotechnology,1687587968.0,1.688B
+CDTX,"Cidara Therapeutics, Inc.",Healthcare,Biotechnology,1658166144.0,1.658B
+BEAM,Beam Therapeutics Inc.,Healthcare,Biotechnology,1655010432.0,1.655B
+BHVN,Biohaven Ltd.,Healthcare,Biotechnology,1628123520.0,1.628B
+IMCR,Immunocore Holdings plc,Healthcare,Biotechnology,1623472384.0,1.623B
+AUPH,Aurinia Pharmaceuticals Inc.,Healthcare,Biotechnology,1578243712.0,1.578B
+TVTX,"Travere Therapeutics, Inc.",Healthcare,Biotechnology,1559927296.0,1.56B
+ARDX,"Ardelyx, Inc.",Healthcare,Biotechnology,1532651904.0,1.533B
+WVE,Wave Life Sciences Ltd.,Healthcare,Biotechnology,1528579328.0,1.529B
+EWTX,"Edgewise Therapeutics, Inc.",Healthcare,Biotechnology,1511715200.0,1.512B
+VRDN,"Viridian Therapeutics, Inc.",Healthcare,Biotechnology,1500954880.0,1.501B
+CLDX,"Celldex Therapeutics, Inc.",Healthcare,Biotechnology,1466255488.0,1.466B
+MNKD,MannKind Corporation,Healthcare,Biotechnology,1408340608.0,1.408B
+SNDX,"Syndax Pharmaceuticals, Inc.",Healthcare,Biotechnology,1406697344.0,1.407B
+PHVS,Pharvaris N.V.,Healthcare,Biotechnology,1392084096.0,1.392B
+VERA,"Vera Therapeutics, Inc.",Healthcare,Biotechnology,1381144832.0,1.381B
+JANX,"Janux Therapeutics, Inc.",Healthcare,Biotechnology,1365333376.0,1.365B
+PGEN,"Precigen, Inc.",Healthcare,Biotechnology,1343858304.0,1.344B
+ETNB,"89bio, Inc.",Healthcare,Biotechnology,1339221248.0,1.339B
+INVA,"Innoviva, Inc.",Healthcare,Biotechnology,1287519104.0,1.288B
+XERS,"Xeris Biopharma Holdings, Inc.",Healthcare,Biotechnology,1264388352.0,1.264B
+ABCL,AbCellera Biologics Inc.,Healthcare,Biotechnology,1249121792.0,1.249B
+NTLA,"Intellia Therapeutics, Inc.",Healthcare,Biotechnology,1218925184.0,1.219B
+NVAX,"Novavax, Inc.",Healthcare,Biotechnology,1213292288.0,1.213B
+CVAC,CureVac N.V.,Healthcare,Biotechnology,1209178880.0,1.209B
+ELVN,"Enliven Therapeutics, Inc.",Healthcare,Biotechnology,1200703616.0,1.201B
+SPRY,"ARS Pharmaceuticals, Inc.",Healthcare,Biotechnology,1148361600.0,1.148B
+RCUS,"Arcus Biosciences, Inc.",Healthcare,Biotechnology,1127104256.0,1.127B
+ZYME,Zymeworks Inc.,Healthcare,Biotechnology,1121641344.0,1.122B
+GPCR,Structure Therapeutics Inc.,Healthcare,Biotechnology,1111639424.0,1.112B
+CRMD,CorMedix Inc.,Healthcare,Biotechnology,1107044608.0,1.107B
+LENZ,"LENZ Therapeutics, Inc.",Healthcare,Biotechnology,1101808768.0,1.102B
+SION,"Sionna Therapeutics, Inc.",Healthcare,Biotechnology,1086721920.0,1.087B
+STOK,"Stoke Therapeutics, Inc.",Healthcare,Biotechnology,1082796672.0,1.083B
+ATNF,ETHZilla Corporation,Healthcare,Biotechnology,1077345280.0,1.077B
+MDXG,"MiMedx Group, Inc.",Healthcare,Biotechnology,1050508928.0,1.051B
+MLYS,"Mineralys Therapeutics, Inc.",Healthcare,Biotechnology,1026249664.0,1.026B
+PHAR,Pharming Group N.V.,Healthcare,Biotechnology,1020548480.0,1.021B
+NUVB,Nuvation Bio Inc.,Healthcare,Biotechnology,1016550784.0,1.017B
+SYRE,"Spyre Therapeutics, Inc.",Healthcare,Biotechnology,996012480.0,0.996B
+ORIC,"ORIC Pharmaceuticals, Inc.",Healthcare,Biotechnology,993568256.0,0.994B
+ATAI,Atai Life Sciences N.V.,Healthcare,Biotechnology,981668032.0,0.982B
+PRAX,"Praxis Precision Medicines, Inc.",Healthcare,Biotechnology,958425728.0,0.958B
+UPB,"Upstream Bio, Inc.",Healthcare,Biotechnology,923467968.0,0.923B
+URGN,UroGen Pharma Ltd.,Healthcare,Biotechnology,899836800.0,0.9B
+QURE,uniQure N.V.,Healthcare,Biotechnology,895976448.0,0.896B
+FTRE,Fortrea Holdings Inc.,Healthcare,Biotechnology,894380032.0,0.894B
+GERN,Geron Corporation,Healthcare,Biotechnology,893223808.0,0.893B
+MRVI,"Maravai LifeSciences Holdings, Inc.",Healthcare,Biotechnology,885831360.0,0.886B
+TRVI,"Trevi Therapeutics, Inc.",Healthcare,Biotechnology,883492160.0,0.883B
+PHAT,"Phathom Pharmaceuticals, Inc.",Healthcare,Biotechnology,864094208.0,0.864B
+IVA,Inventiva S.A.,Healthcare,Biotechnology,860781376.0,0.861B
+OCS,Oculis Holding AG,Healthcare,Biotechnology,844176384.0,0.844B
+GHRS,GH Research PLC,Healthcare,Biotechnology,837396928.0,0.837B
+AMLX,"Amylyx Pharmaceuticals, Inc.",Healthcare,Biotechnology,836390208.0,0.836B
+AVXL,Anavex Life Sciences Corp.,Healthcare,Biotechnology,828016256.0,0.828B
+IMNM,"Immunome, Inc.",Healthcare,Biotechnology,827797952.0,0.828B
+IOVA,"Iovance Biotherapeutics, Inc.",Healthcare,Biotechnology,806934464.0,0.807B
+EYPT,"EyePoint Pharmaceuticals, Inc.",Healthcare,Biotechnology,797489984.0,0.797B
+TSHA,"Taysha Gene Therapies, Inc.",Healthcare,Biotechnology,796561472.0,0.797B
+NAGE,"Niagen Bioscience, Inc.",Healthcare,Biotechnology,789554688.0,0.79B
+SANA,"Sana Biotechnology, Inc.",Healthcare,Biotechnology,776909504.0,0.777B
+AVBP,"ArriVent BioPharma, Inc.",Healthcare,Biotechnology,775677376.0,0.776B
+DAWN,"Day One Biopharmaceuticals, Inc.",Healthcare,Biotechnology,769264320.0,0.769B
+VALN,Valneva SE,Healthcare,Biotechnology,759627392.0,0.76B
+DNTH,"Dianthus Therapeutics, Inc.",Healthcare,Biotechnology,758678208.0,0.759B
+DNA,"Ginkgo Bioworks Holdings, Inc.",Healthcare,Biotechnology,750061440.0,0.75B
+TNGX,"Tango Therapeutics, Inc.",Healthcare,Biotechnology,746554624.0,0.747B
+NRIX,"Nurix Therapeutics, Inc.",Healthcare,Biotechnology,714037376.0,0.714B
+ABUS,Arbutus Biopharma Corporation,Healthcare,Biotechnology,711203328.0,0.711B
+GYRE,"Gyre Therapeutics, Inc.",Healthcare,Biotechnology,702999424.0,0.703B
+TBPH,"Theravance Biopharma, Inc.",Healthcare,Biotechnology,699014848.0,0.699B
+RIGL,"Rigel Pharmaceuticals, Inc.",Healthcare,Biotechnology,696864064.0,0.697B
+VIR,"Vir Biotechnology, Inc.",Healthcare,Biotechnology,686245056.0,0.686B
+KURA,"Kura Oncology, Inc.",Healthcare,Biotechnology,685697920.0,0.686B
+KALV,"KalVista Pharmaceuticals, Inc.",Healthcare,Biotechnology,677573696.0,0.678B
+MNMD,Mind Medicine (MindMed) Inc.,Healthcare,Biotechnology,675660608.0,0.676B
+TYRA,"Tyra Biosciences, Inc.",Healthcare,Biotechnology,675274240.0,0.675B
+ZBIO,"Zenas BioPharma, Inc.",Healthcare,Biotechnology,673764800.0,0.674B
+BCAX,Bicara Therapeutics Inc.,Healthcare,Biotechnology,651479808.0,0.651B
+RAPP,"Rapport Therapeutics, Inc.",Healthcare,Biotechnology,643457920.0,0.643B
+MAZE,"Maze Therapeutics, Inc.",Healthcare,Biotechnology,635399552.0,0.635B
+RZLT,"Rezolute, Inc.",Healthcare,Biotechnology,619411520.0,0.619B
+RLAY,"Relay Therapeutics, Inc.",Healthcare,Biotechnology,618955520.0,0.619B
+IMTX,Immatics N.V.,Healthcare,Biotechnology,618740416.0,0.619B
+KROS,"Keros Therapeutics, Inc.",Healthcare,Biotechnology,617760256.0,0.618B
+TERN,"Terns Pharmaceuticals, Inc.",Healthcare,Biotechnology,609076544.0,0.609B
+TRML,"Tourmaline Bio, Inc.",Healthcare,Biotechnology,601199808.0,0.601B
+PVLA,"Palvella Therapeutics, Inc.",Healthcare,Biotechnology,598882752.0,0.599B
+CMPX,"Compass Therapeutics, Inc.",Healthcare,Biotechnology,598786304.0,0.599B
+MGTX,MeiraGTx Holdings plc,Healthcare,Biotechnology,587266816.0,0.587B
+XNCR,"Xencor, Inc.",Healthcare,Biotechnology,579856000.0,0.58B
+PRME,"Prime Medicine, Inc.",Healthcare,Biotechnology,577607744.0,0.578B
+VSTM,"Verastem, Inc.",Healthcare,Biotechnology,569294016.0,0.569B
+ANAB,"AnaptysBio, Inc.",Healthcare,Biotechnology,568691072.0,0.569B
+NKTR,Nektar Therapeutics,Healthcare,Biotechnology,567895424.0,0.568B
+ARVN,"Arvinas, Inc.",Healthcare,Biotechnology,567518080.0,0.568B
+SVRA,Savara Inc.,Healthcare,Biotechnology,566905344.0,0.567B
+GOSS,"Gossamer Bio, Inc.",Healthcare,Biotechnology,561631040.0,0.562B
+ORKA,"Oruka Therapeutics, Inc.",Healthcare,Biotechnology,554270336.0,0.554B
+SAGE,"Sage Therapeutics, Inc.",Healthcare,Biotechnology,544942592.0,0.545B
+SEPN,"Septerna, Inc.",Healthcare,Biotechnology,539479744.0,0.539B
+ATYR,"aTyr Pharma, Inc.",Healthcare,Biotechnology,527167904.0,0.527B
+BCYC,Bicycle Therapeutics plc,Healthcare,Biotechnology,511481952.0,0.511B
+ZVRA,"Zevra Therapeutics, Inc.",Healthcare,Biotechnology,509145344.0,0.509B
+MBX,"MBX Biosciences, Inc.",Healthcare,Biotechnology,506931968.0,0.507B
+ALMS,Alumis Inc.,Healthcare,Biotechnology,482856960.0,0.483B
+TECX,"Tectonic Therapeutic, Inc.",Healthcare,Biotechnology,477907040.0,0.478B
+KOD,Kodiak Sciences Inc.,Healthcare,Biotechnology,477508160.0,0.478B
+ARCT,Arcturus Therapeutics Holdings Inc.,Healthcare,Biotechnology,461898048.0,0.462B
+RGNX,REGENXBIO Inc.,Healthcare,Biotechnology,451091808.0,0.451B
+ITOS,"iTeos Therapeutics, Inc.",Healthcare,Biotechnology,448684800.0,0.449B
+CGEM,"Cullinan Therapeutics, Inc.",Healthcare,Biotechnology,445420960.0,0.445B
+ERAS,"Erasca, Inc.",Healthcare,Biotechnology,445361952.0,0.445B
+PRTA,Prothena Corporation plc,Healthcare,Biotechnology,441405984.0,0.441B
+NBTX,Nanobiotix S.A.,Healthcare,Biotechnology,439406112.0,0.439B
+CRVS,"Corvus Pharmaceuticals, Inc.",Healthcare,Biotechnology,427710336.0,0.428B
+SLDB,Solid Biosciences Inc.,Healthcare,Biotechnology,426722688.0,0.427B
+REPL,"Replimune Group, Inc.",Healthcare,Biotechnology,421501312.0,0.422B
+PRTC,PureTech Health plc,Healthcare,Biotechnology,412554592.0,0.413B
+INBX,"Inhibrx Biosciences, Inc.",Healthcare,Biotechnology,408488288.0,0.408B
+LXRX,"Lexicon Pharmaceuticals, Inc.",Healthcare,Biotechnology,399738912.0,0.4B
+AUTL,Autolus Therapeutics plc,Healthcare,Biotechnology,399211488.0,0.399B
+XOMA,XOMA Royalty Corporation,Healthcare,Biotechnology,392487648.0,0.392B
+AURA,"Aura Biosciences, Inc.",Healthcare,Biotechnology,388870592.0,0.389B
+YMAB,"Y-mAbs Therapeutics, Inc.",Healthcare,Biotechnology,388498336.0,0.388B
+ASMB,"Assembly Biosciences, Inc.",Healthcare,Biotechnology,384332000.0,0.384B
+VIGL,"Vigil Neuroscience, Inc.",Healthcare,Biotechnology,375705568.0,0.376B
+OLMA,"Olema Pharmaceuticals, Inc.",Healthcare,Biotechnology,374743296.0,0.375B
+ABSI,Absci Corporation,Healthcare,Biotechnology,357360000.0,0.357B
+RCKT,"Rocket Pharmaceuticals, Inc.",Healthcare,Biotechnology,353925120.0,0.354B
+ALDX,"Aldeyra Therapeutics, Inc.",Healthcare,Biotechnology,350665728.0,0.351B
+FULC,"Fulcrum Therapeutics, Inc.",Healthcare,Biotechnology,350513568.0,0.351B
+ABEO,Abeona Therapeutics Inc.,Healthcare,Biotechnology,350232160.0,0.35B
+ATXS,"Astria Therapeutics, Inc.",Healthcare,Biotechnology,348767680.0,0.349B
+BNTC,Benitec Biopharma Inc.,Healthcare,Biotechnology,347556608.0,0.348B
+ADCT,ADC Therapeutics SA,Healthcare,Biotechnology,345371936.0,0.345B
+IMAB,I-Mab,Healthcare,Biotechnology,339706848.0,0.34B
+ALT,"Altimmune, Inc.",Healthcare,Biotechnology,338025440.0,0.338B
+CTMX,"CytomX Therapeutics, Inc.",Healthcare,Biotechnology,336422496.0,0.336B
+OCGN,"Ocugen, Inc.",Healthcare,Biotechnology,318551072.0,0.319B
+CADL,"Candel Therapeutics, Inc.",Healthcare,Biotechnology,317842624.0,0.318B
+DSGN,"Design Therapeutics, Inc.",Healthcare,Biotechnology,314923008.0,0.315B
+LRMR,"Larimar Therapeutics, Inc.",Healthcare,Biotechnology,309837248.0,0.31B
+DRUG,Bright Minds Biosciences Inc.,Healthcare,Biotechnology,302380640.0,0.302B
+GLUE,"Monte Rosa Therapeutics, Inc.",Healthcare,Biotechnology,296445120.0,0.296B
+SCPH,scPharmaceuticals Inc.,Healthcare,Biotechnology,295233408.0,0.295B
+DMAC,DiaMedica Therapeutics Inc.,Healthcare,Biotechnology,295143616.0,0.295B
+CTNM,"Contineum Therapeutics, Inc.",Healthcare,Biotechnology,293037856.0,0.293B
+DRTS,Alpha Tau Medical Ltd.,Healthcare,Biotechnology,290847744.0,0.291B
+FDMT,"4D Molecular Therapeutics, Inc.",Healthcare,Biotechnology,287687392.0,0.288B
+CAPR,"Capricor Therapeutics, Inc.",Healthcare,Biotechnology,287102784.0,0.287B
+FHTX,Foghorn Therapeutics Inc.,Healthcare,Biotechnology,286041792.0,0.286B
+OMER,Omeros Corporation,Healthcare,Biotechnology,283112128.0,0.283B
+TVRD,"Tvardi Therapeutics, Inc.",Healthcare,Biotechnology,280572704.0,0.281B
+NMRA,"Neumora Therapeutics, Inc.",Healthcare,Biotechnology,280164832.0,0.28B
+VNDA,Vanda Pharmaceuticals Inc.,Healthcare,Biotechnology,279491456.0,0.279B
+GALT,Galectin Therapeutics Inc.,Healthcare,Biotechnology,274178112.0,0.274B
+MREO,Mereo BioPharma Group plc,Healthcare,Biotechnology,271890016.0,0.272B
+CLLS,Cellectis S.A.,Healthcare,Biotechnology,268358752.0,0.268B
+AVIR,"Atea Pharmaceuticals, Inc.",Healthcare,Biotechnology,266641520.0,0.267B
+DBVT,DBV Technologies S.A.,Healthcare,Biotechnology,264041360.0,0.264B
+NGNE,Neurogene Inc.,Healthcare,Biotechnology,263744704.0,0.264B
+RNAC,"Cartesian Therapeutics, Inc.",Healthcare,Biotechnology,261320112.0,0.261B
+TNXP,Tonix Pharmaceuticals Holding Corp.,Healthcare,Biotechnology,259733616.0,0.26B
+LXEO,"Lexeo Therapeutics, Inc.",Healthcare,Biotechnology,258665744.0,0.259B
+JBIO,"Jade Biosciences, Inc.",Healthcare,Biotechnology,257750928.0,0.258B
+PBYI,"Puma Biotechnology, Inc.",Healthcare,Biotechnology,253868320.0,0.254B
+ALLO,"Allogene Therapeutics, Inc.",Healthcare,Biotechnology,250725520.0,0.251B
+FENC,Fennec Pharmaceuticals Inc.,Healthcare,Biotechnology,250367280.0,0.25B
+VOR,Vor Biopharma Inc.,Healthcare,Biotechnology,249565520.0,0.25B
+CDXS,"Codexis, Inc.",Healthcare,Biotechnology,246430288.0,0.246B
+HUMA,"Humacyte, Inc.",Healthcare,Biotechnology,245476592.0,0.245B
+IMRX,Immuneering Corporation,Healthcare,Biotechnology,245226000.0,0.245B
+SGMT,Sagimet Biosciences Inc.,Healthcare,Biotechnology,244237216.0,0.244B
+THRD,"Third Harmonic Bio, Inc.",Healthcare,Biotechnology,242787568.0,0.243B
+ALEC,"Alector, Inc.",Healthcare,Biotechnology,237848192.0,0.238B
+PRQR,ProQR Therapeutics N.V.,Healthcare,Biotechnology,237024000.0,0.237B
+ENGN,enGene Holdings Inc.,Healthcare,Biotechnology,236106016.0,0.236B
+IMMP,Immutep Limited,Healthcare,Biotechnology,234350000.0,0.234B
+EDIT,"Editas Medicine, Inc.",Healthcare,Biotechnology,231094912.0,0.231B
+OABI,"OmniAb, Inc.",Healthcare,Biotechnology,230328016.0,0.23B
+SLN,Silence Therapeutics plc,Healthcare,Biotechnology,227195056.0,0.227B
+ANNX,"Annexon, Inc.",Healthcare,Biotechnology,226367216.0,0.226B
+KRRO,"Korro Bio, Inc.",Healthcare,Biotechnology,216741968.0,0.217B
+CRGX,"CARGO Therapeutics, Inc.",Healthcare,Biotechnology,216188416.0,0.216B
+LYEL,"Lyell Immunopharma, Inc.",Healthcare,Biotechnology,212860096.0,0.213B
+TLSA,Tiziana Life Sciences Ltd,Healthcare,Biotechnology,211494880.0,0.211B
+MNPR,Monopar Therapeutics Inc.,Healthcare,Biotechnology,210704144.0,0.211B
+ACRS,"Aclaris Therapeutics, Inc.",Healthcare,Biotechnology,209080752.0,0.209B
+TRDA,"Entrada Therapeutics, Inc.",Healthcare,Biotechnology,208062928.0,0.208B
+HRTX,"Heron Therapeutics, Inc.",Healthcare,Biotechnology,206944208.0,0.207B
+ACIU,AC Immune SA,Healthcare,Biotechnology,205224000.0,0.205B
+IVVD,"Invivyd, Inc.",Healthcare,Biotechnology,203723808.0,0.204B
+SLS,"SELLAS Life Sciences Group, Inc.",Healthcare,Biotechnology,202170240.0,0.202B
+GNFT,Genfit S.A.,Healthcare,Biotechnology,201504400.0,0.202B
+CBIO,"Crescent Biopharma, Inc.",Healthcare,Biotechnology,200053440.0,0.2B
+IPHA,Innate Pharma S.A.,Healthcare,Biotechnology,199078992.0,0.199B
+EPRX,Eupraxia Pharmaceuticals Inc.,Healthcare,Biotechnology,194194944.0,0.194B
+RAPT,"RAPT Therapeutics, Inc.",Healthcare,Biotechnology,188200160.0,0.188B
+VYGR,"Voyager Therapeutics, Inc.",Healthcare,Biotechnology,186375168.0,0.186B
+CCCC,"C4 Therapeutics, Inc.",Healthcare,Biotechnology,185044080.0,0.185B
+TNYA,"Tenaya Therapeutics, Inc.",Healthcare,Biotechnology,184162880.0,0.184B
+TIL,"Instil Bio, Inc.",Healthcare,Biotechnology,182269440.0,0.182B
+MDWD,MediWound Ltd.,Healthcare,Biotechnology,181622528.0,0.182B
+AARD,"Aardvark Therapeutics, Inc.",Healthcare,Biotechnology,180051904.0,0.18B
+ENTA,"Enanta Pharmaceuticals, Inc.",Healthcare,Biotechnology,179574352.0,0.18B
+TVGN,Tevogen Bio Holdings Inc.,Healthcare,Biotechnology,179001552.0,0.179B
+CGTX,"Cognition Therapeutics, Inc.",Healthcare,Biotechnology,178537456.0,0.179B
+ACTU,"Actuate Therapeutics, Inc. Common stock",Healthcare,Biotechnology,175089472.0,0.175B
+CRBU,"Caribou Biosciences, Inc.",Healthcare,Biotechnology,174140384.0,0.174B
+ELTX,"Elicio Therapeutics, Inc.",Healthcare,Biotechnology,172042288.0,0.172B
+VTYX,"Ventyx Biosciences, Inc.",Healthcare,Biotechnology,171140400.0,0.171B
+NVCT,"Nuvectis Pharma, Inc.",Healthcare,Biotechnology,166996608.0,0.167B
+MCRB,"Seres Therapeutics, Inc.",Healthcare,Biotechnology,165811568.0,0.166B
+KYTX,"Kyverna Therapeutics, Inc.",Healthcare,Biotechnology,160441552.0,0.16B
+MEIP,"MEI Pharma, Inc.",Healthcare,Biotechnology,159591232.0,0.16B
+SGMO,"Sangamo Therapeutics, Inc.",Healthcare,Biotechnology,156888672.0,0.157B
+BDTX,"Black Diamond Therapeutics, Inc.",Healthcare,Biotechnology,156572080.0,0.157B
+GLSI,"Greenwich LifeSciences, Inc.",Healthcare,Biotechnology,156475840.0,0.156B
+MIST,Milestone Pharmaceuticals Inc.,Healthcare,Biotechnology,156389520.0,0.156B
+ELDN,"Eledon Pharmaceuticals, Inc.",Healthcare,Biotechnology,155093856.0,0.155B
+ACHV,"Achieve Life Sciences, Inc.",Healthcare,Biotechnology,152292896.0,0.152B
+CLYM,"Climb Bio, Inc.",Healthcare,Biotechnology,151113936.0,0.151B
+NKTX,"Nkarta, Inc.",Healthcare,Biotechnology,150571920.0,0.151B
+IMA,"ImageneBio, Inc.",Healthcare,Biotechnology,149834768.0,0.15B
+THTX,Theratechnologies Inc.,Healthcare,Biotechnology,148975200.0,0.149B
+OBIO,"Orchestra BioMed Holdings, Inc.",Healthcare,Biotechnology,147297424.0,0.147B
+NTHI,"NeOnc Technologies Holdings, Inc.",Healthcare,Biotechnology,142954528.0,0.143B
+MOLN,Molecular Partners AG,Healthcare,Biotechnology,140221504.0,0.14B
+CRDF,"Cardiff Oncology, Inc.",Healthcare,Biotechnology,139704384.0,0.14B
+FBRX,"Forte Biosciences, Inc.",Healthcare,Biotechnology,136761904.0,0.137B
+HURA,"TuHURA Biosciences, Inc.",Healthcare,Biotechnology,135126640.0,0.135B
+CHRS,"Coherus Oncology, Inc.",Healthcare,Biotechnology,134823312.0,0.135B
+ACOG,Alpha Cognition Inc. Common Stock,Healthcare,Biotechnology,134134640.0,0.134B
+IKT,"Inhibikase Therapeutics, Inc.",Healthcare,Biotechnology,134129880.0,0.134B
+AGEN,Agenus Inc.,Healthcare,Biotechnology,133191936.0,0.133B
+ZURA,Zura Bio Limited,Healthcare,Biotechnology,132636920.0,0.133B
+CABA,"Cabaletta Bio, Inc.",Healthcare,Biotechnology,132624544.0,0.133B
+CGEN,Compugen Ltd.,Healthcare,Biotechnology,131884912.0,0.132B
+INO,"Inovio Pharmaceuticals, Inc.",Healthcare,Biotechnology,125948192.0,0.126B
+GNLX,Genelux Corporation,Healthcare,Biotechnology,125785416.0,0.126B
+AVTX,"Avalo Therapeutics, Inc.",Healthcare,Biotechnology,122185792.0,0.122B
+ZNTL,"Zentalis Pharmaceuticals, Inc.",Healthcare,Biotechnology,121909008.0,0.122B
+TARA,"Protara Therapeutics, Inc.",Healthcare,Biotechnology,120375520.0,0.12B
+FATE,"Fate Therapeutics, Inc.",Healthcare,Biotechnology,119943192.0,0.12B
+SPRO,"Spero Therapeutics, Inc.",Healthcare,Biotechnology,116489664.0,0.116B
+BMEA,"Biomea Fusion, Inc.",Healthcare,Biotechnology,116041576.0,0.116B
+SEER,"Seer, Inc.",Healthcare,Biotechnology,115495560.0,0.115B
+CRBP,"Corbus Pharmaceuticals Holdings, Inc.",Healthcare,Biotechnology,114831224.0,0.115B
+CNTB,Connect Biopharma Holdings Limited,Healthcare,Biotechnology,114786696.0,0.115B
+MGNX,"MacroGenics, Inc.",Healthcare,Biotechnology,111874088.0,0.112B
+SAVA,"Cassava Sciences, Inc.",Healthcare,Biotechnology,110142008.0,0.11B
+COYA,"Coya Therapeutics, Inc.",Healthcare,Biotechnology,109716656.0,0.11B
+IPA,ImmunoPrecise Antibodies Ltd.,Healthcare,Biotechnology,109385208.0,0.109B
+SKYE,"Skye Bioscience, Inc.",Healthcare,Biotechnology,108459400.0,0.108B
+IFRX,InflaRx N.V.,Healthcare,Biotechnology,108395368.0,0.108B
+ONCY,Oncolytics Biotech Inc.,Healthcare,Biotechnology,105295840.0,0.105B
+HLVX,"HilleVax, Inc.",Healthcare,Biotechnology,104762288.0,0.105B
+SRZN,"Surrozen, Inc.",Healthcare,Biotechnology,104429840.0,0.104B
+IOBT,"IO Biotech, Inc.",Healthcare,Biotechnology,104091824.0,0.104B
+EQ,"Equillium, Inc.",Healthcare,Biotechnology,103535568.0,0.104B
+ANEB,"Anebulo Pharmaceuticals, Inc.",Healthcare,Biotechnology,102711752.0,0.103B
+VTGN,"Vistagen Therapeutics, Inc.",Healthcare,Biotechnology,102472864.0,0.102B
+TCRX,"TScan Therapeutics, Inc.",Healthcare,Biotechnology,102146400.0,0.102B
+PLRX,"Pliant Therapeutics, Inc.",Healthcare,Biotechnology,100676648.0,0.101B
+ADAG,Adagene Inc.,Healthcare,Biotechnology,100389672.0,0.1B
+ANRO,,Healthcare,Biotechnology,99641888.0,0.1B
+ATOS,"Atossa Therapeutics, Inc.",Healthcare,Biotechnology,98544552.0,0.099B
+XBIT,XBiotech Inc.,Healthcare,Biotechnology,96341136.0,0.096B
+ANIX,"Anixa Biosciences, Inc.",Healthcare,Biotechnology,96311192.0,0.096B
+CELU,Celularity Inc.,Healthcare,Biotechnology,94359848.0,0.094B
+CSBR,"Champions Oncology, Inc.",Healthcare,Biotechnology,93761120.0,0.094B
+OVID,Ovid Therapeutics Inc.,Healthcare,Biotechnology,91020160.0,0.091B
+ORMP,Oramed Pharmaceuticals Inc.,Healthcare,Biotechnology,90207920.0,0.09B
+CRVO,CervoMed Inc.,Healthcare,Biotechnology,89011168.0,0.089B
+OKYO,OKYO Pharma Limited,Healthcare,Biotechnology,88385144.0,0.088B
+ENTX,Entera Bio Ltd.,Healthcare,Biotechnology,88130360.0,0.088B
+QNCX,"Quince Therapeutics, Inc.",Healthcare,Biotechnology,85942080.0,0.086B
+NAUT,"Nautilus Biotechnology, Inc.",Healthcare,Biotechnology,85887400.0,0.086B
+WHWK,"Whitehawk Therapeutics, Inc.",Healthcare,Biotechnology,85066760.0,0.085B
+ATRA,"Atara Biotherapeutics, Inc.",Healthcare,Biotechnology,84627512.0,0.085B
+XFOR,"X4 Pharmaceuticals, Inc.",Healthcare,Biotechnology,84296376.0,0.084B
+ABOS,"Acumen Pharmaceuticals, Inc.",Healthcare,Biotechnology,82379824.0,0.082B
+ATHE,Alterity Therapeutics Limited,Healthcare,Biotechnology,81363776.0,0.081B
+EXOZ,"eXoZymes, Inc.",Healthcare,Biotechnology,81356320.0,0.081B
+IMUX,"Immunic, Inc.",Healthcare,Biotechnology,80893488.0,0.081B
+PYXS,"Pyxis Oncology, Inc.",Healthcare,Biotechnology,79383168.0,0.079B
+KALA,"KALA BIO, Inc.",Healthcare,Biotechnology,78776072.0,0.079B
+ARTV,"Artiva Biotherapeutics, Inc.",Healthcare,Biotechnology,76941272.0,0.077B
+FBIO,"Fortress Biotech, Inc.",Healthcare,Biotechnology,76767384.0,0.077B
+IGMS,"IGM Biosciences, Inc.",Healthcare,Biotechnology,76571728.0,0.077B
+KLRS,"Kalaris Therapeutics, Inc.",Healthcare,Biotechnology,76305792.0,0.076B
+CNTX,Context Therapeutics Inc.,Healthcare,Biotechnology,75351528.0,0.075B
+PMVP,"PMV Pharmaceuticals, Inc.",Healthcare,Biotechnology,74187256.0,0.074B
+UNCY,"Unicycive Therapeutics, Inc.",Healthcare,Biotechnology,74002528.0,0.074B
+LIMN,"Liminatus Pharma, Inc.",Healthcare,Biotechnology,73345064.0,0.073B
+ALGS,"Aligos Therapeutics, Inc.",Healthcare,Biotechnology,73336952.0,0.073B
+IRD,"Opus Genetics, Inc.",Healthcare,Biotechnology,73087880.0,0.073B
+CBUS,"Cibus, Inc.",Healthcare,Biotechnology,72679456.0,0.073B
+STRO,"Sutro Biopharma, Inc.",Healthcare,Biotechnology,72659968.0,0.073B
+NTRB,Nutriband Inc.,Healthcare,Biotechnology,71957392.0,0.072B
+RPTX,Repare Therapeutics Inc.,Healthcare,Biotechnology,71741864.0,0.072B
+GANX,"Gain Therapeutics, Inc.",Healthcare,Biotechnology,71537712.0,0.072B
+APLT,"Applied Therapeutics, Inc.",Healthcare,Biotechnology,70954712.0,0.071B
+BYSI,BeyondSpring Inc.,Healthcare,Biotechnology,69371560.0,0.069B
+GUTS,"Fractyl Health, Inc.",Healthcare,Biotechnology,68840016.0,0.069B
+GNTA,Genenta Science S.p.A.,Healthcare,Biotechnology,68781000.0,0.069B
+PRLD,Prelude Therapeutics Incorporated,Healthcare,Biotechnology,68486368.0,0.068B
+VANI,"Vivani Medical, Inc.",Healthcare,Biotechnology,68130480.0,0.068B
+ABVC,"ABVC BioPharma, Inc.",Healthcare,Biotechnology,66623292.0,0.067B
+MGX,"Metagenomi, Inc.",Healthcare,Biotechnology,65307596.0,0.065B
+ADVM,"Adverum Biotechnologies, Inc.",Healthcare,Biotechnology,64631336.0,0.065B
+INKT,"MiNK Therapeutics, Inc.",Healthcare,Biotechnology,64406524.0,0.064B
+QNTM,Quantum BioPharma Ltd.,Healthcare,Biotechnology,64315440.0,0.064B
+MNOV,"MediciNova, Inc.",Healthcare,Biotechnology,64250520.0,0.064B
+COEP,"Coeptis Therapeutics Holdings, Inc.",Healthcare,Biotechnology,64230764.0,0.064B
+IMMX,"Immix Biopharma, Inc.",Healthcare,Biotechnology,64011704.0,0.064B
+SLGL,Sol-Gel Technologies Ltd.,Healthcare,Biotechnology,63488156.0,0.063B
+ALXO,ALX Oncology Holdings Inc.,Healthcare,Biotechnology,62654784.0,0.063B
+ANL,Adlai Nortye Ltd.,Healthcare,Biotechnology,62361508.0,0.062B
+KPTI,Karyopharm Therapeutics Inc.,Healthcare,Biotechnology,61652800.0,0.062B
+CUE,"Cue Biopharma, Inc.",Healthcare,Biotechnology,59955176.0,0.06B
+ACET,"Adicet Bio, Inc.",Healthcare,Biotechnology,59942740.0,0.06B
+HOWL,"Werewolf Therapeutics, Inc.",Healthcare,Biotechnology,59904988.0,0.06B
+BTAI,"BioXcel Therapeutics, Inc.",Healthcare,Biotechnology,58954636.0,0.059B
+ICCC,ImmuCell Corporation,Healthcare,Biotechnology,57893440.0,0.058B
+PDSB,PDS Biotechnology Corporation,Healthcare,Biotechnology,57825416.0,0.058B
+DTIL,"Precision BioSciences, Inc.",Healthcare,Biotechnology,57756300.0,0.058B
+NRXP,"NRx Pharmaceuticals, Inc.",Healthcare,Biotechnology,55146168.0,0.055B
+RENB,Lunai Bioworks Inc.,Healthcare,Biotechnology,54961100.0,0.055B
+INMB,"INmune Bio, Inc.",Healthcare,Biotechnology,53968160.0,0.054B
+PYPD,PolyPid Ltd.,Healthcare,Biotechnology,53255620.0,0.053B
+VRCA,Verrica Pharmaceuticals Inc.,Healthcare,Biotechnology,52849080.0,0.053B
+JUNS,"Jupiter Neurosciences, Inc.",Healthcare,Biotechnology,51204656.0,0.051B
+FGEN,"FibroGen, Inc.",Healthcare,Biotechnology,47839336.0,0.048B
+VERU,Veru Inc.,Healthcare,Biotechnology,47613800.0,0.048B
+STTK,"Shattuck Labs, Inc.",Healthcare,Biotechnology,46983456.0,0.047B
+BRNS,Barinthus Biotherapeutics plc,Healthcare,Biotechnology,45604384.0,0.046B
+JSPR,"Jasper Therapeutics, Inc.",Healthcare,Biotechnology,45509240.0,0.046B
+PSTV,"Plus Therapeutics, Inc.",Healthcare,Biotechnology,45264612.0,0.045B
+ANVS,"Annovis Bio, Inc.",Healthcare,Biotechnology,45013120.0,0.045B
+LTRN,Lantern Pharma Inc.,Healthcare,Biotechnology,44061552.0,0.044B
+TPST,"Tempest Therapeutics, Inc.",Healthcare,Biotechnology,44046388.0,0.044B
+FBIOP,"Fortress Biotech, Inc.",Healthcare,Biotechnology,43946752.0,0.044B
+RADX,Radiopharm Theranostics Limited,Healthcare,Biotechnology,42711812.0,0.043B
+TELO,"Telomir Pharmaceuticals, Inc.",Healthcare,Biotechnology,42610920.0,0.043B
+KLTO,"Klotho Neurosciences, Inc.",Healthcare,Biotechnology,42575424.0,0.043B
+VTVT,vTv Therapeutics Inc.,Healthcare,Biotechnology,42503652.0,0.043B
+IPSC,"Century Therapeutics, Inc.",Healthcare,Biotechnology,42477520.0,0.042B
+ACRV,"Acrivon Therapeutics, Inc.",Healthcare,Biotechnology,42150504.0,0.042B
+GRCE,"Grace Therapeutics, Inc.",Healthcare,Biotechnology,41900656.0,0.042B
+PLUR,Pluri Inc.,Healthcare,Biotechnology,41480960.0,0.041B
+LVTX,LAVA Therapeutics N.V.,Healthcare,Biotechnology,41299324.0,0.041B
+GBIO,Generation Bio Co.,Healthcare,Biotechnology,40413240.0,0.04B
+ESLA,"Estrella Immunopharma, Inc.",Healthcare,Biotechnology,38918880.0,0.039B
+SNTI,"Senti Biosciences, Inc.",Healthcare,Biotechnology,38455496.0,0.038B
+PEPG,PepGen Inc.,Healthcare,Biotechnology,38047652.0,0.038B
+OTLK,"Outlook Therapeutics, Inc.",Healthcare,Biotechnology,37809876.0,0.038B
+CALC,"CalciMedica, Inc.",Healthcare,Biotechnology,37724940.0,0.038B
+RANI,"Rani Therapeutics Holdings, Inc.",Healthcare,Biotechnology,37233628.0,0.037B
+OKUR,"OnKure Therapeutics, Inc.",Healthcare,Biotechnology,37207500.0,0.037B
+RLMD,"Relmada Therapeutics, Inc.",Healthcare,Biotechnology,37174592.0,0.037B
+MRSN,"Mersana Therapeutics, Inc.",Healthcare,Biotechnology,36531852.0,0.037B
+XLO,"Xilio Therapeutics, Inc.",Healthcare,Biotechnology,36284712.0,0.036B
+CASI,"CASI Pharmaceuticals, Inc.",Healthcare,Biotechnology,35788368.0,0.036B
+MURA,Mural Oncology plc,Healthcare,Biotechnology,35689088.0,0.036B
+XCUR,"Exicure, Inc.",Healthcare,Biotechnology,35442804.0,0.035B
+RNXT,"RenovoRx, Inc.",Healthcare,Biotechnology,35180064.0,0.035B
+HYPD,"Hyperion DeFi, Inc.",Healthcare,Biotechnology,34737424.0,0.035B
+DYAI,"Dyadic International, Inc.",Healthcare,Biotechnology,33339820.0,0.033B
+CLGN,CollPlant Biotechnologies Ltd.,Healthcare,Biotechnology,33315918.0,0.033B
+LSB,"LakeShore Biopharma Co., Ltd",Healthcare,Biotechnology,32974282.0,0.033B
+RNTX,Rein Therapeutics Inc.,Healthcare,Biotechnology,32394088.0,0.032B
+THAR,"Tharimmune, Inc.",Healthcare,Biotechnology,31394816.0,0.031B
+CAMP,,Healthcare,Biotechnology,30644872.0,0.031B
+RVPH,"Reviva Pharmaceuticals Holdings, Inc.",Healthcare,Biotechnology,30601620.0,0.031B
+ITRM,Iterum Therapeutics plc,Healthcare,Biotechnology,30223790.0,0.03B
+ANTX,"AN2 Therapeutics, Inc.",Healthcare,Biotechnology,30058820.0,0.03B
+KZR,"Kezar Life Sciences, Inc.",Healthcare,Biotechnology,28926284.0,0.029B
+CLSD,"Clearside Biomedical, Inc.",Healthcare,Biotechnology,28852538.0,0.029B
+ASBP,"Aspire Biopharma Holdings, Inc.",Healthcare,Biotechnology,28492306.0,0.028B
+PMN,"ProMIS Neurosciences, Inc.",Healthcare,Biotechnology,27970330.0,0.028B
+TENX,"Tenax Therapeutics, Inc.",Healthcare,Biotechnology,27329374.0,0.027B
+DARE,"Daré Bioscience, Inc.",Healthcare,Biotechnology,27228590.0,0.027B
+BCAB,"BioAtla, Inc.",Healthcare,Biotechnology,26747690.0,0.027B
+NRSN,NeuroSense Therapeutics Ltd.,Healthcare,Biotechnology,26545896.0,0.027B
+CVKD,"Cadrenal Therapeutics, Inc.",Healthcare,Biotechnology,26527176.0,0.027B
+ICU,SeaStar Medical Holding Corporation,Healthcare,Biotechnology,25572566.0,0.026B
+BOLD,"Boundless Bio, Inc.",Healthcare,Biotechnology,25071872.0,0.025B
+ENLV,Enlivex Therapeutics Ltd.,Healthcare,Biotechnology,25042394.0,0.025B
+AKTX,"Akari Therapeutics, Plc",Healthcare,Biotechnology,24787172.0,0.025B
+FBLG,"FibroBiologics, Inc.",Healthcare,Biotechnology,24718758.0,0.025B
+GDTC,CytoMed Therapeutics Limited,Healthcare,Biotechnology,23490868.0,0.023B
+PASG,"Passage Bio, Inc.",Healthcare,Biotechnology,22664202.0,0.023B
+CTXR,"Citius Pharmaceuticals, Inc.",Healthcare,Biotechnology,22626226.0,0.023B
+ALLR,"Allarity Therapeutics, Inc.",Healthcare,Biotechnology,22514184.0,0.023B
+RLYB,Rallybio Corporation,Healthcare,Biotechnology,22422636.0,0.022B
+SONN,"Sonnet BioTherapeutics Holdings, Inc.",Healthcare,Biotechnology,22188888.0,0.022B
+SABS,"SAB Biotherapeutics, Inc.",Healthcare,Biotechnology,21655088.0,0.022B
+CING,Cingulate Inc.,Healthcare,Biotechnology,21595954.0,0.022B
+NEUP,Neuphoria Therapeutics Inc.,Healthcare,Biotechnology,21299946.0,0.021B
+CRIS,"Curis, Inc.",Healthcare,Biotechnology,20873162.0,0.021B
+QTTB,Q32 Bio Inc.,Healthcare,Biotechnology,20857896.0,0.021B
+LSTA,"Lisata Therapeutics, Inc.",Healthcare,Biotechnology,20313804.0,0.02B
+LIXT,"Lixte Biotechnology Holdings, Inc.",Healthcare,Biotechnology,20298052.0,0.02B
+ABP,Abpro Corporation,Healthcare,Biotechnology,19648860.0,0.02B
+GOVX,"GeoVax Labs, Inc.",Healthcare,Biotechnology,18908118.0,0.019B
+CYCC,"Cyclacel Pharmaceuticals, Inc.",Healthcare,Biotechnology,18438000.0,0.018B
+PULM,"Pulmatrix, Inc.",Healthcare,Biotechnology,18005740.0,0.018B
+EVAX,Evaxion A/S,Healthcare,Biotechnology,17370568.0,0.017B
+LGVN,Longeveron Inc.,Healthcare,Biotechnology,17221334.0,0.017B
+LEXX,Lexaria Bioscience Corp.,Healthcare,Biotechnology,17217964.0,0.017B
+SYBX,"Synlogic, Inc.",Healthcare,Biotechnology,16963406.0,0.017B
+OSRH,"OSR Holdings, Inc.",Healthcare,Biotechnology,16761063.0,0.017B
+NERV,"Minerva Neurosciences, Inc.",Healthcare,Biotechnology,16504447.0,0.017B
+PRTG,Portage Biotech Inc.,Healthcare,Biotechnology,16406064.0,0.016B
+EDSA,"Edesa Biotech, Inc.",Healthcare,Biotechnology,16327348.0,0.016B
+CMMB,Chemomab Therapeutics Ltd.,Healthcare,Biotechnology,16299992.0,0.016B
+BLRX,BioLineRx Ltd.,Healthcare,Biotechnology,16155557.0,0.016B
+IBIO,"iBio, Inc.",Healthcare,Biotechnology,16071567.0,0.016B
+LPCN,Lipocine Inc.,Healthcare,Biotechnology,15769436.0,0.016B
+ADAP,Adaptimmune Therapeutics plc,Healthcare,Biotechnology,15611562.0,0.016B
+CLRB,"Cellectar Biosciences, Inc.",Healthcare,Biotechnology,15545234.0,0.016B
+COCP,"Cocrystal Pharma, Inc.",Healthcare,Biotechnology,15388350.0,0.015B
+HOTH,"Hoth Therapeutics, Inc.",Healthcare,Biotechnology,15380440.0,0.015B
+MTVA,MetaVia Inc.,Healthcare,Biotechnology,15346244.0,0.015B
+ATHA,"Athira Pharma, Inc.",Healthcare,Biotechnology,15326112.0,0.015B
+IMNN,"Imunon, Inc.",Healthcare,Biotechnology,14950775.0,0.015B
+BRTX,"BioRestorative Therapies, Inc.",Healthcare,Biotechnology,14679741.0,0.015B
+MLEC,Moolec Science SA,Healthcare,Biotechnology,14276971.0,0.014B
+APM,Aptorum Group Limited,Healthcare,Biotechnology,14073207.0,0.014B
+BCTX,BriaCell Therapeutics Corp.,Healthcare,Biotechnology,13655309.0,0.014B
+NXTC,"NextCure, Inc.",Healthcare,Biotechnology,13460834.0,0.013B
+SNGX,"Soligenix, Inc.",Healthcare,Biotechnology,13285267.0,0.013B
+INTS,"Intensity Therapeutics, Inc.",Healthcare,Biotechnology,13270272.0,0.013B
+HCWB,HCW Biologics Inc.,Healthcare,Biotechnology,12307209.0,0.012B
+ARTL,"Artelo Biosciences, Inc.",Healthcare,Biotechnology,12224338.0,0.012B
+MRKR,"Marker Therapeutics, Inc.",Healthcare,Biotechnology,11977540.0,0.012B
+LPTX,"Leap Therapeutics, Inc.",Healthcare,Biotechnology,11951152.0,0.012B
+MBRX,"Moleculin Biotech, Inc.",Healthcare,Biotechnology,11884305.0,0.012B
+LYRA,"Lyra Therapeutics, Inc.",Healthcare,Biotechnology,11511150.0,0.012B
+BCDA,"BioCardia, Inc.",Healthcare,Biotechnology,11469012.0,0.011B
+BIVI,BioVie Inc.,Healthcare,Biotechnology,11452014.0,0.011B
+EPIX,ESSA Pharma Inc.,Healthcare,Biotechnology,11354016.0,0.011B
+PHIO,Phio Pharmaceuticals Corp.,Healthcare,Biotechnology,11281698.0,0.011B
+HOOK,HOOKIPA Pharma Inc.,Healthcare,Biotechnology,11100726.0,0.011B
+KZIA,Kazia Therapeutics Limited,Healthcare,Biotechnology,10972133.0,0.011B
+MBIO,"Mustang Bio, Inc.",Healthcare,Biotechnology,10931871.0,0.011B
+EVGN,Evogene Ltd.,Healthcare,Biotechnology,10892788.0,0.011B
+XTLB,XTL Biopharmaceuticals Ltd.,Healthcare,Biotechnology,10840154.0,0.011B
+IMRN,Immuron Limited,Healthcare,Biotechnology,10795317.0,0.011B
+SNSE,"Sensei Biotherapeutics, Inc.",Healthcare,Biotechnology,10538077.0,0.011B
+NLSP,NLS Pharmaceutics AG,Healthcare,Biotechnology,10405023.0,0.01B
+ERNA,Ernexa Therapeutics Inc.,Healthcare,Biotechnology,10202284.0,0.01B
+INAB,"IN8bio, Inc.",Healthcare,Biotechnology,10032781.0,0.01B
+TRAW,"Traws Pharma, Inc.",Healthcare,Biotechnology,9889362.0,0.01B
+BOLT,"Bolt Biotherapeutics, Inc.",Healthcare,Biotechnology,9846727.0,0.01B
+CSCI,COSCIENS Biopharma Inc.,Healthcare,Biotechnology,9734718.0,0.01B
+CYCCP,"Cyclacel Pharmaceuticals, Inc.",Healthcare,Biotechnology,9697497.0,0.01B
+KPRX,"Kiora Pharmaceuticals, Inc.",Healthcare,Biotechnology,9545102.0,0.01B
+PCSA,"Processa Pharmaceuticals, Inc.",Healthcare,Biotechnology,9515980.0,0.01B
+DWTX,"Dogwood Therapeutics, Inc.",Healthcare,Biotechnology,9479205.0,0.009B
+ADXN,Addex Therapeutics Ltd,Healthcare,Biotechnology,9291664.0,0.009B
+APRE,"Aprea Therapeutics, Inc.",Healthcare,Biotechnology,9116532.0,0.009B
+CERO,"CERo Therapeutics Holdings, Inc.",Healthcare,Biotechnology,9064608.0,0.009B
+CARM,"Carisma Therapeutics, Inc.",Healthcare,Biotechnology,8984442.0,0.009B
+TNFA,"TNF Pharmaceuticals, Inc.",Healthcare,Biotechnology,8530553.0,0.009B
+ADIL,"Adial Pharmaceuticals, Inc.",Healthcare,Biotechnology,8294716.0,0.008B
+TSBX,Turnstone Biologics Corp.,Healthcare,Biotechnology,8214948.0,0.008B
+CELZ,"Creative Medical Technology Holdings, Inc.",Healthcare,Biotechnology,8206085.0,0.008B
+VYNE,VYNE Therapeutics Inc.,Healthcare,Biotechnology,8163840.0,0.008B
+RNAZ,"TransCode Therapeutics, Inc.",Healthcare,Biotechnology,8111735.0,0.008B
+CYCN,"Cyclerion Therapeutics, Inc.",Healthcare,Biotechnology,7912176.0,0.008B
+ALZN,"Alzamend Neuro, Inc.",Healthcare,Biotechnology,7661258.0,0.008B
+ACXP,"Acurx Pharmaceuticals, Inc.",Healthcare,Biotechnology,7321683.0,0.007B
+INDP,"Indaptus Therapeutics, Inc.",Healthcare,Biotechnology,7192445.0,0.007B
+GLMD,Galmed Pharmaceuticals Ltd.,Healthcare,Biotechnology,6958622.0,0.007B
+CDIO,"Cardio Diagnostics Holdings, Inc.",Healthcare,Biotechnology,6717525.0,0.007B
+PLRZ,Polyrizon Ltd.,Healthcare,Biotechnology,6528326.0,0.007B
+PMCB,"PharmaCyte Biotech, Inc.",Healthcare,Biotechnology,6445014.0,0.006B
+VIVS,"VivoSim Labs, Inc.",Healthcare,Biotechnology,6343512.0,0.006B
+PALI,"Palisade Bio, Inc.",Healthcare,Biotechnology,6297882.0,0.006B
+ENSC,"Ensysce Biosciences, Inc.",Healthcare,Biotechnology,6204039.0,0.006B
+NCNA,NuCana plc,Healthcare,Biotechnology,6086775.0,0.006B
+KTTA,Pasithea Therapeutics Corp.,Healthcare,Biotechnology,6015901.0,0.006B
+SILO,"Silo Pharma, Inc.",Healthcare,Biotechnology,5906730.0,0.006B
+SXTP,"60 Degrees Pharmaceuticals, Inc.",Healthcare,Biotechnology,5787302.0,0.006B
+CMND,Clearmind Medicine Inc.,Healthcare,Biotechnology,5675309.0,0.006B
+GNPX,"Genprex, Inc.",Healthcare,Biotechnology,5488555.0,0.005B
+APVO,Aptevo Therapeutics Inc.,Healthcare,Biotechnology,5392189.0,0.005B
+SLXN,Silexion Therapeutics Corp,Healthcare,Biotechnology,5355619.0,0.005B
+PPBT,Purple Biotech Ltd,Healthcare,Biotechnology,5269918.0,0.005B
+TTNP,"Titan Pharmaceuticals, Inc.",Healthcare,Biotechnology,5267711.0,0.005B
+ADTX,"Aditxt, Inc.",Healthcare,Biotechnology,5125856.0,0.005B
+TCRT,"Alaunos Therapeutics, Inc.",Healthcare,Biotechnology,4698184.0,0.005B
+REVB,"Revelation Biosciences, Inc.",Healthcare,Biotechnology,4691006.0,0.005B
+ONCO,"Onconetix, Inc.",Healthcare,Biotechnology,4528901.0,0.005B
+XBIO,"Xenetic Biosciences, Inc.",Healthcare,Biotechnology,4395099.0,0.004B
+APLM,"Apollomics, Inc.",Healthcare,Biotechnology,4338041.0,0.004B
+QNRX,"Quoin Pharmaceuticals, Ltd.",Healthcare,Biotechnology,4337908.0,0.004B
+GLTO,"Galecto, Inc.",Healthcare,Biotechnology,4212101.0,0.004B
+XRTX,XORTX Therapeutics Inc.,Healthcare,Biotechnology,4210809.0,0.004B
+CDT,CDT Equity Inc.,Healthcare,Biotechnology,4056912.0,0.004B
+DRMA,"Dermata Therapeutics, Inc.",Healthcare,Biotechnology,3912069.0,0.004B
+ENVB,"Enveric Biosciences, Inc.",Healthcare,Biotechnology,3668296.0,0.004B
+ENTO,"Entero Therapeutics, Inc.",Healthcare,Biotechnology,3614019.0,0.004B
+CNSP,"CNS Pharmaceuticals, Inc.",Healthcare,Biotechnology,3562396.0,0.004B
+JAGX,"Jaguar Health, Inc.",Healthcare,Biotechnology,3544989.0,0.004B
+GRI,"GRI Bio, Inc.",Healthcare,Biotechnology,3496267.0,0.003B
+BDRX,Biodexa Pharmaceuticals Plc,Healthcare,Biotechnology,3482410.0,0.003B
+GTBP,"GT Biopharma, Inc.",Healthcare,Biotechnology,3324483.0,0.003B
+PTIX,"Protagenic Therapeutics, Inc.",Healthcare,Biotechnology,3126290.0,0.003B
+QLGN,"Qualigen Therapeutics, Inc.",Healthcare,Biotechnology,3034855.0,0.003B
+SLRX,"Salarius Pharmaceuticals, Inc.",Healthcare,Biotechnology,2935543.0,0.003B
+WINT,"Windtree Therapeutics, Inc.",Healthcare,Biotechnology,2816083.0,0.003B
+VRAX,Virax Biolabs Group Limited,Healthcare,Biotechnology,2630359.0,0.003B
+ELAB,PMGC Holdings Inc.,Healthcare,Biotechnology,2405418.0,0.002B
+PBM,Psyence Biomedical Ltd.,Healthcare,Biotechnology,2004181.0,0.002B
+SCNI,Scinai Immunotherapeutics Ltd.,Healthcare,Biotechnology,1529876.0,0.002B
+SPRC,SciSparc Ltd.,Healthcare,Biotechnology,1315128.0,0.001B

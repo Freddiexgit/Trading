@@ -1,0 +1,10 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+NE,Noble Corporation plc,Energy,Oil & Gas Drilling,4577336320.0,4.577B
+RIG,Transocean Ltd.,Energy,Oil & Gas Drilling,2857668608.0,2.858B
+SOC,Sable Offshore Corp.,Energy,Oil & Gas Drilling,2684704256.0,2.685B
+PTEN,"Patterson-UTI Energy, Inc.",Energy,Oil & Gas Drilling,2237820416.0,2.238B
+HP,"Helmerich & Payne, Inc.",Energy,Oil & Gas Drilling,2077297408.0,2.077B
+SDRL,Seadrill Limited,Energy,Oil & Gas Drilling,1985612544.0,1.986B
+BORR,Borr Drilling Limited,Energy,Oil & Gas Drilling,832914752.0,0.833B
+PDS,Precision Drilling Corporation,Energy,Oil & Gas Drilling,768907712.0,0.769B
+NBR,Nabors Industries Ltd.,Energy,Oil & Gas Drilling,543382080.0,0.543B

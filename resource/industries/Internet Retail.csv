@@ -1,0 +1,40 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+AMZN,"Amazon.com, Inc.",Consumer Cyclical,Internet Retail,2442261954560.0,2442.262B
+BABA,Alibaba Group Holding Limited,Consumer Cyclical,Internet Retail,335395356672.0,335.395B
+PDD,PDD Holdings Inc.,Consumer Cyclical,Internet Retail,170670325760.0,170.67B
+MELI,"MercadoLibre, Inc.",Consumer Cyclical,Internet Retail,125370105856.0,125.37B
+SE,Sea Limited,Consumer Cyclical,Internet Retail,110435401728.0,110.435B
+DASH,"DoorDash, Inc.",Consumer Cyclical,Internet Retail,104769576960.0,104.77B
+CPNG,"Coupang, Inc.",Consumer Cyclical,Internet Retail,52103340032.0,52.103B
+JD,"JD.com, Inc.",Consumer Cyclical,Internet Retail,45162422272.0,45.162B
+EBAY,eBay Inc.,Consumer Cyclical,Internet Retail,41408770048.0,41.409B
+CHWY,"Chewy, Inc.",Consumer Cyclical,Internet Retail,16908902400.0,16.909B
+CART,Maplebear Inc.,Consumer Cyclical,Internet Retail,11425305600.0,11.425B
+W,Wayfair Inc.,Consumer Cyclical,Internet Retail,9672710144.0,9.673B
+VIPS,Vipshop Holdings Limited,Consumer Cyclical,Internet Retail,8252819968.0,8.253B
+GLBE,Global-E Online Ltd.,Consumer Cyclical,Internet Retail,5679031808.0,5.679B
+ETSY,"Etsy, Inc.",Consumer Cyclical,Internet Retail,5253746688.0,5.254B
+RVLV,"Revolve Group, Inc.",Consumer Cyclical,Internet Retail,1594884736.0,1.595B
+TDUP,ThredUp Inc.,Consumer Cyclical,Internet Retail,1332601984.0,1.333B
+JMIA,Jumia Technologies AG,Consumer Cyclical,Internet Retail,1053181824.0,1.053B
+RERE,ATRenew Inc.,Consumer Cyclical,Internet Retail,1048066496.0,1.048B
+HEPS,D-Market Elektronik Hizmetler ve Ticaret A.S.,Consumer Cyclical,Internet Retail,899754496.0,0.9B
+NEGG,"Newegg Commerce, Inc.",Consumer Cyclical,Internet Retail,858642560.0,0.859B
+LQDT,"Liquidity Services, Inc.",Consumer Cyclical,Internet Retail,830589184.0,0.831B
+BYON,"Bed Bath & Beyond, Inc.",Consumer Cyclical,Internet Retail,541912640.0,0.542B
+ZKH,ZKH Group Limited,Consumer Cyclical,Internet Retail,462150272.0,0.462B
+BZUN,Baozun Inc.,Consumer Cyclical,Internet Retail,189208112.0,0.189B
+DIBS,"1stdibs.Com, Inc.",Consumer Cyclical,Internet Retail,99315688.0,0.099B
+OCG,Oriental Culture Holding LTD,Consumer Cyclical,Internet Retail,85838344.0,0.086B
+QVCGA,QVC Group Inc.,Consumer Cyclical,Internet Retail,72945616.0,0.073B
+NHTC,Natural Health Trends Corp.,Consumer Cyclical,Internet Retail,50657640.0,0.051B
+HOUR,"Hour Loop, Inc.",Consumer Cyclical,Internet Retail,48888524.0,0.049B
+LGCB,Linkage Global Inc,Consumer Cyclical,Internet Retail,24899066.0,0.025B
+SBDS,,Consumer Cyclical,Internet Retail,20155326.0,0.02B
+MOGU,MOGU Inc.,Consumer Cyclical,Internet Retail,19535000.0,0.02B
+IPW,iPower Inc.,Consumer Cyclical,Internet Retail,15491790.0,0.015B
+YJ,Yunji Inc.,Consumer Cyclical,Internet Retail,8570440.0,0.009B
+WNW,Meiwu Technology Company Limited,Consumer Cyclical,Internet Retail,5455451.0,0.005B
+WBUY,,Consumer Cyclical,Internet Retail,5337095.0,0.005B
+JWEL,Jowell Global Ltd.,Consumer Cyclical,Internet Retail,4145616.0,0.004B
+JFBR,Jeffs' Brands Ltd,Consumer Cyclical,Internet Retail,2842150.0,0.003B

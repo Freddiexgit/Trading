@@ -1,0 +1,54 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+MCD,McDonald's Corporation,Consumer Cyclical,Restaurants,223743393792.0,223.743B
+SBUX,Starbucks Corporation,Consumer Cyclical,Restaurants,100245577728.0,100.246B
+CMG,"Chipotle Mexican Grill, Inc.",Consumer Cyclical,Restaurants,56504680448.0,56.505B
+YUM,"Yum! Brands, Inc.",Consumer Cyclical,Restaurants,40789467136.0,40.789B
+QSR,Restaurant Brands International Inc.,Consumer Cyclical,Restaurants,28786905088.0,28.787B
+DRI,"Darden Restaurants, Inc.",Consumer Cyclical,Restaurants,24128169984.0,24.128B
+YUMC,"Yum China Holdings, Inc.",Consumer Cyclical,Restaurants,16414431232.0,16.414B
+DPZ,"Domino's Pizza, Inc.",Consumer Cyclical,Restaurants,15558780928.0,15.559B
+BROS,Dutch Bros Inc.,Consumer Cyclical,Restaurants,11817400320.0,11.817B
+TXRH,"Texas Roadhouse, Inc.",Consumer Cyclical,Restaurants,11466051584.0,11.466B
+WING,Wingstop Inc.,Consumer Cyclical,Restaurants,9162356736.0,9.162B
+CAVA,"CAVA Group, Inc.",Consumer Cyclical,Restaurants,7832693248.0,7.833B
+EAT,"Brinker International, Inc.",Consumer Cyclical,Restaurants,6940813312.0,6.941B
+SHAK,Shake Shack Inc.,Consumer Cyclical,Restaurants,4524874752.0,4.525B
+CHA,Chagee Holdings Limited,Consumer Cyclical,Restaurants,3549720832.0,3.55B
+CAKE,The Cheesecake Factory Incorporated,Consumer Cyclical,Restaurants,3061347072.0,3.061B
+WEN,The Wendy's Company,Consumer Cyclical,Restaurants,2021894528.0,2.022B
+PZZA,"Papa John's International, Inc.",Consumer Cyclical,Restaurants,1595637248.0,1.596B
+ARCO,Arcos Dorados Holdings Inc.,Consumer Cyclical,Restaurants,1474641024.0,1.475B
+CBRL,"Cracker Barrel Old Country Store, Inc.",Consumer Cyclical,Restaurants,1332011904.0,1.332B
+FWRG,"First Watch Restaurant Group, Inc.",Consumer Cyclical,Restaurants,1149692160.0,1.15B
+HDL,Super Hi International Holding Ltd.,Consumer Cyclical,Restaurants,1139829760.0,1.14B
+CNNE,"Cannae Holdings, Inc.",Consumer Cyclical,Restaurants,1092607360.0,1.093B
+SG,"Sweetgreen, Inc.",Consumer Cyclical,Restaurants,1075729280.0,1.076B
+KRUS,"Kura Sushi USA, Inc.",Consumer Cyclical,Restaurants,1025623168.0,1.026B
+BH,Biglari Holdings Inc.,Consumer Cyclical,Restaurants,966131072.0,0.966B
+BJRI,"BJ's Restaurants, Inc.",Consumer Cyclical,Restaurants,742488192.0,0.742B
+BLMN,"Bloomin' Brands, Inc.",Consumer Cyclical,Restaurants,625252736.0,0.625B
+PTLO,Portillo's Inc.,Consumer Cyclical,Restaurants,509091648.0,0.509B
+NATH,"Nathan's Famous, Inc.",Consumer Cyclical,Restaurants,428171680.0,0.428B
+PBPB,Potbelly Corporation,Consumer Cyclical,Restaurants,391573440.0,0.392B
+DIN,"Dine Brands Global, Inc.",Consumer Cyclical,Restaurants,368334240.0,0.368B
+JACK,Jack in the Box Inc.,Consumer Cyclical,Restaurants,364432224.0,0.364B
+RICK,"RCI Hospitality Holdings, Inc.",Consumer Cyclical,Restaurants,324488320.0,0.324B
+LOCO,"El Pollo Loco Holdings, Inc.",Consumer Cyclical,Restaurants,318852160.0,0.319B
+DENN,Denny's Corporation,Consumer Cyclical,Restaurants,235350432.0,0.235B
+TWNP,Twin Hospitality Group Inc.,Consumer Cyclical,Restaurants,205192336.0,0.205B
+MB,MasterBeef Group,Consumer Cyclical,Restaurants,172040000.0,0.172B
+RRGB,"Red Robin Gourmet Burgers, Inc.",Consumer Cyclical,Restaurants,116057448.0,0.116B
+GENK,"GEN Restaurant Group, Inc.",Consumer Cyclical,Restaurants,105383360.0,0.105B
+STKS,"The ONE Group Hospitality, Inc.",Consumer Cyclical,Restaurants,86368072.0,0.086B
+THCH,TH International Limited,Consumer Cyclical,Restaurants,81306672.0,0.081B
+RAVE,"Rave Restaurant Group, Inc.",Consumer Cyclical,Restaurants,47324628.0,0.047B
+FATBB,FAT Brands Inc.,Consumer Cyclical,Restaurants,33744796.0,0.034B
+FAT,FAT Brands Inc.,Consumer Cyclical,Restaurants,33744732.0,0.034B
+NDLS,Noodles & Company,Consumer Cyclical,Restaurants,33084926.0,0.033B
+ARKR,Ark Restaurants Corp.,Consumer Cyclical,Restaurants,24557950.0,0.025B
+YOSH,Yoshiharu Global Co.,Consumer Cyclical,Restaurants,18446750.0,0.018B
+GTIM,Good Times Restaurants Inc.,Consumer Cyclical,Restaurants,17617664.0,0.018B
+REBN,"Reborn Coffee, Inc.",Consumer Cyclical,Restaurants,14173466.0,0.014B
+BTBD,"BT Brands, Inc.",Consumer Cyclical,Restaurants,11324685.0,0.011B
+PETZ,"TDH Holdings, Inc.",Consumer Cyclical,Restaurants,10676356.0,0.011B
+CHSN,Chanson International Holding,Consumer Cyclical,Restaurants,7484396.0,0.007B

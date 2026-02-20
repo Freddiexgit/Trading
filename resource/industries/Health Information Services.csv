@@ -1,0 +1,54 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+VEEV,Veeva Systems Inc.,Healthcare,Health Information Services,44124037120.0,44.124B
+GEHC,GE HealthCare Technologies Inc.,Healthcare,Health Information Services,33662316544.0,33.662B
+TEM,"Tempus AI, Inc.",Healthcare,Health Information Services,13179005952.0,13.179B
+DOCS,"Doximity, Inc.",Healthcare,Health Information Services,12725095424.0,12.725B
+HQY,"HealthEquity, Inc.",Healthcare,Health Information Services,7724847616.0,7.725B
+WAY,Waystar Holding Corp.,Healthcare,Health Information Services,6600173568.0,6.6B
+HNGE,"Hinge Health, Inc.",Healthcare,Health Information Services,4398646272.0,4.399B
+BTSG,"BrightSpring Health Services, Inc.",Healthcare,Health Information Services,4196659712.0,4.197B
+PRVA,"Privia Health Group, Inc.",Healthcare,Health Information Services,2827699200.0,2.828B
+PINC,"Premier, Inc.",Healthcare,Health Information Services,2138034560.0,2.138B
+PHR,"Phreesia, Inc.",Healthcare,Health Information Services,1883906176.0,1.884B
+TXG,"10x Genomics, Inc.",Healthcare,Health Information Services,1744104960.0,1.744B
+CERT,"Certara, Inc.",Healthcare,Health Information Services,1741164160.0,1.741B
+GDRX,"GoodRx Holdings, Inc.",Healthcare,Health Information Services,1511407360.0,1.511B
+OMCL,"Omnicell, Inc.",Healthcare,Health Information Services,1496998784.0,1.497B
+SDGR,"Schrödinger, Inc.",Healthcare,Health Information Services,1436053120.0,1.436B
+TDOC,"Teladoc Health, Inc.",Healthcare,Health Information Services,1365821440.0,1.366B
+OMDA,"Omada Health, Inc.",Healthcare,Health Information Services,1363949440.0,1.364B
+CTEV,,Healthcare,Health Information Services,1135278592.0,1.135B
+EVH,"Evolent Health, Inc.",Healthcare,Health Information Services,1119120128.0,1.119B
+HSTM,"HealthStream, Inc.",Healthcare,Health Information Services,832324864.0,0.832B
+PHLT,,Healthcare,Health Information Services,602747136.0,0.603B
+WEAV,"Weave Communications, Inc.",Healthcare,Health Information Services,599341632.0,0.599B
+TALK,"Talkspace, Inc.",Healthcare,Health Information Services,445462240.0,0.445B
+DH,Definitive Healthcare Corp.,Healthcare,Health Information Services,419466592.0,0.419B
+SY,So-Young International Inc.,Healthcare,Health Information Services,381393408.0,0.381B
+SPOK,"Spok Holdings, Inc.",Healthcare,Health Information Services,373930752.0,0.374B
+CARL,"Carlsmed, Inc.",Healthcare,Health Information Services,352666784.0,0.353B
+NRC,National Research Corporation,Healthcare,Health Information Services,338802816.0,0.339B
+OPRX,OptimizeRx Corporation,Healthcare,Health Information Services,335469536.0,0.335B
+TBRG,"TruBridge, Inc.",Healthcare,Health Information Services,299631520.0,0.3B
+LFMD,"LifeMD, Inc.",Healthcare,Health Information Services,293513696.0,0.294B
+MNDR,Mobile-health Network Solutions,Healthcare,Health Information Services,288066656.0,0.288B
+SLP,"Simulations Plus, Inc.",Healthcare,Health Information Services,285201024.0,0.285B
+HCAT,"Health Catalyst, Inc.",Healthcare,Health Information Services,238566512.0,0.239B
+SOPH,SOPHiA GENETICS SA,Healthcare,Health Information Services,233825424.0,0.234B
+CCLD,"CareCloud, Inc.",Healthcare,Health Information Services,162516480.0,0.163B
+AMWL,American Well Corporation,Healthcare,Health Information Services,111449488.0,0.111B
+FORA,Forian Inc.,Healthcare,Health Information Services,61291232.0,0.061B
+BEAT,"HeartBeam, Inc.",Healthcare,Health Information Services,46320660.0,0.046B
+ONMD,OneMedNet Corporation,Healthcare,Health Information Services,39642216.0,0.04B
+ZCMD,Zhongchao Inc.,Healthcare,Health Information Services,25271578.0,0.025B
+MGRX,"Mangoceuticals, Inc.",Healthcare,Health Information Services,24864486.0,0.025B
+STRM,"Streamline Health Solutions, Inc.",Healthcare,Health Information Services,23231740.0,0.023B
+DRIO,DarioHealth Corp.,Healthcare,Health Information Services,22822384.0,0.023B
+HCTI,"Healthcare Triangle, Inc.",Healthcare,Health Information Services,13238254.0,0.013B
+BFRG,"Bullfrog AI Holdings, Inc.",Healthcare,Health Information Services,12198373.0,0.012B
+POAI,Predictive Oncology Inc.,Healthcare,Health Information Services,9530023.0,0.01B
+VSEE,"VSee Health, Inc.",Healthcare,Health Information Services,9473880.0,0.009B
+MSPR,,Healthcare,Health Information Services,4429819.0,0.004B
+ACON,"Aclarion, Inc.",Healthcare,Health Information Services,4174144.0,0.004B
+WORX,SCWorx Corp.,Healthcare,Health Information Services,2587361.0,0.003B
+OTRK,"Ontrak, Inc.",Healthcare,Health Information Services,510086.0,0.001B

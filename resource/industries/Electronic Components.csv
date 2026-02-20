@@ -1,0 +1,45 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+APH,Amphenol Corporation,Technology,Electronic Components,132909359104.0,132.909B
+TEL,TE Connectivity plc,Technology,Electronic Components,61017030656.0,61.017B
+GLW,Corning Incorporated,Technology,Electronic Components,57419169792.0,57.419B
+CLS,Celestica Inc.,Technology,Electronic Components,22402676736.0,22.403B
+JBL,Jabil Inc.,Technology,Electronic Components,21982150656.0,21.982B
+FLEX,Flex Ltd.,Technology,Electronic Components,20051572736.0,20.052B
+FN,Fabrinet,Technology,Electronic Components,11836859392.0,11.837B
+OLED,Universal Display Corporation,Technology,Electronic Components,6587764736.0,6.588B
+LFUS,"Littelfuse, Inc.",Technology,Electronic Components,6439002624.0,6.439B
+SANM,Sanmina Corporation,Technology,Electronic Components,6261982720.0,6.262B
+RAL,Ralliant Corporation,Technology,Electronic Components,4713617920.0,4.714B
+TTMI,"TTM Technologies, Inc.",Technology,Electronic Components,4604660224.0,4.605B
+OSIS,"OSI Systems, Inc.",Technology,Electronic Components,3870798336.0,3.871B
+PLXS,Plexus Corp.,Technology,Electronic Components,3697447680.0,3.697B
+VICR,Vicor Corporation,Technology,Electronic Components,2295825408.0,2.296B
+KN,Knowles Corporation,Technology,Electronic Components,1833700352.0,1.834B
+BELFB,Bel Fuse Inc.,Technology,Electronic Components,1661425792.0,1.661B
+BELFA,Bel Fuse Inc.,Technology,Electronic Components,1661420672.0,1.661B
+OUST,"Ouster, Inc.",Technology,Electronic Components,1649581824.0,1.65B
+BHE,"Benchmark Electronics, Inc.",Technology,Electronic Components,1457615360.0,1.458B
+ROG,Rogers Corporation,Technology,Electronic Components,1421828608.0,1.422B
+CTS,CTS Corporation,Technology,Electronic Components,1252460800.0,1.252B
+DAKT,"Daktronics, Inc.",Technology,Electronic Components,852245888.0,0.852B
+ALNT,Allient Inc.,Technology,Electronic Components,769054848.0,0.769B
+LYTS,LSI Industries Inc.,Technology,Electronic Components,688003200.0,0.688B
+NEON,Neonode Inc.,Technology,Electronic Components,401950464.0,0.402B
+KOPN,Kopin Corporation,Technology,Electronic Components,341892576.0,0.342B
+MEI,"Methode Electronics, Inc.",Technology,Electronic Components,272228192.0,0.272B
+LPTH,"LightPath Technologies, Inc.",Technology,Electronic Components,229509104.0,0.23B
+RELL,"Richardson Electronics, Ltd.",Technology,Electronic Components,142359040.0,0.142B
+GAUZ,Gauzy Ltd.,Technology,Electronic Components,101962464.0,0.102B
+LINK,"Interlink Electronics, Inc.",Technology,Electronic Components,90948016.0,0.091B
+ELTK,Eltek Ltd.,Technology,Electronic Components,69079848.0,0.069B
+WBX,Wallbox N.V.,Technology,Electronic Components,68768072.0,0.069B
+HOLO,MicroCloud Hologram Inc.,Technology,Electronic Components,66281216.0,0.066B
+DSWL,"Deswell Industries, Inc.",Technology,Electronic Components,60553760.0,0.061B
+OPTX,"Syntec Optics Holdings, Inc.",Technology,Electronic Components,58701280.0,0.059B
+CPSH,CPS Technologies Corporation,Technology,Electronic Components,50114700.0,0.05B
+REFR,Research Frontiers Incorporated,Technology,Electronic Components,45425072.0,0.045B
+SELX,Semilux International Ltd.,Technology,Electronic Components,41171240.0,0.041B
+DAIO,Data I/O Corporation,Technology,Electronic Components,29101746.0,0.029B
+MTEK,Maris-Tech Ltd.,Technology,Electronic Components,23950680.0,0.024B
+OST,"Ostin Technology Group Co., Ltd.",Technology,Electronic Components,8528492.0,0.009B
+IMTE,Integrated Media Technology Limited,Technology,Electronic Components,3019658.0,0.003B

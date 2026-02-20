@@ -1,0 +1,31 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+GRMN,Garmin Ltd.,Technology,Scientific & Technical Instruments,46548901888.0,46.549B
+KEYS,"Keysight Technologies, Inc.",Technology,Scientific & Technical Instruments,28086425600.0,28.086B
+TDY,Teledyne Technologies Incorporated,Technology,Scientific & Technical Instruments,25233983488.0,25.234B
+TRMB,Trimble Inc.,Technology,Scientific & Technical Instruments,19232653312.0,19.233B
+FTV,Fortive Corporation,Technology,Scientific & Technical Instruments,16192760832.0,16.193B
+COHR,Coherent Corp.,Technology,Scientific & Technical Instruments,14095677440.0,14.096B
+CGNX,Cognex Corporation,Technology,Scientific & Technical Instruments,7377482240.0,7.377B
+MKSI,MKS Inc.,Technology,Scientific & Technical Instruments,6940210688.0,6.94B
+VNT,Vontier Corporation,Technology,Scientific & Technical Instruments,6294897152.0,6.295B
+ITRI,"Itron, Inc.",Technology,Scientific & Technical Instruments,5620558848.0,5.621B
+BMI,"Badger Meter, Inc.",Technology,Scientific & Technical Instruments,5390432768.0,5.39B
+ESE,ESCO Technologies Inc.,Technology,Scientific & Technical Instruments,5188440576.0,5.188B
+ST,Sensata Technologies Holding plc,Technology,Scientific & Technical Instruments,4739093504.0,4.739B
+NOVT,Novanta Inc.,Technology,Scientific & Technical Instruments,4187686912.0,4.188B
+ITRN,Ituran Location and Control Ltd.,Technology,Scientific & Technical Instruments,670812224.0,0.671B
+VPG,"Vishay Precision Group, Inc.",Technology,Scientific & Technical Instruments,377392032.0,0.377B
+MLAB,"Mesa Laboratories, Inc.",Technology,Scientific & Technical Instruments,372723232.0,0.373B
+MVIS,"MicroVision, Inc.",Technology,Scientific & Technical Instruments,346109728.0,0.346B
+GNSS,Genasys Inc.,Technology,Scientific & Technical Instruments,87599736.0,0.088B
+MIND,"MIND Technology, Inc.",Technology,Scientific & Technical Instruments,80650528.0,0.081B
+WRAP,"Wrap Technologies, Inc.",Technology,Scientific & Technical Instruments,70640776.0,0.071B
+ACFN,"Acorn Energy, Inc.",Technology,Scientific & Technical Instruments,69189832.0,0.069B
+ODYS,Odysight.ai Inc.,Technology,Scientific & Technical Instruments,64180044.0,0.064B
+SOTK,Sono-Tek Corporation,Technology,Scientific & Technical Instruments,53474180.0,0.053B
+ELSE,"Electro-Sensors, Inc.",Technology,Scientific & Technical Instruments,16641866.0,0.017B
+FCUV,Focus Universal Inc.,Technology,Scientific & Technical Instruments,14182464.0,0.014B
+SVRE,SaverOne 2014 Ltd.,Technology,Scientific & Technical Instruments,11705062.0,0.012B
+WATT,Energous Corporation,Technology,Scientific & Technical Instruments,10864263.0,0.011B
+ASTC,Astrotech Corporation,Technology,Scientific & Technical Instruments,8716220.0,0.009B
+SOBR,"SOBR Safe, Inc.",Technology,Scientific & Technical Instruments,5200703.0,0.005B

@@ -1,0 +1,68 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+COP,ConocoPhillips,Energy,Oil & Gas E&P,123607597056.0,123.608B
+EOG,"EOG Resources, Inc.",Energy,Oil & Gas E&P,68150849536.0,68.151B
+CNQ,Canadian Natural Resources Limited,Energy,Oil & Gas E&P,65856372736.0,65.856B
+OXY,Occidental Petroleum Corporation,Energy,Oil & Gas E&P,46869188608.0,46.869B
+FANG,"Diamondback Energy, Inc.",Energy,Oil & Gas E&P,43063939072.0,43.064B
+WDS,Woodside Energy Group Ltd,Energy,Oil & Gas E&P,32620525568.0,32.621B
+EQT,EQT Corporation,Energy,Oil & Gas E&P,32351424512.0,32.351B
+EXE,Expand Energy Corporation,Energy,Oil & Gas E&P,23047770112.0,23.048B
+DVN,Devon Energy Corporation,Energy,Oil & Gas E&P,22916278272.0,22.916B
+TPL,Texas Pacific Land Corporation,Energy,Oil & Gas E&P,21458184192.0,21.458B
+CTRA,Coterra Energy Inc.,Energy,Oil & Gas E&P,18651142144.0,18.651B
+PR,Permian Resources Corporation,Energy,Oil & Gas E&P,11438173184.0,11.438B
+OVV,Ovintiv Inc.,Energy,Oil & Gas E&P,10826397696.0,10.826B
+AR,Antero Resources Corporation,Energy,Oil & Gas E&P,9861078016.0,9.861B
+APA,APA Corporation,Energy,Oil & Gas E&P,8307790336.0,8.308B
+RRC,Range Resources Corporation,Energy,Oil & Gas E&P,8162805760.0,8.163B
+CHRD,Chord Energy Corporation,Energy,Oil & Gas E&P,6292092416.0,6.292B
+MTDR,Matador Resources Company,Energy,Oil & Gas E&P,6269517824.0,6.27B
+MGY,Magnolia Oil & Gas Corporation,Energy,Oil & Gas E&P,4747476992.0,4.747B
+CRK,"Comstock Resources, Inc.",Energy,Oil & Gas E&P,4727170560.0,4.727B
+CRC,California Resources Corporation,Energy,Oil & Gas E&P,4157222400.0,4.157B
+CNX,CNX Resources Corporation,Energy,Oil & Gas E&P,4129435136.0,4.129B
+VIST,"Vista Energy, S.A.B. de C.V.",Energy,Oil & Gas E&P,4063898880.0,4.064B
+MUR,Murphy Oil Corporation,Energy,Oil & Gas E&P,3548317696.0,3.548B
+CIVI,"Civitas Resources, Inc.",Energy,Oil & Gas E&P,3408034560.0,3.408B
+SM,SM Energy Company,Energy,Oil & Gas E&P,3281936640.0,3.282B
+GPOR,Gulfport Energy Corporation,Energy,Oil & Gas E&P,3056262656.0,3.056B
+STR,Sitio Royalties Corp.,Energy,Oil & Gas E&P,2735159808.0,2.735B
+BSM,"Black Stone Minerals, L.P.",Energy,Oil & Gas E&P,2576132352.0,2.576B
+NOG,"Northern Oil and Gas, Inc.",Energy,Oil & Gas E&P,2553077504.0,2.553B
+BKV,BKV Corporation,Energy,Oil & Gas E&P,1974617984.0,1.975B
+TALO,Talos Energy Inc.,Energy,Oil & Gas E&P,1725621120.0,1.726B
+BTE,Baytex Energy Corp.,Energy,Oil & Gas E&P,1713346944.0,1.713B
+MNR,,Energy,Oil & Gas E&P,1683949696.0,1.684B
+KRP,"Kimbell Royalty Partners, LP",Energy,Oil & Gas E&P,1507195392.0,1.507B
+DMLP,"Dorchester Minerals, L.P.",Energy,Oil & Gas E&P,1191306112.0,1.191B
+VET,Vermilion Energy Inc.,Energy,Oil & Gas E&P,1162843520.0,1.163B
+VTS,"Vitesse Energy, Inc.",Energy,Oil & Gas E&P,1027507904.0,1.028B
+HPK,"HighPeak Energy, Inc.",Energy,Oil & Gas E&P,971216384.0,0.971B
+KOS,Kosmos Energy Ltd.,Energy,Oil & Gas E&P,856074688.0,0.856B
+TXO,"TXO Partners, L.P.",Energy,Oil & Gas E&P,771910784.0,0.772B
+GRNT,"Granite Ridge Resources, Inc.",Energy,Oil & Gas E&P,729738880.0,0.73B
+VTLE,"Vital Energy, Inc.",Energy,Oil & Gas E&P,689573376.0,0.69B
+SD,"SandRidge Energy, Inc.",Energy,Oil & Gas E&P,435142496.0,0.435B
+EGY,"VAALCO Energy, Inc.",Energy,Oil & Gas E&P,404521056.0,0.405B
+TBN,Tamboran Resources Corporation,Energy,Oil & Gas E&P,363590560.0,0.364B
+GFR,Greenfire Resources Ltd.,Energy,Oil & Gas E&P,362505472.0,0.363B
+GPRK,GeoPark Limited,Energy,Oil & Gas E&P,340346816.0,0.34B
+WTI,"W&T Offshore, Inc.",Energy,Oil & Gas E&P,269976992.0,0.27B
+SJT,San Juan Basin Royalty Trust,Energy,Oil & Gas E&P,268000608.0,0.268B
+BRY,Berry Corporation,Energy,Oil & Gas E&P,259188672.0,0.259B
+PNRG,PrimeEnergy Resources Corporation,Energy,Oil & Gas E&P,249444240.0,0.249B
+INR,"Infinity Natural Resources, Inc.",Energy,Oil & Gas E&P,227038752.0,0.227B
+KGEI,Kolibri Global Energy Inc.,Energy,Oil & Gas E&P,199773312.0,0.2B
+EP,Empire Petroleum Corporation,Energy,Oil & Gas E&P,170837472.0,0.171B
+AMPY,Amplify Energy Corp.,Energy,Oil & Gas E&P,164697040.0,0.165B
+ANNA,"AleAnna, Inc.",Energy,Oil & Gas E&P,164672608.0,0.165B
+EPSN,Epsilon Energy Ltd.,Energy,Oil & Gas E&P,129263400.0,0.129B
+PROP,Prairie Operating Co.,Energy,Oil & Gas E&P,128208136.0,0.128B
+MVO,MV Oil Trust,Energy,Oil & Gas E&P,69230000.0,0.069B
+PVL,Permianville Royalty Trust,Energy,Oil & Gas E&P,65491800.0,0.065B
+CRT,Cross Timbers Royalty Trust,Energy,Oil & Gas E&P,52795200.0,0.053B
+NRT,North European Oil Royalty Trust,Energy,Oil & Gas E&P,49169656.0,0.049B
+PRT,PermRock Royalty Trust,Energy,Oil & Gas E&P,48906112.0,0.049B
+VOC,VOC Energy Trust,Energy,Oil & Gas E&P,46070000.0,0.046B
+USEG,U.S. Energy Corp.,Energy,Oil & Gas E&P,40487968.0,0.04B
+MTR,Mesa Royalty Trust,Energy,Oil & Gas E&P,10398832.0,0.01B
