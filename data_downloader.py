@@ -8,7 +8,7 @@ symbol_and_stock = {}
 global_period = None
 global_interval = None
 
-def get_transaction_df(symbol, period="10mo", interval="4h"):
+def get_transaction_df(symbol, period="12mo", interval="1d"):
     """Update the shared variable safely."""
     global symbol_and_df
     df = symbol_and_df.get(symbol)
@@ -21,7 +21,10 @@ def get_transaction_df(symbol, period="10mo", interval="4h"):
 
     df =  symbol_and_df[symbol]
     if(len(df) < 1):
-        df =  yf.download(symbol, period=period, interval=interval,auto_adjust=True)
+        try:
+            df =  yf.download(symbol, period=period, interval=interval,auto_adjust=True)
+        except Exception  as e:
+            return pd.DataFrame()
         symbol_and_df[symbol] = df
 
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df

@@ -2,28 +2,35 @@
 # INSTITUTIONAL LEADER ROTATION RADAR
 # =========================================================
 
-import yfinance as yf
+
 import pandas as pd
 import numpy as np
 
+import data_downloader
+import industry_score
+
 # ---------------- CONFIG ----------------
 
-TICKERS = ["NVDA","AMD","AVGO","MU","SMCI"]
 
-SECTOR_MAP = {
-    "NVDA": "SEMI",
-    "AMD": "SEMI",
-    "AVGO": "SEMI",
-    "MU": "SEMI",
-    "SMCI": "AI_SERVER"
-}
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+pd.set_option('display.width', 1000)
 
-SECTOR_ETF = {
-    "SEMI": "SMH",
-    "AI_SERVER": "QQQ"
-}
+MARKET_ETF = "QQQ"
 
-MARKET_ETF = "SPY"
+import os
+from collections import defaultdict
+industry_and_symbol = defaultdict(list)
+symbol_and_industry = {}
+def load_symbol_sector():
+    base_dir = "../resource/industries/"
+    for file in os.listdir(base_dir):
+        if file.endswith(".csv"):
+            df = pd.read_csv(os.path.join(base_dir, file))
+            industry_and_symbol[file.replace(".csv", "")] = df["symbol"].tolist()
+            for key, values in industry_and_symbol.items():
+                for val in values:
+                    symbol_and_industry[val]=key
 
 
 # ---------------- UTIL ----------------
@@ -44,14 +51,8 @@ def slope(series):
 
 def load_data(ticker):
 
-    df = yf.download(
-        ticker,
-        period="1y",
-        auto_adjust=True,
-        progress=False
-    )
+    df = data_downloader.get_transaction_df(ticker)
 
-    # ⭐ 修复 yfinance MultiIndex bug
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
@@ -72,7 +73,6 @@ def load_data(ticker):
 def market_ok():
 
     spy = load_data(MARKET_ETF)
-
     close = float(spy["Close"].iloc[-1])
     ma50  = float(spy["MA50"].iloc[-1])
     ma200 = float(spy["MA200"].iloc[-1])
@@ -115,11 +115,11 @@ def sector_breadth(tickers):
 
 def sector_score(sector):
 
-    etf = SECTOR_ETF[sector]
+    etf = industry_score.SECTOR_ETF[sector]
 
     rs = sector_relative_strength(etf)
 
-    members = [k for k,v in SECTOR_MAP.items() if v==sector]
+    members = industry_and_symbol[sector]
     breadth = sector_breadth(members)
 
     score = 0.6*rs + 0.4*breadth
@@ -196,7 +196,7 @@ def early_warning(df):
 # MAIN SCAN
 # =========================================================
 
-def run():
+def run(tickers : list):
 
     if not market_ok():
         print("❌ Market regime not favorable")
@@ -208,11 +208,11 @@ def run():
 
     sector_cache = {}
 
-    for ticker in TICKERS:
+    for ticker in tickers:
 
         df = load_data(ticker)
 
-        sector = SECTOR_MAP[ticker]
+        sector = symbol_and_industry[ticker]
 
         if sector not in sector_cache:
             sector_cache[sector] = sector_score(sector)
@@ -242,4 +242,7 @@ def run():
 # =========================================================
 
 if __name__ == "__main__":
-    run()
+    # watch_list = pd.read_csv(f"../resource/my_vip.csv")['symbol'].tolist()
+    watch_list = ["SNDK"]
+    load_symbol_sector()
+    run(watch_list)
