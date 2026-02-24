@@ -5,9 +5,9 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 
 ### Copiot version
-def detect_ema_converge_diverge(ticker, period="1mo", converge_thresh=0.002, diverge_thresh=0.01):
+def detect_ema_converge_diverge(ticker, period="1mo", converge_thresh=0.005, diverge_thresh=0.01):
     try:
-        df = data.get_transaction_df(ticker, period=period, interval="4h")
+        df = data.get_transaction_df(ticker)
     except Exception as e:
         print(f"Error downloading data for {ticker}: {e}")
         return pd.DataFrame()
@@ -125,5 +125,5 @@ def call(input_file, output_file):
     df2.to_csv(f'{output_file}', index=False)
 
 if __name__ == "__main__":
-    df = detect_ema_converge_diverge("WDC")
+    df = detect_ema_converge_diverge("COHR")
     print(df)

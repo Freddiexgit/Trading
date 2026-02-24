@@ -7,7 +7,8 @@ import pandas as pd
 import numpy as np
 
 import data_downloader
-import industry_score
+
+from analytics import industry_score
 
 # ---------------- CONFIG ----------------
 
@@ -23,7 +24,7 @@ from collections import defaultdict
 industry_and_symbol = defaultdict(list)
 symbol_and_industry = {}
 def load_symbol_sector():
-    base_dir = "../resource/industries/"
+    base_dir = "resource/industries/"
     for file in os.listdir(base_dir):
         if file.endswith(".csv"):
             df = pd.read_csv(os.path.join(base_dir, file))
@@ -56,6 +57,8 @@ def load_data(ticker):
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
+    if df is None or len(df) < 200:
+        return pd.DataFrame()
     df["MA10"] = df["Close"].ewm(span=10).mean()
     df["MA20"] = df["Close"].ewm(span=20).mean()
     df["MA50"] = df["Close"].rolling(50).mean()
@@ -196,8 +199,8 @@ def early_warning(df):
 # MAIN SCAN
 # =========================================================
 
-def run(tickers : list):
-
+def run(tickers : list,output_file = "leader_rotation.csv"):
+    load_symbol_sector()
     if not market_ok():
         print("❌ Market regime not favorable")
         return
@@ -211,18 +214,25 @@ def run(tickers : list):
     for ticker in tickers:
 
         df = load_data(ticker)
+        if df is None or len(df) < 10:
+            continue
+        try:
+            sector = symbol_and_industry[ticker]
+            if sector not in sector_cache:
+                sector_cache[sector] = sector_score(sector)
 
-        sector = symbol_and_industry[ticker]
+            sec_score = sector_cache[sector]
 
-        if sector not in sector_cache:
-            sector_cache[sector] = sector_score(sector)
-
-        sec_score = sector_cache[sector]
-
-        core = leader_structure(df)
-        fake = fake_breakout_filter(df)
-        early = early_warning(df)
-
+            core = leader_structure(df)
+            fake = fake_breakout_filter(df)
+            early = early_warning(df)
+        except Exception as e:
+            # error: SBUX
+            # 'Close'
+            # error: HBANL
+            # 'HBANL'
+            print(f"error: {ticker}",  e)
+            continue
         total = (
             0.55*core +
             0.25*fake +
@@ -234,15 +244,15 @@ def run(tickers : list):
     print("================================")
     print("🔥 LEADER ROTATION RANKING")
     print("================================")
-
-    for r in sorted(results, key=lambda x:x[1], reverse=True):
-        print(r[0], round(r[1],3))
-
+    results_sorted = sorted(results, key=lambda x:x[1], reverse=True)
+    # for r in results_sorted:
+    #     print(r[0], round(r[1],3))
+    pd.DataFrame(results_sorted, columns=["symbol", "Score"]).to_csv(output_file, index=False)
 
 # =========================================================
 
 if __name__ == "__main__":
     # watch_list = pd.read_csv(f"../resource/my_vip.csv")['symbol'].tolist()
-    watch_list = ["SNDK"]
-    load_symbol_sector()
+    watch_list = ["YUMC"]
+
     run(watch_list)

@@ -10,6 +10,7 @@ from RSI_bottom_finder import rsi_bottom
 from find_cross_ema_5_20_90 import find_cross
 from institute_enter import institute_enter
 from analytics import quick_fundamental_analysis as qfa
+import eam_analysis_with_trend as  eat
 import pandas as pd
 import glob
 import  data_downloader as data
@@ -17,8 +18,12 @@ import traceback
 import AI_buying_point as ai
 import ema_angle_leaders as ea
 
-data.global_period = "12mo"
-data.global_interval ="1d"
+# data.global_period = "12mo"
+# data.global_interval ="1d"
+
+
+data.global_period = "2y"
+data.global_interval ="1wk"
 
 date = datetime.now().strftime("%Y-%m-%d")
 # ticker_file_name = "nzx_tickers"
@@ -28,7 +33,7 @@ ticker_file_name = "nyse_and_nasdaq_top_500"
 # ticker_file_name = "us_top_3000"
 # ticker_file_name = "my_owned"
 ticker_file_name_full = f"{ticker_file_name}.csv"
-output_folder = f"output/{date}/us/{ticker_file_name}"
+output_folder = f"output/{date}/us_{data.global_interval}/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
     # Create the directory
     os.makedirs(f"{output_folder}")
@@ -42,24 +47,36 @@ except Exception  as e:
     print("error:", e)
 
 try:
+    print("running ema_angle_leaderst...")
     ea.main(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ema_angle_leaders.csv")
     df_tickers_ea = pd.read_csv(f"{output_folder}/ema_angle_leaders.csv")
-    di.generate_pdf(df_tickers_ea[["symbol"]], f"{output_folder}/ema_angle_leaders.pdf", "No", "us")
+    di.generate_pdf(df_tickers_ea[["symbol"]].head(100), f"{output_folder}/ema_angle_leaders.pdf", "No", "us")
 except Exception as e:
     print("ema_angle_leaders error:", e)
 try:
     print("running ai entry point...")
     ai.run_ai_buying_point(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ai_buy.csv")
     df_tickers_ai = pd.read_csv(f"{output_folder}/ai_buy.csv")
-    di.generate_pdf(df_tickers_ai, f"{output_folder}/ai_buy.pdf", "No", "us")
+    di.generate_pdf(df_tickers_ai, f"{output_folder}/ai_buy.pdf", "yes", "us")
 except Exception as e:
     print("ai entry point error:", e)
+
+try:
+    print("EMA trend...")
+    # df_tickers = pd.read_csv(f"resource/{ticker_file_name_full}")["symbol"].dropna().tolist()
+    # eat.run(df_tickers,output_file = f"{output_folder}/EMA_Trend.csv")
+    x = pd.read_csv(  f"{output_folder}/EMA_Trend.csv")
+    x = x[["symbol"]].head(130)
+    di.generate_pdf( x, f"{output_folder}/EMA_Trend.pdf", "no", "us")
+except Exception as e:
+    print("EMA trend error:", e)
+
 
 try:
     print("running rsi_bottom...")
     rsi_bottom(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/bottom.csv")
     df_tickers_rsi = pd.read_csv(  f"{output_folder}/bottom.csv")
-    di.generate_pdf(df_tickers_rsi, f"{output_folder}/bottom.pdf", "No", "us")
+    di.generate_pdf(df_tickers_rsi, f"{output_folder}/bottom.pdf", "yes", "us")
 except Exception  as  e:
     print("rsi_bottom error:", e)
 try:

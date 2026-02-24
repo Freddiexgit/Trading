@@ -25,8 +25,8 @@ def get_data(df , ticker):
     five_cross_20 = []
     twenty_cross_90 = []
     five_cross_90= []
-    print(ticker)
-    print(df)
+    # print(ticker)
+    # print(df)
     if len(df) < 2: return five_cross_20, five_cross_90, twenty_cross_90
     if (df["5_cross_20"].iloc[0] == False) and (df["5_cross_20"].iloc[1] == True):
         five_cross_20.append(ticker)
@@ -43,7 +43,7 @@ def find_cross(df_tickers,output_folder = f"resource/{date}/us"):
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
         try:
-            df1 = data.get_transaction_df(ticker, period="4mo", interval="4h")
+            df1 = data.get_transaction_df(ticker)
             df = df1.copy()
         except Exception as e:
             print(f"Error downloading data for {ticker}: {e}")
