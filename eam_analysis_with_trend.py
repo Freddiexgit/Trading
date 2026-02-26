@@ -115,7 +115,7 @@ def load_data(ticker):
     df["MA60"] = df["Close"].rolling(60).mean()
     df["MA200"] = df["Close"].rolling(200).mean()
     df["VOL20"] = df["Volume"].rolling(20).mean()
-    df["ATR_14"]=add_atr(df)
+    df = add_atr(df)
     df["RSI14"]=rsi(df["Close"], 14)
     df = add_macd_hist(df)
 
@@ -214,16 +214,156 @@ def leader_structure(df):
 # =========================================================
 # FAKE BREAKOUT FILTER
 # =========================================================
+from typing import Dict, Any
+def fake_breakout_filter(
+        df: pd.DataFrame,
+        lookback: int = 60,
+        vol_mult: float = 1.5,
+        close_top_pct: float = 0.6,
+        upper_wick_pct: float = 0.35,
+        require_htf_confirm: bool = False,
+        htf_df: pd.DataFrame | None = None,
+        follow_through_bars: int = 0,
+        pre_vol_bars: int = 5
+) -> Dict[str, Any]:
+    diagnostics: Dict[str, Any] = {}
 
-def fake_breakout_filter(df):
+    # Minimum rows required: lookback + 1 breakout bar + follow_through_bars + margin for vol20/pre5
+    min_rows = lookback + 1 + follow_through_bars + max(20, pre_vol_bars)
+    if len(df) < min_rows:
+        return {"status": "INSUFFICIENT_HISTORY", "score": 0.0, "diagnostics": diagnostics}
 
-    breakout = df["Close"].iloc[-1] > df["Close"].rolling(60).max().iloc[-2]
-    volume = df["Volume"].iloc[-1] > 1.2*df["VOL20"].iloc[-1]
+    # Convert to positional index to avoid negative-slice surprises
+    # breakout_pos is the integer index of the breakout bar within df (0..len-1)
+    breakout_pos = len(df) - 1 - follow_through_bars
 
-    if breakout and volume:
-        return 1.0
+    # Resistance: highest high in the lookback window excluding breakout bar
+    res_start = max(0, breakout_pos - lookback)
+    res_end = breakout_pos  # exclusive of breakout_pos
+    resistance = df["High"].iloc[res_start:res_end].max()
+    diagnostics['resistance'] = float(resistance)
 
-    return 0.6
+    # Breakout bar metrics
+    b = df.iloc[breakout_pos]
+    b_high = float(b["High"])
+    b_low = float(b["Low"])
+    b_close = float(b["Close"])
+    b_open = float(b["Open"])
+    b_vol = float(b["Volume"])
+
+    diagnostics.update({
+        'breakout_pos': int(breakout_pos),
+        'breakout_high': b_high,
+        'breakout_low': b_low,
+        'breakout_close': b_close,
+        'breakout_open': b_open,
+        'breakout_vol': b_vol
+    })
+
+    # Trailing vol20 up to breakout_pos (exclude breakout bar)
+    vol20_slice = df["Volume"].iloc[max(0, breakout_pos - 20): breakout_pos]
+    vol20 = float(vol20_slice.mean()) if not vol20_slice.empty else float(df["Volume"].iloc[:breakout_pos].mean())
+    vol20 = vol20 if (vol20 and not np.isnan(vol20)) else 1.0  # avoid zero division
+    diagnostics['vol20'] = float(vol20)
+
+    # Pre-breakout short-term average (n bars immediately before breakout)
+    pre_start = max(0, breakout_pos - pre_vol_bars)
+    pre5_slice = df["Volume"].iloc[pre_start: breakout_pos]
+    pre5_vol_avg = float(pre5_slice.mean()) if not pre5_slice.empty else vol20
+    pre5_vol_avg = pre5_vol_avg if (pre5_vol_avg and not np.isnan(pre5_vol_avg)) else vol20
+    diagnostics['pre5_vol_avg'] = float(pre5_vol_avg)
+
+    # Breakout attempt and hold
+    breakout_attempt = b_high > resistance
+    diagnostics['breakout_attempt'] = bool(breakout_attempt)
+    if not breakout_attempt:
+        return {"status": "NO_BREAKOUT", "score": 0.0, "diagnostics": diagnostics}
+
+    held_at_close = b_close >= resistance  # use >= to allow exact holds
+    diagnostics['held_at_close'] = bool(held_at_close)
+
+    # Close position in daily range
+    daily_range = b_high - b_low
+    close_pos = (b_close - b_low) / daily_range if daily_range > 0 else 1.0
+    close_pos = float(np.clip(close_pos, 0.0, 1.0))
+    diagnostics['close_pos'] = close_pos
+
+    # Wick / rejection detection
+    upper_wick = b_high - max(b_open, b_close)
+    upper_wick_pct_of_range = (upper_wick / daily_range) if daily_range > 0 else 0.0
+    diagnostics['upper_wick_pct'] = float(upper_wick_pct_of_range)
+    # Rejection defined as a large upper wick relative to range AND close is not strong
+    rejection = (upper_wick_pct_of_range >= upper_wick_pct) and (close_pos < close_top_pct)
+    diagnostics['rejection'] = bool(rejection)
+
+    # Volume checks
+    vol_surge_vs_20 = b_vol > (vol20 * vol_mult)
+    vol_surge_vs_pre5 = b_vol > (pre5_vol_avg * vol_mult)
+    diagnostics['vol_surge_vs_20'] = bool(vol_surge_vs_20)
+    diagnostics['vol_surge_vs_pre5'] = bool(vol_surge_vs_pre5)
+
+    # HTF confirmation
+    htf_ok = False
+    if require_htf_confirm:
+        if htf_df is None or len(htf_df) < 1:
+            htf_ok = False
+        else:
+            # Use latest HTF close (assumes htf_df is aligned to same calendar)
+            htf_ok = float(htf_df["Close"].iloc[-1]) > resistance
+    diagnostics['htf_ok'] = bool(htf_ok)
+
+    # Follow-through: explicitly check the next follow_through_bars after breakout_pos
+    follow_through_ok = None
+    if follow_through_bars > 0:
+        ft_start = breakout_pos + 1
+        ft_end = min(len(df), breakout_pos + 1 + follow_through_bars)
+        if ft_start < ft_end:
+            ft_closes = df["Close"].iloc[ft_start:ft_end]
+            # require average close of follow-through bars to be >= breakout close (tunable)
+            follow_through_ok = float(ft_closes.mean()) >= b_close
+        else:
+            follow_through_ok = None
+    diagnostics['follow_through_ok'] = follow_through_ok
+
+    # Scoring
+    hold_score = 1.0 if held_at_close else 0.0
+    if vol_surge_vs_20 and vol_surge_vs_pre5:
+        vol_score = 1.0
+    elif vol_surge_vs_20 or vol_surge_vs_pre5:
+        vol_score = 0.6
+    else:
+        vol_score = 0.0
+    htf_score = 1.0 if htf_ok else 0.0
+    rejection_penalty = -0.6 if rejection else 0.0
+
+    if require_htf_confirm:
+        w_hold, w_close, w_vol, w_htf = 0.30, 0.30, 0.25, 0.15
+    else:
+        w_hold, w_close, w_vol, w_htf = 0.35, 0.35, 0.30, 0.0
+
+    raw_score = (w_hold * hold_score) + (w_close * close_pos) + (w_vol * vol_score) + (
+                w_htf * htf_score) + rejection_penalty
+    score = float(np.clip(raw_score, 0.0, 1.0))
+
+    # Classification
+    if not held_at_close:
+        status = "FAKE_BREAKOUT" if rejection else "FAILED_BREAKOUT"
+    elif score >= 0.8:
+        status = "TRUE_BREAKOUT"
+    elif score >= 0.55:
+        status = "SUSPECT_BREAKOUT"
+    else:
+        status = "LOW_CONVICTION_BREAKOUT"
+
+    diagnostics.update({
+        'hold_score': hold_score,
+        'vol_score': vol_score,
+        'htf_score': htf_score,
+        'rejection_penalty': rejection_penalty,
+        'raw_score': float(raw_score)
+    })
+
+    return {"status": status, "score": round(score, 3), "diagnostics": diagnostics}
 
 
 # =========================================================
@@ -303,6 +443,9 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
 
             core = leader_structure(df)
             fake = fake_breakout_filter(df)
+            fake_break_score = fake.get('score', 0.0)
+            fake_break_signal = fake.get('status', None)
+
             result = early_warning(df)
             early = result.get('score', 0.0)
             buy_signal = result.get('signal', None)
@@ -311,18 +454,18 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
             continue
         total = (
             0.55*core +
-            0.25*fake +
+            0.25*fake_break_score +
             0.20*early
         ) * (1 + sec_score)
 
-        results.append((ticker, total, sec_score, core, fake, early,buy_signal))
+        results.append((ticker, total, sec_score, core, fake,fake_break_score,fake_break_signal, early,buy_signal))
 
     print("================================")
     print("🔥 LEADER ROTATION RANKING")
     print("================================")
     results_sorted = sorted(results, key=lambda x:x[1], reverse=True)
 
-    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "fake", "early"])
+    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "fake","fake_break_score","fake_break_signal" ,"early","buy_signal"])
     # print(df)
     df.to_csv(output_file, index=False)
 
