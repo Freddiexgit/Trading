@@ -181,7 +181,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
         print(f"Index: {index}, Value: {row['symbol']}")
         ticker = row['symbol']
         try:
-            stock = data.get_stock_obj(ticker,period="10mo", interval="4h")
+            stock = data.get_stock_obj(ticker)
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
             continue

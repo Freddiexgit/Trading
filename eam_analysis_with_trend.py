@@ -123,6 +123,8 @@ def sector_score(sector):
     rs = sector_relative_strength(etf)
 
     members = industry_and_symbol[sector]
+    if len(members) >= 10:
+        members = members[:10]
     breadth = sector_breadth(members)
 
     score = 0.6*rs + 0.4*breadth
@@ -227,11 +229,7 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
             fake = fake_breakout_filter(df)
             early = early_warning(df)
         except Exception as e:
-            # error: SBUX
-            # 'Close'
-            # error: HBANL
-            # 'HBANL'
-            print(f"error: {ticker}",  e)
+            print(f"eam error: {ticker}",  e)
             continue
         total = (
             0.55*core +
@@ -252,7 +250,9 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
 # =========================================================
 
 if __name__ == "__main__":
+    current_dir = os.getcwd()
+    print(f"Current Directory: {current_dir}")
     # watch_list = pd.read_csv(f"../resource/my_vip.csv")['symbol'].tolist()
-    watch_list = ["YUMC"]
+    watch_list = ["AAPL"]
 
     run(watch_list)

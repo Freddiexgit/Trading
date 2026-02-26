@@ -18,18 +18,18 @@ import traceback
 import AI_buying_point as ai
 import ema_angle_leaders as ea
 
-# data.global_period = "12mo"
-# data.global_interval ="1d"
+data.global_period = "12mo"
+data.global_interval ="1d"
 
-
-data.global_period = "2y"
-data.global_interval ="1wk"
+#
+# data.global_period = "2y"
+# data.global_interval ="1wk"
 
 date = datetime.now().strftime("%Y-%m-%d")
 # ticker_file_name = "nzx_tickers"
-# ticker_file_name = "my_vip"
+ticker_file_name = "my_vip"
 # ticker_file_name = "my_watch_list"
-ticker_file_name = "nyse_and_nasdaq_top_500"
+# ticker_file_name = "nyse_and_nasdaq_top_500"
 # ticker_file_name = "us_top_3000"
 # ticker_file_name = "my_owned"
 ticker_file_name_full = f"{ticker_file_name}.csv"
@@ -37,6 +37,23 @@ output_folder = f"output/{date}/us_{data.global_interval}/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
     # Create the directory
     os.makedirs(f"{output_folder}")
+
+
+try:
+    print("running run_converge_diverge...")
+    run_converge_diverge(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
+except Exception  as e:
+    print("run_converge_diverge error:", e)
+try:
+    print("running run_last_day_volume_increase...")
+    run_last_day_volume_increase(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
+except Exception as e:
+    print("run_last_day_volume_increase error:", e)
+try:
+    print("running run_volume_and_cvg_dvg...")
+    run_volume_and_cvg_dvg(output_folder = f"{output_folder}" )
+except Exception as e:
+    print("run_volume_and_cvg_dvg error:", e)
 
 try:
     qfa.run_quick_fundamental_analysis(input_file=f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/quick_fundamental_analysis.csv")
@@ -47,10 +64,10 @@ except Exception  as e:
     print("error:", e)
 
 try:
-    print("running ema_angle_leaderst...")
+    print("running ema_angle_leaders...")
     ea.main(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ema_angle_leaders.csv")
     df_tickers_ea = pd.read_csv(f"{output_folder}/ema_angle_leaders.csv")
-    di.generate_pdf(df_tickers_ea[["symbol"]].head(100), f"{output_folder}/ema_angle_leaders.pdf", "No", "us")
+    di.generate_pdf(df_tickers_ea[["symbol"]].head(130), f"{output_folder}/ema_angle_leaders.pdf", "No", "us")
 except Exception as e:
     print("ema_angle_leaders error:", e)
 try:
@@ -63,13 +80,14 @@ except Exception as e:
 
 try:
     print("EMA trend...")
-    # df_tickers = pd.read_csv(f"resource/{ticker_file_name_full}")["symbol"].dropna().tolist()
-    # eat.run(df_tickers,output_file = f"{output_folder}/EMA_Trend.csv")
+    df_tickers = pd.read_csv(f"resource/{ticker_file_name_full}")["symbol"].dropna().tolist()
+    eat.run(df_tickers,output_file = f"{output_folder}/EMA_Trend.csv")
     x = pd.read_csv(  f"{output_folder}/EMA_Trend.csv")
     x = x[["symbol"]].head(130)
     di.generate_pdf( x, f"{output_folder}/EMA_Trend.pdf", "no", "us")
 except Exception as e:
     print("EMA trend error:", e)
+
 
 
 try:
@@ -93,21 +111,6 @@ try:
     di.generate_pdf(df_tickers_ba, f"{output_folder}/bid_ask.pdf", "No", "us")
 except Exception as e:
     print("institute_enter error:", e)
-try:
-    print("running run_converge_diverge...")
-    run_converge_diverge(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
-except Exception  as e:
-    print("run_converge_diverge error:", e)
-try:
-    print("running run_last_day_volume_increase...")
-    run_last_day_volume_increase(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
-except Exception as e:
-    print("run_momentum error:", e)
-try:
-    print("running run_volume_and_cvg_dvg...")
-    run_volume_and_cvg_dvg(output_folder = f"{output_folder}" )
-except Exception as e:
-    print("run_volume_and_cvg_dvg error:", e)
 
 
 def pd_read_pattern(pattern):
@@ -135,9 +138,10 @@ try:
 
     df_tickers_fqa = pd.read_csv(f"{output_folder}/quick_fundamental_analysis.csv")[["symbol"]]
     df_tickers_ea = pd.read_csv(f"{output_folder}/ema_angle_leaders.csv")[["symbol"]]
-
+    df_tickers_trend = pd.read_csv(f"{output_folder}/EMA_Trend.csv")[["symbol"]]
 
     df_merged = pd.merge(df_tickers_fqa, df_tickers_ea, on='symbol', how='inner')
+    df_merged = pd.merge(df_merged, df_tickers_trend, on='symbol', how='inner')
     di.generate_pdf(df_merged, f"{output_folder}/eam_angle_quick_fundamental_common.pdf", "No", "us")
 except Exception as e:
     print("merge error:", e)

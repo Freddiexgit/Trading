@@ -56,7 +56,7 @@ def detect_ema_converge_diverge(ticker, period="1mo", converge_thresh=0.005, div
     vol_ok = df["Volume"].iloc[-1] > df["Volume"].rolling(20).mean().iloc[-1]
     trend_ok = df["EMA20"].iloc[-1] > df["EMA50"].iloc[-1]
     price_ok = df["Close"].iloc[-1] > df["EMA20"].iloc[-1]
-    recent = (df.index[-1] - first_diverge).days <= 5
+    recent = (df.index[-1] - first_diverge).days <= 10
 
     if all([momentum_ok, rsi_ok, vol_ok, trend_ok, price_ok, recent]):
         return df.loc[last_converge:first_diverge]

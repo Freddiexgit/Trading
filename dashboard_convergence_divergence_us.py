@@ -15,7 +15,7 @@ def run_converge_diverge(source_tickers="my_watch_list.csv",output_folder =f"res
         # Create the directory
         os.makedirs(f"{output_folder}")
     ec.call(source_tickers, f'{output_folder}/ema_cv_dv.csv')
-    obe.order_by_ema(f'{output_folder}/ema_cv_dv.csv', f'{output_folder}/ema_cv_dv_ordered_by_20ema.csv', 5)
+    obe.order_by_ema(f'{output_folder}/ema_cv_dv.csv', f'{output_folder}/ema_cv_dv_ordered_by_20ema.csv', 20)
     df_tickers = pd.read_csv(f"{output_folder}/ema_cv_dv_ordered_by_20ema.csv")
     # df_tickers = df_tickers[0:110]
     di.generate_pdf(df_tickers,

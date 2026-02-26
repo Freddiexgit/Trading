@@ -175,7 +175,7 @@ def run_sequential_screening(ticker_list):
         res = process_ticker(symbol)
         if res:
             results.append(res)
-            logging.info(f">>> [成功符合] {symbol} | 目前進度: {i + 1}/{total}")
+            print(f">>> [成功符合] {symbol} | 目前進度: {i + 1}/{total}")
 
         # 每處理完一個股票稍作休息 (可選)
         # time.sleep(0.5)
