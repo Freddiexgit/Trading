@@ -155,7 +155,7 @@ def process_ticker(symbol: str) -> dict | None:
             'Mkt_Cap_B': round(mkt_cap / 1e9, 2),
             'Momentum_20d': f"{momentum:.2%}",
             'Sector': info.get('sector', 'N/A'),
-            'BB_Status': bb_status,
+            'bollinger_band_status': bb_status,
             'BB_Pos': bb_pos
         }
 

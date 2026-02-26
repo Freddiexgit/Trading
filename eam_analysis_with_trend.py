@@ -50,6 +50,56 @@ def slope(series):
     return np.polyfit(x,y,1)[0]
 
 
+def add_atr(df, period=14):
+    """Calculates the Average True Range and appends it to the DataFrame."""
+
+    # 1. Calculate the three True Range components
+    df['H-L'] = df['High'] - df['Low']
+    df['H-PC'] = np.abs(df['High'] - df['Close'].shift(1))
+    df['L-PC'] = np.abs(df['Low'] - df['Close'].shift(1))
+
+    # 2. Find the maximum of the three to get the daily True Range
+    df['TR'] = df[['H-L', 'H-PC', 'L-PC']].max(axis=1)
+
+    # 3. Calculate the 14-day rolling average of the True Range
+    df['ATR_14'] = df['TR'].rolling(window=period).mean()
+
+    # 4. Clean up the intermediate calculation columns
+    df.drop(['H-L', 'H-PC', 'L-PC', 'TR'], axis=1, inplace=True)
+
+    return df
+def rsi(series, period=14):
+    delta = series.diff()
+
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+
+    avg_gain = gain.ewm(alpha=1/period, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1/period, adjust=False).mean()
+
+    rs = avg_gain / avg_loss
+    return 100 - (100 / (1 + rs))
+
+# df must contain a 'Close' column indexed by time (datetime index recommended)
+def add_macd_hist(df, fast=12, slow=26, signal=9, price_col='Close'):
+    # compute EMAs
+    ema_fast = df[price_col].ewm(span=fast, adjust=False).mean()
+    ema_slow = df[price_col].ewm(span=slow, adjust=False).mean()
+
+    # MACD line and signal line
+    macd_line = ema_fast - ema_slow
+    signal_line = macd_line.ewm(span=signal, adjust=False).mean()
+
+    # histogram
+    macd_hist = macd_line - signal_line
+
+    # attach to dataframe (choose column names you prefer)
+    df['MACD'] = macd_line
+    df['MACD_signal'] = signal_line
+    df['MACD_hist'] = macd_hist
+
+    return df
+
 def load_data(ticker):
 
     df = data_downloader.get_transaction_df(ticker)
@@ -65,6 +115,9 @@ def load_data(ticker):
     df["MA60"] = df["Close"].rolling(60).mean()
     df["MA200"] = df["Close"].rolling(200).mean()
     df["VOL20"] = df["Volume"].rolling(20).mean()
+    df["ATR_14"]=add_atr(df)
+    df["RSI14"]=rsi(df["Close"], 14)
+    df = add_macd_hist(df)
 
     return df.dropna()
 
@@ -177,24 +230,47 @@ def fake_breakout_filter(df):
 # EARLY WARNING (-10 DAYS)
 # =========================================================
 
-def early_warning(df):
+def early_warning(df, k_atr=2.0, vol_mult=1.6, ma_fast=10, ma_mid=60, ma_long=200):
+    # df must have: Close, High, Low, Volume, ATR_14, MA10, MA60, MA200, VOL20, MACD_hist, RSI14
+    # 1. Macro trend
+    if df['Close'].iloc[-1] <= df[f'MA{ma_long}'].iloc[-1]:
+        return {'score': 0.0, 'signal': None}
 
-    ma_angle = slope(df["MA10"].tail(10)) - slope(df["MA60"].tail(10))
+    # 2. Volatility contraction (absolute range vs ATR)
+    recent_high = df['High'].tail(5).max()
+    recent_low = df['Low'].tail(5).min()
+    recent_range = recent_high - recent_low
+    dynamic_tight = recent_range < (df['ATR_14'].iloc[-1] * k_atr)
 
-    vol_contract = df["Volume"].tail(5).mean() < df["VOL20"].iloc[-1]
+    # 3. Momentum
+    slope_fast = slope(df[f'MA{ma_fast}'].tail(10))
+    slope_mid = slope(df[f'MA{ma_mid}'].tail(10))
+    ma_angle_pos = (slope_fast - slope_mid) > 0
+    macd_ok = df['MACD_hist'].iloc[-1] > 0
+    rsi_ok = df['RSI14'].iloc[-1] > 50
 
-    tight_range = (
-        df["High"].tail(5).max() -
-        df["Low"].tail(5).min()
-    ) / df["Close"].iloc[-1] < 0.08
+    # 4. Volume contraction then surge on breakout
+    vol_contract = df['Volume'].tail(5).mean() < df['VOL20'].iloc[-1]
+    consolidation_high = df['High'].iloc[-6:-1].max()
+    breakout_today = df['Close'].iloc[-1] > consolidation_high
+    vol_surge = df['Volume'].iloc[-1] > df['VOL20'].iloc[-1] * vol_mult
 
+    # 5. Score components (tunable weights)
     score = (
-        0.5*(ma_angle>0) +
-        0.3*vol_contract +
-        0.2*tight_range
+        0.25 * float(ma_angle_pos) +
+        0.20 * float(macd_ok or rsi_ok) +
+        0.20 * float(dynamic_tight) +
+        0.15 * float(vol_contract) +
+        0.20 * float(breakout_today and vol_surge)
     )
 
-    return score
+    signal = None
+    if score >= 0.75 and breakout_today and vol_surge:
+        signal = 'IMMEDIATE_BUY'
+    elif score >= 0.6:
+        signal = 'WATCHLIST'
+    return {'score': round(score, 3), 'signal': signal}
+
 
 
 # =========================================================
@@ -227,7 +303,9 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
 
             core = leader_structure(df)
             fake = fake_breakout_filter(df)
-            early = early_warning(df)
+            result = early_warning(df)
+            early = result.get('score', 0.0)
+            buy_signal = result.get('signal', None)
         except Exception as e:
             print(f"eam error: {ticker}",  e)
             continue
@@ -237,15 +315,16 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
             0.20*early
         ) * (1 + sec_score)
 
-        results.append((ticker, total))
+        results.append((ticker, total, sec_score, core, fake, early,buy_signal))
 
     print("================================")
     print("🔥 LEADER ROTATION RANKING")
     print("================================")
     results_sorted = sorted(results, key=lambda x:x[1], reverse=True)
-    # for r in results_sorted:
-    #     print(r[0], round(r[1],3))
-    pd.DataFrame(results_sorted, columns=["symbol", "Score"]).to_csv(output_file, index=False)
+
+    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "fake", "early"])
+    # print(df)
+    df.to_csv(output_file, index=False)
 
 # =========================================================
 
