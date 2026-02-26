@@ -5,7 +5,7 @@
 
 import pandas as pd
 import numpy as np
-
+from typing import Dict, Any
 import data_downloader
 
 from analytics import industry_score
@@ -188,33 +188,258 @@ def sector_score(sector):
 # LEADER STRUCTURE SCORE
 # =========================================================
 
-def leader_structure(df):
+import numpy as np
+import pandas as pd
+from typing import Dict, Any
 
-    trend = slope(df["MA60"].tail(60))
-    alignment = (
-        df["MA10"].iloc[-1] >
-        df["MA20"].iloc[-1] >
-        df["MA50"].iloc[-1]
+def safe_mean(series: pd.Series, fallback: float = 0.0) -> float:
+    v = series.dropna()
+    return float(v.mean()) if not v.empty else float(fallback)
+
+def safe_div(a: float, b: float, fallback: float = 0.0) -> float:
+    try:
+        return float(a) / float(b) if b not in (0, None, np.nan) else float(fallback)
+    except Exception:
+        return float(fallback)
+
+def normalize(x: float, lo: float, hi: float) -> float:
+    if hi == lo:
+        return 0.0
+    return float(np.clip((x - lo) / (hi - lo), 0.0, 1.0))
+# 1. define slope function
+def my_slope(series):
+    y = series.values
+    x = np.arange(len(y))
+    if len(y) < 2:
+        return 0.0
+    slope, _ = np.polyfit(x, y, 1)
+    return slope
+
+
+def leader_structure(
+    df: pd.DataFrame,
+    slope_func,
+    lookback_trend: int = 60,
+    vol_window: int = 20,
+    ma_fast: str = "MA10",
+    ma_mid: str = "MA20",
+    ma_slow: str = "MA50",
+    ma_macro: str = "MA200"
+) -> Dict[str, Any]:
+    """
+    Returns a structured score and diagnostics describing leadership structure.
+
+    Required columns: Close, Volume, and the MA columns named by parameters.
+    slope_func: callable(series: pd.Series) -> float  (returns slope or trend magnitude)
+    """
+    diagnostics: Dict[str, Any] = {}
+    required = {ma_fast, ma_mid, ma_slow, ma_macro, "Close", "Volume"}
+    missing = required - set(df.columns)
+    if missing:
+        return {"score": 0.0, "status": "MISSING_COLUMNS", "diagnostics": {"missing": list(missing)}}
+
+    if len(df) < lookback_trend:
+        return {"score": 0.0, "status": "INSUFFICIENT_HISTORY", "diagnostics": {"len": len(df)}}
+
+    # Positional safety
+    last = df.iloc[-1]
+    # 1. Macro trend filter (long-term)
+    macro_up = bool(last["Close"] > df[ma_macro].iloc[-1])
+    diagnostics["macro_up"] = macro_up
+
+    # 2. Trend strength (slope of MA50 or MA60 over lookback_trend)
+    try:
+        trend_series = df[ma_slow].iloc[-lookback_trend:]
+        trend_raw = float(slope_func(trend_series))
+    except Exception:
+        trend_raw = 0.0
+    diagnostics["trend_raw"] = trend_raw
+
+    # Normalize trend_raw relative to recent absolute slope magnitudes to keep score bounded
+    # Use historical slopes to get a reasonable scale
+    slopes = []
+    window = max(lookback_trend, 60)
+    for i in range(window, len(df)+1, max(1, window//4)):
+        seg = df[ma_slow].iloc[max(0, i-window):i]
+        if len(seg) >= 2:
+            try:
+                slopes.append(abs(float(slope_func(seg))))
+            except Exception:
+                pass
+    slope_scale = max(np.percentile(slopes, 75) if slopes else 1.0, 1e-6)
+    trend_norm = float(np.clip(trend_raw / slope_scale, -1.0, 1.0))
+    # map to 0..1 where negative trend -> 0
+    trend_score = float(np.clip((trend_norm + 1) / 2, 0.0, 1.0))
+    diagnostics["trend_score"] = trend_score
+    diagnostics["slope_scale"] = float(slope_scale)
+
+    # 3. Moving average alignment (fast > mid > slow)
+    alignment_bool = (last[ma_fast] > last[ma_mid]) and (last[ma_mid] > last[ma_slow])
+    alignment_score = 1.0 if alignment_bool else 0.0
+    diagnostics["alignment_bool"] = alignment_bool
+
+    # 4. Volume expansion (last volume vs vol_window average)
+    vol20 = safe_mean(df["Volume"].iloc[-vol_window:], fallback=1.0)
+    vol_expansion = safe_div(last["Volume"], vol20, fallback=0.0)
+    # normalize typical vol expansion to 0..1 using a reasonable cap (e.g., 3x)
+    vol_score = float(np.clip((vol_expansion - 1.0) / (3.0 - 1.0), 0.0, 1.0))
+    diagnostics["vol_expansion"] = float(vol_expansion)
+    diagnostics["vol_score"] = vol_score
+
+    # 5. Relative strength vs lookback (Close / MA50)
+    rs = safe_div(last["Close"], last[ma_slow], fallback=1.0)
+    rs_score = normalize(rs, 0.95, 1.15)  # 0.95->0, 1.0->~0.25, 1.15->1.0 (tunable)
+    diagnostics["rs"] = float(rs)
+    diagnostics["rs_score"] = rs_score
+
+    # 6. Proximity to breakout (close relative to recent high)
+    recent_high = df["High"].iloc[-lookback_trend:].max() if "High" in df.columns else last["Close"]
+    proximity = safe_div(last["Close"], recent_high, fallback=1.0)
+    proximity_score = normalize(proximity, 0.9, 1.02)
+    diagnostics["recent_high"] = float(recent_high)
+    diagnostics["proximity_score"] = proximity_score
+
+    # 7. Composite weighting (tunable)
+    # - trend_score: structural strength
+    # - alignment_score: moving average confirmation
+    # - vol_score: participation
+    # - rs_score: relative strength vs peers/MA
+    # - proximity_score: breakout readiness
+    w_trend = 0.35
+    w_align = 0.20
+    w_vol = 0.15
+    w_rs = 0.15
+    w_prox = 0.15
+
+    raw = (
+        w_trend * trend_score +
+        w_align * alignment_score +
+        w_vol * vol_score +
+        w_rs * rs_score +
+        w_prox * proximity_score
     )
 
-    volume_expansion = safe_div(
-        df["Volume"].iloc[-1],
-        df["VOL20"].iloc[-1]
+    # Penalize if macro trend is down
+    if not macro_up:
+        raw *= 0.6
+        diagnostics["macro_penalty_applied"] = True
+    else:
+        diagnostics["macro_penalty_applied"] = False
+
+    score = float(np.clip(raw, 0.0, 1.0))
+    diagnostics.update({
+        "w_trend": w_trend, "w_align": w_align, "w_vol": w_vol,
+        "w_rs": w_rs, "w_prox": w_prox, "raw": float(raw)
+    })
+
+    status = "LEADER" if score >= 0.7 else ("WATCH" if score >= 0.45 else "LAGGER")
+    return {"score": round(score, 3), "status": status, "diagnostics": diagnostics}
+
+
+def detect_accumulation(
+        df: pd.DataFrame,
+        lookback: int = 20,
+        up_down_ratio_threshold: float = 1.2
+) -> Dict[str, Any]:
+    """
+    Detects institutional accumulation by analyzing volume flow and closing ranges.
+   up_down_ratio: This is the most crucial metric for finding VCPs (Volatility Contraction Patterns) and base-building.
+   If a stock is trading sideways for a month, but its up_down_ratio is 1.8,
+   it means institutions are quietly vacuuming up shares on the up days and refusing to sell on the down days.
+
+   cmf_20: If this number is consistently above 0.10, it means the stock is repeatedly closing in the top half of its daily range.
+   It mathematically proves that intraday short-sellers are getting squeezed out by the closing bell.
+    Required columns: Open, High, Low, Close, Volume
+    """
+    diagnostics: Dict[str, Any] = {}
+
+    if len(df) < lookback:
+        return {"status": "INSUFFICIENT_HISTORY", "score": 0.0, "diagnostics": diagnostics}
+
+    # Slice the dataframe to the lookback window to optimize calculations
+    window_df = df.iloc[-lookback:].copy()
+
+    # ---------------------------------------------------------
+    # 1. Volume Accumulation/Distribution Ratio (Up Vol vs Down Vol)
+    # ---------------------------------------------------------
+    # Calculate daily price change
+    window_df['Change'] = window_df['Close'].diff()
+
+    # Separate volume into Up days and Down days
+    up_vol = window_df.loc[window_df['Change'] > 0, 'Volume'].sum()
+    down_vol = window_df.loc[window_df['Change'] < 0, 'Volume'].sum()
+
+    # Avoid division by zero
+    if down_vol == 0:
+        up_down_ratio = 5.0  # Arbitrary high cap if there were strictly no down days
+    else:
+        up_down_ratio = up_vol / down_vol
+
+    diagnostics['up_vol'] = float(up_vol)
+    diagnostics['down_vol'] = float(down_vol)
+    diagnostics['up_down_ratio'] = float(up_down_ratio)
+
+    # ---------------------------------------------------------
+    # 2. Chaikin Money Flow (CMF) Logic
+    # ---------------------------------------------------------
+    # Money Flow Multiplier = [(Close - Low) - (High - Close)] / (High - Low)
+    # Measures where the stock closes relative to its daily range.
+    high_low_range = window_df['High'] - window_df['Low']
+
+    # Prevent division by zero on zero-range days
+    mfm = np.where(
+        high_low_range > 0,
+        ((window_df['Close'] - window_df['Low']) - (window_df['High'] - window_df['Close'])) / high_low_range,
+        0.0
     )
 
-    score = (
-        0.5*trend +
-        0.3*alignment +
-        0.2*volume_expansion
-    )
+    # Money Flow Volume = MFM * Volume
+    mfv = mfm * window_df['Volume']
 
-    return score
+    # CMF = Sum of MFV / Sum of Volume over the period
+    total_vol = window_df['Volume'].sum()
+    cmf = mfv.sum() / total_vol if total_vol > 0 else 0.0
 
+    diagnostics['cmf_20'] = float(cmf)
+
+    # ---------------------------------------------------------
+    # 3. Scoring & Classification
+    # ---------------------------------------------------------
+    # Score 1: Up/Down Ratio. Normalize against the threshold.
+    # A ratio of 1.0 = Neutral. 1.2+ = Accumulation. < 0.8 = Distribution.
+    ratio_score = np.clip((up_down_ratio - 0.8) / (up_down_ratio_threshold - 0.8), 0.0, 1.0)
+
+    # Score 2: CMF. Ranges from roughly -0.5 to +0.5.
+    # > 0.1 is healthy accumulation. > 0.25 is extreme accumulation.
+    cmf_score = np.clip((cmf + 0.1) / 0.35, 0.0, 1.0)
+
+    # Composite Score (Weighting tape action slightly heavier than closing ranges)
+    w_ratio = 0.6
+    w_cmf = 0.4
+
+    score = (w_ratio * ratio_score) + (w_cmf * cmf_score)
+    score = float(np.clip(score, 0.0, 1.0))
+
+    diagnostics['ratio_score'] = float(ratio_score)
+    diagnostics['cmf_score'] = float(cmf_score)
+    diagnostics['raw_score'] = score
+
+    # Classify the footprint
+    if score >= 0.75 and cmf > 0.1:
+        status = "HEAVY_ACCUMULATION"
+    elif score >= 0.55:
+        status = "MODERATE_ACCUMULATION"
+    elif score <= 0.25 and cmf < -0.1:
+        status = "HEAVY_DISTRIBUTION"
+    else:
+        status = "NEUTRAL"
+
+    return {"status": status, "score": round(score, 3), "diagnostics": diagnostics}
 
 # =========================================================
 # FAKE BREAKOUT FILTER
 # =========================================================
-from typing import Dict, Any
+
 def fake_breakout_filter(
         df: pd.DataFrame,
         lookback: int = 60,
@@ -441,10 +666,15 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
 
             sec_score = sector_cache[sector]
 
-            core = leader_structure(df)
+            core_result = leader_structure(df, my_slope)
+            core = core_result.get('score', 0.0)
+            core_signal = core_result.get('status', None)
             fake = fake_breakout_filter(df)
             fake_break_score = fake.get('score', 0.0)
             fake_break_signal = fake.get('status', None)
+            accumulation_result = detect_accumulation(df)
+            accumulation = accumulation_result.get('score', 0.0)
+            accumulation_signal = accumulation_result.get('status', None)
 
             result = early_warning(df)
             early = result.get('score', 0.0)
@@ -458,23 +688,23 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
             0.20*early
         ) * (1 + sec_score)
 
-        results.append((ticker, total, sec_score, core, fake,fake_break_score,fake_break_signal, early,buy_signal))
+        results.append((ticker, total, sec_score, core,core_signal, fake,fake_break_score,fake_break_signal, early,buy_signal,accumulation,accumulation_signal))
 
     print("================================")
     print("🔥 LEADER ROTATION RANKING")
     print("================================")
     results_sorted = sorted(results, key=lambda x:x[1], reverse=True)
 
-    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "fake","fake_break_score","fake_break_signal" ,"early","buy_signal"])
+    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "core_signal", "fake","fake_break_score","fake_break_signal" ,"early","buy_signal" ,"accumulation","accumulation_signal"])
     # print(df)
-    df.to_csv(output_file, index=False)
+    # df.to_csv(output_file, index=False)
 
 # =========================================================
 
 if __name__ == "__main__":
     current_dir = os.getcwd()
     print(f"Current Directory: {current_dir}")
-    # watch_list = pd.read_csv(f"../resource/my_vip.csv")['symbol'].tolist()
-    watch_list = ["AAPL"]
+    # watch_list = pd.read_csv(f"resource/my_vip.csv")['symbol'].tolist()
+    watch_list = ["UUUU"]
 
     run(watch_list)
