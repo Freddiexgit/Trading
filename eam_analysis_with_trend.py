@@ -2,7 +2,7 @@
 # INSTITUTIONAL LEADER ROTATION RADAR
 # =========================================================
 
-
+import  traceback
 import pandas as pd
 import numpy as np
 from typing import Dict, Any
@@ -170,9 +170,7 @@ def sector_breadth(tickers):
 
 
 def sector_score(sector):
-
-    etf = industry_score.SECTOR_ETF[sector]
-
+    etf = industry_score.SECTOR_ETF.get(sector, "SPY")
     rs = sector_relative_strength(etf)
 
     members = industry_and_symbol[sector]
@@ -642,7 +640,7 @@ def early_warning(df, k_atr=2.0, vol_mult=1.6, ma_fast=10, ma_mid=60, ma_long=20
 # MAIN SCAN
 # =========================================================
 
-def run(tickers : list,output_file = "leader_rotation.csv"):
+def run(tickers : list,output_file = "EMA_Trend.csv"):
     load_symbol_sector()
     if not market_ok():
         print("❌ Market regime not favorable")
@@ -681,6 +679,7 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
             buy_signal = result.get('signal', None)
         except Exception as e:
             print(f"eam error: {ticker}",  e)
+            traceback.print_exc()
             continue
         total = (
             0.55*core +
@@ -688,23 +687,32 @@ def run(tickers : list,output_file = "leader_rotation.csv"):
             0.20*early
         ) * (1 + sec_score)
 
-        results.append((ticker, total, sec_score, core,core_signal, fake,fake_break_score,fake_break_signal, early,buy_signal,accumulation,accumulation_signal))
+        results.append((ticker, total, sec_score, core,core_signal, fake_break_score,fake_break_signal, early,buy_signal,accumulation,accumulation_signal))
 
     print("================================")
     print("🔥 LEADER ROTATION RANKING")
     print("================================")
     results_sorted = sorted(results, key=lambda x:x[1], reverse=True)
 
-    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "core_signal", "fake","fake_break_score","fake_break_signal" ,"early","buy_signal" ,"accumulation","accumulation_signal"])
+    df =pd.DataFrame(results_sorted, columns=["symbol", "score", "sec_score", "core", "core_signal","fake_break_score","fake_break_signal" ,"early","buy_signal" ,"accumulation","accumulation_signal"])
     # print(df)
-    # df.to_csv(output_file, index=False)
+    df.to_csv(output_file, index=False)
 
 # =========================================================
 
 if __name__ == "__main__":
     current_dir = os.getcwd()
-    print(f"Current Directory: {current_dir}")
-    # watch_list = pd.read_csv(f"resource/my_vip.csv")['symbol'].tolist()
-    watch_list = ["UUUU"]
-
+    # print(f"Current Directory: {current_dir}")
+    watch_list = pd.read_csv(f"resource/nyse_and_nasdaq_top_500.csv")['symbol'].tolist()
+    # watch_list = ["WWD"]
+    # eam
+    # error: HBANL
+    # 'HBANL'
+    # eam
+    # error: MCHPP
+    # 'MCHPP'
+    # eam
+    # error: HBANM
+    # 'HBANM'
+    # SCS
     run(watch_list)
