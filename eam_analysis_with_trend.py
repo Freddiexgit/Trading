@@ -701,18 +701,5 @@ def run(tickers : list,output_file = "EMA_Trend.csv"):
 # =========================================================
 
 if __name__ == "__main__":
-    current_dir = os.getcwd()
-    # print(f"Current Directory: {current_dir}")
     watch_list = pd.read_csv(f"resource/nyse_and_nasdaq_top_500.csv")['symbol'].tolist()
-    # watch_list = ["WWD"]
-    # eam
-    # error: HBANL
-    # 'HBANL'
-    # eam
-    # error: MCHPP
-    # 'MCHPP'
-    # eam
-    # error: HBANM
-    # 'HBANM'
-    # SCS
     run(watch_list)
