@@ -1,145 +1,86 @@
+import yfinance as yf
 import pandas as pd
 import numpy as np
-import yfinance as yf
-from typing import Optional
+tickers = pd.read_csv("resource/my_vip.csv")["symbol"].tolist()
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.width', 1200)
+def market_ok(symbol="SPY") -> bool:
+    spy = yf.download(symbol, period="1y", auto_adjust=True, progress=False)
 
+    spy["MA50"] = spy["Close"].rolling(50).mean()
+    spy["MA200"] = spy["Close"].rolling(200).mean()
 
-def fetch_price_data(ticker: str, start: str, end: Optional[str] = None, interval: str = "1d") -> pd.DataFrame:
-    """Fetch OHLCV data and normalize columns."""
-    df = yf.download(ticker, start=start, end=end, interval=interval, progress=False)
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.droplevel(1)
-    if df.empty:
-        raise ValueError(f"No data returned for {ticker} between {start} and {end}.")
-    df.index = pd.to_datetime(df.index)
-    return df
+    last_close = float(spy["Close"].iloc[-1])
+    last_ma50 = float(spy["MA50"].iloc[-1])
+    last_ma200 = float(spy["MA200"].iloc[-1])
 
+    cond1 = last_close > last_ma50
+    cond2 = last_ma50 > last_ma200
 
-def find_auto_anchor(df: pd.DataFrame, lookback_days: int = 252) -> pd.Timestamp:
-    """Finds the highest volume day within the lookback period to use as the catalyst anchor."""
-    recent_df = df.tail(lookback_days)
-    if recent_df.empty:
-        return df.index[0]
-    highest_vol_idx = recent_df['Volume'].idxmax()
-    return highest_vol_idx
+    return cond1 and cond2
 
+def momentum_score(df):
+    ret_3m = df["Close"].pct_change(63).iloc[-1]
+    ret_6m = df["Close"].pct_change(126).iloc[-1]
 
-def anchored_vwap(df: pd.DataFrame, anchor_date: pd.Timestamp, price_col: str = "Close") -> pd.Series:
-    """Compute Anchored VWAP from anchor_date forward."""
-    tp = (df['High'] + df['Low'] + df[price_col]) / 3.0
-    tpv = tp * df['Volume']
-    mask = df.index >= anchor_date
-    cum_tpv = tpv.where(mask).cumsum()
-    cum_vol = df['Volume'].where(mask).cumsum()
-    return cum_tpv.div(cum_vol).reindex(df.index)
+    ma50 = df["Close"].rolling(50).mean()
+    ma150 = df["Close"].rolling(150).mean()
 
-
-def atr(df: pd.DataFrame, period: int = 14) -> pd.Series:
-    """Average True Range (ATR) using Wilder's smoothing."""
-    high_low = df['High'] - df['Low']
-    high_close = (df['High'] - df['Close'].shift(1)).abs()
-    low_close = (df['Low'] - df['Close'].shift(1)).abs()
-    tr = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
-    return tr.ewm(alpha=1 / period, adjust=False).mean()
-
-
-def compute_indicators(df: pd.DataFrame, anchor_date: pd.Timestamp) -> pd.DataFrame:
-    """Compute EMAs, AVWAP, ATR, and helper columns."""
-    df = df.copy()
-    df['EMA_10'] = df['Close'].ewm(span=10, adjust=False).mean()
-    df['EMA_20'] = df['Close'].ewm(span=20, adjust=False).mean()
-    df['AVWAP'] = anchored_vwap(df, anchor_date)
-    df['ATR_14'] = atr(df, period=14)
-    return df
-
-
-def generate_signals(df: pd.DataFrame, avwap_tolerance: float = 0.02) -> pd.DataFrame:
-    """Create boolean signal columns for the 'First Pullback' setup."""
-    df = df.copy()
-    df['Uptrend'] = df['EMA_10'] > df['EMA_20']
-
-    mask_avwap = df['AVWAP'].notna()
-    df['Pullback_Zone'] = False
-    df.loc[df.index, 'Pullback_Zone'] = (
-            (df['Low'] <= df['EMA_10']) |
-            (mask_avwap & (df['Low'] <= df['AVWAP']))
+    trend = (
+        df["Close"].iloc[-1] > ma50.iloc[-1] >
+        ma150.iloc[-1]
     )
 
-    df['Distance_to_AVWAP'] = np.where(mask_avwap, (df['Close'] - df['AVWAP']).abs() / df['AVWAP'], np.nan)
-    df['Close_Coiled'] = df['Distance_to_AVWAP'] <= avwap_tolerance
-    df['Setup_Signal'] = df['Uptrend'] & df['Pullback_Zone'] & df['Close_Coiled']
-    return df
+    volume_expansion = (
+        df["Volume"].iloc[-5:].mean() >
+        1.3 * df["Volume"].rolling(50).mean().iloc[-1]
+    )
 
+    score = ret_3m*0.6 + ret_6m*0.4
 
-def position_sizing(df: pd.DataFrame, capital: float = 10000.0, risk_per_trade: float = 0.01,
-                    stop_multiplier_atr: float = 1.5, fixed_stop_pct: Optional[float] = None) -> pd.DataFrame:
-    """Compute entry, stop loss, and exact share sizing based on risk."""
-    df = df.copy()
-    dollar_risk = capital * risk_per_trade
+    return score if trend and volume_expansion else None
 
-    # Use next day's open if available, otherwise use today's close for real-time sizing
-    df['Proposed_Entry'] = df['Open'].shift(-1).fillna(df['Close'])
+def volatility_contraction(df):
+    ranges = (df["High"] - df["Low"]) / df["Close"]
 
-    if fixed_stop_pct is not None:
-        df['Stop_Loss'] = df['Proposed_Entry'] * (1 - fixed_stop_pct)
-    else:
-        # Use np.maximum to strictly enforce the tightest possible stop between ATR and a 2% hard floor
-        df['ATR_Stop'] = df['Proposed_Entry'] - (df['ATR_14'] * stop_multiplier_atr)
-        df['Stop_Loss'] = np.maximum(df['ATR_Stop'], df['Proposed_Entry'] * 0.98)
+    recent = ranges.tail(5).mean()
+    past = ranges.tail(30).mean()
 
-    df['Per_Share_Risk'] = (df['Proposed_Entry'] - df['Stop_Loss']).clip(lower=1e-6)
-    df['Shares_to_Buy'] = np.floor(dollar_risk / df['Per_Share_Risk'])
-    df.loc[~df['Setup_Signal'], 'Shares_to_Buy'] = 0
-    return df
+    return recent < past * 0.7
 
+def near_high(df):
+    high_60 = df["High"].rolling(60).max().iloc[-1]
+    price = df["Close"].iloc[-1]
 
-def run_screener(ticker: str, start_date: str, anchor_date: Optional[str] = None,
-                 capital: float = 10000.0, risk_per_trade: float = 0.01) -> pd.DataFrame:
-    """Main execution function to fetch data, compute strategy, and return actionable setups."""
-    df = fetch_price_data(ticker, start=start_date)
+    return price > high_60 * 0.92
 
-    # Determine the anchor date automatically if not provided
-    if anchor_date:
-        anchor_ts = pd.to_datetime(anchor_date)
-        if anchor_ts not in df.index:
-            next_idx = df.index[df.index >= anchor_ts]
-            if next_idx.empty:
-                raise ValueError(f"Anchor date {anchor_date} is out of bounds for {ticker}.")
-            anchor_ts = next_idx[0]
-    else:
-        anchor_ts = find_auto_anchor(df)
-        print(f"[{ticker}] Auto-anchored VWAP to highest volume day: {anchor_ts.strftime('%Y-%m-%d')}")
+def run_screener(tickers):
+    results = []
 
-    df = compute_indicators(df, anchor_ts)
-    df = generate_signals(df)
-    df = position_sizing(df, capital=capital, risk_per_trade=risk_per_trade)
+    if not market_ok():
+        print("Market regime weak — reduce exposure.")
+        return results
 
-    return df.loc[df.index >= anchor_ts].copy()
+    for t in tickers:
+        df = yf.download(t, period="1y", auto_adjust=True)
 
+        if len(df) < 200:
+            continue
 
-# --- Execution ---
-if __name__ == "__main__":
-    # Test with a high-momentum stock, letting the script find the anchor automatically
-    ticker = "TSLA"
+        score = momentum_score(df)
 
-    try:
-        results = run_screener(
-            ticker=ticker,
-            start_date="2026-02-01",
-            anchor_date=None,  # Set to None to trigger auto-anchoring
-            capital=50000,
-            risk_per_trade=0.015
-        )
+        if score is None:
+            continue
 
-        setups = results[results['Setup_Signal'] & (results['Shares_to_Buy'] > 0)]
-        print(f"\nFound {len(setups)} valid pullback setups for {ticker}.")
+        if not volatility_contraction(df):
+            continue
 
-        if not setups.empty:
-            display_cols = ['Close', 'AVWAP', 'Setup_Signal', 'Proposed_Entry', 'Stop_Loss', 'Shares_to_Buy']
-            print(setups.tail(5))  # Show the 5 most recent setups
+        if not near_high(df):
+            continue
 
-    except Exception as e:
-        print(f"Error processing {ticker}: {e}")
+        results.append((t, score))
+
+    results.sort(key=lambda x: x[1], reverse=True)
+    return results
+
+leaders = run_screener(tickers)
+print(leaders)
