@@ -18,7 +18,7 @@ logging.basicConfig(
 # 配置参数
 # =========================
 input_file = ""
-START_DATE = "2023-01-01"  # 建议保留一年以上数据以保证指标稳定
+START_DATE = "2025-01-01"  # 建议保留一年以上数据以保证指标稳定
 SMOOTH_WINDOW = 5
 PERSIST_DAYS = 2  # 降低持续天数要求，更灵敏
 SCORE_THRESHOLD = 40  # 降低阈值以确保能看到分数排位
@@ -28,90 +28,164 @@ SCORE_THRESHOLD = 40  # 降低阈值以确保能看到分数排位
 # 核心工具类
 # =========================
 class PureLeaderRadar:
+    import numpy as np
+    import pandas as pd
+    from scipy.stats import linregress
+
+    # Tunable constants
+    SMOOTH_WINDOW = 5
+    SCORE_THRESHOLD = 50  # on 0-100 scale after weighting
+    PERSIST_DAYS = 3
+
     @staticmethod
-    def fast_slope(series):
-        y = series.values
-        if len(y) < 2 or np.isnan(y).any(): return 0
-        slope, _, _, _, _ = linregress(np.arange(len(y)), y)
-        return slope
+    def _log_slope_array(arr):
+        # returns slope of log(price) per period (approx daily log-return)
+        n = len(arr)
+        if n < 2 or np.isnan(arr).any():
+            return np.nan
+        y = np.log(arr.astype(float))
+        x = np.arange(n)
+        xm = x.mean();
+        ym = y.mean()
+        denom = ((x - xm) ** 2).sum()
+        if denom == 0:
+            return np.nan
+        return ((x - xm) * (y - ym)).sum() / denom
 
-    def load_tickers(self):
-        return  pd.read_csv(f"{input_file}")['symbol'].tolist()
+    @staticmethod
+    def _fast_slope_for_rolling(window_arr):
+        # wrapper for rolling.apply with raw=True (receives numpy array)
+        return PureLeaderRadar._log_slope_array(window_arr)
 
-    def fetch_data(self, tickers):
-        print(f"📥 正在获取 {len(tickers)} 只股票的数据...")
-        # 批量下载以提高速度
-        data = yf.download(tickers, start=START_DATE, progress=False)
-        return data
+    @staticmethod
+    def _percentile_rank(series):
+        # returns 0..1 percentile rank, preserves NaN
+        return series.rank(pct=True, na_option='keep')
+
+    @staticmethod
+    def _winsorize_series(s, lower=0.01, upper=0.99):
+        ql = s.quantile(lower)
+        qu = s.quantile(upper)
+        return s.clip(lower=ql, upper=qu)
 
     def process_stock(self, ticker, df):
-
-
+        df = df.copy()
         df.dropna(inplace=True)
-        if len(df) < 60: return None
+        if len(df) < 60:
+            return None
 
-        # 1. 动量因子 (EMA & Slope)
-        df["EMA10"] = df["Close"].ewm(span=10).mean()
-        df["MA60"] = df["Close"].rolling(60).mean()
-        df["slope10"] = df["EMA10"].rolling(10).apply(self.fast_slope, raw=False)
-        df["slope60"] = df["MA60"].rolling(20).apply(self.fast_slope, raw=False)
-        df["angle_strength"] = df["slope10"] - df["slope60"]
+        # --- Price trend (EMA + normalized slopes) ---
+        df["EMA10"] = df["Close"].ewm(span=10, adjust=False).mean()
+        df["EMA60"] = df["Close"].ewm(span=60, adjust=False).mean()
 
-        # 2. 结构因子 (VCP & Highs)
+        # compute log-slope on EMA series (scale-invariant)
+        df["ema10_slope"] = df["EMA10"].rolling(10).apply(
+            PureLeaderRadar._fast_slope_for_rolling, raw=True
+        )
+        df["ema60_slope"] = df["EMA60"].rolling(60).apply(
+            PureLeaderRadar._fast_slope_for_rolling, raw=True
+        )
+
+        # angle_strength in log-return units (daily excess log-return)
+        df["angle_strength"] = df["ema10_slope"] - df["ema60_slope"]
+
+        # shift slopes so any trading decision uses only past data (act next day)
+        df["angle_strength_next"] = df["angle_strength"].shift(1)
+
+        # --- Volatility / structure (tightness) ---
         df["range"] = (df["High"] - df["Low"]) / df["Close"]
-        df["vol_contract"] = df["range"] < df["range"].rolling(20).mean()
-        df["near_high"] = df["Close"] > 0.80 * df["High"].rolling(120).max()
+        # raw contraction metric: smaller range relative to 20-day mean
+        df["range_rel"] = df["range"] / df["range"].rolling(20).mean()
+        # lower is better -> invert later when percentile-scaling
+        df["range_rel"] = df["range_rel"].replace([np.inf, -np.inf], np.nan)
 
-        # 3. 资金流因子 (OBV & Smart Money)
+        # proximity to 120-day high (higher is better)
+        high_120 = df["High"].rolling(120).max()
+        df["dist_from_high"] = (high_120 - df["Close"]) / high_120  # 0 = at high
+        df["dist_from_high"] = df["dist_from_high"].clip(lower=0)
+
+        # --- Volume / money flow (OBV, smart money) ---
         change = df["Close"].diff()
         df["OBV"] = (np.sign(change).fillna(0) * df["Volume"]).cumsum()
-        df["obv_slope"] = df["OBV"].rolling(20).apply(self.fast_slope, raw=False)
-
-        up_v = df["Volume"].where(change > 0).rolling(20).mean()
-        dn_v = df["Volume"].where(change < 0).rolling(20).mean()
-        df["smart_money_ratio"] = (up_v / dn_v).replace([np.inf, -np.inf], 1).fillna(1)
-
-        # 4. 纯净评分逻辑 (总分 100)
-        # 移除了大盘和ETF加分，将权重分配给个股指标
-        score = (
-                30 * (df["angle_strength"] > 0).astype(int) +
-                20 * (df["vol_contract"]).astype(int) +
-                20 * (df["near_high"]).astype(int) +
-                30 * (df["smart_money_ratio"] > 1.1).astype(int)
+        # OBV slope (log-slope on OBV can be noisy; use linear slope on OBV and zscore)
+        df["obv_slope"] = df["OBV"].rolling(20).apply(
+            lambda x: np.nan if np.isnan(x).any() else linregress(np.arange(len(x)), x).slope,
+            raw=True
         )
-        df['symbol'] = ticker
-        df["RAW_SCORE"] = score
-        df["SMOOTH_SCORE"] = df["RAW_SCORE"].ewm(span=SMOOTH_WINDOW).mean()
+        # normalize OBV slope via rolling z-score
+        obv_mean = df["obv_slope"].rolling(60).mean()
+        obv_std = df["obv_slope"].rolling(60).std().replace(0, np.nan)
+        df["obv_z"] = (df["obv_slope"] - obv_mean) / obv_std
 
-        # 5. 稳定信号处理
-        df["PERSISTENCE"] = (df["SMOOTH_SCORE"] > SCORE_THRESHOLD).rolling(PERSIST_DAYS).sum()
-        df["STABLE_SCORE"] = np.where(df["PERSISTENCE"] >= PERSIST_DAYS, df["SMOOTH_SCORE"], 0)
+        # smart money ratio: avg up-volume / avg down-volume over 20 days, guard small denominators
+        up_v = df["Volume"].where(change > 0).rolling(20).mean().fillna(0)
+        dn_v = df["Volume"].where(change < 0).rolling(20).mean().fillna(0)
+        eps = 1e-6
+        df["smart_money_raw"] = (up_v + eps) / (dn_v + eps)
+        # winsorize and log-transform to stabilize
+        df["smart_money_w"] = np.log(self._winsorize_series(df["smart_money_raw"], 0.01, 0.99))
 
-        # # 6. 预警模块
-        # df["PRE_SIGNAL"] = (df["range"] < df["range"].rolling(10).mean()) & \
-        #                    (df["smart_money_ratio"] > 1.05) & \
-        #                    (df["Close"] < 0.95 * df["High"].rolling(120).max())
-        # 1. Short term Volatility Contraction (Tightness)
-        df["tightness"] = df["range"] < df["range"].rolling(10).mean()
+        # shift money-flow metrics for next-day execution
+        df["obv_z_next"] = df["obv_z"].shift(1)
+        df["smart_money_next"] = df["smart_money_w"].shift(1)
 
-        # 2. Accumulation Evidence (Smart Money is buying)
-        df["accumulating"] = (df["smart_money_ratio"] > 1.02) & (df["obv_slope"] > 0)
+        # --- Convert metrics to 0..1 percentile scores (higher = better) ---
+        # angle: higher positive excess slope is better
+        df["angle_score"] = self._percentile_rank(df["angle_strength_next"])
 
-        # 3. Base Building (Not in a vertical move yet, but near highs)
-        # Looking for stocks 5% to 15% off their 120-day highs
-        high_120 = df["High"].rolling(120).max()
-        df["in_base"] = (df["Close"] < 0.98 * high_120) & (df["Close"] > 0.85 * high_120)
+        # volatility contraction: smaller range_rel is better -> invert before percentile
+        df["range_rel_inv"] = 1.0 / df["range_rel"]
+        df["range_rel_inv"] = df["range_rel_inv"].replace([np.inf, -np.inf], np.nan)
+        df["vol_contract_score"] = self._percentile_rank(df["range_rel_inv"])
 
-        # 4. Combined Trigger
-        # We look for days where the stock is tight AND accumulating within a base
-        df["PRE_SIGNAL_RAW"] = df["tightness"] & df["accumulating"] & df["in_base"]
+        # proximity to highs: closer (smaller dist) is better -> invert
+        df["near_high_score"] = self._percentile_rank(1 - df["dist_from_high"])
 
-        # 5. The "Lookback" Window
-        # If the signal triggered ANYTIME in the last 5 days, return True
-        df["PRE_SIGNAL"] = df["PRE_SIGNAL_RAW"].rolling(window=5).max() > 0
+        # OBV z: higher z is better
+        df["obv_score"] = self._percentile_rank(df["obv_z_next"])
+
+        # smart money: higher log ratio is better
+        df["smart_money_score"] = self._percentile_rank(df["smart_money_next"])
+
+        # --- Combine weighted scores (weights sum to 100) ---
+        w_angle = 30
+        w_vol = 20
+        w_high = 20
+        w_money = 30
+
+        # ensure scores are 0..1 and handle NaNs by treating them as 0 (no evidence)
+        score_components = (
+                w_angle * df["angle_score"].fillna(0) +
+                w_vol * df["vol_contract_score"].fillna(0) +
+                w_high * df["near_high_score"].fillna(0) +
+                w_money * df["smart_money_score"].fillna(0)
+        )
+        # raw score on 0..100 scale
+        df["RAW_SCORE"] = score_components
+
+        # smooth and shift so the actionable score is for next trading day
+        df["SMOOTH_SCORE"] = df["RAW_SCORE"].ewm(span=SMOOTH_WINDOW, adjust=False).mean()
+        df["SMOOTH_SCORE_NEXT"] = df["SMOOTH_SCORE"].shift(1)
+
+        # persistence: require SMOOTH_SCORE_NEXT > threshold for PERSIST_DAYS (count of True)
+        df["PERSIST"] = (df["SMOOTH_SCORE_NEXT"] > SCORE_THRESHOLD).rolling(PERSIST_DAYS).sum()
+        df["STABLE_SCORE"] = np.where(df["PERSIST"] >= PERSIST_DAYS, df["SMOOTH_SCORE_NEXT"], 0)
+
+        # --- Pre-signal (tightness + accumulation + base) using next-day metrics ---
+        df["tightness_next"] = (df["range"] < df["range"].rolling(10).mean()).shift(1)
+        df["accumulating_next"] = (df["smart_money_next"] > np.log(1.02)) & (df["obv_z_next"] > 0)
+        df["in_base_next"] = ((df["Close"] < 0.98 * high_120) & (df["Close"] > 0.85 * high_120)).shift(1)
+        df["PRE_SIGNAL_RAW"] = df["tightness_next"] & df["accumulating_next"] & df["in_base_next"]
+        df["PRE_SIGNAL"] = df["PRE_SIGNAL_RAW"].rolling(window=5).max().fillna(0) > 0
+
+        # metadata
+        df["symbol"] = ticker
+
+        # final: keep only rows where all required metrics are finite for clarity
+        required = ["RAW_SCORE", "SMOOTH_SCORE_NEXT", "STABLE_SCORE"]
+        df.loc[:, required] = df.loc[:, required].fillna(0)
 
         return df
-
 
 # =========================
 # 执行主逻辑
@@ -123,6 +197,7 @@ def main(input,output_file):
     # tickers = radar.load_tickers()
     # full_data = radar.fetch_data(tickers)
     tickers = pd.read_csv(input_file)['symbol'].tolist()
+    # tickers=["RGTX"]
     results = []
     print("🔍 正在计算量化因子...")
     for t in tickers:

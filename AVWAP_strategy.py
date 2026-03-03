@@ -13,6 +13,8 @@ import numpy as np
 import yfinance as yf
 from typing import Optional, List, Tuple
 
+import data_downloader
+
 pd.set_option("display.max_columns", None)
 pd.set_option("display.width", 1200)
 
@@ -21,19 +23,16 @@ pd.set_option("display.width", 1200)
 # DATA FETCH
 # ============================================================
 
-def fetch_price_data(ticker: str,
-                     start: str,
-                     end: Optional[str] = None,
-                     interval: str = "1d") -> pd.DataFrame:
+def fetch_price_data(ticker: str
+                    ) -> pd.DataFrame:
 
-    df = yf.download(
-        ticker,
-        start=start,
-        end=end,
-        interval=interval,
-        auto_adjust=False,
-        progress=False
-    )
+    # df = yf.download(
+    #     ticker,
+    #     interval=interval,
+    #     auto_adjust=False,
+    #     progress=False
+    # )
+    df = data_downloader.get_transaction_df(ticker)
 
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.droplevel(1)
@@ -209,11 +208,10 @@ def position_sizing(df: pd.DataFrame,
 # ============================================================
 
 def run_avwap_strategy(ticker: str,
-                       start_date: str,
                        capital: float,
                        risk_per_trade: float):
 
-    df = fetch_price_data(ticker, start=start_date)
+    df = fetch_price_data(ticker)
 
     anchor = find_auto_anchor(df)
 
@@ -228,13 +226,13 @@ def run_avwap_strategy(ticker: str,
 # MAIN EXECUTION
 # ============================================================
 
-def run(source_file, output_file):
+def run(source_file="resource/my_watch_list.csv", output_file = "avwap_setups.csv"):
 
-    if not market_regime_ok():
-        print("Market regime weak — skipping scan.")
-        exit()
+    # if not market_regime_ok():
+    #     print("Market regime weak — skipping scan.")
+    #     exit()
 
-    tickers = pd.read_csv("resource/my_vip.csv")["symbol"].tolist()
+    tickers = pd.read_csv(source_file)["symbol"].tolist()
 
     leader_pool: List[Tuple[str, float]] = []
 
@@ -242,7 +240,7 @@ def run(source_file, output_file):
 
     for ticker in tickers:
         try:
-            raw_df = fetch_price_data(ticker, start="2025-01-01")
+            raw_df = fetch_price_data(ticker)
 
             if len(raw_df) < 252:
                 continue
@@ -263,12 +261,11 @@ def run(source_file, output_file):
     top_tickers = [t[0] for t in leader_pool[:20]]
 
     print(f"\nTop Leaders: {top_tickers}\n")
-
+    result_df = None
     for ticker in top_tickers:
         try:
             results = run_avwap_strategy(
                 ticker,
-                start_date="2025-01-01",
                 capital=50000,
                 risk_per_trade=0.015
             )
@@ -286,7 +283,16 @@ def run(source_file, output_file):
                 # Updated condition
                 if days_since_last_setup <= 5:
                     print(f"Latest setup was {days_since_last_setup} days ago. Displaying recent triggers:")
-                    print(setups.tail(5))
+                    setups["symbol"] = ticker
+                    if result_df is None:
+                        result_df = setups.tail(1)
+                    else:
+                        result_df = pd.concat([result_df, setups.tail(1)], ignore_index=False)
+                    # print(setups.tail(5))
 
         except Exception as e:
             print(f"Execution error {ticker}: {e}")
+    if result_df is not None:
+        result_df.to_csv(output_file,  index=False)
+if __name__  =="__main__":
+    run()

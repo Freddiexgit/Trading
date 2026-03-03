@@ -1,3 +1,4 @@
+import AVWAP_strategy
 from dashboard_convergence_divergence_us import run_converge_diverge
 from dashboard_find_common_ema_volumn import run_volume_and_cvg_dvg
 from dashboard_us_last_volume import run_last_day_volume_increase
@@ -27,8 +28,8 @@ data.global_interval ="1d"
 date = datetime.now().strftime("%Y-%m-%d")
 # ticker_file_name = "nzx_tickers"
 # ticker_file_name = "my_vip"
-ticker_file_name = "my_watch_list"
-# ticker_file_name = "nyse_and_nasdaq_top_500"
+# ticker_file_name = "my_watch_list"
+ticker_file_name = "nyse_and_nasdaq_top_500"
 # ticker_file_name ="leading_stocks_by_industry"
 # ticker_file_name = "us_top_3000"
 # ticker_file_name = "my_owned"
@@ -37,8 +38,14 @@ output_folder = f"output/{date}/us_{data.global_interval}/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
     # Create the directory
     os.makedirs(f"{output_folder}")
-
-
+try:
+    print("running run_sector_rotation...")
+    from sector_rotation import run_sector_rotation
+    run_sector_rotation(output_file = f"{output_folder}/sector_rotation.csv")
+    df_tickers_sr = pd.read_csv(f"{output_folder}/sector_rotation.csv")[["symbol"]]
+    di.generate_pdf(df_tickers_sr, f"{output_folder}/sector_rotation.pdf", "No", "us")
+except Exception as e:
+    print("run_sector_rotation error:", e)
 try:
     print("running run_converge_diverge...")
     run_converge_diverge(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
@@ -87,10 +94,15 @@ try:
     di.generate_pdf( x, f"{output_folder}/EMA_Trend.pdf", "no", "us")
 except Exception as e:
     print("EMA trend error:", e)
-
-
-
 try:
+    print("find AVWAP .....")
+    AVWAP_strategy.run(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/avwap.csv")
+    df_tickers_avwp = pd.read_csv(f"{output_folder}/avwap.csv")[["symbol"]]
+    di.generate_pdf(df_tickers_avwp, f"{output_folder}/avwap.pdf", "yes", "us")
+except Exception  as e:
+    print("AVWAP error:", e)
+try:
+
     print("running rsi_bottom...")
     rsi_bottom(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/bottom.csv")
     df_tickers_rsi = pd.read_csv(  f"{output_folder}/bottom.csv")
@@ -133,15 +145,3 @@ except Exception as e:
     print("find_cross error:", e)
 
 
-try:
-    "quick_fundamental_analysis... and eama_angle_leaders..."
-
-    df_tickers_fqa = pd.read_csv(f"{output_folder}/quick_fundamental_analysis.csv")[["symbol"]]
-    df_tickers_ea = pd.read_csv(f"{output_folder}/ema_angle_leaders.csv")[["symbol"]]
-    df_tickers_trend = pd.read_csv(f"{output_folder}/EMA_Trend.csv")[["symbol"]]
-
-    df_merged = pd.merge(df_tickers_fqa, df_tickers_ea, on='symbol', how='inner')
-    df_merged = pd.merge(df_merged, df_tickers_trend, on='symbol', how='inner')
-    di.generate_pdf(df_merged, f"{output_folder}/eam_angle_quick_fundamental_common.pdf", "No", "us")
-except Exception as e:
-    print("merge error:", e)

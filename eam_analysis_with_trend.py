@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 from typing import Dict, Any
 import data_downloader
+import traceback
 
 from analytics import industry_score
 
