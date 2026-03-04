@@ -36,14 +36,14 @@ def get_data(df , ticker):
         twenty_cross_90.append(ticker)
     return five_cross_20, five_cross_90, twenty_cross_90
 
-def find_cross(df_tickers,output_folder = f"resource/{date}/us"):
+def find_cross(df_tickers,output_folder = f"resource/{date}/us",is_back_test=False,start_date=None,end_date=None, interval = None):
     five_cross_20 = []
     twenty_cross_90 = []
     five_cross_90= []
     for index, row in df_tickers.iterrows():
         ticker = row['symbol']
         try:
-            df1 = data.get_transaction_df(ticker)
+            df1 = data.get_transaction_df(ticker, interval=interval, is_back_test=is_back_test, start_date=start_date, end_date=end_date)
             df = df1.copy()
         except Exception as e:
             print(f"Error downloading data for {ticker}: {e}")
@@ -66,7 +66,7 @@ def find_cross(df_tickers,output_folder = f"resource/{date}/us"):
     # print(five_cross_90)
     # print(twenty_cross_90)
 
-# if __name__  =="__main__":
+if __name__  =="__main__":
     # df_tickers = pd.read_csv("resource/nyse_and_nasdaq_top_500.csv")
     # for index, row in df_tickers.iterrows():
     #     ticker = row['symbol']
@@ -77,8 +77,8 @@ def find_cross(df_tickers,output_folder = f"resource/{date}/us"):
     #         continue
     #     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
     #     find_cross(df, ticker)
-
-        # EMP
-        # PRH
-    # tickers = ["AZO"]
-    # find_cross(pd.DataFrame(tickers, columns=['symbol']))
+    #
+    #     EMP
+    #     PRH  21.607938  21.498378  22.171827
+    tickers = ["ATEX"]
+    find_cross(pd.DataFrame(tickers, columns=['symbol']),interval = "1wk", is_back_test=True,start_date="2025-10-01",end_date="2025-12-17")

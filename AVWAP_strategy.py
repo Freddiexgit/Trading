@@ -233,7 +233,7 @@ def run(source_file="resource/my_watch_list.csv", output_file = "avwap_setups.cs
     #     exit()
 
     tickers = pd.read_csv(source_file)["symbol"].tolist()
-
+    # tickers = ["BELFA"]
     leader_pool: List[Tuple[str, float]] = []
 
     print("Scanning leaders...")
@@ -293,6 +293,6 @@ def run(source_file="resource/my_watch_list.csv", output_file = "avwap_setups.cs
         except Exception as e:
             print(f"Execution error {ticker}: {e}")
     if result_df is not None:
-        result_df.to_csv(output_file,  index=False)
+        result_df.to_csv(output_file,  index=True)
 if __name__  =="__main__":
     run()
