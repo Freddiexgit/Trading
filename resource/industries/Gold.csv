@@ -2,7 +2,7 @@ symbol,name,sector,industry,marketCap,marketCap_str
 NEM,Newmont Corporation,Basic Materials,Gold,81724686336.0,81.725B
 AEM,Agnico Eagle Mines Limited,Basic Materials,Gold,72422645760.0,72.423B
 WPM,Wheaton Precious Metals Corp.,Basic Materials,Gold,45586161664.0,45.586B
-B,,Basic Materials,Gold,45481377792.0,45.481B
+B,Barric Minning,Basic Materials,Gold,45481377792.0,45.481B
 FNV,Franco-Nevada Corporation,Basic Materials,Gold,36301074432.0,36.301B
 GFI,Gold Fields Limited,Basic Materials,Gold,29965402112.0,29.965B
 AU,AngloGold Ashanti plc,Basic Materials,Gold,28598794240.0,28.599B

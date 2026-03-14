@@ -103,7 +103,7 @@ def add_macd_hist(df, fast=12, slow=26, signal=9, price_col='Close'):
 
 def load_data(ticker):
 
-    df = data_downloader.get_transaction_df(ticker)
+    df = data_downloader.get_transaction_df(ticker,period="2y", interval="1wk")
 
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
@@ -643,9 +643,9 @@ def early_warning(df, k_atr=2.0, vol_mult=1.6, ma_fast=10, ma_mid=60, ma_long=20
 
 def run(tickers : list,output_file = "EMA_Trend.csv"):
     load_symbol_sector()
-    if not market_ok():
-        print("❌ Market regime not favorable")
-        return
+    # if not market_ok():
+    #     print("❌ Market regime not favorable")
+    #     return
 
     print("\n🔥 MARKET OK — SCANNING...\n")
 
@@ -702,5 +702,6 @@ def run(tickers : list,output_file = "EMA_Trend.csv"):
 # =========================================================
 
 if __name__ == "__main__":
-    watch_list = pd.read_csv(f"resource/nyse_and_nasdaq_top_500.csv")['symbol'].tolist()
-    run(watch_list)
+    watch_list = pd.read_csv("resource/us_top_3000.csv")['symbol'].tolist()
+
+    run(watch_list,output_file="EMA_Trend.csv")

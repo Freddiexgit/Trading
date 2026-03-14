@@ -1,8 +1,6 @@
 symbol,name,sector,industry,marketCap,marketCap_str
 NEE,"NextEra Energy, Inc.",Utilities,Utilities - Regulated Electric,148371849216.0,148.372B
-NEE,"NextEra Energy, Inc.",Utilities,Utilities - Regulated Electric,148371849216.0,148.372B
 SO,The Southern Company,Utilities,Utilities - Regulated Electric,101534621696.0,101.535B
-DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0,95.251B
 DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0,95.251B
 NGG,National Grid plc,Utilities,Utilities - Regulated Electric,70022799360.0,70.023B
 AEP,"American Electric Power Company, Inc.",Utilities,Utilities - Regulated Electric,59372941312.0,59.373B
@@ -23,7 +21,6 @@ FTS,Fortis Inc.,Utilities,Utilities - Regulated Electric,25052098560.0,25.052B
 CNP,"CenterPoint Energy, Inc.",Utilities,Utilities - Regulated Electric,24619540480.0,24.62B
 ES,Eversource Energy,Utilities,Utilities - Regulated Electric,23777339392.0,23.777B
 EIX,Edison International,Utilities,Utilities - Regulated Electric,21600731136.0,21.601B
-CMS,CMS Energy Corporation,Utilities,Utilities - Regulated Electric,21423407104.0,21.423B
 CMS,CMS Energy Corporation,Utilities,Utilities - Regulated Electric,21423407104.0,21.423B
 KEP,Korea Electric Power Corporation,Utilities,Utilities - Regulated Electric,16960714752.0,16.961B
 LNT,Alliant Energy Corporation,Utilities,Utilities - Regulated Electric,16720971776.0,16.721B

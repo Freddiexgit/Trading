@@ -18,7 +18,7 @@ def get_data(df , ticker):
     df["EMA5"] = df["Close"].ewm(span=5, adjust=False).mean()
     df["EMA20"] = df["Close"].ewm(span=20, adjust=False).mean()
     df["EMA90"] = df["Close"].ewm(span=90, adjust=False).mean()
-    df= df.iloc[-2:]
+    df= df.iloc[-4:]
     df["5_cross_20"] = df["EMA5"] >= df["EMA20"]
     df["5_cross_90"] = df["EMA5"] >= df["EMA90"]
     df["20_cross_90"] = df["EMA20"] >= df["EMA90"]
@@ -28,11 +28,11 @@ def get_data(df , ticker):
     # print(ticker)
     # print(df)
     if len(df) < 2: return five_cross_20, five_cross_90, twenty_cross_90
-    if (df["5_cross_20"].iloc[0] == False) and (df["5_cross_20"].iloc[1] == True):
+    if((df['5_cross_20'] == True) & (df['5_cross_20'].shift(1) == False)).any():
         five_cross_20.append(ticker)
-    if (df["5_cross_90"].iloc[0] == False) and (df["5_cross_90"].iloc[1] == True):
+    if ((df['5_cross_90'] == True) & (df['5_cross_90'].shift(1) == False)).any():
         five_cross_90.append(ticker)
-    if (df["20_cross_90"].iloc[0] == False) and (df["20_cross_90"].iloc[1] == True):
+    if ((df['20_cross_90'] == True) & (df['20_cross_90'].shift(1) == False)).any():
         twenty_cross_90.append(ticker)
     return five_cross_20, five_cross_90, twenty_cross_90
 
@@ -81,4 +81,4 @@ if __name__  =="__main__":
     #     EMP
     #     PRH  21.607938  21.498378  22.171827
     tickers = ["ATEX"]
-    find_cross(pd.DataFrame(tickers, columns=['symbol']),interval = "1wk", is_back_test=True,start_date="2025-10-01",end_date="2025-12-17")
+    find_cross(pd.DataFrame(tickers, columns=['symbol']),interval = "1wk", is_back_test=True,start_date="2025-10-01",end_date="2026-1-5")

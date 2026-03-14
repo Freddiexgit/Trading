@@ -52,7 +52,7 @@ def detect_ema_converge_diverge(ticker, period="1mo", converge_thresh=0.005, div
 
     # --- Strict Filters ---
     momentum_ok = df["Close"].pct_change(20).iloc[-1] > 0
-    rsi_ok = df["RSI"].iloc[-1] > 50
+    rsi_ok = df["RSI"].iloc[-1] > 30
     vol_ok = df["Volume"].iloc[-1] > df["Volume"].rolling(20).mean().iloc[-1]
     trend_ok = df["EMA20"].iloc[-1] > df["EMA50"].iloc[-1]
     price_ok = df["Close"].iloc[-1] > df["EMA20"].iloc[-1]

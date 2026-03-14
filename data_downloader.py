@@ -2,7 +2,7 @@ from time import sleep
 
 import yfinance as yf
 import pandas as pd
-
+import traceback
 
 
 # Global variable
@@ -10,7 +10,7 @@ symbol_and_df = {}
 symbol_and_stock = {}
 global_period = None
 global_interval = None
-
+to_be_removed_tickers = []  # list to track symbols that should be removed from the cache
 def get_transaction_df(symbol, period="18mo", interval="1d", is_back_test=False,start_date = None, end_date = None):
     """Update the shared variable safely."""
     if global_period and global_interval:
@@ -33,9 +33,11 @@ def get_transaction_df(symbol, period="18mo", interval="1d", is_back_test=False,
             else:
                 df = yf.download(symbol, start=start_date,end = end_date, interval=interval, auto_adjust=False)
         except Exception  as e:
+
             return pd.DataFrame()
         symbol_and_df[symbol] = df
-
+    if(df.empty):
+        to_be_removed_tickers.append(symbol)
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
     return df
 
@@ -65,26 +67,32 @@ if __name__ == "__main__":
     # ticker_file_name = "nzx_tickers"
     # ticker_file_name = "my_vip"
     # ticker_file_name = "my_watch_list"
-    # ticker_file_name = "nyse_and_nasdaq_top_500"
-    # ticker_file_name = "us_top_3000"
+    # ticker_file_name = "us_top_5000"
+    # ticker_file_name = "us_middle_3000"
     # ticker_file_name = "my_owned"
-    # ticker_file_name = "nzx_tickers"
-    # ticker_file_name_full = f"{ticker_file_name}.csv"
-    # input_file = f"resource/{ticker_file_name_full}"
-    # watch_list = pd.read_csv(f"{input_file}")['symbol'].tolist()
-    error_list = []
-    watch_list = ["AAOI"]
-    for ticker in watch_list:
-        try:
-            df = get_stock_obj(ticker,invterval = "1wk", is_back_test=True,start_date="2025-12-01", end_date="2025-12-05")
-        except Exception as e:
-            error_list.append(ticker)
-            print(ticker)
-    # watch_list = list(set(watch_list) - set(error_list))
-    # pd.DataFrame(watch_list, columns=['symbol']).to_csv(f"resource/{ticker_file_name_full}", index=False)
+    # ticker_file_name = "to_be_removed_tickers"
+    ticker_file_name_full = f"{ticker_file_name}.csv"
+    input_file = f"resource/{ticker_file_name_full}"
+    watch_list = pd.read_csv(f"{input_file}")['symbol'].tolist()
+    error_list = pd.read_csv("resource/to_remove.csv")['symbol'].tolist()
+    # # watch_list = ["AAOI"]
+    # for ticker in watch_list:
+    #     try:
+    #         df = get_stock_obj(ticker,period = "2y",interval = "1wk", is_back_test=False,start_date="2025-12-01", end_date="2025-12-05")
+    #         if(df is None or len(df) < 1):
+    #             print(f"WARNING: DataFrame is empty for {ticker}!")
+    #             error_list.append(ticker)
+    #     except Exception as e:
+    #         error_list.append(ticker)
+    #         traceback.print_exc()
+    #         print(ticker)
+    # print(error_list)
+    # pd.DataFrame(error_list, columns=['symbol']).to_csv(f"resource/to_remove.csv", index=False)
+    watch_list = list(set(watch_list) - set(error_list))
+    pd.DataFrame(watch_list, columns=['symbol']).to_csv(f"resource/{ticker_file_name_full}", index=False)
     # st = get_stock_obj("AMDL")
     # print(st.get_info())
-    #
+
     # sleep(1)
     # print(get_transaction_df("AMDL"))
 

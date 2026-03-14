@@ -1,9 +1,6 @@
 symbol,name,sector,industry,marketCap,marketCap_str
 MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0,240.217B
-MS,Morgan Stanley,Financial Services,Capital Markets,240217227264.0,240.217B
 GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,225.603B
-GS,"The Goldman Sachs Group, Inc.",Financial Services,Capital Markets,225602813952.0,225.603B
-SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0,173.971B
 SCHW,The Charles Schwab Corporation,Financial Services,Capital Markets,173970669568.0,173.971B
 IBKR,"Interactive Brokers Group, Inc.",Financial Services,Capital Markets,105796804608.0,105.797B
 HOOD,"Robinhood Markets, Inc.",Financial Services,Capital Markets,92448858112.0,92.449B
