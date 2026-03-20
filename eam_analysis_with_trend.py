@@ -103,18 +103,22 @@ def add_macd_hist(df, fast=12, slow=26, signal=9, price_col='Close'):
 
 def load_data(ticker):
 
-    df = data_downloader.get_transaction_df(ticker,period="2y", interval="1wk")
+    df = data_downloader.get_transaction_df(ticker)
 
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
-    if df is None or len(df) < 200:
+    if df is None :
         return pd.DataFrame()
+    if  len(df) < 200 : ## when running interval 1wk, don't have 200 weeks of data, so just use whatever we have for MA200
+        df["MA200"] = df["Close"].rolling(65).mean()
+    else:
+        df["MA200"] = df["Close"].rolling(200).mean()
+
     df["MA10"] = df["Close"].ewm(span=10).mean()
     df["MA20"] = df["Close"].ewm(span=20).mean()
     df["MA50"] = df["Close"].rolling(50).mean()
     df["MA60"] = df["Close"].rolling(60).mean()
-    df["MA200"] = df["Close"].rolling(200).mean()
     df["VOL20"] = df["Volume"].rolling(20).mean()
     df = add_atr(df)
     df["RSI14"]=rsi(df["Close"], 14)
@@ -654,8 +658,12 @@ def run(tickers : list,output_file = "EMA_Trend.csv"):
     sector_cache = {}
 
     for ticker in tickers:
-
-        df = load_data(ticker)
+        try:
+            df = load_data(ticker)
+        except Exception as e:
+            print(f"Data load error: {ticker}", e)
+            traceback.print_exc()
+            continue
         if df is None or len(df) < 10:
             continue
         try:
@@ -702,6 +710,6 @@ def run(tickers : list,output_file = "EMA_Trend.csv"):
 # =========================================================
 
 if __name__ == "__main__":
-    watch_list = pd.read_csv("resource/us_top_3000.csv")['symbol'].tolist()
+    watch_list = ["PINC","AAPL"]
 
     run(watch_list,output_file="EMA_Trend.csv")

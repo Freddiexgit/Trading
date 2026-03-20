@@ -201,8 +201,11 @@ def main(input,output_file):
     results = []
     print("🔍 正在计算量化因子...")
     for t in tickers:
-
-        df = radar.process_stock(t, dd.get_transaction_df(t))
+        try:
+            df = radar.process_stock(t, dd.get_transaction_df(t))
+        except Exception  as e:
+            logging.error(f"Error processing {t}: {e}")
+            continue
         if df is not None and not df.empty and df["STABLE_SCORE"].iloc[-1] > 0:
             last = df.iloc[[-1]].copy()
             results.append(last)

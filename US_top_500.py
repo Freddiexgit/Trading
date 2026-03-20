@@ -18,14 +18,17 @@ import traceback
 import AI_buying_point as ai
 import ema_angle_leaders as ea
 
-data.global_period = "18mo"
+data.global_period = "12mo"
 data.global_interval ="1d"
 data.to_be_removed_tickers
 #
-# data.global_period = "3y"
+# data.global_period = "2y"
 # data.global_interval ="1wk"
-
-date = datetime.now().strftime("%Y-%m-%d")
+now = datetime.now()
+if now.weekday()>=5:  # Saturday or Sunday
+    date = f"{now.strftime("%Y-%m-%d")}_weekend"
+else:
+    date = now.strftime("%Y-%m-%d")
 # ticker_file_name = "nzx_tickers"
 # ticker_file_name = "my_vip"
 # ticker_file_name = "my_watch_list"
@@ -42,29 +45,30 @@ if not os.path.exists(f"{output_folder}"):
 try:
     print("running run_sector_rotation...")
     from sector_rotation import run_sector_rotation
-    run_sector_rotation(output_file = f"{output_folder}/sector_rotation.csv")
-    df_tickers_sr = pd.read_csv(f"{output_folder}/sector_rotation.csv")[["Ticker"]]
-    df_tickers_sr = df_tickers_sr.rename(columns={'Ticker': 'symbol'})
+    run_sector_rotation(output_file = f"{output_folder}/sector_rotation_{date}.csv")
+    df_tickers_sr = pd.read_csv(f"{output_folder}/sector_rotation_{date}.csv")[["symbol"]]
     di.generate_pdf(df_tickers_sr, f"{output_folder}/sector_rotation.pdf", "No", "us")
+
 except Exception as e:
     print("run_sector_rotation error:", e)
 try:
-    print("running run_converge_diverge...")
+    print(f"running run_converge_diverge...{datetime.now()}")
     run_converge_diverge(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
 except Exception  as e:
     print("run_converge_diverge error:", e)
 try:
-    print("running run_last_day_volume_increase...")
+    print(f"running run_last_day_volume_increase....{datetime.now()}")
     run_last_day_volume_increase(f"{ticker_file_name_full}",output_folder = f"{output_folder}" )
 except Exception as e:
     print("run_last_day_volume_increase error:", e)
 try:
-    print("running run_volume_and_cvg_dvg...")
+    print(f"running run_volume_and_cvg_dvg....{datetime.now()}")
     run_volume_and_cvg_dvg(output_folder = f"{output_folder}" )
 except Exception as e:
     print("run_volume_and_cvg_dvg error:", e)
 
 try:
+    print(f"running quick fundamental ....{datetime.now()}")
     qfa.run_quick_fundamental_analysis(input_file=f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/quick_fundamental_analysis_{date}.csv")
     df_tickers_fqa = pd.read_csv(f"{output_folder}/quick_fundamental_analysis_{date}.csv")
     df_tickers_fqa.columns = df_tickers_fqa.columns.str.lower()
@@ -73,55 +77,50 @@ except Exception  as e:
     print("error:", e)
 
 try:
-    print("running ema_angle_leaders...")
+    print(f"running ema_angle_leaders....{datetime.now()}")
     ea.main(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ema_angle_leaders_{date}.csv")
     df_tickers_ea = pd.read_csv(f"{output_folder}/ema_angle_leaders_{date}.csv")
     di.generate_pdf(df_tickers_ea[["symbol"]].drop_duplicates().head(130), f"{output_folder}/ema_angle_leaders.pdf", "No", "us")
 except Exception as e:
+    traceback.print_exc()
     print("ema_angle_leaders error:", e)
 try:
-    print("running ai entry point...")
-    ai.run_ai_buying_point(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ai_buy.csv")
-    df_tickers_ai = pd.read_csv(f"{output_folder}/ai_buy.csv")
+    print(f"running ai entry point...{datetime.now()}")
+    ai.run_ai_buying_point(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/ai_buy_{date}.csv")
+    df_tickers_ai = pd.read_csv(f"{output_folder}/ai_buy_{date}.csv")
     di.generate_pdf(df_tickers_ai, f"{output_folder}/ai_buy.pdf", "yes", "us")
 except Exception as e:
     print("ai entry point error:", e)
 
 try:
-    print("EMA trend...")
+    print(f"EMA trend....{datetime.now()}")
     df_tickers = pd.read_csv(f"resource/{ticker_file_name_full}")["symbol"].dropna().tolist()
     eat.run(df_tickers,output_file = f"{output_folder}/EMA_Trend_{date}.csv")
-    x = pd.read_csv(  f"{output_folder}/EMA_Trend_{date}.csv")
+    x = pd.read_csv(  f"{output_folder}/EMA_Trend_{date}.csv").query('accumulation_signal == "HEAVY_ACCUMULATION"')
     x = x[["symbol"]].head(130)
     di.generate_pdf( x, f"{output_folder}/EMA_Trend.pdf", "no", "us")
 except Exception as e:
+    traceback.print_exc()
     print("EMA trend error:", e)
 try:
-    print("find AVWAP .....")
+    print(f"find AVWAP ....{datetime.now()}")
     AVWAP_strategy.run(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/avwap_{date}.csv")
     df_tickers_avwp = pd.read_csv(f"{output_folder}/avwap_{date}.csv")[["symbol"]]
     di.generate_pdf(df_tickers_avwp, f"{output_folder}/avwap.pdf", "yes", "us")
 except Exception  as e:
     print("AVWAP error:", e)
-try:
 
-    print("running rsi_bottom...")
-    rsi_bottom(f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/bottom_{date}.csv")
-    df_tickers_rsi = pd.read_csv(  f"{output_folder}/bottom_{date}.csv")
-    di.generate_pdf(df_tickers_rsi, f"{output_folder}/bottom.pdf", "yes", "us")
-except Exception  as  e:
-    print("rsi_bottom error:", e)
 try:
-    print("running institute_enter...")
+    print(f"running institute_enter...{datetime.now()}")
     institute_enter(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/institute_enter_{date}.csv")
     df_tickers_inst = pd.read_csv(f"{output_folder}/institute_enter_{date}.csv")
     di.generate_pdf(df_tickers_inst, f"{output_folder}/institute_enter.pdf", "No", "us")
 except Exception as e:
     print("institute_enter error:", e)
 try:
-    print("running bid ask...")
-    ask_bid.bid_ask_screener(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/bid_ask.csv")
-    df_tickers_ba = pd.read_csv(f"{output_folder}/bid_ask.csv")
+    print(f"running bid ask....{datetime.now()}")
+    ask_bid.bid_ask_screener(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/bid_ask_{date}.csv")
+    df_tickers_ba = pd.read_csv(f"{output_folder}/bid_ask_{date}.csv")
     di.generate_pdf(df_tickers_ba, f"{output_folder}/bid_ask.pdf", "No", "us")
 except Exception as e:
     print("institute_enter error:", e)
@@ -138,7 +137,7 @@ def pd_read_pattern(pattern):
 df_tickers = pd.read_csv(f"resource/{ticker_file_name_full}")
 
 try:
-    print("running find_cross...")
+    print(f"running find_cross....{datetime.now()}")
     find_cross(df_tickers,output_folder)
     df_tickers_result = pd_read_pattern(f'{output_folder}/find_cross_ema*')
     df_tickers_result = df_tickers_result.drop_duplicates()

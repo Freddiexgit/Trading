@@ -20,3 +20,4 @@ pandas_datareader
 pytube
 yt_dlp
 finvizfinance
+streamlit

@@ -86,6 +86,7 @@ def process_ticker(symbol: str) -> dict | None:
             logging.warning(f"跳過 {symbol}: 無法獲取基礎數據")
             return None
 
+
         # --- 1. 硬性過濾 (Hard Filters) ---
         mkt_cap = safe_get(info, 'marketCap', 0)
         avg_vol = safe_get(info, 'averageVolume', 0)
@@ -143,6 +144,13 @@ def process_ticker(symbol: str) -> dict | None:
         # 門檻設定 (4分以上視為優質標的)
         if score < 3:
             return None
+        # Get annual statements
+        ocf = stock.cashflow.loc["Operating Cash Flow"]
+        net_income = stock.financials.loc["Net Income"]
+        if net_income is None or net_income == 0:
+            ocf_net_income_ratio = 0.0
+        else:
+            ocf_net_income_ratio = round(ocf / net_income, 2),
 
         return {
             'symbol': symbol,
@@ -151,6 +159,7 @@ def process_ticker(symbol: str) -> dict | None:
             'PEG': round(peg_ratio, 2),
             'PE_Fwd': round(pe_ratio, 2),
             'ROE': f"{roe:.2%}",
+            "OCF_to_NetIncome_Ratio" :ocf_net_income_ratio,
             'Debt_EBITDA': round(leverage, 2),
             'Mkt_Cap_B': round(mkt_cap / 1e9, 2),
             'Momentum_20d': f"{momentum:.2%}",

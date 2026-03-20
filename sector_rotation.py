@@ -115,6 +115,7 @@ def run_sector_rotation(output_file):
     # ------------------------------------------------------------
 
     ranked = df.sort_values("Score", ascending=False).round(2)
+    ranked.rename(columns={'Ticker': 'symbol'})
     ranked.to_csv(output_file, index=True)
     # print("\n--- Sector Rotation Ranking ---")
     # print(ranked)
