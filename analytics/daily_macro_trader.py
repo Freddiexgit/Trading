@@ -3,23 +3,41 @@ import numpy as np
 import yfinance as yf
 import pandas_datareader.data as web
 from datetime import datetime, timedelta
-from hmmlearn.hmm import GaussianHMM
-from sklearn.preprocessing import StandardScaler
-import warnings
-
-warnings.filterwarnings('ignore')
 
 # =========================
 # Configuration
 # =========================
-MARKET_TICKERS = {"QQQ": "QQQ", "VIX": "^VIX", "TLT": "TLT"}
-FRED_TICKERS = {"DFF": "FED_RATE", "CPIAUCSL": "CPI", "UNRATE": "UNEMP"}
+MARKET_TICKERS = {
+    "QQQ": "QQQ",
+    "VIX": "^VIX",
+    "TLT": "TLT",
+}
 
+FRED_TICKERS = {
+    "DFF": "FED_RATE",
+    "CPIAUCSL": "CPI",
+    "UNRATE": "UNEMP"
+}
 
 # =========================
-# 1. Data Pipeline
+# Utilities
 # =========================
-def fetch_macro_data(years=4):  # INCREASED TO 4 YEARS for ML training data
+def zscore(series, window=252):
+    return (series - series.rolling(window).mean()) / (series.rolling(window).std() + 1e-8)
+
+def last_two_valid(series):
+    s = series.dropna()
+    if len(s) < 2:
+        return np.nan, np.nan
+    return s.iloc[-1], s.iloc[-2]
+
+# =========================
+# Data Pipeline
+# =========================
+# =========================
+# Data Pipeline (Fixed Lookback)
+# =========================
+def fetch_macro_data(years=2):  # INCREASED TO 2 YEARS to prime the 252-day rolling windows
     end = datetime.today()
     start = end - timedelta(days=years * 365)
 
@@ -40,159 +58,190 @@ def fetch_macro_data(years=4):  # INCREASED TO 4 YEARS for ML training data
     for col in ["FED_RATE", "CPI", "UNEMP"]:
         df[col] = df[col].ffill()
 
-    return df.dropna()
-
-
-# =========================
-# 2. Feature Engineering
-# =========================
-def compute_features(df):
-    # -------- CPI --------
-    df["CPI_DELTA"] = (df["CPI"] - df["CPI"].shift(21)) / (df["CPI"].shift(21) + 1e-8)
-    df["CPI_TREND_1Y"] = (df["CPI"] - df["CPI"].shift(252)) / (df["CPI"].shift(252) + 1e-8)
-
-    # -------- FED --------
-    df["FED_DELTA"] = df["FED_RATE"] - df["FED_RATE"].shift(21)
-    df["FED_TREND_1Y"] = df["FED_RATE"] - df["FED_RATE"].shift(252)
-
-    # -------- UNEMP --------
-    df["UNEMP_DELTA"] = df["UNEMP"] - df["UNEMP"].shift(21)
-    df["UNEMP_TREND_1Y"] = df["UNEMP"] - df["UNEMP"].shift(252)
-
-    # -------- MARKET (EMA SIGNAL) --------
-    df["QQQ_EMA5"] = df["QQQ"].ewm(span=5, adjust=False).mean()
-    df["QQQ_EMA10"] = df["QQQ"].ewm(span=10, adjust=False).mean()
-    df["MARKET_UP"] = df["QQQ_EMA5"] > df["QQQ_EMA10"]
-    df["TREND_STRENGTH"] = (df["QQQ_EMA5"] - df["QQQ_EMA10"]) / df["QQQ_EMA10"]
-
-    # -------- VOL --------
-    df["VIX_Z"] = (df["VIX"] - df["VIX"].rolling(252).mean()) / (df["VIX"].rolling(252).std() + 1e-8)
-
-    return df.dropna()
-
-
-# =========================
-# 3. Options Edge Calculator
-# =========================
-def compute_options_edge(df):
-    # Realized Volatility (RV): 20-day historical standard deviation, annualized
-    df["RV"] = df["QQQ"].pct_change().rolling(20).std() * np.sqrt(252)
-
-    # Implied Volatility (IV): Proxied by the VIX
-    df["IV"] = df["VIX"] / 100.0
-
-    # Options Edge: Negative means options are cheap compared to actual stock movement
-    df["VOL_PREMIUM"] = df["IV"] - df["RV"]
-
-    # VIX Percentile (Last 252 days)
-    df["VIX_PERCENTILE"] = df["VIX"].rolling(252).apply(lambda x: pd.Series(x).rank(pct=True).iloc[-1])
-
-    return df.dropna()
-
-
-# =========================
-# 4. HMM Probabilities
-# =========================
-def compute_hmm_probabilities(df, n_states=2):
-    # Features the HMM will use to figure out the current macro state
-    features = ["TREND_STRENGTH", "VIX_Z", "CPI_DELTA", "FED_DELTA", "UNEMP_DELTA"]
-    X = df[features].copy()
-
-    # Scale data for ML model
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-
-    # Train the Hidden Markov Model
-    hmm_model = GaussianHMM(n_components=n_states, covariance_type="full", n_iter=100, random_state=42)
-    hmm_model.fit(X_scaled)
-
-    # Predict Probabilities
-    probs = hmm_model.predict_proba(X_scaled)
-
-    # Dynamically identify which state is the "Recession" (the one with higher VIX)
-    state_vix_means = [df.iloc[probs[:, i] >= 0.5]["VIX"].mean() for i in range(n_states)]
-    high_vol_state = np.argmax(state_vix_means)
-    low_vol_state = np.argmin(state_vix_means)
-
-    # Assign probabilities
-    df["P_EXPANSION"] = probs[:, low_vol_state]
-    df["P_RECESSION"] = probs[:, high_vol_state]
-
+    df = df.dropna()
     return df
 
 
 # =========================
-# 5. Probabilistic Trade Generator
+# Feature Engineering (Fixed Timeframes)
 # =========================
-def generate_trade_probabilistic(latest):
-    p_exp = latest["P_EXPANSION"]
-    p_rec = latest["P_RECESSION"]
+def compute_features(df):
+    # 1 month = ~21 trading days, 1 year = ~252 trading days
 
-    iv = latest["IV"]
-    rv = latest["RV"]
-    vix_pct = latest["VIX_PERCENTILE"]
-    price = latest["QQQ"]
+    # -------- CPI --------
+    # MoM Change
+    df["CPI_DELTA"] = (df["CPI"] - df["CPI"].shift(21)) / (df["CPI"].shift(21) + 1e-8)
+    # YoY Change
+    df["CPI_TREND_1Y"] = (df["CPI"] - df["CPI"].shift(252)) / (df["CPI"].shift(252) + 1e-8)
+
+    df["CPI_SCORE"] = np.tanh(df["CPI_DELTA"] * 5 + df["CPI_TREND_1Y"] * 3)
+
+    # -------- FED --------
+    # Monthly basis point change
+    df["FED_DELTA"] = df["FED_RATE"] - df["FED_RATE"].shift(21)
+    # Yearly basis point change
+    df["FED_TREND_1Y"] = df["FED_RATE"] - df["FED_RATE"].shift(252)
+
+    df["LIQUIDITY_SCORE"] = (
+            -df["FED_DELTA"] * 0.7 +
+            -df["FED_TREND_1Y"] * 0.3
+    )
+
+    # -------- UNEMP --------
+    # MoM change
+    df["UNEMP_DELTA"] = df["UNEMP"] - df["UNEMP"].shift(21)
+    # YoY change
+    df["UNEMP_TREND_1Y"] = df["UNEMP"] - df["UNEMP"].shift(252)
+
+    df["LABOR_SCORE"] = (
+            -df["UNEMP_DELTA"] * 0.5 +
+            -df["UNEMP_TREND_1Y"] * 0.5
+    )
+
+    # =========================
+    # MARKET (EMA SIGNAL)
+    # =========================
+    df["QQQ_EMA5"] = df["QQQ"].ewm(span=5, adjust=False).mean()
+    df["QQQ_EMA10"] = df["QQQ"].ewm(span=10, adjust=False).mean()
+
+    df["MARKET_UP"] = df["QQQ_EMA5"] > df["QQQ_EMA10"]
+    df["TREND_STRENGTH"] = (df["QQQ_EMA5"] - df["QQQ_EMA10"]) / df["QQQ_EMA10"]
+
+    # =========================
+    # VOL
+    # =========================
+    df["VIX_Z"] = (
+            (df["VIX"] - df["VIX"].rolling(252).mean()) /
+            (df["VIX"].rolling(252).std() + 1e-8)
+    )
+
+    # Drop the NaNs created by the 252-day shift before returning
+    return df.dropna()
+
+# =========================
+# REGIME ENGINE (UPGRADED)
+# =========================
+def compute_regime(df):
+    df = compute_features(df)
+    latest = df.iloc[-1]
+
+    # =========================
+    # FACTORS (CLEAN NOW)
+    # =========================
+    growth_score = (
+        latest["TREND_STRENGTH"] * 5 +
+        latest["LABOR_SCORE"] * 2
+    )
+
+    inflation_score = latest["CPI_SCORE"] * 5
+    liquidity_score = latest["LIQUIDITY_SCORE"] * 3
+    risk_score = latest["VIX_Z"]
+
+    scores = {
+        "growth": float(growth_score),
+        "inflation": float(inflation_score),
+        "liquidity": float(liquidity_score),
+        "risk": float(risk_score),
+    }
+
+    # =========================
+    # REGIME LOGIC (MORE STABLE)
+    # =========================
+    if growth_score < -0.5 and risk_score > 0.5:
+        regime = "HARD_LANDING"
+
+    elif inflation_score > 0.5 and growth_score < 0:
+        regime = "STAGFLATION"
+
+    elif liquidity_score > 0.3 and growth_score > 0:
+        regime = "LIQUIDITY_INJECTION"
+
+    elif growth_score > 0.5 and inflation_score < 0.3:
+        regime = "EXPANSION"
+
+    elif growth_score > 0 and inflation_score > 0:
+        regime = "REFLATION"
+
+    else:
+        regime = "TRANSITION"
+
+    return regime, latest, scores
+
+# =========================
+# STRATEGY ENGINE
+# =========================
+def generate_trade(regime, price, vix, scores):
 
     def round_strike(x):
         return int(round(x / 5.0) * 5)
 
-    # Edge Filter: Only buy options if IV is lower than RV, OR if VIX is extremely low (<30th percentile)
-    has_edge = (iv < rv) or (vix_pct < 0.30)
+    vol_scale = np.clip(vix / 100, 0.1, 0.6)
 
-    # Output dashboard
-    print("\n===== 🎲 PROBABILITIES & EDGE =====")
-    print(f"P(Expansion):   {p_exp * 100:.1f}%")
-    print(f"P(Recession):   {p_rec * 100:.1f}%")
-    print(f"IV: {iv * 100:.1f}% | RV: {rv * 100:.1f}%")
-    print(f"VIX Percentile: {vix_pct * 100:.1f}th")
-    print(f"Options Edge:   {'✅ YES (Cheap)' if has_edge else '❌ NO (Expensive)'}")
-    print("===================================")
+    call_strike = round_strike(price * (1 + vol_scale))
+    put_strike = round_strike(price * (1 - vol_scale))
 
-    if not has_edge:
-        return {"action": "SKIP OR SELL PREMIUM", "reason": "Options are overpriced (IV > RV). Selling environment."}
+    if regime in ["LIQUIDITY_INJECTION", "EXPANSION"]:
+        return {
+            "action": f"BUY CALL {call_strike}",
+            "reason": "Growth strong + liquidity supportive"
+        }
 
-    if p_rec > 0.70:
-        put_strike = round_strike(price * 0.95)
-        return {"action": f"BUY PUT {put_strike}", "reason": "High probability of Recession + Options are cheap."}
+    elif regime == "HARD_LANDING":
+        return {
+            "action": f"BUY PUT {put_strike}",
+            "reason": "Recession risk + volatility expansion"
+        }
 
-    elif p_exp > 0.70:
-        call_strike = round_strike(price * 1.05)
-        return {"action": f"BUY CALL {call_strike}", "reason": "High probability of Expansion + Options are cheap."}
+    elif regime == "STAGFLATION":
+        return {
+            "action": "PUT SPREAD",
+            "reason": "Weak growth + sticky inflation"
+        }
+
+    elif regime == "REFLATION":
+        return {
+            "action": f"BULL CALL SPREAD {round_strike(price)}-{call_strike}",
+            "reason": "Growth positive but inflation rising"
+        }
 
     else:
-        return {"action": "WAIT / NEUTRAL", "reason": "Market in transition (<70% probability conviction)."}
-
+        if scores["risk"] > 1:
+            return {
+                "action": "LONG STRADDLE",
+                "reason": "High uncertainty / volatility expansion"
+            }
+        else:
+            return {
+                "action": "IRON CONDOR",
+                "reason": "Low conviction / range-bound"
+            }
 
 # =========================
 # EXECUTION
 # =========================
 if __name__ == "__main__":
     try:
-        print("Fetching Macro Data & Training HMM...")
-        # 1. Pipeline execution
-        df = fetch_macro_data(years=4)
-        df = compute_features(df)
-        df = compute_options_edge(df)
-        df = compute_hmm_probabilities(df)
+        df = fetch_macro_data()
+        regime, data, scores = compute_regime(df)
 
-        latest_data = df.iloc[-1]
+        trade = generate_trade(regime, data["QQQ"], data["VIX"], scores)
 
-        # 2. Print Raw Macro State
-        print("\n===== 🏛️ MACRO INDICATORS =====")
-        print(f"QQQ Price:   ${latest_data['QQQ']:.2f} (Trend: {'UP' if latest_data['MARKET_UP'] else 'DOWN'})")
-        print(f"VIX Level:   {latest_data['VIX']:.2f}")
-        print(f"CPI MoM Δ:   {latest_data['CPI_DELTA'] * 100:.2f}%")
-        print(f"Fed MoM Δ:   {latest_data['FED_DELTA']:.2f} bps")
-        print(f"Unemp MoM Δ: {latest_data['UNEMP_DELTA']:.2f}%")
+        print("\n===== MACRO STATE =====")
+        print(f"CPI Δ: {data['CPI_DELTA']:.4f}")
+        print(f"Fed Δ: {data['FED_DELTA']:.2f}")
+        print(f"Unemp Δ: {data['UNEMP_DELTA']:.2f}")
+        print(f"QQQ Trend: {'UP' if data['MARKET_UP'] else 'DOWN'}")
+        print(f"VIX: {data['VIX']:.2f}")
 
-        # 3. Generate Trade
-        trade = generate_trade_probabilistic(latest_data)
+        print("\n===== SCORES =====")
+        for k, v in scores.items():
+            print(f"{k}: {v:.2f}")
 
-        print(f"\n===== 🎯 TRADE EXECUTION =====")
+        print(f"\n===== REGIME =====\n{regime}")
+
+        print(f"\n===== TRADE =====")
         print(f"Action: {trade['action']}")
-        print(f"Reason: {trade['reason']}\n")
+        print(f"Reason: {trade['reason']}")
 
     except Exception as e:
-        import traceback
-
-        traceback.print_exc()
+        print(f"Error: {e}")
