@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # ticker_file_name = "nzx_tickers"
     # ticker_file_name = "my_vip"
     # ticker_file_name = "my_watch_list"
-    # ticker_file_name = "us_top_5000"
+    ticker_file_name = "us_top_5000"
     # ticker_file_name = "us_middle_3000"
     # ticker_file_name = "my_owned"
     # ticker_file_name = "to_be_removed_tickers"

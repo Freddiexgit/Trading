@@ -6,147 +6,225 @@ from datetime import datetime, timedelta
 import  data_downloader as dd
 import traceback
 # Try to import linregress; fallback to numpy.polyfit
+import yfinance as yf
+import pandas as pd
+import numpy as np
+
+# Optional: use scipy.linregress for regression stats
 try:
     from scipy.stats import linregress
     _HAS_SCIPY = True
 except Exception:
     _HAS_SCIPY = False
 
-def get_history(ticker, period="180d", interval="1d"):
-    """Fetch historical OHLCV for a ticker. Returns DataFrame or None."""
+def fetch_history(ticker, period="365d", interval="1d"):
     try:
 
         df = dd.get_transaction_df(ticker, period=period, interval=interval)
         if df is None or df.empty:
             return None
-        df = df.dropna(subset=["Close"])
+        df = df.dropna(subset=["Close", "High", "Low", "Volume"])
         return df
     except Exception:
-        traceback.print_exc()
         return None
 
-def add_emas(df, ema_periods=(5,10,20,60,120,200)):
-    for p in ema_periods:
+def compute_log_regression_metrics(series):
+    y = np.log(series.values)
+    x = np.arange(len(y))
+    if len(y) < 3:
+        return np.nan, np.nan, np.nan
+    if _HAS_SCIPY:
+        slope, intercept, r_value, p_value, std_err = linregress(x, y)
+        r_squared = r_value**2
+    else:
+        slope, intercept = np.polyfit(x, y, 1)
+        y_pred = slope * x + intercept
+        ss_res = np.sum((y - y_pred)**2)
+        ss_tot = np.sum((y - np.mean(y))**2)
+        r_squared = 1 - ss_res / ss_tot if ss_tot != 0 else np.nan
+    return float(slope), float(intercept), float(r_squared)
+
+def annualize_slope_pct(slope_per_day, trading_days=252):
+    if np.isnan(slope_per_day):
+        return np.nan
+    return float((np.exp(slope_per_day * trading_days) - 1) * 100)
+
+def add_emas(df, periods=(20,50,200)):
+    for p in periods:
         df[f"EMA{p}"] = df["Close"].ewm(span=p, adjust=False).mean()
     return df
 
-def slope_percent_per_day(series):
-    """
-    Compute slope of price series in percent per day using linear regression on log(price).
-    Returns percent change per day (e.g., 0.012 = 1.2%/day).
-    """
-    y = np.log(series.values)
-    x = np.arange(len(y))
-    if len(y) < 2:
+def compute_atr(df, window=14):
+    high = df["High"]
+    low = df["Low"]
+    close = df["Close"]
+    tr1 = high - low
+    tr2 = (high - close.shift(1)).abs()
+    tr3 = (low - close.shift(1)).abs()
+    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+    atr = tr.rolling(window).mean().iloc[-1]
+    return float(atr) if not np.isnan(atr) else np.nan
+
+def compute_adr(df, window=20):
+    rng = (df["High"] / df["Low"] - 1) * 100
+    if len(rng.dropna()) < window:
         return np.nan
-    if _HAS_SCIPY:
-        res = linregress(x, y)
-        slope = res.slope
-    else:
-        slope, _ = np.polyfit(x, y, 1)
-    # slope is per index; convert to percent/day
-    return float(np.expm1(slope))  # approximate daily percent (e^slope - 1)
+    return float(rng.rolling(window).mean().iloc[-1])
 
-def volume_trend(df, lookback=20):
-    """Return True if recent volume is >= historical average and trending up."""
-    if "Volume" not in df.columns or len(df["Volume"].dropna()) < lookback:
-        return False
-    recent = df["Volume"].iloc[-lookback:]
-    avg = recent.mean()
-    # simple check: last 5-day avg >= 1.0 * 20-day avg and slope positive
-    last5 = recent.iloc[-5:].mean()
-    slope = slope_percent_per_day(recent)  # percent/day on volume
-    return (last5 >= avg * 0.9) and (slope is not None and slope >= 0)
-
-def is_ema_stacked(df):
-    """Check EMA stacking on the last row: EMA5 > EMA10 > EMA20 > EMA60 > EMA120 > EMA200"""
+def is_ema_stacked_last(df):
     last = df.iloc[-1]
     try:
-        return (last["EMA5"] > last["EMA10"] > last["EMA20"] >
-                last["EMA60"] > last["EMA120"] > last["EMA200"])
+        return (last["Close"] > last["EMA20"] > last["EMA50"] > last["EMA200"])
     except Exception:
         return False
 
-def uptrend_score(df, price_change_days=30):
-    """
-    Compute a composite score:
-      - speed: slope %/day (primary sort)
-      - recent percent change over price_change_days
-      - distance above EMA20
-    Returns dict with metrics.
-    """
-    out = {}
-    close = df["Close"].iloc[-1]
-    out["close"] = float(close)
-    # slope over full available window
-    out["slope_pct_per_day"] = slope_percent_per_day(df["Close"])
-    # percent change over price_change_days
-    if len(df) >= price_change_days:
-        past = df["Close"].iloc[-price_change_days]
-        out[f"pct_change_{price_change_days}d"] = float((close / past - 1) * 100)
-    else:
-        out[f"pct_change_{price_change_days}d"] = np.nan
-    # distance above EMA20
-    out["dist_above_ema20_pct"] = float((close / df["EMA20"].iloc[-1] - 1) * 100) if "EMA20" in df.columns else np.nan
-    return out
+def suggest_levels_for_ticker(df, ticker, lookback_high=20, atr_mult_stop=2.0, target_atr_mults=(1.0,2.0,3.0)):
+    last_close = float(df["Close"].iloc[-1])
+    ema20 = float(df["EMA20"].iloc[-1])
+    ema50 = float(df["EMA50"].iloc[-1])
+    ema200 = float(df["EMA200"].iloc[-1])
+    atr = compute_atr(df, window=14)
+    adr = compute_adr(df, window=20)
+    # recent high for breakout
+    recent_high = float(df["Close"].rolling(lookback_high).max().iloc[-1])
+    # regression metrics
+    slope, intercept, r2 = compute_log_regression_metrics(df["Close"])
+    annual_slope_pct = annualize_slope_pct(slope)
 
-def scan_uptrends(tickers,
-                  period="180d",
-                  interval="1d",
-                  min_price=1.0,
-                  min_avg_volume=100000,
-                  price_change_days=30,
-                  require_volume=True):
-    """
-    Scan a list of tickers and return DataFrame of those matching uptrend characteristics,
-    sorted by speed (slope_pct_per_day descending).
-    """
-    results = []
+    # Entry logic:
+    # - If price is within 2% below recent high -> breakout entry slightly above recent high
+    # - Else prefer pullback entry at EMA20
+    breakout_threshold = recent_high * 0.98
+    breakout_entry = recent_high * 1.001  # small buffer above high
+    pullback_entry = ema20
+    if last_close >= breakout_threshold:
+        recommended_entry = round(breakout_entry, 4)
+        entry_type = "breakout"
+    else:
+        recommended_entry = round(pullback_entry, 4)
+        entry_type = "pullback"
+
+    # Stop logic:
+    # - Primary stop: below EMA50 (5% buffer) OR entry - atr_mult_stop * ATR, whichever is tighter (closer to entry)
+    stop_by_ema50 = ema50 * 0.95
+    stop_by_atr = recommended_entry - atr_mult_stop * atr if not np.isnan(atr) else recommended_entry * 0.95
+    # choose the stop that gives smaller loss (higher price) to limit risk, but ensure stop < entry
+    candidate_stop = max(stop_by_ema50, stop_by_atr)
+    if candidate_stop >= recommended_entry:
+        candidate_stop = recommended_entry * 0.97  # fallback 3% below entry
+    recommended_stop = round(candidate_stop, 4)
+
+    # Targets: entry + n * ATR
+    targets = []
+    for m in target_atr_mults:
+        if not np.isnan(atr):
+            tgt = recommended_entry + m * atr
+        else:
+            tgt = recommended_entry * (1 + 0.05 * m)  # fallback percent targets
+        targets.append(round(tgt, 4))
+
+    # Risk/Reward ratios
+    rr = []
+    for tgt in targets:
+        rr_val = (tgt - recommended_entry) / (recommended_entry - recommended_stop) if (recommended_entry - recommended_stop) != 0 else np.nan
+        rr.append(round(rr_val, 2) if not np.isnan(rr_val) else np.nan)
+
+    return {
+        "symbol": ticker,
+        "price": round(last_close, 4),
+        "entry_type": entry_type,
+        "recommended_entry": recommended_entry,
+        "recommended_stop": recommended_stop,
+        "target1": targets[0],
+        "target2": targets[1],
+        "target3": targets[2],
+        "rr1": rr[0],
+        "rr2": rr[1],
+        "rr3": rr[2],
+        "atr": round(atr, 4) if not np.isnan(atr) else np.nan,
+        "adr_pct": round(adr, 2) if not np.isnan(adr) else np.nan,
+        "annualized_slope_pct": round(annualize_slope_pct(slope), 2) if not np.isnan(slope) else np.nan,
+        "r_squared": round(r2, 3) if not np.isnan(r2) else np.nan,
+        "dist_ema20_pct": round((last_close / ema20 - 1) * 100, 2)
+    }
+
+def scan_uptrends_with_levels(tickers,
+                              period="365d",
+                              interval="1d",
+                              min_price=2.0,
+                              min_avg_volume=50000,
+                              require_volume=True,
+                              lookback_days=30):
+    rows = []
     for tk in tickers:
-        df = get_history(tk, period=period, interval=interval)
+        df = fetch_history(tk, period=period, interval=interval)
         if df is None or df.empty:
             continue
-        # basic liquidity filter: average volume
-        avg_vol = df["Volume"].dropna().mean() if "Volume" in df.columns else 0
+        vol_series = df["Volume"].dropna()
+        if len(vol_series) >= 60:
+            avg_vol_60 = int(vol_series.rolling(window=60).mean().iloc[-1])
+        else:
+            avg_vol_60 = int(vol_series.mean()) if len(vol_series) > 0 else 0
+
+        avg_vol = avg_vol_60
         last_price = df["Close"].iloc[-1]
-        if last_price < min_price or (avg_vol < min_avg_volume):
+        if last_price < min_price or avg_vol < min_avg_volume:
             continue
-        df = add_emas(df)
-        # require price above EMA20 and EMA stack
-        price_above_ema20 = last_price > df["EMA20"].iloc[-1]
-        ema_stack = is_ema_stacked(df)
-        vol_ok = True if not require_volume else volume_trend(df)
-        if price_above_ema20 and ema_stack and vol_ok:
-            metrics = uptrend_score(df, price_change_days=price_change_days)
-            metrics.update({
-                "ticker": tk,
-                "avg_volume": int(avg_vol),
-                "ema_stack": ema_stack,
-                "price_above_ema20": price_above_ema20
-            })
-            results.append(metrics)
+        df = add_emas(df, periods=(20,50,200))
+        # basic EMA stacking and price above EMA20
+        if not is_ema_stacked_last(df):
+            continue
+        if last_price <= df["EMA20"].iloc[-1]:
+            continue
+        # simple volume check
+        if require_volume:
+            if len(df["Volume"].dropna()) < 20:
+                continue
+            recent20 = df["Volume"].iloc[-20:]
+            last5 = recent20.iloc[-5:].mean()
+            avg20 = recent20.mean()
+            if last5 < avg20 * 0.7:
+                continue
+        # compute levels
+        levels = suggest_levels_for_ticker(df, tk)
+        # add lookback pct change
+        pct_change_lb = np.nan
+        if len(df) >= lookback_days:
+            past = df["Close"].iloc[-lookback_days]
+            pct_change_lb = float((last_price / past - 1) * 100)
+        levels.update({
+            "avg_volume": avg_vol,
+            f"pct_change_{lookback_days}d": round(pct_change_lb, 2) if not np.isnan(pct_change_lb) else np.nan
+        })
+        rows.append(levels)
 
-    if not results:
-        return pd.DataFrame()  # empty
+    if not rows:
+        return pd.DataFrame()
 
-    out_df = pd.DataFrame(results)
-    # sort by slope (speed) descending
-    out_df = out_df.sort_values(by="slope_pct_per_day", ascending=False).reset_index(drop=True)
-    # convert slope to percent/day readable
-    out_df["slope_pct_per_day"] = out_df["slope_pct_per_day"] * 100
-    return out_df
+    out = pd.DataFrame(rows)
+    # sort by annualized slope (speed) descending
+    out = out.sort_values(by="annualized_slope_pct", ascending=False).reset_index(drop=True)
+    return out
 
 # Example usage
 if __name__ == "__main__":
-    tickers = pd.read_csv("resource/my_watch_list.csv")["symbol"].dropna().tolist()
-    df = scan_uptrends(tickers,
-                       period="365d",
-                       interval="1d",
-                       min_price=5.0,
-                       min_avg_volume=200000,
-                       price_change_days=30,
-                       require_volume=True)
+    tickers = ["SNDK"]  # replace with your list
+    df = scan_uptrends_with_levels(tickers,
+                                   period="2y",
+                                   interval="1wk",
+                                   min_price=1.0,
+                                   min_avg_volume=100000,
+                                   require_volume=True,
+                                   lookback_days=30)
     if df.empty:
         print("No tickers matched the uptrend criteria.")
     else:
-        print(df[["ticker", "close", "slope_pct_per_day", "pct_change_30d", "dist_above_ema20_pct", "avg_volume"]])
+        display_cols = ["symbol","price","entry_type","recommended_entry","recommended_stop",
+                        "target1","target2","target3","rr1","rr2","rr3",
+                        "annualized_slope_pct","r_squared","pct_change_30d","atr","avg_volume"]
+        print(df[display_cols].to_string(index=False))
+
+def run(input_file, output_file):
+    ts = pd.read_csv(input_file)["symbol"].dropna().tolist()
+    df1 = scan_uptrends_with_levels(ts)
+    df1.to_csv(output_file, index=False)

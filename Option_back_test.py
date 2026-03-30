@@ -1,7 +1,3 @@
-# ============================================================
-# FULL AUTO OPTIONS SCANNER (MULTI-TICKER + LIVE SIGNALS)
-# ============================================================
-
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -9,171 +5,174 @@ import numpy as np
 from scipy.stats import norm
 from datetime import datetime
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="LEAPS Scanner", page_icon="📈")
+
 
 # ============================================================
-# BLACK-SCHOLES GREEKS
+# VECTORIZED BLACK-SCHOLES GREEKS (Includes Dividends)
 # ============================================================
+def bs_greeks_vectorized(S, K, T, r, sigma, q=0.0):
+    """Calculates Greeks for an entire Pandas Series instantly using Numpy."""
+    # Ignore divide by zero warnings for deep OTM/ITM edge cases
+    with np.errstate(divide='ignore', invalid='ignore'):
+        d1 = (np.log(S / K) + (r - q + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+        d2 = d1 - sigma * np.sqrt(T)
 
-def bs_greeks(S, K, T, r, sigma):
-    if T <= 0 or sigma <= 0:
-        return 0, 0, 0
+        # Vectorized normal distribution operations
+        delta = np.exp(-q * T) * norm.cdf(d1)
+        gamma = (np.exp(-q * T) * norm.pdf(d1)) / (S * sigma * np.sqrt(T))
 
-    d1 = (np.log(S/K) + (r + 0.5*sigma**2)*T) / (sigma*np.sqrt(T))
-    d2 = d1 - sigma*np.sqrt(T)
+        # Theta per day
+        theta = (-(S * sigma * np.exp(-q * T) * norm.pdf(d1)) / (2 * np.sqrt(T))
+                 - r * K * np.exp(-r * T) * norm.cdf(d2)
+                 + q * S * np.exp(-q * T) * norm.cdf(d1)) / 365.0
 
-    delta = norm.cdf(d1)
-    theta = (-S * norm.pdf(d1) * sigma / (2*np.sqrt(T))
-             - r*K*np.exp(-r*T)*norm.cdf(d2)) / 365
-    gamma = norm.pdf(d1) / (S * sigma * np.sqrt(T))
+    # Fill NaNs with 0 for broken edge cases
+    return np.nan_to_num(delta), np.nan_to_num(gamma), np.nan_to_num(theta)
 
-    return delta, gamma, theta
 
 # ============================================================
-# SINGLE TICKER SCAN
+# SINGLE TICKER SCAN (Vectorized)
 # ============================================================
-
-def scan_ticker(ticker, r=0.04):
+def scan_ticker(ticker, min_oi, r=0.042):
     try:
         tk = yf.Ticker(ticker)
-        hist = tk.history(period="1d")
 
-        if hist.empty:
-            return None
+        # Get fast info for current price (faster than downloading history)
+        S = tk.fast_info['lastPrice']
 
-        S = hist["Close"].iloc[-1]
+        # Estimate dividend yield roughly (using trailing annual div)
+        div = tk.info.get('trailingAnnualDividendYield', 0.0)
+        q = div if div is not None else 0.0
 
         expiries = tk.options
-        if len(expiries) == 0:
-            return None
+        if not expiries: return None
 
-        # Select expiry > 300 days
-        expiry = None
-        for exp in expiries:
-            days = (pd.to_datetime(exp) - pd.Timestamp.today()).days
-            if days > 300:
-                expiry = exp
-                break
+        # Find closest expiry > 300 days
+        expiry = next((exp for exp in expiries if (pd.to_datetime(exp) - pd.Timestamp.today()).days > 300), None)
+        if not expiry: return None
 
-        if expiry is None:
-            return None
-        chain = tk.option_chain(expiry)
+        # Fetch Chain
+        chain = tk.option_chain(expiry).calls
 
-        T = (pd.to_datetime(expiry) - pd.Timestamp.today()).days / 365
+        # LIQUIDITY FILTER: Remove stale/dead options
+        df = chain[(chain['openInterest'] >= min_oi) & (chain['impliedVolatility'] > 0)].copy()
+        if df.empty: return None
 
-        rows = []
+        T = (pd.to_datetime(expiry) - pd.Timestamp.today()).days / 365.0
 
-        for _, row in chain.calls.iterrows():
-            K = row["strike"]
-            price = row["lastPrice"]
-            iv = row["impliedVolatility"]
+        # Create Mid-Price to avoid "lastPrice" staleness (if bid/ask exist)
+        df['Price'] = np.where((df['bid'] > 0) & (df['ask'] > 0),
+                               (df['bid'] + df['ask']) / 2,
+                               df['lastPrice'])
 
-            if price <= 0 or iv <= 0:
-                continue
+        # Calculate Greeks Vectorized
+        df['Delta'], df['Gamma'], df['Theta'] = bs_greeks_vectorized(
+            S, df['strike'], T, r, df['impliedVolatility'], q
+        )
 
-            delta, gamma, theta = bs_greeks(S, K, T, r, iv)
+        # Calculate Metrics
+        df['Leverage'] = (np.abs(df['Delta']) * S) / df['Price']
 
-            leverage = (abs(delta) * S) / price
-            score = leverage * abs(delta) / (abs(theta) + 1e-6)
+        # Safe Score Calculation (Avoid dividing by near-zero Theta)
+        safe_theta = np.clip(np.abs(df['Theta']), 1e-4, None)
+        df['Score'] = (df['Leverage'] * np.abs(df['Delta'])) / safe_theta
 
-            rows.append({
-                "Ticker": ticker,
-                "StockPrice": S,
-                "Strike": K,
-                "Price": price,
-                "Delta": delta,
-                "Gamma": gamma,
-                "Theta": theta,
-                "IV": iv,
-                "Leverage": leverage,
-                "Score": score,
-                "Expiry": expiry
-            })
+        # Formatting Output
+        df['Ticker'] = ticker
+        df['StockPrice'] = S
+        df['Expiry'] = expiry
 
-        df = pd.DataFrame(rows)
+        # Select and rename columns
+        res = df[['Ticker', 'StockPrice', 'strike', 'Price', 'Delta', 'Gamma', 'Theta',
+                  'impliedVolatility', 'openInterest', 'Leverage', 'Score', 'Expiry']]
+        res = res.rename(columns={'strike': 'Strike', 'impliedVolatility': 'IV', 'openInterest': 'OI'})
 
-        if df.empty:
-            return None
+        return res
 
-        return df
-
-    except Exception:
+    except Exception as e:
+        # In production, log `e` here
         return None
+
 
 # ============================================================
 # MULTI-TICKER SCANNER
 # ============================================================
-
-def run_scanner(tickers, delta_min, delta_max, top_n_per_ticker=2):
+def run_scanner(tickers, delta_min, delta_max, min_oi, top_n=2):
     all_results = []
-
-    progress = st.progress(0)
+    progress_bar = st.progress(0)
 
     for i, ticker in enumerate(tickers):
-        df = scan_ticker(ticker)
+        df = scan_ticker(ticker, min_oi)
 
         if df is not None:
-            df = df[(df["Delta"] > delta_min) & (df["Delta"] < delta_max)]
-            df = df.sort_values("Score", ascending=False).head(top_n_per_ticker)
-            all_results.append(df)
+            # Filter by Delta
+            filtered = df[(df["Delta"] >= delta_min) & (df["Delta"] <= delta_max)]
+            # Get Top N
+            top_picks = filtered.sort_values("Score", ascending=False).head(top_n)
+            all_results.append(top_picks)
 
-        progress.progress((i + 1) / len(tickers))
+        progress_bar.progress((i + 1) / len(tickers))
 
-    if not all_results:
-        return pd.DataFrame()
+    progress_bar.empty()  # Clear progress bar when done
 
-    final_df = pd.concat(all_results)
+    if not all_results: return pd.DataFrame()
 
-    return final_df.sort_values("Score", ascending=False)
+
+    if not all_results: return pd.DataFrame()
+
+    # .reset_index(drop=True) ensures the index is a unique 0, 1, 2, 3...
+    final_df = pd.concat(all_results).sort_values("Score", ascending=False)
+    return final_df.reset_index(drop=True)
+
 
 # ============================================================
 # UI
 # ============================================================
+st.title("🚀 LEAPS Quantitative Scanner")
+st.markdown("Finds highly capital-efficient, long-duration option trades.")
 
-st.title("🚀 FULL AUTO OPTIONS SCANNER")
+with st.sidebar:
+    st.header("Scan Parameters")
+    default_tickers = "AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA, AMD, QQQ, SPY"
+    ticker_input = st.text_area("Tickers (comma separated)", default_tickers)
 
-col1, col2 = st.columns(2)
+    delta_range = st.slider("Target Delta Range", 0.0, 1.0, (0.50, 0.85))
+    min_oi = st.number_input("Minimum Open Interest (Liquidity)", min_value=0, value=50)
+    top_n = st.slider("Top Picks per Ticker", 1, 5, 2)
 
-# Default universe (you can replace with your CSV later)
-default_tickers = [
-    "AAPL","MSFT","NVDA","AMZN","GOOGL","META","TSLA",
-    "AMD","NFLX","INTC","CRM","ADBE"
-]
-
-ticker_input = col1.text_area("Tickers (comma separated)", ",".join(default_tickers))
-
-delta_range = col2.slider("Delta Range", 0.0, 1.0, (0.3, 0.7))
-
-top_n = st.slider("Top N per ticker", 1, 5, 2)
-
-run = st.button("🔥 Run Full Scan")
+    run = st.button("🔥 Run Full Scan", use_container_width=True)
 
 # ============================================================
-# RUN SCANNER
+# EXECUTION & FORMATTING
 # ============================================================
-
 if run:
     tickers = [t.strip().upper() for t in ticker_input.split(",")]
-
-    results = run_scanner(tickers, delta_range[0], delta_range[1], top_n)
+    with st.spinner('Scanning options chains...'):
+        results = run_scanner(tickers, delta_range[0], delta_range[1], min_oi, top_n)
 
     if results.empty:
-        st.warning("No opportunities found")
+        st.warning("No opportunities found matching those criteria.")
     else:
-        st.subheader("🏆 BEST OPTIONS ACROSS ALL STOCKS")
-        st.dataframe(results, use_container_width=True)
+        # Custom formatting for Streamlit dataframe
+        styled_df = results.style.format({
+            "StockPrice": "${:.2f}",
+            "Strike": "${:.2f}",
+            "Price": "${:.2f}",
+            "Delta": "{:.3f}",
+            "Gamma": "{:.4f}",
+            "Theta": "${:.3f}",
+            "IV": "{:.1%}",
+            "Leverage": "{:.1f}x",
+            "Score": "{:.2f}"
+        }).background_gradient(subset=['Score'], cmap='viridis')
 
-        # Top picks
-        st.subheader("🔥 TOP 10 OVERALL TRADES")
-        st.dataframe(results.head(10), use_container_width=True)
+        st.subheader("🔥 TOP 10 OVERALL TRADES (By Efficiency Score)")
+        st.dataframe(styled_df, use_container_width=True, height=400)
 
-        # Grouped view
-        st.subheader("📊 Per-Ticker Best Trade")
-        best_per_ticker = results.sort_values("Score", ascending=False).groupby("Ticker").head(1)
-        st.dataframe(best_per_ticker, use_container_width=True)
-
-# ============================================================
-# RUN
-# ============================================================
-
-# streamlit run app.py
+        st.subheader("📊 Top Pick Per Ticker")
+        best_per_ticker = results.groupby("Ticker").head(1).sort_values("Score", ascending=False)
+        st.dataframe(best_per_ticker.style.format({
+            "StockPrice": "${:.2f}", "Strike": "${:.2f}", "Price": "${:.2f}",
+            "Delta": "{:.3f}", "IV": "{:.1%}", "Leverage": "{:.1f}x", "Score": "{:.2f}"
+        }), use_container_width=True)

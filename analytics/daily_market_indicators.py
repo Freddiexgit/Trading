@@ -10,19 +10,15 @@ warnings.filterwarnings("ignore")
 # =========================
 # CONFIG
 # =========================
+LOOKBACK_YEARS = 2
+
 MARKET_TICKERS = {
     "SPY": "SPY",
     "VIX": "^VIX",
     "VIX3M": "^VIX3M",
-    "TNX": "^TNX"
-}
-
-FRED_TICKERS = {
-    "BAMLH0A0HYM2": "HY_SPREAD",
-    "WALCL": "FED_ASSETS",
-    "WTREGEN": "TGA",
-    "RRPONTSYD": "REV_REPO",
-    "UNRATE": "UNEMP"
+    "TNX": "^TNX",
+    "US02Y": "^IRX",   # proxy for 2Y
+    "DXY": "DX-Y.NYB"
 }
 
 CAPITAL_TICKERS = {
@@ -31,59 +27,61 @@ CAPITAL_TICKERS = {
     "IWM": "IWM"
 }
 
-# =========================
-# HELPERS
-# =========================
-def download_safe(tickers, start, end):
-    try:
-        df = yf.download(tickers, start=start, end=end, progress=False)
-        if df.empty:
-            raise ValueError("Empty download")
-        return df
-    except Exception as e:
-        raise RuntimeError(f"Download failed: {e}")
-
+FRED_TICKERS = {
+    "BAMLH0A0HYM2": "HY_SPREAD",
+    "WALCL": "FED_ASSETS",
+    "WTREGEN": "TGA",
+    "RRPONTSYD": "REV_REPO",
+    "UNRATE": "UNEMP",
+    "NFCI": "FCI",
+    "DFII10": "REAL_10Y"
+}
 
 # =========================
 # DATA PIPELINE
 # =========================
-def fetch_data(years=1):
+def download(tickers, start, end):
+    df = yf.download(tickers, start=start, end=end, progress=False)
+    if isinstance(df.columns, pd.MultiIndex):
+        return df
+    return df
+
+
+def fetch_data():
     end = datetime.today()
-    start = end - timedelta(days=years * 365)
+    start = end - timedelta(days=LOOKBACK_YEARS * 365)
 
-    # ---- Market ----
-    market_raw = download_safe(list(MARKET_TICKERS.values()), start, end)
+    # Market
+    market = download(list(MARKET_TICKERS.values()), start, end)
+    close = market["Close"].rename(columns={v: k for k, v in MARKET_TICKERS.items()})
 
-    close = market_raw["Close"].rename(columns={v: k for k, v in MARKET_TICKERS.items()})
+    spy = market.xs("SPY", level=1, axis=1)
 
-    spy = market_raw.xs("SPY", level=1, axis=1)
-
-    # ---- Capital ----
-    cap_raw = download_safe(list(CAPITAL_TICKERS.values()), start, end)
-
-    cap_close = cap_raw["Close"]
-    cap_vol = cap_raw["Volume"]
-
+    # Capital
+    cap = download(list(CAPITAL_TICKERS.values()), start, end)
+    cap_close = cap["Close"]
+    cap_vol = cap["Volume"]
     cap_close.columns = CAPITAL_TICKERS.keys()
     cap_vol.columns = CAPITAL_TICKERS.keys()
 
-    cap_dollar = cap_close * cap_vol
+    total_cap = (cap_close * cap_vol).sum(axis=1)
 
-    # ---- FRED ----
+    # Oil
+    oil = yf.download("CL=F", start=start, end=end, progress=False)["Close"]
+
+    # FRED
     fred = web.DataReader(list(FRED_TICKERS.keys()), "fred", start, end)
     fred = fred.rename(columns=FRED_TICKERS)
 
-    # ---- Merge ----
+    # Merge
     df = pd.concat([close, fred], axis=1).sort_index().ffill()
 
-    # Add OHLCV
+    # Add extras
     df["SPY_HIGH"] = spy["High"]
     df["SPY_LOW"] = spy["Low"]
-    df["SPY_OPEN"] = spy["Open"]
     df["SPY_VOL"] = spy["Volume"]
-
-    # Add capital
-    df["TOTAL_CAPITAL"] = cap_dollar.sum(axis=1)
+    df["TOTAL_CAP"] = total_cap
+    df["OIL"] = oil
 
     return df.dropna()
 
@@ -92,24 +90,37 @@ def fetch_data(years=1):
 # FEATURES
 # =========================
 def compute_features(df):
-    # Volatility
-    df["RV_20"] = df["SPY"].pct_change().rolling(20).std() * np.sqrt(252) * 100
+    # RV
+    df["RV"] = df["SPY"].pct_change().rolling(20).std() * np.sqrt(252) * 100
 
-    # Unemployment trend
+    # Trends
     df["UNEMP_3M"] = df["UNEMP"] - df["UNEMP"].shift(63)
-
-    # Yield trend
     df["TNX_5D"] = df["TNX"] - df["TNX"].shift(5)
-
-    # VIX stabilization
-    df["VIX_3D_HIGH"] = df["VIX"].rolling(3).max().shift(1)
+    df["VIX_HIGH"] = df["VIX"].rolling(3).max().shift(1)
 
     # Liquidity
     df["NET_LIQ"] = df["FED_ASSETS"] - df["TGA"] - df["REV_REPO"]
     df["NET_LIQ_4W"] = df["NET_LIQ"] - df["NET_LIQ"].shift(21)
 
-    # Capital trend
-    df["CAP_20D"] = df["TOTAL_CAPITAL"].rolling(20).mean()
+    # Capital
+    df["CAP_20"] = df["TOTAL_CAP"].rolling(20).mean()
+
+    # Yield curve
+    df["YC"] = df["TNX"] - df["US02Y"]
+    df["YC_1M"] = df["YC"] - df["YC"].shift(21)
+
+    # Financial conditions
+    df["FCI_1M"] = df["FCI"] - df["FCI"].shift(21)
+
+    # Dollar
+    df["DXY_5"] = df["DXY"].rolling(5).mean()
+    df["DXY_20"] = df["DXY"].rolling(20).mean()
+
+    # Oil
+    df["OIL_1M"] = df["OIL"] - df["OIL"].shift(21)
+
+    # Real rates
+    df["REAL_5D"] = df["REAL_10Y"] - df["REAL_10Y"].shift(5)
 
     return df.dropna()
 
@@ -118,126 +129,116 @@ def compute_features(df):
 # SIGNAL ENGINE
 # =========================
 def evaluate(df):
-    latest = df.iloc[-1]
+    x = df.iloc[-1]
 
-    checklist = {}
+    results = {}
 
-    # 1. IV > RV
-    iv = latest["VIX"]
-    rv = latest["RV_20"]
-    checklist["IV > RV"] = {
-        "status": iv > rv,
-        "detail": f"IV: {iv:.1f}% | RV: {rv:.1f}%"
-    }
+    # Core
+    results["IV > RV"] = (x["VIX"] > x["RV"], f"IV: {x['VIX']:.1f}% | RV: {x['RV']:.1f}%")
 
-    # 2. Fear spike, macro OK
-    macro_ok = (latest["VIX"] > 20) and (latest["UNEMP_3M"] <= 0.1)
-    checklist["Fear Spike, Macro OK"] = {
-        "status": macro_ok,
-        "detail": f"VIX: {latest['VIX']:.1f} | Unemp 3M Δ: {latest['UNEMP_3M']:+.1f}%"
-    }
-
-    # 3. Credit stable
-    credit = latest["HY_SPREAD"]
-    checklist["Credit Stable"] = {
-        "status": credit < 5.0,
-        "detail": f"HY Spread: {credit:.2f}% (Danger > 5.0%)"
-    }
-
-    # 4. Yields falling
-    yield_delta = latest["TNX_5D"]
-    checklist["Yields Falling"] = {
-        "status": yield_delta < 0,
-        "detail": f"10Y Yield 5D Δ: {yield_delta:+.2f} bps"
-    }
-
-    # 5. VIX stabilizing
-    vix_high = latest["VIX_3D_HIGH"]
-    checklist["VIX Stabilizing"] = {
-        "status": latest["VIX"] < vix_high,
-        "detail": f"VIX: {latest['VIX']:.2f} vs 3D High: {vix_high:.2f}"
-    }
-
-    # 6. Capitulation candle (enhanced)
-    vol_avg = df["SPY_VOL"].rolling(20).mean().iloc[-1]
-    wick = (latest["SPY"] - latest["SPY_LOW"]) / (latest["SPY_HIGH"] - latest["SPY_LOW"] + 1e-8)
-
-    cap_avg = latest["CAP_20D"]
-    cap = latest["TOTAL_CAPITAL"]
-
-    capitulation = (
-        (latest["SPY_VOL"] > vol_avg * 1.2)
-        and (wick > 0.5)
-        and (cap > cap_avg * 1.2)
+    results["Fear Spike, Macro OK"] = (
+        (x["VIX"] > 20 and x["UNEMP_3M"] <= 0.1),
+        f"VIX: {x['VIX']:.1f} | Unemp 3M Δ: {x['UNEMP_3M']:+.1f}%"
     )
 
-    checklist["Capitulation Candle"] = {
-        "status": capitulation,
-        "detail": f"Vol: {latest['SPY_VOL']/vol_avg:.1f}x Avg | Wick: {wick*100:.0f}% of range"
-    }
+    results["Credit Stable"] = (
+        x["HY_SPREAD"] < 5.0,
+        f"HY Spread: {x['HY_SPREAD']:.2f}%"
+    )
 
-    # 7. Put/Call proxy
-    backwardation = latest["VIX"] > latest["VIX3M"]
-    checklist["High Put/Call (Backwardation)"] = {
-        "status": backwardation,
-        "detail": f"VIX: {latest['VIX']:.1f} vs VIX3M: {latest['VIX3M']:.1f}"
-    }
+    results["Yields Falling"] = (
+        x["TNX_5D"] < 0,
+        f"10Y Δ: {x['TNX_5D']:+.2f}"
+    )
 
-    # 8. Liquidity stable
-    liq_delta = latest["NET_LIQ_4W"]
-    checklist["Liquidity Stable"] = {
-        "status": liq_delta >= 0,
-        "detail": f"Net Liq 4W Δ: ${liq_delta/1000:+.0f} Billion"
-    }
+    results["VIX Stabilizing"] = (
+        x["VIX"] < x["VIX_HIGH"],
+        f"VIX: {x['VIX']:.2f} vs High: {x['VIX_HIGH']:.2f}"
+    )
 
-    return checklist
+    # Capitulation
+    vol_avg = df["SPY_VOL"].rolling(20).mean().iloc[-1]
+    wick = (x["SPY"] - x["SPY_LOW"]) / (x["SPY_HIGH"] - x["SPY_LOW"] + 1e-8)
+    cap = x["TOTAL_CAP"]
+    cap_avg = x["CAP_20"]
+
+    cap_signal = (x["SPY_VOL"] > 1.2 * vol_avg) and (wick > 0.5) and (cap > 1.2 * cap_avg)
+
+    results["Capitulation"] = (
+        cap_signal,
+        f"Vol: {x['SPY_VOL']/vol_avg:.1f}x | Wick: {wick*100:.0f}%"
+    )
+
+    results["Put/Call Proxy"] = (
+        x["VIX"] > x["VIX3M"],
+        f"VIX: {x['VIX']:.1f} vs VIX3M: {x['VIX3M']:.1f}"
+    )
+
+    results["Liquidity"] = (
+        x["NET_LIQ_4W"] >= 0,
+        f"Δ: {x['NET_LIQ_4W']/1000:+.0f}B"
+    )
+
+    # NEW MACRO
+    results["Yield Curve Improving"] = (
+        x["YC_1M"] > 0,
+        f"Spread Δ: {x['YC_1M']:+.2f}"
+    )
+
+    results["Financial Conditions Easing"] = (
+        x["FCI_1M"] < 0,
+        f"FCI Δ: {x['FCI_1M']:+.2f}"
+    )
+
+    results["Dollar Weakening"] = (
+        x["DXY_5"] < x["DXY_20"],
+        f"DXY short < long"
+    )
+
+    results["Oil Not Spiking"] = (
+        x["OIL_1M"] < 5,
+        f"Oil Δ: {x['OIL_1M']:+.1f}"
+    )
+
+    results["Real Rates Falling"] = (
+        x["REAL_5D"] < 0,
+        f"Real Δ: {x['REAL_5D']:+.2f}"
+    )
+
+    return results
 
 
 # =========================
 # OUTPUT
 # =========================
-def print_dashboard(df, checklist):
-    latest = df.iloc[-1]
-
-    cap = latest["TOTAL_CAPITAL"] / 1e9
-    cap_avg = latest["CAP_20D"] / 1e9
-    cap_ratio = cap / cap_avg
-
-    print("\n" + "=" * 50)
-    print(" 🚨 INSTITUTIONAL BOTTOM-FISHING SCANNER 🚨")
-    print("=" * 50)
-
-    print(f"💰 Total Trading Capital        | ${cap:.0f}B ({cap_ratio:.2f}x avg)\n")
-
-    for name, data in checklist.items():
-        icon = "✅" if data["status"] else "❌"
-        print(f"{icon} {name:<30} | {data['detail']}")
-
-    print("-" * 50)
-
-    score = sum([1 for x in checklist.values() if x["status"]])
-    total = len(checklist)
-
-    print(f"🎯 TOTAL SCORE: {score} / {total}")
-
-    if score >= 7:
-        print("🟢 VERDICT: ALL-IN BUY SIGNAL")
-    elif score >= 5:
-        print("🟡 VERDICT: SCALING IN")
-    else:
-        print("🔴 VERDICT: NO TRADE")
-    print("=" * 50 + "\n")
-
-
-# =========================
-# MAIN
-# =========================
 def run():
     print("Fetching data...")
     df = fetch_data()
     df = compute_features(df)
-    checklist = evaluate(df)
-    print_dashboard(df, checklist)
+
+    signals = evaluate(df)
+
+    print("\n" + "="*60)
+    print("📊 FULL MACRO SYSTEM")
+    print("="*60)
+
+    score = 0
+    for k, (status, detail) in signals.items():
+        icon = "✅" if status else "❌"
+        print(f"{icon} {k:<30} | {detail}")
+        score += int(status)
+
+    print("-"*60)
+    print(f"🎯 SCORE: {score} / {len(signals)}")
+
+    if score >= 10:
+        print("🟢 STRONG BUY ENVIRONMENT")
+    elif score >= 7:
+        print("🟡 ACCUMULATE")
+    else:
+        print("🔴 RISK-OFF")
+
+    print("="*60)
 
 
 if __name__ == "__main__":

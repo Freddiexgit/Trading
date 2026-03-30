@@ -21,3 +21,4 @@ pytube
 yt_dlp
 finvizfinance
 streamlit
+hmmlearn

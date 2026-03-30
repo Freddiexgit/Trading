@@ -21,7 +21,6 @@ def pd_read_pattern(pattern):
 
 if not os.path.exists(f"output/{s_str}/us"):
     # Create the directory
-    os.makedirs(f"output/{s_str}/us")
     os.makedirs(f"output/temp/us/start")
 # ms.morning_star('nzx_tickers.csv', f'resource/{s_str}/nz/morning_star_{s_str}.csv')
 #

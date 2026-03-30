@@ -1,3 +1,5 @@
+import traceback
+
 import yfinance as yf
 import pandas as pd
 import logging
@@ -145,21 +147,29 @@ def process_ticker(symbol: str) -> dict | None:
         if score < 3:
             return None
         # Get annual statements
-        ocf = stock.cashflow.loc["Operating Cash Flow"]
-        net_income = stock.financials.loc["Net Income"]
+        ocf = stock.cashflow.loc["Operating Cash Flow"].iloc[0]
+        net_income = stock.financials.loc["Net Income"].iloc[0]
         if net_income is None or net_income == 0:
             ocf_net_income_ratio = 0.0
         else:
             ocf_net_income_ratio = round(ocf / net_income, 2),
 
+        ocf2 = stock.cashflow.loc["Operating Cash Flow"].iloc[1]
+        net_income2 = stock.financials.loc["Net Income"].iloc[1]
+        if net_income2 is None or net_income2 == 0:
+            ocf_net_income_ratio2 = 0.0
+        else:
+            ocf_net_income_ratio2 = round(ocf2 / net_income2, 2),
+
         return {
             'symbol': symbol,
+            'price': hist['Close'].iloc[-1],
             'Score': score,
             'Rating': safe_get(info, 'recommendationMean', 3.0),
             'PEG': round(peg_ratio, 2),
             'PE_Fwd': round(pe_ratio, 2),
             'ROE': f"{roe:.2%}",
-            "OCF_to_NetIncome_Ratio" :ocf_net_income_ratio,
+            "OCF_to_NetIncome_Ratio_last2year" :f"{ocf_net_income_ratio2},{ocf_net_income_ratio}",
             'Debt_EBITDA': round(leverage, 2),
             'Mkt_Cap_B': round(mkt_cap / 1e9, 2),
             'Momentum_20d': f"{momentum:.2%}",
@@ -170,6 +180,7 @@ def process_ticker(symbol: str) -> dict | None:
 
     except Exception as e:
         logging.error(f"處理 {symbol} 時發生錯誤: {e}")
+        traceback.print_exc()
         return None
 
 
