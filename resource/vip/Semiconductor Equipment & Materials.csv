@@ -1,0 +1,29 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+ASML,ASML Holding N.V.,Technology,Semiconductor Equipment & Materials,292382113792.0,292.382B
+AMAT,"Applied Materials, Inc.",Technology,Semiconductor Equipment & Materials,128068157440.0,128.068B
+LRCX,Lam Research Corporation,Technology,Semiconductor Equipment & Materials,126751842304.0,126.752B
+KLAC,KLA Corporation,Technology,Semiconductor Equipment & Materials,115069992960.0,115.07B
+TER,"Teradyne, Inc.",Technology,Semiconductor Equipment & Materials,18808909824.0,18.809B
+ENTG,"Entegris, Inc.",Technology,Semiconductor Equipment & Materials,12678236160.0,12.678B
+NVMI,Nova Ltd.,Technology,Semiconductor Equipment & Materials,7742222336.0,7.742B
+AMKR,"Amkor Technology, Inc.",Technology,Semiconductor Equipment & Materials,5978389504.0,5.978B
+ONTO,Onto Innovation Inc.,Technology,Semiconductor Equipment & Materials,5194381824.0,5.194B
+CAMT,Camtek Ltd.,Technology,Semiconductor Equipment & Materials,3780045568.0,3.78B
+AMBA,"Ambarella, Inc.",Technology,Semiconductor Equipment & Materials,3498315008.0,3.498B
+IPGP,IPG Photonics Corporation,Technology,Semiconductor Equipment & Materials,3454432256.0,3.454B
+ACLS,"Axcelis Technologies, Inc.",Technology,Semiconductor Equipment & Materials,2514768896.0,2.515B
+FORM,"FormFactor, Inc.",Technology,Semiconductor Equipment & Materials,2250963456.0,2.251B
+KLIC,"Kulicke and Soffa Industries, Inc.",Technology,Semiconductor Equipment & Materials,1955456256.0,1.955B
+ACMR,"ACM Research, Inc.",Technology,Semiconductor Equipment & Materials,1811187712.0,1.811B
+DQ,Daqo New Energy Corp.,Technology,Semiconductor Equipment & Materials,1699887360.0,1.7B
+VECO,Veeco Instruments Inc.,Technology,Semiconductor Equipment & Materials,1475167360.0,1.475B
+PLAB,"Photronics, Inc.",Technology,Semiconductor Equipment & Materials,1363611776.0,1.364B
+UCTT,"Ultra Clean Holdings, Inc.",Technology,Semiconductor Equipment & Materials,1089162880.0,1.089B
+COHU,"Cohu, Inc.",Technology,Semiconductor Equipment & Materials,928963840.0,0.929B
+INDI,"indie Semiconductor, Inc.",Technology,Semiconductor Equipment & Materials,899440576.0,0.899B
+AEHR,"Aehr Test Systems, Inc.",Technology,Semiconductor Equipment & Materials,746381760.0,0.746B
+ICHR,"Ichor Holdings, Ltd.",Technology,Semiconductor Equipment & Materials,578416704.0,0.578B
+AXTI,"AXT, Inc.",Technology,Semiconductor Equipment & Materials,133762216.0,0.134B
+ATOM,Atomera Incorporated,Technology,Semiconductor Equipment & Materials,103263584.0,0.103B
+ASYS,"Amtech Systems, Inc.",Technology,Semiconductor Equipment & Materials,90607616.0,0.091B
+SMTK,"SmartKem, Inc.",Technology,Semiconductor Equipment & Materials,3829641.0,0.004B

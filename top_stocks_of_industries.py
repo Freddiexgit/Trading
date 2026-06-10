@@ -29,7 +29,7 @@ df = pd.DataFrame(data)
 # Drop rows without industry
 df = df.dropna(subset=["industry", "marketCap"])
 df.to_csv("stocks_by_industry.csv", index=False)
-For each industry, get the stock with max market cap
+# For each industry, get the stock with max market cap
 # df = pd.read_csv('stocks_by_industry.csv')
 # df = df.drop_duplicates()
 # # leaders = df.loc[df.groupby("industry")["marketCap"].nlargest(5)].reset_index(drop=True)

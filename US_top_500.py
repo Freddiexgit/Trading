@@ -18,24 +18,33 @@ import  data_downloader as data
 import traceback
 import AI_buying_point as ai
 import ema_angle_leaders as ea
+import find_building_up_stocks as fbu
 #
-data.global_period = "12mo"
-data.global_interval ="1d"
+
 data.to_be_removed_tickers
 #
+
+now = datetime.now()
+# if now.weekday()== 6 or now.weekday()== 0:  # Saturday or Sunday US Time
+#     date = f"{now.strftime("%Y-%m-%d")}_weekend"
+#     data.global_period = "2y"
+#     data.global_interval ="1wk"
+#     ticker_file_name = "us_top_5000"
+# else:
+date = now.strftime("%Y-%m-%d")
+data.global_period = "12mo"
+data.global_interval = "1d"
+# ticker_file_name = "my_watch_list"
 # data.global_period = "2y"
 # data.global_interval ="1wk"
-now = datetime.now()
-if now.weekday()>=5:  # Saturday or Sunday
-    date = f"{now.strftime("%Y-%m-%d")}_weekend"
-else:
-    date = now.strftime("%Y-%m-%d")
 # ticker_file_name = "nzx_tickers"
 # ticker_file_name = "my_vip"
 # ticker_file_name = "my_watch_list"
 # ticker_file_name = "nyse_and_nasdaq_top_500"
 # ticker_file_name ="leading_stocks_by_industry"
 ticker_file_name = "us_top_5000"
+# ticker_file_name = "vip_industries"
+
 
 # ticker_file_name = "my_owned"
 ticker_file_name_full = f"{ticker_file_name}.csv"
@@ -43,13 +52,21 @@ output_folder = f"output/{date}/us_{data.global_interval}/{ticker_file_name}"
 if not os.path.exists(f"{output_folder}"):
     # Create the directory
     os.makedirs(f"{output_folder}")
+
+try:
+    fbu.main(input_file=f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/find_building_up_{date}.csv")
+    x = pd.read_csv(f"{output_folder}/find_building_up_{date}.csv")
+    x = x[["symbol"]].head(130)
+    di.generate_pdf( x, f"{output_folder}/find_building_up.pdf", "no", "us")
+except Exception  as e:
+    print("building-up run failed:", e)
 try:
     print("running run_sector_rotation...")
     from sector_rotation import run_sector_rotation
     run_sector_rotation(output_file = f"{output_folder}/sector_rotation_{date}.csv")
     df_tickers_sr = pd.read_csv(f"{output_folder}/sector_rotation_{date}.csv")
     df_tickers_sr = df_tickers_sr.rename(columns={'Ticker': 'symbol'})
-    di.generate_pdf(df_tickers_sr, f"{output_folder}/sector_rotation.pdf", "No", "us")
+    di.generate_pdf(df_tickers_sr, f"{output_folder}/sector_rotation.pdf", "Yes", "us")
 
 except Exception as e:
     print("run_sector_rotation error:", e)
@@ -62,11 +79,11 @@ try:
     print(f"running uptrend....{datetime.now()}")
     uptrend.run(f"resource/{ticker_file_name_full}",output_file = f"{output_folder}/uptrend_{date}.csv" )
     df_tickers_trend = pd.read_csv(f"{output_folder}/uptrend_{date}.csv")
-    di.generate_pdf(df_tickers_trend[['symbol']].drop_duplicates().head(130), f"{output_folder}/uptrend.pdf",
-                    "No", "us")
-    df_tickers_trend1 = df_tickers_trend.sort_values("price", ascending=True).head(130)
+    di.generate_pdf(df_tickers_trend[['symbol']].drop_duplicates(), f"{output_folder}/uptrend.pdf",
+                    "Yes", "us")
+    df_tickers_trend1 = df_tickers_trend.sort_values("price", ascending=True)
     di.generate_pdf(df_tickers_trend1, f"{output_folder}/uptrend_price_asc.pdf",
-                    "No", "us")
+                    "Yes", "us")
 except Exception as e:
     print("trend error:", e)
 try:
@@ -86,7 +103,8 @@ try:
     df_tickers_fqa = pd.read_csv(f"{output_folder}/quick_fundamental_analysis_{date}.csv")
     df_tickers_fqa.columns = df_tickers_fqa.columns.str.lower()
     di.generate_pdf(df_tickers_fqa[['symbol']].drop_duplicates().head(100), f"{output_folder}/quick_fundamental_analysis.pdf", "No", "us")
-    di.generate_pdf(df_tickers_fqa.sort_values("price", ascending=True)[['symbol']].drop_duplicates().head(100),
+    df_filtered = df_tickers_fqa.query("score > 5")
+    di.generate_pdf(df_filtered.sort_values("price", ascending=True)[['symbol']].drop_duplicates().head(100),
                     f"{output_folder}/quick_fundamental_analysis_price_asc.pdf", "No", "us")
 except Exception  as e:
     print("error:", e)
@@ -96,13 +114,13 @@ except Exception  as e:
 try:
     print(f"EMA trend....{datetime.now()}")
     df_tickers = pd.read_csv(f"resource/{ticker_file_name_full}")["symbol"].dropna().tolist()
-    eat.run(df_tickers,output_file = f"{output_folder}/EMA_Trend_{date}.csv")
-    x = pd.read_csv(  f"{output_folder}/EMA_Trend_{date}.csv").query('accumulation_signal == "HEAVY_ACCUMULATION"')
-    x = x[["symbol"]].head(130)
-    di.generate_pdf( x, f"{output_folder}/EMA_Trend.pdf", "no", "us")
+    eat.run(df_tickers,output_file = f"{output_folder}/eam_trend_{date}.csv")
+    x = pd.read_csv(  f"{output_folder}/eam_trend_{date}.csv").query('accumulation_signal == "HEAVY_ACCUMULATION"')
+    x = x[["symbol"]].head(100)
+    di.generate_pdf( x, f"{output_folder}/eam_trend.pdf", "no", "us")
 except Exception as e:
     traceback.print_exc()
-    print("EMA trend error:", e)
+    print("eam_trend error:", e)
 
 
 

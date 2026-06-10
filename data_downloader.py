@@ -17,6 +17,8 @@ def get_transaction_df(symbol, period="18mo", interval="1d", is_back_test=False,
         period = global_period
         interval = global_interval
     df = symbol_and_df.get(symbol)
+    # if df is not None :
+    #     print("cache trans hit for ", symbol)
     if df is None:
         # try:
         #     df = yf.download(symbol, period=period, interval=interval,auto_adjust=False)
@@ -25,17 +27,16 @@ def get_transaction_df(symbol, period="18mo", interval="1d", is_back_test=False,
         get_stock_obj(symbol,period, interval,is_back_test,start_date,end_date)
 
     df =  symbol_and_df[symbol]
-    if len(df) < 1:
-        try:
-
-            if is_back_test:
-                df =  yf.download(symbol, period=period, interval=interval,auto_adjust=False)
-            else:
-                df = yf.download(symbol, start=start_date,end = end_date, interval=interval, auto_adjust=False)
-        except Exception  as e:
-
-            return pd.DataFrame()
-        symbol_and_df[symbol] = df
+    # if len(df) < 1:
+    #     try:
+    #
+    #         if is_back_test:
+    #             df = yf.download(symbol, start=start_date, end=end_date, interval=interval, auto_adjust=False)
+    #         else:
+    #             df = yf.download(symbol, period=period, interval=interval, auto_adjust=False)
+    #     except Exception  as e:
+    #         return pd.DataFrame()
+    #     symbol_and_df[symbol] = df
     if(df.empty):
         to_be_removed_tickers.append(symbol)
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
@@ -49,6 +50,8 @@ def get_stock_obj(symbol, period="10mo", interval="1d", is_back_test=False,start
         period = global_period
         interval = global_interval
     stock = symbol_and_stock.get(symbol)
+    # if stock is not None :
+    #     print("cache  stock hit for ", symbol)
     if stock is None:
         stock = yf.Ticker(symbol)
 

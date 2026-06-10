@@ -1,0 +1,43 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+NEE,"NextEra Energy, Inc.",Utilities,Utilities - Regulated Electric,148371849216.0,148.372B
+SO,The Southern Company,Utilities,Utilities - Regulated Electric,101534621696.0,101.535B
+DUK,Duke Energy Corporation,Utilities,Utilities - Regulated Electric,95251161088.0,95.251B
+NGG,National Grid plc,Utilities,Utilities - Regulated Electric,70022799360.0,70.023B
+AEP,"American Electric Power Company, Inc.",Utilities,Utilities - Regulated Electric,59372941312.0,59.373B
+D,"Dominion Energy, Inc.",Utilities,Utilities - Regulated Electric,51120697344.0,51.121B
+EXC,Exelon Corporation,Utilities,Utilities - Regulated Electric,44116365312.0,44.116B
+XEL,Xcel Energy Inc.,Utilities,Utilities - Regulated Electric,42824560640.0,42.825B
+PEG,Public Service Enterprise Group Incorporated,Utilities,Utilities - Regulated Electric,41089257472.0,41.089B
+ETR,Entergy Corporation,Utilities,Utilities - Regulated Electric,39324168192.0,39.324B
+ED,"Consolidated Edison, Inc.",Utilities,Utilities - Regulated Electric,35426848768.0,35.427B
+WEC,"WEC Energy Group, Inc.",Utilities,Utilities - Regulated Electric,34281947136.0,34.282B
+PCG,PG&E Corporation,Utilities,Utilities - Regulated Electric,33582993408.0,33.583B
+PCG,PG&E Corporation,Utilities,Utilities - Regulated Electric,33582993408.0,33.583B
+DTE,DTE Energy Company,Utilities,Utilities - Regulated Electric,28366899200.0,28.367B
+AEE,Ameren Corporation,Utilities,Utilities - Regulated Electric,26981507072.0,26.982B
+PPL,PPL Corporation,Utilities,Utilities - Regulated Electric,26970114048.0,26.97B
+FE,FirstEnergy Corp.,Utilities,Utilities - Regulated Electric,25186363392.0,25.186B
+FTS,Fortis Inc.,Utilities,Utilities - Regulated Electric,25052098560.0,25.052B
+CNP,"CenterPoint Energy, Inc.",Utilities,Utilities - Regulated Electric,24619540480.0,24.62B
+ES,Eversource Energy,Utilities,Utilities - Regulated Electric,23777339392.0,23.777B
+EIX,Edison International,Utilities,Utilities - Regulated Electric,21600731136.0,21.601B
+CMS,CMS Energy Corporation,Utilities,Utilities - Regulated Electric,21423407104.0,21.423B
+KEP,Korea Electric Power Corporation,Utilities,Utilities - Regulated Electric,16960714752.0,16.961B
+LNT,Alliant Energy Corporation,Utilities,Utilities - Regulated Electric,16720971776.0,16.721B
+EVRG,"Evergy, Inc.",Utilities,Utilities - Regulated Electric,16400846848.0,16.401B
+EMA,Emera Incorporated,Utilities,Utilities - Regulated Electric,14282596352.0,14.283B
+OKLO,Oklo Inc.,Utilities,Utilities - Regulated Electric,10869925888.0,10.87B
+PNW,Pinnacle West Capital Corporation,Utilities,Utilities - Regulated Electric,10671996928.0,10.672B
+OGE,OGE Energy Corp.,Utilities,Utilities - Regulated Electric,8994300928.0,8.994B
+IDA,"IDACORP, Inc.",Utilities,Utilities - Regulated Electric,6759515648.0,6.76B
+ELPC,,Utilities,Utilities - Regulated Electric,6394460672.0,6.394B
+ELP,Companhia Paranaense de Energia - COPEL,Utilities,Utilities - Regulated Electric,6394457600.0,6.394B
+TXNM,"TXNM Energy, Inc.",Utilities,Utilities - Regulated Electric,5968666624.0,5.969B
+ENIC,Enel Chile S.A.,Utilities,Utilities - Regulated Electric,4830159872.0,4.83B
+POR,Portland General Electric Company,Utilities,Utilities - Regulated Electric,4687062016.0,4.687B
+NWE,"NorthWestern Energy Group, Inc.",Utilities,Utilities - Regulated Electric,3530860800.0,3.531B
+MGEE,"MGE Energy, Inc.",Utilities,Utilities - Regulated Electric,3111534336.0,3.112B
+HE,"Hawaiian Electric Industries, Inc.",Utilities,Utilities - Regulated Electric,2237051648.0,2.237B
+CEPU,Central Puerto S.A.,Utilities,Utilities - Regulated Electric,1604926336.0,1.605B
+EDN,Empresa Distribuidora y Comercializadora Norte Sociedad Anónima,Utilities,Utilities - Regulated Electric,955112256.0,0.955B
+GNE,Genie Energy Ltd.,Utilities,Utilities - Regulated Electric,408646176.0,0.409B

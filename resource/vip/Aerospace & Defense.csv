@@ -1,0 +1,71 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+GE,GE Aerospace,Industrials,Aerospace & Defense,291833085952.0,291.833B
+RTX,RTX Corporation,Industrials,Aerospace & Defense,212292452352.0,212.292B
+BA,The Boeing Company,Industrials,Aerospace & Defense,177455153152.0,177.455B
+LMT,Lockheed Martin Corporation,Industrials,Aerospace & Defense,106373652480.0,106.374B
+GD,General Dynamics Corporation,Industrials,Aerospace & Defense,87307059200.0,87.307B
+NOC,Northrop Grumman Corporation,Industrials,Aerospace & Defense,84483702784.0,84.484B
+TDG,TransDigm Group Incorporated,Industrials,Aerospace & Defense,78827307008.0,78.827B
+HWM,Howmet Aerospace Inc.,Industrials,Aerospace & Defense,70184239104.0,70.184B
+AXON,"Axon Enterprise, Inc.",Industrials,Aerospace & Defense,58665549824.0,58.666B
+LHX,"L3Harris Technologies, Inc.",Industrials,Aerospace & Defense,51941314560.0,51.941B
+HEI,HEICO Corporation,Industrials,Aerospace & Defense,37796229120.0,37.796B
+RKLB,Rocket Lab Corporation,Industrials,Aerospace & Defense,23445270528.0,23.445B
+ESLT,Elbit Systems Ltd.,Industrials,Aerospace & Defense,22255955968.0,22.256B
+CW,Curtiss-Wright Corporation,Industrials,Aerospace & Defense,18015782912.0,18.016B
+BWXT,"BWX Technologies, Inc.",Industrials,Aerospace & Defense,14810245120.0,14.81B
+WWD,"Woodward, Inc.",Industrials,Aerospace & Defense,14800858112.0,14.801B
+TXT,Textron Inc.,Industrials,Aerospace & Defense,14284912640.0,14.285B
+AVAV,"AeroVironment, Inc.",Industrials,Aerospace & Defense,12051136512.0,12.051B
+KTOS,"Kratos Defense & Security Solutions, Inc.",Industrials,Aerospace & Defense,11113396224.0,11.113B
+DRS,"Leonardo DRS, Inc.",Industrials,Aerospace & Defense,11086726144.0,11.087B
+HII,"Huntington Ingalls Industries, Inc.",Industrials,Aerospace & Defense,10625961984.0,10.626B
+ERJ,Embraer S.A.,Industrials,Aerospace & Defense,10330471424.0,10.33B
+SARO,"StandardAero, Inc.",Industrials,Aerospace & Defense,8860110848.0,8.86B
+CAE,CAE Inc.,Industrials,Aerospace & Defense,8640843776.0,8.641B
+KRMN,Karman Holdings Inc.,Industrials,Aerospace & Defense,7067317760.0,7.067B
+LOAR,Loar Holdings Inc.,Industrials,Aerospace & Defense,6615366144.0,6.615B
+ACHR,Archer Aviation Inc.,Industrials,Aerospace & Defense,5772982272.0,5.773B
+HXL,Hexcel Corporation,Industrials,Aerospace & Defense,5024422400.0,5.024B
+SPR,"Spirit AeroSystems Holdings, Inc.",Industrials,Aerospace & Defense,4883456000.0,4.883B
+MRCY,"Mercury Systems, Inc.",Industrials,Aerospace & Defense,4047305728.0,4.047B
+VSEC,VSE Corporation,Industrials,Aerospace & Defense,3357830912.0,3.358B
+AIR,AAR Corp.,Industrials,Aerospace & Defense,2721051392.0,2.721B
+PL,Planet Labs PBC,Industrials,Aerospace & Defense,2151325952.0,2.151B
+VVX,"V2X, Inc.",Industrials,Aerospace & Defense,1811813504.0,1.812B
+VOYG,"Voyager Technologies, Inc.",Industrials,Aerospace & Defense,1809777024.0,1.81B
+DCO,Ducommun Incorporated,Industrials,Aerospace & Defense,1361339904.0,1.361B
+ATRO,Astronics Corporation,Industrials,Aerospace & Defense,1295437568.0,1.295B
+RDW,Redwire Corporation,Industrials,Aerospace & Defense,1283396352.0,1.283B
+CDRE,"Cadre Holdings, Inc.",Industrials,Aerospace & Defense,1252851712.0,1.253B
+EVEX,"Eve Holding, Inc.",Industrials,Aerospace & Defense,1182336512.0,1.182B
+EH,EHang Holdings Limited,Industrials,Aerospace & Defense,1139520896.0,1.14B
+LUNR,"Intuitive Machines, Inc.",Industrials,Aerospace & Defense,1033281472.0,1.033B
+RCAT,"Red Cat Holdings, Inc.",Industrials,Aerospace & Defense,891892864.0,0.892B
+NPK,"National Presto Industries, Inc.",Industrials,Aerospace & Defense,749413760.0,0.749B
+AIRO,"AIRO Group Holdings, Inc.",Industrials,Aerospace & Defense,645766912.0,0.646B
+RGR,"Sturm, Ruger & Company, Inc.",Industrials,Aerospace & Defense,560336512.0,0.56B
+MOBBW,Mobilicom Limited,Industrials,Aerospace & Defense,531196032.0,0.531B
+EVTL,Vertical Aerospace Ltd.,Industrials,Aerospace & Defense,478601600.0,0.479B
+TATT,TAT Technologies Ltd.,Industrials,Aerospace & Defense,469742080.0,0.47B
+BYRN,Byrna Technologies Inc.,Industrials,Aerospace & Defense,463157504.0,0.463B
+SATL,Satellogic Inc.,Industrials,Aerospace & Defense,393768640.0,0.394B
+PKE,Park Aerospace Corp.,Industrials,Aerospace & Defense,372097696.0,0.372B
+SWBI,"Smith & Wesson Brands, Inc.",Industrials,Aerospace & Defense,362015968.0,0.362B
+ISSC,"Innovative Solutions and Support, Inc.",Industrials,Aerospace & Defense,228285184.0,0.228B
+SPCE,"Virgin Galactic Holdings, Inc.",Industrials,Aerospace & Defense,179108000.0,0.179B
+PEW,GrabAGun Digital Holdings Inc.,Industrials,Aerospace & Defense,167821008.0,0.168B
+POWW,Outdoor Holding Company,Industrials,Aerospace & Defense,167468720.0,0.167B
+VWAV,"VisionWave Holdings, Inc.",Industrials,Aerospace & Defense,138846768.0,0.139B
+SPAI,Safe Pro Group Inc.,Industrials,Aerospace & Defense,121728280.0,0.122B
+CODA,"Coda Octopus Group, Inc.",Industrials,Aerospace & Defense,91172328.0,0.091B
+DPRO,Draganfly Inc.,Industrials,Aerospace & Defense,91088480.0,0.091B
+OPXS,"Optex Systems Holdings, Inc",Industrials,Aerospace & Defense,75980680.0,0.076B
+HOVR,New Horizon Aircraft Ltd.,Industrials,Aerospace & Defense,68618728.0,0.069B
+MOB,Mobilicom Limited,Industrials,Aerospace & Defense,46636088.0,0.047B
+XTIA,"XTI Aerospace, Inc.",Industrials,Aerospace & Defense,40709132.0,0.041B
+KITT,"Nauticus Robotics, Inc.",Industrials,Aerospace & Defense,38239496.0,0.038B
+SIDU,"Sidus Space, Inc.",Industrials,Aerospace & Defense,32063850.0,0.032B
+PRZO,ParaZero Technologies Ltd.,Industrials,Aerospace & Defense,26456676.0,0.026B
+MNTS,Momentus Inc.,Industrials,Aerospace & Defense,15473752.0,0.015B
+DFSC,DEFSEC Technologies Inc.,Industrials,Aerospace & Defense,5081294.0,0.005B

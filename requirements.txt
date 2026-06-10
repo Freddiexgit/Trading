@@ -22,3 +22,8 @@ yt_dlp
 finvizfinance
 streamlit
 hmmlearn
+statsmodels
+lancedb
+sentence-transformers
+duckdb
+pylance

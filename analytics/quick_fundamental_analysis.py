@@ -12,13 +12,13 @@ logging.basicConfig(
 )
 
 # ---------------- Configuration ----------------
-CONFIG = {
-    "MIN_MARKET_CAP": 5e8,  # 市值門檻
-    "MIN_VOLUME": 200_000,  # 成交量門檻
-    "MAX_DEBT_EBITDA": 3.5,  # 債務槓桿上限
-    "MIN_REV_GROWTH": 0.10,  # 營收增長下限
-    "MIN_ROE": 0.05  # ROE 下限
-}
+# CONFIG = {
+#     "MIN_MARKET_CAP": 5e8,  # 市值門檻
+#     "MIN_VOLUME": 200_000,  # 成交量門檻
+#     "MAX_DEBT_EBITDA": 3.5,  # 債務槓桿上限
+#     "MIN_REV_GROWTH": 0.10,  # 營收增長下限
+#     "MIN_ROE": 0.05  # ROE 下限
+# }
 
 
 # ---------------- Helpers ----------------
@@ -93,8 +93,8 @@ def process_ticker(symbol: str) -> dict | None:
         mkt_cap = safe_get(info, 'marketCap', 0)
         avg_vol = safe_get(info, 'averageVolume', 0)
 
-        if mkt_cap < CONFIG["MIN_MARKET_CAP"] or avg_vol < CONFIG["MIN_VOLUME"]:
-            return None
+        # if mkt_cap < CONFIG["MIN_MARKET_CAP"] or avg_vol < CONFIG["MIN_VOLUME"]:
+        #     return None
 
         rev_growth = safe_get(info, 'revenueGrowth', 0)
         roe = safe_get(info, 'returnOnEquity', 0)
@@ -109,15 +109,15 @@ def process_ticker(symbol: str) -> dict | None:
         bb_status, bb_pos = compute_bollinger_bands(hist)
 
         # 核心財務條件過濾
-        if rev_growth < CONFIG["MIN_REV_GROWTH"] or roe < CONFIG["MIN_ROE"]:
-            return None
-
+        # if rev_growth < CONFIG["MIN_REV_GROWTH"] or roe < CONFIG["MIN_ROE"]:
+        #     return None
+        #
         leverage = debt / ebitda if ebitda > 0 else 99.0
-        if leverage > CONFIG["MAX_DEBT_EBITDA"] or fcf <= 0:
-            return None
+        # if leverage > CONFIG["MAX_DEBT_EBITDA"] or fcf <= 0:
+        #     return None
 
-        if pe_ratio > 45 or peg_ratio > 2.5:
-            return None
+        # if pe_ratio > 45 or peg_ratio > 2.5:
+        #     return None
 
         # --- 2. 計算動能 (Momentum) ---
         # 同步抓取歷史數據
@@ -211,7 +211,7 @@ def run_quick_fundamental_analysis(input_file=None,output_file=None):
     try:
         watch_list = pd.read_csv(f"{input_file}")['symbol'].tolist()
     except:
-        watch_list = ["AAPL", "NVDA", "ENLT", "SIDU", "GOOGL", "MSFT", "AMZN", "META"]
+        watch_list = ["enlt"]
 
     final_df = run_sequential_screening(watch_list)
 

@@ -1,0 +1,60 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+TMUS,"T-Mobile US, Inc.",Communication Services,Telecom Services,283594588160.0,283.595B
+T,AT&T Inc.,Communication Services,Telecom Services,209434918912.0,209.435B
+T,AT&T Inc.,Communication Services,Telecom Services,209434918912.0,209.435B
+CMCSA,Comcast Corporation,Communication Services,Telecom Services,125424377856.0,125.424B
+AMX,"América Móvil, S.A.B. de C.V.",Communication Services,Telecom Services,60329218048.0,60.329B
+CHTR,"Charter Communications, Inc.",Communication Services,Telecom Services,36275838976.0,36.276B
+CHT,"Chunghwa Telecom Co., Ltd.",Communication Services,Telecom Services,33981046784.0,33.981B
+TEF,"Telefónica, S.A.",Communication Services,Telecom Services,30481463296.0,30.481B
+VOD,Vodafone Group Public Limited Company,Communication Services,Telecom Services,28832927744.0,28.833B
+TU,TELUS Corporation,Communication Services,Telecom Services,25147248640.0,25.147B
+BCE,BCE Inc.,Communication Services,Telecom Services,23275847680.0,23.276B
+VIV,Telefônica Brasil S.A.,Communication Services,Telecom Services,20177831936.0,20.178B
+RCI,Rogers Communications Inc.,Communication Services,Telecom Services,19514380288.0,19.514B
+TLK,Perusahaan Perseroan (Persero) PT Telekomunikasi Indonesia Tbk,Communication Services,Telecom Services,19208161280.0,19.208B
+SATS,EchoStar Corporation,Communication Services,Telecom Services,17777971200.0,17.778B
+TIMB,TIM S.A.,Communication Services,Telecom Services,10227906560.0,10.228B
+KT,KT Corporation,Communication Services,Telecom Services,9762889728.0,9.763B
+FYBR,"Frontier Communications Parent, Inc.",Communication Services,Telecom Services,9280891904.0,9.281B
+LBRDA,Liberty Broadband Corporation,Communication Services,Telecom Services,8741332992.0,8.741B
+LBRDK,Liberty Broadband Corporation,Communication Services,Telecom Services,8741321728.0,8.741B
+SKM,"SK Telecom Co., Ltd.",Communication Services,Telecom Services,8391639552.0,8.392B
+TIGO,Millicom International Cellular S.A.,Communication Services,Telecom Services,8069605888.0,8.07B
+USM,"Array Digital Infrastructure, Inc.",Communication Services,Telecom Services,6623314944.0,6.623B
+TKC,Turkcell Iletisim Hizmetleri A.S.,Communication Services,Telecom Services,5123920384.0,5.124B
+LUMN,"Lumen Technologies, Inc.",Communication Services,Telecom Services,5099915776.0,5.1B
+TDS,"Telephone and Data Systems, Inc.",Communication Services,Telecom Services,4610350080.0,4.61B
+PHI,PLDT Inc.,Communication Services,Telecom Services,4424826880.0,4.425B
+VEON,VEON Ltd.,Communication Services,Telecom Services,4047571712.0,4.048B
+LBTYA,Liberty Global Ltd.,Communication Services,Telecom Services,4028921600.0,4.029B
+LBTYK,Liberty Global Ltd.,Communication Services,Telecom Services,4028918528.0,4.029B
+LBTYB,Liberty Global Ltd.,Communication Services,Telecom Services,4028917760.0,4.029B
+SNRE,Sunrise Communications AG,Communication Services,Telecom Services,4017001728.0,4.017B
+TEO,Telecom Argentina S.A.,Communication Services,Telecom Services,3931208960.0,3.931B
+GSAT,"Globalstar, Inc.",Communication Services,Telecom Services,3791322880.0,3.791B
+IRDM,Iridium Communications Inc.,Communication Services,Telecom Services,2641177344.0,2.641B
+CCOI,"Cogent Communications Holdings, Inc.",Communication Services,Telecom Services,1880254592.0,1.88B
+LILA,Liberty Latin America Ltd.,Communication Services,Telecom Services,1643272832.0,1.643B
+IDT,IDT Corporation,Communication Services,Telecom Services,1616505344.0,1.617B
+TV,"Grupo Televisa, S.A.B.",Communication Services,Telecom Services,1489712128.0,1.49B
+GOGO,Gogo Inc.,Communication Services,Telecom Services,1467861248.0,1.468B
+ATUS,"Altice USA, Inc.",Communication Services,Telecom Services,1096629248.0,1.097B
+GLIBA,,Communication Services,Telecom Services,1053452672.0,1.053B
+GLIBK,"GCI Liberty, Inc.",Communication Services,Telecom Services,1053451264.0,1.053B
+CABO,"Cable One, Inc.",Communication Services,Telecom Services,908969280.0,0.909B
+SHEN,Shenandoah Telecommunications Company,Communication Services,Telecom Services,727386560.0,0.727B
+SIFY,Sify Technologies Limited,Communication Services,Telecom Services,682264320.0,0.682B
+ATEX,Anterix Inc.,Communication Services,Telecom Services,444882848.0,0.445B
+WOW,"WideOpenWest, Inc.",Communication Services,Telecom Services,436554048.0,0.437B
+ATNI,"ATN International, Inc.",Communication Services,Telecom Services,259375808.0,0.259B
+RDCM,RADCOM Ltd.,Communication Services,Telecom Services,212067632.0,0.212B
+CXDO,"Crexendo, Inc.",Communication Services,Telecom Services,190671248.0,0.191B
+UCL,uCloudlink Group Inc.,Communication Services,Telecom Services,124563904.0,0.125B
+KVHI,"KVH Industries, Inc.",Communication Services,Telecom Services,109812024.0,0.11B
+FNGR,"FingerMotion, Inc.",Communication Services,Telecom Services,89706680.0,0.09B
+SURG,"SurgePays, Inc.",Communication Services,Telecom Services,53286120.0,0.053B
+KORE,"KORE Group Holdings, Inc.",Communication Services,Telecom Services,41983440.0,0.042B
+IQST,iQSTEL Inc.,Communication Services,Telecom Services,24204782.0,0.024B
+PCLA,PicoCELA Inc.,Communication Services,Telecom Services,15155221.0,0.015B
+IOTR,iOThree Limited,Communication Services,Telecom Services,10785825.0,0.011B

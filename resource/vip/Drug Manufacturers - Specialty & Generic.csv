@@ -1,0 +1,80 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+ZTS,Zoetis Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,69313822720.0,69.314B
+TAK,Takeda Pharmaceutical Company Limited,Healthcare,Drug Manufacturers - Specialty & Generic,47976091648.0,47.976B
+HLN,Haleon plc,Healthcare,Drug Manufacturers - Specialty & Generic,43914190848.0,43.914B
+TEVA,Teva Pharmaceutical Industries Limited,Healthcare,Drug Manufacturers - Specialty & Generic,21084614656.0,21.085B
+NBIX,"Neurocrine Biosciences, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,13845738496.0,13.846B
+UTHR,United Therapeutics Corporation,Healthcare,Drug Manufacturers - Specialty & Generic,13783168000.0,13.783B
+VTRS,Viatris Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,12299928576.0,12.3B
+RDY,Dr. Reddy's Laboratories Limited,Healthcare,Drug Manufacturers - Specialty & Generic,12086414336.0,12.086B
+ELAN,Elanco Animal Health Incorporated,Healthcare,Drug Manufacturers - Specialty & Generic,9116537856.0,9.117B
+RGC,Regencell Bioscience Holdings Limited,Healthcare,Drug Manufacturers - Specialty & Generic,6947570176.0,6.948B
+ALKS,Alkermes plc,Healthcare,Drug Manufacturers - Specialty & Generic,4782309376.0,4.782B
+LNTH,"Lantheus Holdings, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,3732881664.0,3.733B
+PBH,Prestige Consumer Healthcare Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,3348534272.0,3.349B
+PRGO,Perrigo Company plc,Healthcare,Drug Manufacturers - Specialty & Generic,3266220544.0,3.266B
+INDV,Indivior PLC,Healthcare,Drug Manufacturers - Specialty & Generic,3029415680.0,3.029B
+AMRX,"Amneal Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,3002595328.0,3.003B
+BHC,Bausch Health Companies Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,2743842048.0,2.744B
+HCM,HUTCHMED (China) Limited,Healthcare,Drug Manufacturers - Specialty & Generic,2579618560.0,2.58B
+SUPN,"Supernus Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,2530018304.0,2.53B
+ALVO,Alvotech,Healthcare,Drug Manufacturers - Specialty & Generic,2514619904.0,2.515B
+KNSA,"Kiniksa Pharmaceuticals International, plc",Healthcare,Drug Manufacturers - Specialty & Generic,2481866752.0,2.482B
+ANIP,"ANI Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,2027902848.0,2.028B
+BCRX,"BioCryst Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,1744435328.0,1.744B
+TLRY,"Tilray Brands, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,1515971456.0,1.516B
+BGM,BGM Group Ltd.,Healthcare,Drug Manufacturers - Specialty & Generic,1506678784.0,1.507B
+PAHC,Phibro Animal Health Corporation,Healthcare,Drug Manufacturers - Specialty & Generic,1502580480.0,1.503B
+HROW,"Harrow, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,1443081856.0,1.443B
+AVDL,Avadel Pharmaceuticals plc,Healthcare,Drug Manufacturers - Specialty & Generic,1433160576.0,1.433B
+AMPH,"Amphastar Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,1423680000.0,1.424B
+EVO,Evotec SE,Healthcare,Drug Manufacturers - Specialty & Generic,1244694528.0,1.245B
+COLL,"Collegium Pharmaceutical, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,1222281472.0,1.222B
+PCRX,"Pacira BioSciences, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,1198355072.0,1.198B
+DVAX,Dynavax Technologies Corporation,Healthcare,Drug Manufacturers - Specialty & Generic,1186742016.0,1.187B
+CRON,Cronos Group Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,995643968.0,0.996B
+AKBA,"Akebia Therapeutics, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,832555328.0,0.833B
+ORGO,Organogenesis Holdings Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,653318720.0,0.653B
+CGC,Canopy Growth Corporation,Healthcare,Drug Manufacturers - Specialty & Generic,608074176.0,0.608B
+SIGA,"SIGA Technologies, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,600774336.0,0.601B
+EOLS,"Evolus, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,493549600.0,0.494B
+ETON,"Eton Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,464210912.0,0.464B
+AQST,"Aquestive Therapeutics, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,456071968.0,0.456B
+ESPR,"Esperion Therapeutics, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,447603072.0,0.448B
+ZYBT,Zhengye Biotechnology Holding Limited,Healthcare,Drug Manufacturers - Specialty & Generic,443583488.0,0.444B
+EBS,Emergent BioSolutions Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,442814144.0,0.443B
+KMDA,Kamada Ltd.,Healthcare,Drug Manufacturers - Specialty & Generic,397934592.0,0.398B
+ACB,Aurora Cannabis Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,304889632.0,0.305B
+LFCR,"Lifecore Biomedical, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,284674112.0,0.285B
+OGI,Organigram Global Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,231858064.0,0.232B
+TKNO,"Alpha Teknova, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,231185680.0,0.231B
+IRWD,"Ironwood Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,214412896.0,0.214B
+BIOA,"BioAge Labs, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,176740496.0,0.177B
+DERM,Journey Medical Corporation,Healthcare,Drug Manufacturers - Specialty & Generic,175766816.0,0.176B
+CTOR,"Citius Oncology, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,170064208.0,0.17B
+SXTC,"China SXT Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,169400880.0,0.169B
+ANIK,"Anika Therapeutics, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,135241776.0,0.135B
+CRDL,Cardiol Therapeutics Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,90494928.0,0.09B
+INCR,InterCure Ltd.,Healthcare,Drug Manufacturers - Specialty & Generic,86129912.0,0.086B
+ASRT,"Assertio Holdings, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,80369688.0,0.08B
+IXHL,Incannex Healthcare Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,61745268.0,0.062B
+DRRX,DURECT Corporation,Healthcare,Drug Manufacturers - Specialty & Generic,59624064.0,0.06B
+RMTI,"Rockwell Medical, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,58875984.0,0.059B
+CPIX,Cumberland Pharmaceuticals Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,52210052.0,0.052B
+SCYX,"SCYNEXIS, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,34856360.0,0.035B
+AYTU,"Aytu BioPharma, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,21095738.0,0.021B
+TXMD,"TherapeuticsMD, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,12847584.0,0.013B
+GELS,Gelteq Limited,Healthcare,Drug Manufacturers - Specialty & Generic,12555056.0,0.013B
+IMCC,IM Cannabis Corp.,Healthcare,Drug Manufacturers - Specialty & Generic,12172599.0,0.012B
+FLGC,Flora Growth Corp.,Healthcare,Drug Manufacturers - Specialty & Generic,11834068.0,0.012B
+TLPH,"Talphera, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,11102781.0,0.011B
+BFRI,Biofrontera Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,9453269.0,0.009B
+EVOK,"Evoke Pharma, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,8493607.0,0.008B
+SNOA,"Sonoma Pharmaceuticals, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,7312506.0,0.007B
+SBFM,"Sunshine Biopharma, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,6560554.0,0.007B
+INM,InMed Pharmaceuticals Inc.,Healthcare,Drug Manufacturers - Specialty & Generic,4444862.0,0.004B
+SHPH,"Shuttle Pharmaceuticals Holdings, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic,3533541.0,0.004B
+RDHL,RedHill Biopharma Ltd.,Healthcare,Drug Manufacturers - Specialty & Generic,3098709.0,0.003B
+PRFX,PainReform Ltd.,Healthcare,Drug Manufacturers - Specialty & Generic,2919053.0,0.003B
+AKAN,Akanda Corp.,Healthcare,Drug Manufacturers - Specialty & Generic,2665537.0,0.003B
+UPC,Universe Pharmaceuticals INC,Healthcare,Drug Manufacturers - Specialty & Generic,1997765.0,0.002B

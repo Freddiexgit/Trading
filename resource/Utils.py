@@ -32,4 +32,4 @@ def merge_csv_symbols(file_a_path, file_b_path):
     print(f"Successfully merged symbols into {file_a_path}. Total unique symbols: {len(unique_df)}")
 
 # Usage:
-merge_csv_symbols('us_middle_3000.csv', 'Russel_2000.csv')
+merge_csv_symbols('us_top_5000.csv', 'us_vip_industries.csv')

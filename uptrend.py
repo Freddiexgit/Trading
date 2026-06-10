@@ -148,18 +148,21 @@ def suggest_levels_for_ticker(df, ticker, lookback_high=20, atr_mult_stop=2.0, t
         "dist_ema20_pct": round((last_close / ema20 - 1) * 100, 2)
     }
 
+
 def scan_uptrends_with_levels(tickers,
                               period="365d",
                               interval="1d",
                               min_price=2.0,
                               min_avg_volume=50000,
                               require_volume=True,
-                              lookback_days=30):
+                              lookback_days=30,
+                              max_extension_pct=50.0):  # <-- Added overextended parameter
     rows = []
     for tk in tickers:
         df = fetch_history(tk, period=period, interval=interval)
         if df is None or df.empty:
             continue
+
         vol_series = df["Volume"].dropna()
         if len(vol_series) >= 60:
             avg_vol_60 = int(vol_series.rolling(window=60).mean().iloc[-1])
@@ -168,15 +171,29 @@ def scan_uptrends_with_levels(tickers,
 
         avg_vol = avg_vol_60
         last_price = df["Close"].iloc[-1]
+
         if last_price < min_price or avg_vol < min_avg_volume:
             continue
-        df = add_emas(df, periods=(20,50,200))
-        # basic EMA stacking and price above EMA20
+
+        df = add_emas(df, periods=(20, 50, 200))
+
+        # Basic EMA stacking
         if not is_ema_stacked_last(df):
             continue
-        if last_price <= df["EMA20"].iloc[-1]:
+
+        ema20_val = df["EMA20"].iloc[-1]
+        if last_price <= ema20_val:
             continue
-        # simple volume check
+
+        # --- NEW: Overextended Filter ---
+        # Calculate how far price is above the EMA20.
+        # If it exceeds the threshold (e.g., 15%), skip it.
+        dist_ema20 = ((last_price / ema20_val) - 1) * 100
+        if dist_ema20 > max_extension_pct:
+            continue
+        # --------------------------------
+
+        # Simple volume check
         if require_volume:
             if len(df["Volume"].dropna()) < 20:
                 continue
@@ -185,13 +202,16 @@ def scan_uptrends_with_levels(tickers,
             avg20 = recent20.mean()
             if last5 < avg20 * 0.7:
                 continue
-        # compute levels
+
+        # Compute entry/stop/target levels and regression stats
         levels = suggest_levels_for_ticker(df, tk)
-        # add lookback pct change
+
+        # Add lookback pct change
         pct_change_lb = np.nan
         if len(df) >= lookback_days:
             past = df["Close"].iloc[-lookback_days]
             pct_change_lb = float((last_price / past - 1) * 100)
+
         levels.update({
             "avg_volume": avg_vol,
             f"pct_change_{lookback_days}d": round(pct_change_lb, 2) if not np.isnan(pct_change_lb) else np.nan
@@ -202,16 +222,28 @@ def scan_uptrends_with_levels(tickers,
         return pd.DataFrame()
 
     out = pd.DataFrame(rows)
-    # sort by annualized slope (speed) descending
-    out = out.sort_values(by="annualized_slope_pct", ascending=False).reset_index(drop=True)
+
+    # --- NEW: Improved Sorting Logic ---
+    # 1. Trend Quality: Penalize erratic stocks by weighting slope against R-squared
+    out["trend_quality"] = out["annualized_slope_pct"] * out["r_squared"]
+
+    # 2. Composite Score: Boost setups that offer a better primary Risk/Reward
+    out["composite_score"] = out["trend_quality"] * (1 + (out["rr1"].fillna(0) * 0.1))
+
+    # 3. Multi-Level Sort: Sort by composite score -> R-squared -> proximity to EMA20
+    out = out.sort_values(
+        by=["composite_score", "r_squared", "dist_ema20_pct"],
+        ascending=[False, False, True]
+    ).reset_index(drop=True)
+
     return out
 
 # Example usage
 if __name__ == "__main__":
-    tickers = ["SNDK"]  # replace with your list
+    tickers = ["CRML"]  # replace with your list
     df = scan_uptrends_with_levels(tickers,
-                                   period="2y",
-                                   interval="1wk",
+                                   period="1y",
+                                   interval="1d",
                                    min_price=1.0,
                                    min_avg_volume=100000,
                                    require_volume=True,

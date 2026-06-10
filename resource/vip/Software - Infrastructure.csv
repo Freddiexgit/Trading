@@ -1,0 +1,156 @@
+symbol,name,sector,industry,marketCap,marketCap_str
+MSFT,Microsoft Corporation,Technology,Software - Infrastructure,3766312763392.0,3766.313B
+ORCL,Oracle Corporation,Technology,Software - Infrastructure,635160756224.0,635.161B
+PLTR,Palantir Technologies Inc.,Technology,Software - Infrastructure,371769409536.0,371.769B
+PANW,"Palo Alto Networks, Inc.",Technology,Software - Infrastructure,127438823424.0,127.439B
+SNPS,"Synopsys, Inc.",Technology,Software - Infrastructure,111640551424.0,111.641B
+CRWD,"CrowdStrike Holdings, Inc.",Technology,Software - Infrastructure,106329636864.0,106.33B
+NET,"Cloudflare, Inc.",Technology,Software - Infrastructure,72731680768.0,72.732B
+FTNT,"Fortinet, Inc.",Technology,Software - Infrastructure,60358770688.0,60.359B
+CRWV,"CoreWeave, Inc.",Technology,Software - Infrastructure,50342457344.0,50.342B
+XYZ,"Block, Inc.",Technology,Software - Infrastructure,48547270656.0,48.547B
+ZS,"Zscaler, Inc.",Technology,Software - Infrastructure,43135574016.0,43.136B
+AFRM,"Affirm Holdings, Inc.",Technology,Software - Infrastructure,28803610624.0,28.804B
+TOST,"Toast, Inc.",Technology,Software - Infrastructure,26293299200.0,26.293B
+MDB,"MongoDB, Inc.",Technology,Software - Infrastructure,25677047808.0,25.677B
+VRSN,"VeriSign, Inc.",Technology,Software - Infrastructure,25535109120.0,25.535B
+CPAY,"Corpay, Inc.",Technology,Software - Infrastructure,22996992000.0,22.997B
+CYBR,CyberArk Software Ltd.,Technology,Software - Infrastructure,22847567872.0,22.848B
+NTAP,"NetApp, Inc.",Technology,Software - Infrastructure,22514915328.0,22.515B
+CHKP,Check Point Software Technologies Ltd.,Technology,Software - Infrastructure,20733964288.0,20.734B
+IOT,Samsara Inc.,Technology,Software - Infrastructure,20575803392.0,20.576B
+GDDY,GoDaddy Inc.,Technology,Software - Infrastructure,20533368832.0,20.533B
+GEN,Gen Digital Inc.,Technology,Software - Infrastructure,18599243776.0,18.599B
+NTNX,"Nutanix, Inc.",Technology,Software - Infrastructure,18017454080.0,18.017B
+FFIV,"F5, Inc.",Technology,Software - Infrastructure,17989017600.0,17.989B
+KSPI,Joint Stock Company Kaspi.kz,Technology,Software - Infrastructure,17926158336.0,17.926B
+RBRK,,Technology,Software - Infrastructure,17298274304.0,17.298B
+OKTA,"Okta, Inc.",Technology,Software - Infrastructure,16354052096.0,16.354B
+TWLO,Twilio Inc.,Technology,Software - Infrastructure,16204165120.0,16.204B
+SAIL,"SailPoint, Inc.",Technology,Software - Infrastructure,11487996928.0,11.488B
+AKAM,"Akamai Technologies, Inc.",Technology,Software - Infrastructure,11346134016.0,11.346B
+KVYO,"Klaviyo, Inc.",Technology,Software - Infrastructure,9731480576.0,9.731B
+DOX,Amdocs Limited,Technology,Software - Infrastructure,9412015104.0,9.412B
+FOUR,"Shift4 Payments, Inc.",Technology,Software - Infrastructure,7996824576.0,7.997B
+FOUR,"Shift4 Payments, Inc.",Technology,Software - Infrastructure,7996824576.0,7.997B
+GTLB,GitLab Inc.,Technology,Software - Infrastructure,7932903936.0,7.933B
+WIX,Wix.com Ltd.,Technology,Software - Infrastructure,7866083328.0,7.866B
+DBX,"Dropbox, Inc.",Technology,Software - Infrastructure,7842160128.0,7.842B
+CFLT,"Confluent, Inc.",Technology,Software - Infrastructure,6846616064.0,6.847B
+VRNS,"Varonis Systems, Inc.",Technology,Software - Infrastructure,6613014016.0,6.613B
+S,"SentinelOne, Inc.",Technology,Software - Infrastructure,6291809792.0,6.292B
+PATH,UiPath Inc.,Technology,Software - Infrastructure,5949633536.0,5.95B
+WEX,WEX Inc.,Technology,Software - Infrastructure,5871187968.0,5.871B
+ACIW,"ACI Worldwide, Inc.",Technology,Software - Infrastructure,5092525056.0,5.093B
+OS,"OneStream, Inc.",Technology,Software - Infrastructure,5048747520.0,5.049B
+QLYS,"Qualys, Inc.",Technology,Software - Infrastructure,4902761984.0,4.903B
+PAY,"Paymentus Holdings, Inc.",Technology,Software - Infrastructure,4876527616.0,4.877B
+BOX,"Box, Inc.",Technology,Software - Infrastructure,4727630336.0,4.728B
+ZETA,Zeta Global Holdings Corp.,Technology,Software - Infrastructure,4675124736.0,4.675B
+STNE,StoneCo Ltd.,Technology,Software - Infrastructure,4406119936.0,4.406B
+CORZ,"Core Scientific, Inc.",Technology,Software - Infrastructure,4382604800.0,4.383B
+DLO,DLocal Limited,Technology,Software - Infrastructure,4246959872.0,4.247B
+CLBT,Cellebrite DI Ltd.,Technology,Software - Infrastructure,4009291264.0,4.009B
+CALX,"Calix, Inc.",Technology,Software - Infrastructure,3882322944.0,3.882B
+RELY,"Remitly Global, Inc.",Technology,Software - Infrastructure,3820756224.0,3.821B
+EEFT,"Euronet Worldwide, Inc.",Technology,Software - Infrastructure,3820435968.0,3.82B
+TENB,"Tenable Holdings, Inc.",Technology,Software - Infrastructure,3744257536.0,3.744B
+AVPT,"AvePoint, Inc.",Technology,Software - Infrastructure,3467126016.0,3.467B
+ODD,Oddity Tech Ltd.,Technology,Software - Infrastructure,3361421824.0,3.361B
+DOCN,"DigitalOcean Holdings, Inc.",Technology,Software - Infrastructure,2969643264.0,2.97B
+MQ,"Marqeta, Inc.",Technology,Software - Infrastructure,2853003008.0,2.853B
+PGY,Pagaya Technologies Ltd.,Technology,Software - Infrastructure,2825317888.0,2.825B
+PAGS,PagSeguro Digital Ltd.,Technology,Software - Infrastructure,2615173120.0,2.615B
+PAYO,Payoneer Global Inc.,Technology,Software - Infrastructure,2504196096.0,2.504B
+NN,NextNav Inc.,Technology,Software - Infrastructure,2371063040.0,2.371B
+AI,"C3.ai, Inc.",Technology,Software - Infrastructure,2325581568.0,2.326B
+EVTC,"EVERTEC, Inc.",Technology,Software - Infrastructure,2282877696.0,2.283B
+BB,BlackBerry Limited,Technology,Software - Infrastructure,2280366592.0,2.28B
+APPN,Appian Corporation,Technology,Software - Infrastructure,2278704896.0,2.279B
+EVCM,EverCommerce Inc.,Technology,Software - Infrastructure,2093772544.0,2.094B
+FIVN,"Five9, Inc.",Technology,Software - Infrastructure,2079911936.0,2.08B
+PRGS,Progress Software Corporation,Technology,Software - Infrastructure,1995483264.0,1.995B
+TDC,Teradata Corporation,Technology,Software - Infrastructure,1982609920.0,1.983B
+CSGS,"CSG Systems International, Inc.",Technology,Software - Infrastructure,1845780608.0,1.846B
+NYAX,Nayax Ltd.,Technology,Software - Infrastructure,1837675392.0,1.838B
+RAMP,"LiveRamp Holdings, Inc.",Technology,Software - Infrastructure,1831702784.0,1.832B
+NTCT,"NetScout Systems, Inc.",Technology,Software - Infrastructure,1788976128.0,1.789B
+TUYA,Tuya Inc.,Technology,Software - Infrastructure,1721363200.0,1.721B
+FLYW,Flywire Corporation,Technology,Software - Infrastructure,1608376448.0,1.608B
+GB,Global Blue Group Holding AG,Technology,Software - Infrastructure,1493251328.0,1.493B
+SUPX,SuperX AI Technology Limited,Technology,Software - Infrastructure,1382331136.0,1.382B
+BASE,"Couchbase, Inc.",Technology,Software - Infrastructure,1347227904.0,1.347B
+RPD,"Rapid7, Inc.",Technology,Software - Infrastructure,1340887552.0,1.341B
+ATEN,"A10 Networks, Inc.",Technology,Software - Infrastructure,1277822464.0,1.278B
+VRNT,Verint Systems Inc.,Technology,Software - Infrastructure,1229694336.0,1.23B
+YEXT,"Yext, Inc.",Technology,Software - Infrastructure,1112597888.0,1.113B
+RDWR,Radware Ltd.,Technology,Software - Infrastructure,1077407232.0,1.077B
+IIIV,"i3 Verticals, Inc.",Technology,Software - Infrastructure,1014740544.0,1.015B
+GCT,GigaCloud Technology Inc.,Technology,Software - Infrastructure,997021632.0,0.997B
+RZLV,Rezolve AI PLC,Technology,Software - Infrastructure,911329600.0,0.911B
+DAVA,Endava plc,Technology,Software - Infrastructure,872790592.0,0.873B
+AEVA,"Aeva Technologies, Inc.",Technology,Software - Infrastructure,833931584.0,0.834B
+PSFE,Paysafe Limited,Technology,Software - Infrastructure,830326912.0,0.83B
+CTLP,"Cantaloupe, Inc.",Technology,Software - Infrastructure,796630784.0,0.797B
+CINT,CI&T Inc.,Technology,Software - Infrastructure,732109824.0,0.732B
+SABR,Sabre Corporation,Technology,Software - Infrastructure,706180032.0,0.706B
+PRTH,"Priority Technology Holdings, Inc.",Technology,Software - Infrastructure,668912832.0,0.669B
+CGNT,Cognyte Software Ltd.,Technology,Software - Infrastructure,651614144.0,0.652B
+AIOT,"PowerFleet, Inc.",Technology,Software - Infrastructure,623178816.0,0.623B
+OSPN,OneSpan Inc.,Technology,Software - Infrastructure,579659584.0,0.58B
+RPAY,Repay Holdings Corporation,Technology,Software - Infrastructure,540711488.0,0.541B
+ATGL,Alpha Technology Group Limited,Technology,Software - Infrastructure,505398752.0,0.505B
+CCSI,"Consensus Cloud Solutions, Inc.",Technology,Software - Infrastructure,504218880.0,0.504B
+BLZE,"Backblaze, Inc.",Technology,Software - Infrastructure,471464416.0,0.471B
+ARQQ,Arqit Quantum Inc.,Technology,Software - Infrastructure,456744000.0,0.457B
+XNET,Xunlei Limited,Technology,Software - Infrastructure,452299392.0,0.452B
+BAND,Bandwidth Inc.,Technology,Software - Infrastructure,452115008.0,0.452B
+TLS,Telos Corporation,Technology,Software - Infrastructure,449304512.0,0.449B
+IMXI,"International Money Express, Inc.",Technology,Software - Infrastructure,430419456.0,0.43B
+LSAK,"Lesaka Technologies, Inc.",Technology,Software - Infrastructure,382684672.0,0.383B
+GRRR,Gorilla Technology Group Inc.,Technology,Software - Infrastructure,375171936.0,0.375B
+ALLT,Allot Ltd.,Technology,Software - Infrastructure,361516000.0,0.362B
+AMBR,Amber International Holding Limited,Technology,Software - Infrastructure,337258432.0,0.337B
+DFDV,DeFi Development Corp.,Technology,Software - Infrastructure,337140896.0,0.337B
+PDYN,Palladyne AI Corp.,Technology,Software - Infrastructure,317133696.0,0.317B
+RXT,"Rackspace Technology, Inc.",Technology,Software - Infrastructure,301594848.0,0.302B
+PAYS,"Paysign, Inc.",Technology,Software - Infrastructure,282060832.0,0.282B
+SANG,Sangoma Technologies Corporation,Technology,Software - Infrastructure,207768816.0,0.208B
+TCX,Tucows Inc.,Technology,Software - Infrastructure,202513152.0,0.203B
+VERI,"Veritone, Inc.",Technology,Software - Infrastructure,168578992.0,0.169B
+ZENA,,Technology,Software - Infrastructure,162596816.0,0.163B
+ARAI,Arrive AI Inc.,Technology,Software - Infrastructure,162485952.0,0.162B
+HPAI,Helport AI Limited,Technology,Software - Infrastructure,143845824.0,0.144B
+AISP,"Airship AI Holdings, Inc.",Technology,Software - Infrastructure,142634560.0,0.143B
+REKR,"Rekor Systems, Inc.",Technology,Software - Infrastructure,141494080.0,0.141B
+ARBE,Arbe Robotics Ltd.,Technology,Software - Infrastructure,141265792.0,0.141B
+BKKT,"Bakkt Holdings, Inc.",Technology,Software - Infrastructure,126055600.0,0.126B
+LHSW,Lianhe Sowell International Group Ltd,Technology,Software - Infrastructure,118560000.0,0.119B
+LIDR,"AEye, Inc.",Technology,Software - Infrastructure,112639536.0,0.113B
+ALAR,Alarum Technologies Ltd.,Technology,Software - Infrastructure,107062504.0,0.107B
+MLGO,MicroAlgo Inc.,Technology,Software - Infrastructure,95082496.0,0.095B
+FATN,"FatPipe, Inc.",Technology,Software - Infrastructure,88489600.0,0.088B
+XBP,"XBP Global Holdings, Inc.",Technology,Software - Infrastructure,70991416.0,0.071B
+SNCR,"Synchronoss Technologies, Inc.",Technology,Software - Infrastructure,69240832.0,0.069B
+KPLT,"Katapult Holdings, Inc.",Technology,Software - Infrastructure,68543248.0,0.069B
+JG,Aurora Mobile Limited,Technology,Software - Infrastructure,62379228.0,0.062B
+AUID,authID Inc.,Technology,Software - Infrastructure,59958904.0,0.06B
+VHC,VirnetX Holding Corporation,Technology,Software - Infrastructure,58471084.0,0.058B
+UBXG,U-BX Technology Ltd.,Technology,Software - Infrastructure,53415136.0,0.053B
+USIO,"Usio, Inc.",Technology,Software - Infrastructure,39081304.0,0.039B
+INTZ,Intrusion Inc.,Technology,Software - Infrastructure,35223000.0,0.035B
+DVLT,Datavault AI Inc.,Technology,Software - Infrastructure,34876188.0,0.035B
+VRAR,"The Glimpse Group, Inc.",Technology,Software - Infrastructure,31162140.0,0.031B
+CISO,CISO Global Inc.,Technology,Software - Infrastructure,30832336.0,0.031B
+CSAI,Cloudastructure Inc.,Technology,Software - Infrastructure,29132920.0,0.029B
+MSAI,"MultiSensor AI Holdings, Inc.",Technology,Software - Infrastructure,23420766.0,0.023B
+HUBC,HUB Cyber Security Ltd.,Technology,Software - Infrastructure,22204534.0,0.022B
+TAOX,TAO Synergies Inc.,Technology,Software - Infrastructure,20295214.0,0.02B
+BLIN,"Bridgeline Digital, Inc.",Technology,Software - Infrastructure,17320302.0,0.017B
+DTSS,Datasea Inc.,Technology,Software - Infrastructure,15766972.0,0.016B
+BNAI,"Brand Engagement Network, Inc.",Technology,Software - Infrastructure,13236437.0,0.013B
+NEHC,"New Era Helium, Inc.",Technology,Software - Infrastructure,11872631.0,0.012B
+OLB,"The OLB Group, Inc.",Technology,Software - Infrastructure,9673878.0,0.01B
+RVYL,Ryvyl Inc.,Technology,Software - Infrastructure,9396332.0,0.009B
+CETX,"Cemtrex, Inc.",Technology,Software - Infrastructure,6416343.0,0.006B
+TAOP,Taoping Inc.,Technology,Software - Infrastructure,4474041.0,0.004B

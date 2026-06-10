@@ -216,7 +216,7 @@ if __name__ == "__main__":
         "RGTX", "AMDL", "ABAT", "GSIT", "ELBM", "BETR", "RBLX", "GFS", "UUUU", "RKLB",
         "BABA", "MP", "RDDT", "CRWV", "AMD", "LAES", "TSLA", "AEM", "SEPN", "AG",
         "LAWR", "UNH", "SNAP", "UNHG", "AAPL", "GRDN", "NVDA", "ARM", "TSMU", "JOBY",
-        "BTQ", "NVDL", "CCCX", "CAN", "CLSK", "NBIS", "AMPX", "BITF", "EOSE", "IREN",
+        "BTQ", "NVDL", "CCCX", "CAN", "CLSK", "NBIS", "AMPX", "KEEL", "EOSE", "IREN",
         "BURU", "TTMI", "GLW", "AEP", "TSEM", "ALAB", "NUAI", "RMBS", "QQQ", "SIDU",
         "SKYT", "POET", "DXYZ", "LITE", "STI", "QS", "DFLI", "APLS", "RTX", "VOO",
         "GLD", "UVXY", "VGT", "SQQQ", "SPMO", "TE"
