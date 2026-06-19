@@ -116,8 +116,8 @@ def process_ticker(symbol: str) -> dict | None:
         # if leverage > CONFIG["MAX_DEBT_EBITDA"] or fcf <= 0:
         #     return None
 
-        # if pe_ratio > 45 or peg_ratio > 2.5:
-        #     return None
+        if pe_ratio > 45 or peg_ratio > 2.5:
+            return None
 
         # --- 2. 計算動能 (Momentum) ---
         # 同步抓取歷史數據
@@ -147,15 +147,30 @@ def process_ticker(symbol: str) -> dict | None:
         if score < 3:
             return None
         # Get annual statements
-        ocf = stock.cashflow.loc["Operating Cash Flow"].iloc[0]
-        net_income = stock.financials.loc["Net Income"].iloc[0]
+        try:
+            ocf = stock.cashflow.loc["Operating Cash Flow"].iloc[0]
+        except Exception  as e:
+            logging.error(f"無法獲取 {symbol} 的現金流數據: {e}")
+            ocf = 0.0
+        try:
+            net_income = stock.financials.loc["Net Income"].iloc[0]
+        except Exception  as e:
+            logging.error(f"無法獲取 {symbol} 的淨利數據: {e}")
+            net_income = 0.0
         if net_income is None or net_income == 0:
             ocf_net_income_ratio = 0.0
         else:
             ocf_net_income_ratio = round(ocf / net_income, 2),
-
-        ocf2 = stock.cashflow.loc["Operating Cash Flow"].iloc[1]
-        net_income2 = stock.financials.loc["Net Income"].iloc[1]
+        try:
+            ocf2 = stock.cashflow.loc["Operating Cash Flow"].iloc[1]
+        except Exception  as e:
+            logging.error(f"無法獲取 {symbol} 的前一年現金流數據: {e}")
+            ocf2 = 0.0
+        try:
+            net_income2 = stock.financials.loc["Net Income"].iloc[1]
+        except Exception  as e:
+            logging.error(f"無法獲取 {symbol} 的前一年淨利數據: {e}")
+            net_income2 = 0.0
         if net_income2 is None or net_income2 == 0:
             ocf_net_income_ratio2 = 0.0
         else:

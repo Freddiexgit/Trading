@@ -40,7 +40,8 @@ def get_transaction_df(symbol, period="18mo", interval="1d", is_back_test=False,
     if(df.empty):
         to_be_removed_tickers.append(symbol)
     df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
-    return df
+
+    return df.copy()  # Return a copy to prevent accidental modifications to the cached DataFrame
 
 
 def get_stock_obj(symbol, period="10mo", interval="1d", is_back_test=False,start_date = None, end_date = None):

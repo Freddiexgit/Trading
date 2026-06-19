@@ -1,478 +1,319 @@
-import yfinance as yf
-import pandas as pd
 import numpy as np
-from scipy.stats import linregress
-import ta
+import pandas as pd
+import yfinance as yf
 import data_downloader as dd
+import traceback as tb
+from scipy.stats import linregress
 
 
-# =====================================================
-# OBV
-# =====================================================
 
-def calculate_obv(df):
-    obv = [0]
+# ============================================================
+# DATA LOADER (yfinance)
+# ============================================================
 
-    for i in range(1, len(df)):
-        if df["Close"].iloc[i] > df["Close"].iloc[i - 1]:
-            obv.append(obv[-1] + df["Volume"].iloc[i])
-
-        elif df["Close"].iloc[i] < df["Close"].iloc[i - 1]:
-            obv.append(obv[-1] - df["Volume"].iloc[i])
-
-        else:
-            obv.append(obv[-1])
-
-    df["OBV"] = obv
-
+def get_data(ticker, period="2y"):
+    df = dd.get_transaction_df(ticker)
+    if df is None or df.empty:
+        return None
+    df = df.droplevel(1, axis=1) if isinstance(df.columns, pd.MultiIndex) else df
+    df = df.dropna()
     return df
 
 
-# =====================================================
-# ATR
-# =====================================================
+def calculate_obv(df):
+    direction = np.sign(df["Close"].diff()).fillna(0)
+    df["OBV"] = (direction * df["Volume"]).cumsum()
+    return df
+
 
 def calculate_atr(df, period=14):
-
-    high_low = df["High"] - df["Low"]
-
-    high_close = np.abs(
-        df["High"] - df["Close"].shift()
-    )
-
-    low_close = np.abs(
-        df["Low"] - df["Close"].shift()
-    )
-
-    tr = pd.concat(
-        [high_low, high_close, low_close],
-        axis=1
-    ).max(axis=1)
-
+    hl = df["High"] - df["Low"]
+    hc = np.abs(df["High"] - df["Close"].shift())
+    lc = np.abs(df["Low"] - df["Close"].shift())
+    tr = pd.concat([hl, hc, lc], axis=1).max(axis=1)
     return tr.rolling(period).mean()
 
 
-# =====================================================
-# BB Width
-# =====================================================
-
-def add_bb_width(df):
-
-    sma = df["Close"].rolling(20).mean()
-
-    std = df["Close"].rolling(20).std()
-
+def add_bb_width(df, window=20):
+    sma = df["Close"].rolling(window).mean()
+    std = df["Close"].rolling(window).std()
     upper = sma + 2 * std
     lower = sma - 2 * std
-
-    df["BB_Width"] = (
-        upper - lower
-    ) / sma
-
+    df["BB_Width"] = (upper - lower) / sma
     return df
 
 
-# =====================================================
-# Pocket Pivot
-# =====================================================
+def calculate_relative_strength(df):
+    """
+    Simple RS vs own history trend (proxy version)
+    """
+    if len(df) < 252:
+        return 0
 
-def pocket_pivot(df):
+    price = df["Close"].iloc[-1]
+    r3 = price / df["Close"].iloc[-63] - 1
+    r6 = price / df["Close"].iloc[-126] - 1
+    r12 = price / df["Close"].iloc[-252] - 1
 
-    if len(df) < 15:
+    return r3 * 0.5 + r6 * 0.3 + r12 * 0.2
+
+
+# ============================================================
+# PATTERN DETECTION
+# ============================================================
+
+def detect_vcp(df):
+    if len(df) < 60:
         return False
 
-    today = df.iloc[-1]
+    r1 = (df["High"].iloc[-60:-40].max() - df["Low"].iloc[-60:-40].min()) / df["Low"].iloc[-60:-40].min()
+    r2 = (df["High"].iloc[-40:-20].max() - df["Low"].iloc[-40:-20].min()) / df["Low"].iloc[-40:-20].min()
+    r3 = (df["High"].iloc[-20:].max() - df["Low"].iloc[-20:].min()) / df["Low"].iloc[-20:].min()
 
-    prior = df.iloc[-11:-1]
+    return (r1 > r2 > r3) and (r2 < r1 * 0.8) and (r3 < r2 * 0.8)
 
-    down_days = prior[
-        prior["Close"]
-        < prior["Close"].shift()
-    ]
 
-    if len(down_days) == 0:
+def check_pocket_pivot(df):
+    if len(df) < 20:
         return False
 
-    max_down_volume = (
-        down_days["Volume"].max()
+    for i in range(1, 4):
+        idx = -i
+        today = df.iloc[idx]
+        prior = df.iloc[idx - 11: idx - 1]
+
+        down = prior[prior["Close"] < prior["Close"].shift()]
+        if len(down) == 0:
+            continue
+
+        if today["Volume"] > down["Volume"].max():
+            return True
+
+    return False
+
+
+def breakout_trigger(df):
+    if len(df) < 30:
+        return False
+
+    resistance = df["High"].iloc[-50:-1].max()
+    return df["Close"].iloc[-1] > resistance
+
+
+def classify_stage(df):
+    if len(df) < 200:
+        return "Unknown"
+
+    price = df["Close"].iloc[-1]
+    sma50 = df["Close"].rolling(50).mean().iloc[-1]
+    sma150 = df["Close"].rolling(150).mean().iloc[-1]
+    sma200 = df["Close"].rolling(200).mean().iloc[-1]
+
+    trend = price > sma50 > sma150 > sma200
+
+    tightening = (
+        df["High"].iloc[-20:].max() - df["Low"].iloc[-20:].min()
+    ) < (
+        df["High"].iloc[-100:-20].max() - df["Low"].iloc[-100:-20].min()
+    ) * 0.6
+
+    if breakout_trigger(df) and trend:
+        return "Stage 3"
+    if trend:
+        return "Stage 2"
+    if tightening:
+        return "Stage 1"
+    return "Stage 4"
+
+
+# ============================================================
+# MACRO
+# ============================================================
+
+def fetch_macro_environment():
+    spy = yf.download("SPY", period="1y", auto_adjust=True, progress=False)
+    hyg = yf.download("HYG", period="1y", auto_adjust=True, progress=False)
+
+    ratio = hyg["Close"] / spy["Close"]
+    risk_on = (ratio > ratio.rolling(20).mean()).tail(3).all()
+
+    return {"SPY": spy, "HYG": hyg}, risk_on
+
+
+# ============================================================
+# RANKING
+# ============================================================
+
+def build_rs_rank(tickers):
+    scores = []
+
+    for t in tickers:
+        df = get_data(t)
+        if df is None or len(df) < 252:
+            continue
+
+        scores.append((t, calculate_relative_strength(df)))
+
+    rs_df = pd.DataFrame(scores, columns=["ticker", "rs"])
+    rs_df["rank"] = rs_df["rs"].rank(pct=True) * 100
+
+    return dict(zip(rs_df["ticker"], rs_df["rank"]))
+
+
+# ============================================================
+# SCREENER
+# ============================================================
+
+def detect_accumulation(ticker, rs_map, risk_on):
+
+    df = get_data(ticker)
+    df = get_data(ticker)
+    if df is None or len(df) < 200:
+        return None
+
+    df = calculate_obv(df)
+    df["ATR"] = calculate_atr(df)
+    df = add_bb_width(df)
+
+    price = df["Close"].iloc[-1]
+
+    # =========================
+    # CORE METRICS
+    # =========================
+
+    rs_rank = rs_map.get(ticker, 0)
+
+    stage_val = classify_stage(df)
+
+    vcp_signal = detect_vcp(df)
+
+    pocket = check_pocket_pivot(df)
+
+    breakout = breakout_trigger(df)
+
+    liquidity = (df["Close"] * df["Volume"]).tail(50).mean() > 2_000_000
+
+    ud_ratio = (
+            df[df["Close"] > df["Close"].shift()]["Volume"].sum()
+            / max(df[df["Close"] < df["Close"].shift()]["Volume"].sum(), 1)
     )
 
-    return (
-        today["Close"]
-        > df["Close"].iloc[-2]
-        and
-        today["Volume"]
-        > max_down_volume
-    )
-
-
-# =====================================================
-# Main Screener
-# =====================================================
-
-def detect_accumulation(
-    ticker,
-    benchmark="SPY",
-    lookback_days=20
-):
-
-    print(f"\nAnalyzing {ticker}")
-
-    try:
-
-        df = yf.download(
-            ticker,
-            period="1y",
-            auto_adjust=True,
-            progress=False
-        )
-
-        if len(df) < 220:
-            print("Not enough history")
-            return
-
-        # -------------------------
-        # Indicators
-        # -------------------------
-
-        df["SMA50"] = (
-            df["Close"]
-            .rolling(50)
-            .mean()
-        )
-
-        df["SMA150"] = (
-            df["Close"]
-            .rolling(150)
-            .mean()
-        )
-
-        df["SMA200"] = (
-            df["Close"]
-            .rolling(200)
-            .mean()
-        )
-
-        df["ATR"] = calculate_atr(df)
-
-        df = calculate_obv(df)
-
-        df = add_bb_width(df)
-
-        adx_indicator = ta.trend.ADXIndicator(
-            high=df["High"],
-            low=df["Low"],
-            close=df["Close"],
-            window=14
-        )
-
-        df["ADX"] = adx_indicator.adx()
-
-        recent = df.tail(lookback_days)
-
-        current_price = (
-            recent["Close"]
-            .iloc[-1]
-        )
-
-        # =================================================
-        # SIGNALS
-        # =================================================
-
-        # 1 Volatility contraction
-
-        atr_pct = (
-            recent["ATR"].iloc[-1]
-            / current_price
-        )
-
-        volatility_contraction = (
-            atr_pct < 0.04
-        )
-
-        # 2 Consolidation
-
-        range_pct = (
-            recent["High"].max()
-            - recent["Low"].min()
-        ) / recent["Low"].min()
-
-        consolidating = (
-            range_pct < 0.12
-        )
-
-        # 3 Volume Dry-up
-
-        recent_vol = (
-            recent["Volume"]
-            .mean()
-        )
-
-        prior_vol = (
-            df.iloc[-40:-20]["Volume"]
-            .mean()
-        )
-
-        volume_dryup = (
-            recent_vol
-            < prior_vol * 0.8
-        )
-
-        # 4 OBV trend
-
-        x = np.arange(len(recent))
-
-        slope, _, r, _, _ = linregress(
-            x,
-            recent["OBV"]
-        )
-
-        obv_rising = (
-            slope > 0
-            and r**2 > 0.3
-        )
-
-        # 5 Trend quality
-
-        trend_quality = (
-            current_price
-            > recent["SMA50"].iloc[-1]
-            > recent["SMA150"].iloc[-1]
-            > recent["SMA200"].iloc[-1]
-        )
-
-        # 6 Near highs
-
-        high_52w = (
-            df["High"]
-            .max()
-        )
-
-        distance_from_high = (
-            high_52w
-            - current_price
-        ) / high_52w
-
-        near_high = (
-            distance_from_high < 0.15
-        )
-
-        # 7 Relative strength
-
-        spy = yf.download(
-            benchmark,
-            period="3mo",
-            auto_adjust=True,
-            progress=False
-        )
-
-        stock_return = (
-            current_price
-            / recent["Close"].iloc[0]
-            - 1
-        )
-
-        spy_return = (
-            spy["Close"].iloc[-1]
-            / spy["Close"].iloc[-lookback_days]
-            - 1
-        )
-
-        rs = (
-            stock_return
-            - spy_return
-        )
-
-        outperforming = (
-            rs > 0
-        )
-
-        # 8 BB squeeze
-
-        bb_pct = (
-            df["BB_Width"]
-            .rank(pct=True)
-            .iloc[-1]
-        )
-
-        bb_squeeze = (
-            bb_pct < 0.20
-        )
-
-        # 9 ADX setup
-
-        current_adx = (
-            df["ADX"]
-            .iloc[-1]
-        )
-
-        old_adx = (
-            df["ADX"]
-            .iloc[-5]
-        )
-
-        adx_setup = (
-            current_adx < 25
-            and current_adx > old_adx
-        )
-
-        # 10 Pocket Pivot
-
-        pocket_pivot_signal = (
-            pocket_pivot(df)
-        )
-
-        # 11 Up/Down Volume
-
-        up_vol = recent.loc[
-            recent["Close"]
-            > recent["Close"].shift(),
-            "Volume"
-        ].sum()
-
-        down_vol = recent.loc[
-            recent["Close"]
-            < recent["Close"].shift(),
-            "Volume"
-        ].sum()
-
-        ud_ratio = (
-            up_vol
-            / max(down_vol, 1)
-        )
-
-        ud_accumulation = (
-            ud_ratio > 1.5
-        )
-
-        # 12 HYG/SPY
-
-        hyg = yf.download(
-            "HYG",
-            period="6mo",
-            auto_adjust=True,
-            progress=False
-        )
-
-        spy6 = yf.download(
-            "SPY",
-            period="6mo",
-            auto_adjust=True,
-            progress=False
-        )
-
-        ratio = (
-            hyg["Close"]
-            / spy6["Close"]
-        )
-
-        ratio_ma20 = (
-            ratio
-            .rolling(20)
-            .mean()
-        )
-
-        risk_on = (
-            ratio.iloc[-1]
-            > ratio_ma20.iloc[-1]
-        )
-
-        # =================================================
-        # SCORE
-        # =================================================
-
-        score = 0
-
-        if bb_squeeze:
-            score += 2
-
-        if adx_setup:
-            score += 1
-
-        if pocket_pivot_signal:
-            score += 3
-
-        if ud_accumulation:
-            score += 2
-
-        if obv_rising:
-            score += 2
-
-        if volume_dryup:
-            score += 1
-
-        if near_high:
-            score += 2
-
-        if risk_on:
-            score += 2
-
-        if trend_quality:
-            score += 2
-
-        if outperforming:
-            score += 2
-
-        # =================================================
-        # Rating
-        # =================================================
-
-        if score >= 13:
-            rating = "🔥 Institutional Accumulation"
-
-        elif score >= 9:
-            rating = "🟢 Strong Setup"
-
-        elif score >= 6:
-            rating = "🟡 Watchlist"
-
-        else:
-            rating = "🔴 Ignore"
-
-        # =================================================
-        # Report
-        # =================================================
-
-        print("=" * 60)
-
-        print(f"Ticker: {ticker}")
-        print(f"Price : {current_price:.2f}")
-
-        print(f"\nScore : {score}")
-        print(f"Rating: {rating}")
-
-        print("\nSignals")
-
-        print(f"Trend Quality        : {trend_quality}")
-        print(f"Near 52W High        : {near_high}")
-        print(f"OBV Rising           : {obv_rising}")
-        print(f"Volume Dryup         : {volume_dryup}")
-        print(f"Pocket Pivot         : {pocket_pivot_signal}")
-        print(f"BB Squeeze           : {bb_squeeze}")
-        print(f"ADX Setup            : {adx_setup}")
-        print(f"UD Ratio             : {ud_ratio:.2f}")
-        print(f"Outperforming SPY    : {outperforming}")
-        print(f"HYG/SPY Risk-On      : {risk_on}")
-
-        print("\nMetrics")
-
-        print(f"ATR %                : {atr_pct:.2%}")
-        print(f"Range %              : {range_pct:.2%}")
-        print(f"RS vs SPY            : {rs:.2%}")
-        print(f"Distance High        : {distance_from_high:.2%}")
-        print(f"BB Width Percentile  : {bb_pct:.2%}")
-        print(f"ADX                  : {current_adx:.2f}")
-
-        print("=" * 60)
-
-    except Exception as e:
-        print(f"Error: {e}")
-
-
-# =====================================================
-# Example
-# =====================================================
-
-detect_accumulation("NVDA")
-detect_accumulation("PLTR")
-detect_accumulation("AAPL")
+    institutional = pocket or ud_ratio > 1.2
+
+    near_high = (
+                        (df["High"].tail(252).max() - price)
+                        / df["High"].tail(252).max()
+                ) < 0.25  # relaxed from 0.15 → 0.25
+
+    trend = stage_val in ["Stage 2", "Stage 3"]
+
+    # =========================
+    # SOFT SCORE MODEL
+    # =========================
+
+    score = 0
+
+    # RS scoring
+    if rs_rank >= 50: score += 1
+    if rs_rank >= 70: score += 2
+    if rs_rank >= 85: score += 3
+    if rs_rank >= 95: score += 4
+
+    # Structure
+    score += int(vcp_signal) * 2
+    score += int(breakout) * 2
+    score += int(pocket) * 2
+    score += int(institutional) * 2
+    score += int(trend) * 2
+    score += int(near_high) * 1
+    score += int(liquidity) * 2
+    score += int(risk_on) * 1
+
+    # =========================
+    # RATING
+    # =========================
+
+    if score >= 12:
+        rating = "Elite Accumulation"
+    elif score >= 9:
+        rating = "Institutional Accumulation"
+    elif score >= 6:
+        rating = "Strong Setup"
+    elif score >= 4:
+        rating = "Watchlist"
+    else:
+        rating = "Ignore"
+
+    return {
+        "ticker": ticker,
+        "price": round(price, 2),
+        "score": score,
+        "rating": rating,
+        "stage": stage_val,
+        "rs_rank": round(rs_rank, 1),
+        "vcp": vcp_signal,
+        "breakout": breakout,
+        "pocket": pocket,
+        "institutional": institutional,
+        "liquidity": liquidity
+    }
+# ============================================================
+# MAIN
+# ============================================================
+
+def main(input_file = None, output_file = None):
+
+
+    if input_file:
+        tickers = pd.read_csv(input_file)["symbol"].dropna().tolist()
+    else:
+        tickers = ["HRMY","FVCB"]
+    print(f"Loaded {len(tickers)} tickers")
+
+    macro, risk_on = fetch_macro_environment()
+    risk_on = risk_on.iloc[0] if isinstance(risk_on, pd.Series) else risk_on
+
+    rs_map = build_rs_rank(tickers)
+
+
+    results = []
+
+    for i, t in enumerate(tickers):
+        if i % 100 == 0:
+            print(f"{i}/{len(tickers)}")
+        try:
+            r = detect_accumulation(t, rs_map, risk_on)
+        except Exception  as e:
+            print(f"Error processing {t}: {e}")
+            tb.print_exc()
+            continue
+        if r:
+            results.append(r)
+    if len(results) == 0 :
+        print("No stocks passed the screening criteria.")
+        return
+    df = pd.DataFrame(results)
+
+    df = df.sort_values(["score", "rs_rank"], ascending=False)
+    if output_file:
+        df.to_csv(output_file, index=False)
+    else:
+        print(df.head(50))
+
+if __name__ == "__main__":
+    main()
+
+# Error processing HRMY: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing CNM: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing FVCB: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing TRN: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing INTG: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing ETSY: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing URBN: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing WEC: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing FPH: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing CSQ: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing METCB: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing CLPT: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing QXO: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+# Error processing ROCK: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().

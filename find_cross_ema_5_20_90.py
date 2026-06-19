@@ -13,12 +13,12 @@ if not os.path.exists(f"output/{date}/us"):
     os.makedirs(f"output/{date}/us")
 
 def get_data(df , ticker):
-    df = df.copy()
+
      # Compute EMAs
     df["EMA5"] = df["Close"].ewm(span=5, adjust=False).mean()
     df["EMA20"] = df["Close"].ewm(span=20, adjust=False).mean()
     df["EMA90"] = df["Close"].ewm(span=90, adjust=False).mean()
-    df= df.iloc[-4:]
+    df= df.iloc[-3:]
     df["5_cross_20"] = df["EMA5"] >= df["EMA20"]
     df["5_cross_90"] = df["EMA5"] >= df["EMA90"]
     df["20_cross_90"] = df["EMA20"] >= df["EMA90"]
@@ -80,5 +80,5 @@ if __name__  =="__main__":
     #
     #     EMP
     #     PRH  21.607938  21.498378  22.171827
-    tickers = ["ATEX"]
-    find_cross(pd.DataFrame(tickers, columns=['symbol']),interval = "1wk", is_back_test=True,start_date="2025-10-01",end_date="2026-1-5")
+    tickers = ["NUAI"]
+    find_cross(pd.DataFrame(tickers, columns=['symbol']),interval = "1d")

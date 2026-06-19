@@ -13,7 +13,7 @@ import pandas as pd
 import glob
 import  data_downloader as data
 
-import last_60_week_angle as  last_60_week_angle
+import last_ema_weekly_angle as  lew
 #
 
 data.to_be_removed_tickers
@@ -49,9 +49,15 @@ if not os.path.exists(f"{output_folder}"):
     os.makedirs(f"{output_folder}")
 
 try:
-    last_60_week_angle.main(input_file=f"resource/{ticker_file_name_full}", output_file = f"{output_folder}/last_60_week_angle_{date}.csv")
-    df_tickers_result = pd.read_csv(f"{output_folder}/last_60_week_angle_{date}.csv").head(100)
-    di.generate_pdf(df_tickers_result, f"{output_folder}/last_200_day_angle.pdf", "No", "us")
+    lew.main(input_file=f"resource/{ticker_file_name_full}", output_folder = f"{output_folder}",date = date)
+    df_tickers_result = pd.read_csv(f"{output_folder}/result_5_{date}.csv")
+    di.generate_pdf(df_tickers_result, f"{output_folder}/result_5.pdf", "No", "us")
+    df_tickers_result = pd.read_csv(f"{output_folder}/result_20_{date}.csv")
+    di.generate_pdf(df_tickers_result, f"{output_folder}/result_20.pdf", "No", "us")
+    df_tickers_result = pd.read_csv(f"{output_folder}/result_60_{date}.csv")
+    di.generate_pdf(df_tickers_result, f"{output_folder}/result_60.pdf", "No", "us")
+    df_tickers_result = pd.read_csv(f"{output_folder}/result_5_in_60_{date}.csv")
+    di.generate_pdf(df_tickers_result, f"{output_folder}/result_5_in_60.pdf", "No", "us")
 except Exception  as e:
     print("building-up run failed:", e)
     traceback.print_exc()
