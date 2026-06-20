@@ -13,7 +13,7 @@ s_str = datetime.now().strftime('%Y-%m-%d')
 # di.generate_pdf(df_tickers_inst, f"{output_folder}/institute_enter{date}.pdf", "No", "us")
 
 # loc = f"resource/{s_str}/us/bottom"
-loc = "resource/industries/Semiconductors_2026-05-27"
-df_tickers = pd.read_csv(f"{loc}.csv")
+loc = "output/2026-06-19/us_1d/us_top_5000/find_building_up_gpt_2026-06-19_2"
+df_tickers = pd.read_csv(f"{loc}.csv").head(100)
 df_tickers.drop_duplicates()
-di.generate_pdf(df_tickers,f"output/{s_str}/Semiconductors_2026-05-27.pdf","No","holding")
+di.generate_pdf(df_tickers,f"output/2026-06-19/us_1d/us_top_5000/find_building_up_gpt_2_2026-06-19.pdf","No","holding")
