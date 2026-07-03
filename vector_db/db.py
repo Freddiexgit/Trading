@@ -25,35 +25,36 @@ class LanceDBConnectionManager:
 
 
 # Expose a simple helper function for other modules to import
-def get_db():
+def get_connection():
     """
     Returns the active LanceDB connection.
     """
     return LanceDBConnectionManager.get_connection()
-def save_to_db(table_name,df,db)->lancedb.Table:
-    if table_name in db.table_names():
+def save_to_db(table_name,df,conn)->lancedb.Table:
+    if table_name in conn.table_names():
         print(f"Table '{table_name}' already exists. Appending new records...")
 
         # Open the existing table and append
-        table = db.open_table(table_name)
+        table = conn.open_table(table_name)
         table.add(df)
 
     else:
         print(f"Table '{table_name}' does not exist. Creating new table...")
 
         # Create the table from scratch
-        table = db.create_table(table_name, data=df)
+        table = conn.create_table(table_name, data=df)
     return table
 from sentence_transformers import SentenceTransformer
 import pandas as pd
-def load(fp,db, table_name,description_column):
+def load(table_name,description_column):
     files = fp.get_csv_files(table_name)
     for date, file in files.items():
         print(f"{date}: {file}")
         df = pd.read_csv(file)
 
         print("2. Generating text summaries for embedding...")
-        df.insert(0, "date", date)
+        if "date" not in df.columns:
+            df.insert(0, "date", date)
         # Create a new column 'text' which holds our descriptive sentences
         df['text'] = df.apply(description_column, axis=1)
 
@@ -65,7 +66,7 @@ def load(fp,db, table_name,description_column):
         # Generate embeddings and convert them to a list of lists so LanceDB can store them
         embeddings = model.encode(df['text'].tolist())
         df['vector'] = embeddings.tolist()
-        table = db.save_to_db(table_name, df, db.get_db())
+        table = save_to_db(table_name, df, get_connection())
 
         print("\n✅ Success! Database created and populated.")
         print(f"Schema: {table.schema}")

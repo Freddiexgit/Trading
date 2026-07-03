@@ -135,7 +135,7 @@ def load_data(ticker):
     df = add_macd_hist(df)
     df = add_obv(df)
 
-    return df.dropna()
+    return df
 
 
 # =========================================================
@@ -473,8 +473,6 @@ def early_warning(df, k_atr=2.0, vol_mult=1.6, ma_fast="EMA10", ma_mid="EMA50", 
 def run(tickers: list, output_file):
     load_symbol_sector()
 
-    print("\n🔥 SCANNING WITH INSTITUTIONAL VALIDATION...\n")
-
     results = []
     sector_cache = {}
 
@@ -537,5 +535,5 @@ def run(tickers: list, output_file):
 # =========================================================
 
 if __name__ == "__main__":
-    watch_list = ["FUTY"]
+    watch_list = ["DSWL"]
     run(watch_list,None)

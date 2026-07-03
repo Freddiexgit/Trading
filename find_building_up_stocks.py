@@ -199,7 +199,31 @@ def detect_accumulation(
     except Exception as e:
         return {"Ticker": ticker, "Status": f"Error: {str(e)}"}
 
-
+# 1. Basic Information & Scoring
+# * Ticker: The stock symbol being analyzed (e.g., AAPL, NVDA).
+# * Price: The most recent closing price of the stock.
+# * Score: The total number of points the stock earned based on the algorithm's criteria. A higher score means a higher probability of institutional accumulation.
+# * Rating: A human-readable label based on the Score (e.g., "🔥 Institutional Accumulation" or "🔴 Ignore").
+# 2. Binary Signals (True / False)
+# These columns represent specific conditions the algorithm looks for. If True, the stock usually earns points toward its total score.
+# * Trend Quality: True if the stock is in a mathematically perfect uptrend (Current Price > 50-day moving average > 150-day > 200-day).
+# * Near 52W High: True if the stock is trading within 15% of its 52-week high. Stocks near new highs are fundamentally stronger than stocks hitting new lows.
+# * OBV Rising: True if On-Balance Volume is trending upward. This implies that volume is heavier on "up" days than "down" days—a classic footprint of institutional buying.
+# * Volume Dryup: True if recent trading volume is at least 20% lower than previous weeks. This shows that selling pressure has dried up and the stock is quietly resting.
+# * Pocket Pivot: True if the stock recently had an "up" day with volume higher than any "down" day in the prior 10 days. It is a stealthy buy signal developed by former William O'Neil portfolio managers.
+# * BB Squeeze: True if the Bollinger Bands have pinched together tightly. This indicates extreme low volatility, which often precedes an explosive breakout.
+# * ADX Setup: True if the ADX (Average Directional Index) is low but starting to curl up. This signals that a dormant, sideways stock is about to start trending again.
+# * Outperforming SPY: True if the stock's 6-month percentage return is higher than the S&P 500 over the exact same period.
+# * Risk-On (HYG/SPY): True if High-Yield Corporate Bonds (HYG) are outperforming the S&P 500. This is a macro-market indicator showing that Wall Street has an appetite for risk, providing a tailwind for breakouts.
+# 3. Raw Metrics & Ratios
+# These columns show the actual mathematical values powering the signals above.
+# * U/D Ratio (Up/Down Volume): The total volume traded on "up" days divided by the volume on "down" days over the last 20 days. A ratio above 1.0 is good; above 1.5 shows heavy accumulation.
+# * ATR % (Average True Range): The stock's average daily price swing expressed as a percentage of its current price. Lower numbers (under 4-5%) mean the stock is coiling tightly and peacefully.
+# * Range %: The percentage difference between the highest high and lowest low over the last 20 days. A shallow base (under 12%) is much easier to break out of than a deep, volatile one.
+# * RS vs SPY (Relative Strength): The actual percentage by which the stock is beating (or lagging) the S&P 500 over the last 6 months.
+# * Dist from High: How far the current price is below its 52-week high, expressed as a percentage.
+# * BB Width %tile (Bollinger Band Percentile): Where the current width of the Bollinger Bands ranks historically. A value of 10% means the bands are tighter right now than they have been 90% of the time over the past year.
+# * ADX (Average Directional Index): The raw ADX value. Readings below 25 indicate a trendless, consolidating market. Readings above 25 indicate a strong, established trend.
 # =====================================================
 # Execution & DataFrame Creation
 # =====================================================

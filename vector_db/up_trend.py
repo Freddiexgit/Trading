@@ -4,6 +4,7 @@ import db
 import  file_processor as fp
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
+pd.set_option('display.max_rows', 1000)
 TABLE_NAME = "uptrend"
 
 def description_column(row):
@@ -13,6 +14,7 @@ def description_column(row):
     avg_vol_millions = round(float(row['avg_volume']) / 1_000_000, 1)
 
     return (
+        f"date: {row['date']}. "
         f"Quantitative trading setup for {row['symbol']}: The stock is currently priced at ${row['price']:.2f} "
         f"and is triggering a {row['entry_type']} entry. The recommended entry price is ${row['recommended_entry']:.2f} "
         f"with a protective stop at ${row['recommended_stop']:.2f}, targeting sequential profit levels at "
@@ -27,13 +29,13 @@ def description_column(row):
 
 def load():
     print("1. Loading CSV data...")
-    db.load(fp, db, TABLE_NAME, description_column)
+    db.load(TABLE_NAME, description_column)
     # fp.rename_files(files)
 
 def query():
     print("1. Connecting to LanceDB and loading the table...")
 
-    table = db.get_db().open_table(TABLE_NAME)
+    table = db.get_connection().open_table(TABLE_NAME)
 
 
     print("2. Creating vector for our query...")
@@ -60,42 +62,40 @@ def query_by_trend_quality():
     import duckdb
 
     # Assuming 'df' is your DataFrame or 'arrow_dataset' from LanceDB
-    table =db.get_db().open_table(TABLE_NAME)
+    table =db.get_connection().open_table(TABLE_NAME)
     #
     # # 2. Convert the LanceDB table to an Arrow dataset
     arrow_dataset = table.to_lance()
 
-    sql_query = """
-    SELECT 
-        *,
-        CAST(LEFT(date, 10) AS DATE) as clean_date 
-    FROM arrow_dataset 
-    where symbol = 'MU'
-    ORDER BY symbol ASC, clean_date ASC
-"""
 
-    # sql_query = """
-    #     WITH RankedData AS (
-    #         SELECT
-    #             symbol,
-    #             price as first_price,
-    #             LAST_VALUE(price) OVER (
-    #                 PARTITION BY symbol
-    #                 ORDER BY date ASC
-    #                 ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
-    #             ) as last_price
-    #         FROM arrow_dataset
-    #     )
-    #     SELECT
-    #         symbol,
-    #         MAX(first_price) as start_price,
-    #         MAX(last_price) as end_price,
-    #         ROUND(((MAX(last_price) - MAX(first_price)) / MAX(first_price)) * 100, 2) AS total_trend_pct
-    #     FROM RankedData
-    #     GROUP BY symbol
-    #     --HAVING MAX(last_price) > MAX(first_price) -- Only keep the ones going UP
-    #     ORDER BY total_trend_pct DESC
-    # """
+    sql_query = f"""
+
+            WITH ranked AS (
+    SELECT
+        symbol,
+        date,
+         composite_score  score,
+         annualized_slope_pct,
+        trend_quality, 
+        LAG(score, 1) OVER (PARTITION BY symbol ORDER BY date) AS score_1,
+        LAG(score, 2) OVER (PARTITION BY symbol ORDER BY date) AS score_2,
+        LAG(score, 3) OVER (PARTITION BY symbol ORDER BY date) AS score_3,
+          annualized_slope_pct,
+        LAG(annualized_slope_pct, 1) OVER (PARTITION BY symbol ORDER BY date) AS slope_1,
+        LAG(annualized_slope_pct, 2) OVER (PARTITION BY symbol ORDER BY date) AS slope_2,
+        LAG(annualized_slope_pct, 3) OVER (PARTITION BY symbol ORDER BY date) AS slope_3,
+        ROW_NUMBER() OVER (PARTITION BY symbol ORDER BY date DESC) AS rn
+    FROM arrow_dataset  where score > 300
+     and  CAST(date AS DATE)  >= current_date - INTERVAL '5' DAY
+    )
+    SELECT *
+    FROM ranked
+    WHERE rn = 1
+      AND score > (score_1 + score_2 + score) / 3
+
+     order by score desc
+
+        """
 
     uptrend_results = duckdb.query(sql_query).to_df()
     print(uptrend_results)

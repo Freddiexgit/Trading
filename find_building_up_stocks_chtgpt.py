@@ -8,9 +8,9 @@ from scipy.stats import linregress
 # ============================================================
 # DATA LOADER
 # ============================================================
-
+is_weekend = False
 def get_data(ticker, period="2y"):
-    df = dd.get_transaction_df(ticker)
+    df = dd.get_transaction_df(ticker,period="3y",interval="1wk")
     if df is None or df.empty:
         return None
     df = df.loc[:, ~df.columns.duplicated()]
@@ -19,7 +19,7 @@ def get_data(ticker, period="2y"):
 
 def get_industry(ticker):
     try:
-        info = yf.Ticker(ticker).info
+        info = dd.get_stock_obj(ticker,period="3y",interval="1wk").info
         return info.get("industry", "Unknown")
     except:
         return "Unknown"
@@ -53,24 +53,64 @@ def add_bb_width(df, window=20):
 # ============================================================
 
 def calculate_relative_strength(df, spy_df):
-    if len(df) < 252 or len(spy_df) < 252:
+    if is_weekend == False and (len(df) < 252 or len(spy_df) < 252):
         return 0
 
     aligned = pd.concat([df['Close'], spy_df['Close']], axis=1, join='inner').dropna()
-    if len(aligned) < 252:
+    if is_weekend == False and len(aligned) < 252:
         return 0
 
     stock = aligned.iloc[:, 0]
     spy = aligned.iloc[:, 1]
     ratio = stock / spy
     current = float(ratio.iloc[-1])
-
-    r3 = current / float(ratio.iloc[-63]) - 1
-    r6 = current / float(ratio.iloc[-126]) - 1
-    r9 = current / float(ratio.iloc[-189]) - 1
-    r12 = current / float(ratio.iloc[-252]) - 1
+    if is_weekend:
+        r3 = current / float(ratio.iloc[-5]) - 1
+        r6 = current / float(ratio.iloc[-10]) - 1
+        r9 = current / float(ratio.iloc[-20]) - 1
+        r12 = current / float(ratio.iloc[-50]) - 1
+    else:
+        r3 = current / float(ratio.iloc[-63]) - 1
+        r6 = current / float(ratio.iloc[-126]) - 1
+        r9 = current / float(ratio.iloc[-189]) - 1
+        r12 = current / float(ratio.iloc[-252]) - 1
 
     return (r3 * 0.40) + (r6 * 0.20) + (r9 * 0.20) + (r12 * 0.20)
+
+# ============================================================
+# EARLY SIGNALS
+# ============================================================
+
+def rs_acceleration(df, spy_df):
+    aligned = pd.concat([df['Close'], spy_df['Close']], axis=1, join='inner').dropna()
+    if len(aligned) < 40:
+        return 0.0
+
+    ratio = aligned.iloc[:, 0] / aligned.iloc[:, 1]
+    recent = ratio.tail(20)
+    x = np.arange(20)
+    slope = linregress(x, recent.values)[0]
+    return slope
+
+def early_trend_turn(df):
+    if len(df) < 60:
+        return False
+    sma20 = df["Close"].rolling(20).mean()
+    sma50 = df["Close"].rolling(50).mean()
+    return bool(sma20.iloc[-1] > sma20.iloc[-5] and sma50.iloc[-1] > sma50.iloc[-5])
+
+def short_term_ud_ratio(df, lookback=10):
+    recent = df.tail(lookback)
+    up = recent[recent["Close"] > recent["Close"].shift()]["Volume"].sum()
+    down = recent[recent["Close"] < recent["Close"].shift()]["Volume"].sum()
+    return float(up) / max(float(down), 1.0)
+
+def fast_squeeze(df, lookback=10, factor=0.7):
+    if "BB_Width" not in df.columns or len(df) < lookback + 5:
+        return False
+    bb = df["BB_Width"]
+    recent_avg = bb.rolling(lookback).mean().iloc[-1]
+    return bool(bb.iloc[-1] < recent_avg * factor)
 
 # ============================================================
 # INDUSTRY MOMENTUM ENGINE
@@ -140,9 +180,17 @@ def build_industry_momentum(tickers):
 def detect_vcp(df):
     if len(df) < 60:
         return False
-    r1 = float((df["High"].iloc[-60:-40].max() - df["Low"].iloc[-60:-40].min()) / df["Low"].iloc[-60:-40].min())
-    r2 = float((df["High"].iloc[-40:-20].max() - df["Low"].iloc[-40:-20].min()) / df["Low"].iloc[-40:-20].min())
-    r3 = float((df["High"].iloc[-20:].max() - df["Low"].iloc[-20:].min()) / df["Low"].iloc[-20:].min())
+    
+    min_60_40 = df["Low"].iloc[-60:-40].min()
+    min_40_20 = df["Low"].iloc[-40:-20].min()
+    min_20 = df["Low"].iloc[-20:].min()
+    
+    if min_60_40 <= 0 or min_40_20 <= 0 or min_20 <= 0:
+        return False
+    
+    r1 = float((df["High"].iloc[-60:-40].max() - df["Low"].iloc[-60:-40].min()) / min_60_40)
+    r2 = float((df["High"].iloc[-40:-20].max() - df["Low"].iloc[-40:-20].min()) / min_40_20)
+    r3 = float((df["High"].iloc[-20:].max() - df["Low"].iloc[-20:].min()) / min_20)
     return (r1 > r2) and (r2 > r3) and (r2 < r1 * 0.8) and (r3 < r2 * 0.8)
 
 def check_pocket_pivot(df):
@@ -206,12 +254,14 @@ def fetch_macro_environment():
     return {"SPY": spy, "HYG": hyg}, bool(risk_on)
 
 # ============================================================
-# STOCK ACCUMULATION DETECTION
+# STOCK ACCUMULATION + EARLY RISE DETECTION
 # ============================================================
 
-def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_percentiles):
+def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_percentiles, spy_df):
     df = get_data(ticker)
-    if df is None or len(df) < 200:
+    if is_weekend==False and (df is None or len(df) < 200):
+        return None
+    if is_weekend == True and (df is None or len(df) < 52):
         return None
 
     df = calculate_obv(df)
@@ -237,10 +287,10 @@ def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_perce
     current_bb = float(df["BB_Width"].iloc[-1])
     avg_bb = float(df["BB_Width"].rolling(50).mean().iloc[-1])
     bb_squeeze = current_bb < (avg_bb * 0.8)
-
-    institutional = pocket or (ud_ratio > 1.2) or obv_rising
-
-    max_high = float(df["High"].tail(252).max())
+    if is_weekend:
+        max_high = float(df["High"].tail(52).max())
+    else:
+        max_high = float(df["High"].tail(200).max())
     near_high = ((max_high - price) / max_high) < 0.25 if max_high > 0 else False
 
     trend = "Stage 2" in stage_val or "Stage 3" in stage_val
@@ -255,12 +305,21 @@ def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_perce
     industry_pct = industry_percentiles.get(industry, 0)
 
     # ============================================================
+    # EARLY SIGNALS
+    # ============================================================
+
+    rs_acc = rs_acceleration(df, spy_df)
+    early_trend = early_trend_turn(df)
+    ud10 = short_term_ud_ratio(df, lookback=10)
+    fast_sq = fast_squeeze(df, lookback=10, factor=0.7)
+
+    # ============================================================
     # SCORING MODEL
     # ============================================================
 
     score = 0
 
-    # RS scoring
+    # RS scoring (late-stage)
     if rs_rank >= 50: score += 1
     if rs_rank >= 70: score += 2
     if rs_rank >= 85: score += 3
@@ -272,7 +331,6 @@ def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_perce
     score += int(obv_rising) * 1
     score += int(breakout) * 2
     score += int(pocket) * 2
-    score += int(institutional) * 2
     score += int(trend) * 2
     score += int(near_high) * 1
     score += int(volume_dry_up) * 1
@@ -284,15 +342,39 @@ def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_perce
     if industry_pct >= 90: score += 4
 
     # ============================================================
+    # EARLY SIGNAL BOOSTS
+    # ============================================================
+
+    # RS acceleration
+    if rs_acc > 0:
+        score += 2
+    if rs_acc > 0 and rs_rank < 70:
+        score += 3
+
+    # Early trend turn
+    if early_trend:
+        score += 3
+
+    # Short-term UD ratio
+    if ud10 > 1.2:
+        score += 2
+    if ud10 > 1.5:
+        score += 3
+
+    # Fast squeeze
+    if fast_sq:
+        score += 2
+
+    # ============================================================
     # RATING
     # ============================================================
 
     if score >= 18:
-        rating = "Elite Accumulation"
+        rating = "Elite Early Rise"
     elif score >= 13:
-        rating = "Institutional Accumulation"
+        rating = "Strong Early Rise"
     elif score >= 9:
-        rating = "Strong Setup"
+        rating = "Emerging Setup"
     elif score >= 5:
         rating = "Watchlist"
     else:
@@ -308,6 +390,10 @@ def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_perce
         "industry_percentile": round(industry_pct, 1),
         "ud_ratio": round(ud_ratio, 2),
         "rs_rank": round(rs_rank, 1),
+        "rs_acc": round(rs_acc, 5),
+        "early_trend": early_trend,
+        "ud10": round(ud10, 2),
+        "fast_squeeze": fast_sq,
         "bb_squeeze": bb_squeeze,
         "obv_rising": obv_rising,
         "pocket": pocket,
@@ -318,39 +404,40 @@ def detect_accumulation(ticker, rs_map, risk_on, industry_scores, industry_perce
     }
 
 # ============================================================
-# MAIN
+# RS RANK
 # ============================================================
-def build_rs_rank(tickers,spy_df=None):
-    scores = []
 
+def build_rs_rank(tickers, spy_df=None):
+    scores = []
     for t in tickers:
         df = get_data(t)
-        if df is None or len(df) < 252:
+        if is_weekend == False and (df is None or len(df) < 252):
             continue
-
         scores.append((t, calculate_relative_strength(df, spy_df)))
-
     if not scores:
         return {}
-
     rs_df = pd.DataFrame(scores, columns=["ticker", "rs"])
     rs_df["rank"] = rs_df["rs"].rank(pct=True) * 100
-
     return dict(zip(rs_df["ticker"], rs_df["rank"]))
 
+# ============================================================
+# MAIN
+# ============================================================
 
 def main(input_file=None, output_file=None):
     if input_file:
         tickers = pd.read_csv(input_file)["symbol"].dropna().tolist()
+        is_weekend = output_file and "weekend" in output_file
     else:
-        tickers = ["HRMY", "FVCB"]
+        tickers = ["INTC"]
 
     print(f"Loaded {len(tickers)} tickers")
 
     macro, risk_on = fetch_macro_environment()
-    rs_map = build_rs_rank(tickers, macro["SPY"])
+    spy_df = macro["SPY"]
 
-    # Build industry momentum
+    rs_map = build_rs_rank(tickers, spy_df)
+
     industry_scores = build_industry_momentum(tickers)
     industry_percentiles = {
         ind: (pd.Series(industry_scores).rank(pct=True)[ind] * 100)
@@ -363,7 +450,11 @@ def main(input_file=None, output_file=None):
         if i % 100 == 0:
             print(f"{i}/{len(tickers)}")
         try:
-            r = detect_accumulation(t, rs_map, risk_on, industry_scores, industry_percentiles)
+            r = detect_accumulation(
+                t, rs_map, risk_on,
+                industry_scores, industry_percentiles,
+                spy_df
+            )
             if r:
                 results.append(r)
         except Exception as e:
@@ -385,4 +476,4 @@ def main(input_file=None, output_file=None):
 
 
 if __name__ == "__main__":
-    main("resource/us_top_5000.csv","output/2026-06-19/us_1d/us_top_5000/find_building_up_gpt_2026-06-19_2.csv")
+    main()

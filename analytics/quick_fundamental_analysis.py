@@ -150,12 +150,12 @@ def process_ticker(symbol: str) -> dict | None:
         try:
             ocf = stock.cashflow.loc["Operating Cash Flow"].iloc[0]
         except Exception  as e:
-            logging.error(f"無法獲取 {symbol} 的現金流數據: {e}")
+            logging.debug(f"無法獲取 {symbol} 的現金流數據: {e}")
             ocf = 0.0
         try:
             net_income = stock.financials.loc["Net Income"].iloc[0]
         except Exception  as e:
-            logging.error(f"無法獲取 {symbol} 的淨利數據: {e}")
+            logging.debug(f"無法獲取 {symbol} 的淨利數據: {e}")
             net_income = 0.0
         if net_income is None or net_income == 0:
             ocf_net_income_ratio = 0.0
@@ -164,12 +164,12 @@ def process_ticker(symbol: str) -> dict | None:
         try:
             ocf2 = stock.cashflow.loc["Operating Cash Flow"].iloc[1]
         except Exception  as e:
-            logging.error(f"無法獲取 {symbol} 的前一年現金流數據: {e}")
+            logging.debug(f"無法獲取 {symbol} 的前一年現金流數據: {e}")
             ocf2 = 0.0
         try:
             net_income2 = stock.financials.loc["Net Income"].iloc[1]
         except Exception  as e:
-            logging.error(f"無法獲取 {symbol} 的前一年淨利數據: {e}")
+            logging.debug(f"無法獲取 {symbol} 的前一年淨利數據: {e}")
             net_income2 = 0.0
         if net_income2 is None or net_income2 == 0:
             ocf_net_income_ratio2 = 0.0
@@ -210,7 +210,7 @@ def run_sequential_screening(ticker_list):
         res = process_ticker(symbol)
         if res:
             results.append(res)
-            print(f">>> [成功符合] {symbol} | 目前進度: {i + 1}/{total}")
+            # print(f">>> [成功符合] {symbol} | 目前進度: {i + 1}/{total}")
 
         # 每處理完一個股票稍作休息 (可選)
         # time.sleep(0.5)

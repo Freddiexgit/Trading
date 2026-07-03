@@ -13,12 +13,11 @@ if not os.path.exists(f"output/{date}/us"):
     os.makedirs(f"output/{date}/us")
 
 def get_data(df , ticker):
-
      # Compute EMAs
     df["EMA5"] = df["Close"].ewm(span=5, adjust=False).mean()
     df["EMA20"] = df["Close"].ewm(span=20, adjust=False).mean()
     df["EMA90"] = df["Close"].ewm(span=90, adjust=False).mean()
-    df= df.iloc[-3:]
+    df = df.iloc[-3:].copy()
     df["5_cross_20"] = df["EMA5"] >= df["EMA20"]
     df["5_cross_90"] = df["EMA5"] >= df["EMA90"]
     df["20_cross_90"] = df["EMA20"] >= df["EMA90"]

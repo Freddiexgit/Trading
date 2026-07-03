@@ -179,7 +179,15 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
     pdf_files = []
     for index, row in df_tickers.iterrows():
         # print(f"Index: {index}, Value: {row['symbol']}")
+        if not os.path.exists(f"output/temp/{folder}"):
+            # Create the directory
+            os.makedirs(f"output/temp/{folder}")
+
         ticker = row['symbol']
+        filename = f"{ticker}.pdf"
+        if os.path.exists(f"output/temp/{folder}/{filename}"):
+            pdf_files.append(filename)
+            continue
         try:
             stock = data.get_stock_obj(ticker)
         except Exception as e:
@@ -203,7 +211,7 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
             print(f"Error plotting figure for {ticker}: {e}")
             fig = None
         if fig == None:
-            print(f"Skipping {ticker} due to MACD sell .")
+            # print(f"Skipping {ticker} due to MACD sell .")
             continue
         # save temporary pdf for each stock
         filename = f"{ticker}.pdf"
@@ -217,8 +225,8 @@ def generate_pdf(df_tickers,output_filename,skip_macd_sell="Yes",folder="us"):
 
     merger.write(output_filename)
     merger.close()
-    for pdf in pdf_files:
-        try:
-            os.remove(f"output/temp/{folder}/{pdf}")  # Clean up temporary files
-        except Exception as e:
-            print(f"Error deleting file {pdf}: {e}")
+    # for pdf in pdf_files:
+    #     try:
+    #         os.remove(f"output/temp/{folder}/{pdf}")  # Clean up temporary files
+    #     except Exception as e:
+    #         print(f"Error deleting file {pdf}: {e}")

@@ -9,7 +9,7 @@ def get_csv_files(table_name) ->list[str]:
     """
 
     # glob.glob() automatically resolves the '*' wildcards
-    file_pattern = f"../output/2026*/*/*/{table_name}_*.csv"
+    file_pattern = f"../output/2026*/us_1d/us_top_5000/{table_name}_*.csv"
     date_csv_files = {}
     for file_path in glob.glob(file_pattern):
         print(f"Found file: {file_path}")
